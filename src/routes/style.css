@@ -1,0 +1,71 @@
+
+html {background-color: #222222;}
+
+div {
+    color: aqua;
+}
+
+html body {
+    font-size: 22px;
+    background-color: #4E3524;
+    color: aqua;
+    padding-left: 3%;
+    padding-right: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    min-height: 100vh;
+    border-radius: 17px;
+    
+}
+
+p {
+    color: aqua;
+}
+
+.columns {
+    column-count: 2;
+    display: flex;
+}
+
+
+
+p {
+    color: 'aqua';
+}                       
+
+pre {
+    color: #FF6548
+}
+
+div {
+    color: aqua;
+}
+
+h1, h2 {
+    color: blue;
+}
+
+p span {
+    text-transform: uppercase;
+}
+
+  .aqua {
+    background-color: aqua;
+  }
+
+  .brown {
+    background-color: #4E3524; 
+  }
+
+  a {
+      font-size: 22px;
+      margin: 17px;
+      color: #FF92CD
+    }
+  
+
+
+
+

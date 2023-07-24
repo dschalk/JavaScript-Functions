@@ -904,13 +904,6 @@ var start = `m2 = M(
 
 <style>
 	pre {margin-left: 3%;}
-
-	
-
-body {
-  background: turquoise
-}
-
 </style>
 
 <svelte:head>

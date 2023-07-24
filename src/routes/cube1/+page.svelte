@@ -1131,31 +1131,25 @@ function shu() {
     border-radius: 10px;
 }
 
-body {
+/* body {
   background: turquoise
-}
+} */
 
 .container {
   width: 198px;
   height: 198px;
   perspective: 1000px;
-  background-color: black;
-  position: absolute;
-  top: 42%;
-  left: 42%;
+  /*background-color: black; */
+  float: right;
+  margin-right:7%;
+  color: aqua;
   /*float: right;
   margin-right: 35%;
   margin-top: 15%; */
 }
 
 .container2 {
-  position: absolute;
-  top: 2%;
-  left: 92%;
-  right: -77%;
-  /*float: right;
-  margin-right: 35%;
-  margin-top: 15%; */
+  float: right;
 }
 
   .grid {
@@ -1324,23 +1318,38 @@ h1 {
 #col-2 {
   position: fixed;
   right: 30%;
-  height: 100%;
+  top: 400px;
+}
+
+.col-3 {
+  position: fixed;
+  right: 12%;
+  top: 20%;
+  width:35%;
 }
 
 
+#steady {
+  position: fixed;
+  top: 52%;
+  left:25%;
+
+}
+
+p {
+  color: aqua;
+}
 
 </style>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-<div id = 'col-1'>  
-<div style="margin-top: 3%">
-<div style = "margin-left:50px">  
 
-<br>
+<!-- <div id = 'col-1'>  
+<div style="margin-top: 3%">
+<div style = "margin-left:50px">  -->
+<!-- Column 1 -->
+<section class="columns">
+<div style='width: 50%'>
+  <br>
 <button on:click={Start}>Start</button>
 <button on:click={shu}>Scramble</button>
 
@@ -1364,11 +1373,57 @@ h1 {
 <button on:click={Cxrfunc}>Mx'</button>
 <button on:click={Cyrfunc}>My'</button>
 <button on:click={Czrfunc}>Mz'</button>
+<br><br>
+<button on:click={rotate}>Clockwise</button>
+<br><br>
+<button on:click={rotate2}>Counterclockwise</button>
+<br><br>
+<button on:click={flip}>Flip</button>
+<br><br><br>
 
-  <div class="container">
-    <div class={cu} >
-      <div class="face front">
-        
+<div style='font-size: 44px; color: orange'>{cu}</div>
+
+</div>
+<br><br><br>
+
+<div style='width: 49%'>
+<!-- Column 2 -->
+<div style = 'background-color: #4E3524'>
+  <p style='color:#FFCCFF; font-size: 28px'> Cube orientation is indicated in the lower left. The U, D, R, L, F, and B controls correspond to cube orientation "cube1" with with the yellow center on top, the blue center to the right, and the orange center facing you, as shown when the page loads.</p>
+<br><br>
+
+<button on:click={sune}>Sune: R U R' U R U2 R'</button>
+<br>
+<button on:click={antisune}>Antisune: R U2 R' U' R U' R' </button>
+<br>
+<button on:click={sexy}>Sexy: R U R' U'</button>
+<br>
+<button on:click={reverse_sexy}>Reverse Sexy: U R U' R'</button>
+<br>
+<button on:click={orient_corners}>Revolve: U R U' L' U  R' U' L</button>
+<br>
+<button on:click={reverse_orient_corners}>Reverse Revolve: L' U R U' L U R' U'</button>
+<br>
+<button on:click={sledgehammer}>Sledgehammer: R' F R F' </button>
+<br>
+<button on:click={niklas}>Niklas: R U' L' U R' U' L</button>
+<br>
+<button on:click={reverse_niklas}>Reverse Niklas: L' U R U' L U R'</button>
+<br><br>
+<div>T Perm: R U R' U' R' F R2 U' R' U' R U R' F'</div>
+<div>H Perm: M2' U' M2' U2' M2' U' M2'</div>
+<div>Key: R U R' U' R' F R F'</div>
+<div>Bottlecap: f (R U R' U') (R U R' U') f'</div>
+<div>Checkerboard: M2 E2 S2  or  R2 L2 U2 D2 F2 B2</div>
+<div style="margin-down:400px"></div>
+
+</div>
+</div>
+</section>
+<div id = "steady">
+<div class="container"> 
+<div class={cu} >
+  <div class="face front">
     <div class="grid" id = "a3">
         <div class = {cube[3][0]}></div> 
         <div class = {cube[3][1]}></div> 
@@ -1450,83 +1505,11 @@ h1 {
         <div class = {cube[5][7]}></div> 
         <div class = {cube[5][8]}></div> 
     </div>
-<br>
 </div>
 </div>
 </div>
-<div>
-  <br><br><br><br>
-<button on:click={rotate}>Clockwise</button>
-<br><br>
-<button on:click={rotate2}>Counterclockwise</button>
-<br><br>
-<button on:click={flip}>Flip</button>
-<br><br><br><br>
-<h3 style="font-size:34px; color:purple">{cu}</h3>
-</div>
-<div><br><br><br></div>
-<div style="float:right">
-<div class = 'container2'>  
-<h3>  <p style='color:blue'> Cube orientation is indicated in the lower left. The U, D, R, L, F, and B controls correspond to cube orientation "cube1" with with the yellow center on top, the blue center to the right, and the orange center facing you, as shown when the page loads.
-  
-</p></h3>
-<button on:click={sune}>sune</button>
-<br>
-<button on:click={antisune}>antisune</button>
-<br>
-<button on:click={sexy}>sexy</button>
-<br>
-<button on:click={reverse_sexy}>reverse sexy</button>
-<br>
-<button on:click={orient_corners}>revolve</button>
-<br>
-<button on:click={reverse_orient_corners}>reverse_revolve</button>
-<br>
-<button on:click={sledgehammer}>sledgehammer</button>
-<br>
-<button on:click={niklas}>niklas</button>
-<br>
-<button on:click={reverse_niklas}>reverse niklas</button>
-<br><br>
-<div>Niklas: R Uz Lz U Rz Uz L</div>
-<br>
-<div>Resolve: U R Uz Lz U Rz Uz L</div>
-<div>T Perm: R U R' U' R' F R2 U' R' U' R U R' F'</div>
-<br><br>
-
-<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-<h2>
-
-</h2>
-</div>
-</div>
-</body>
+</div>    
 
 
-<!-- <div style="width: (100/3)%; float: left"> 
-<h1>Cow</h1>
-<button on:click={sune}>sune</button>
-<br>
-<button on:click={antisune}>antisune</button>
-<br>
-<button on:click={sexy}>sexy</button>
-<br>
-<button on:click={reverse_sexy}>reverse sexy</button>
-<br>
-<button on:click={orient_corners}>revolve</button>
-<br>
-<button on:click={orient_corners}>reverse_revolve</button>
-<br>
-<button on:click={sledgehammer}>sledgehammer</button>
-<br>
-<button on:click={niklas}>niklas</button>
-<br>
-<button on:click={reverse_niklas}>reverse niklas</button>
-<br><br><br>
-<div>Niklas: R Uz Lz U Rz Uz L</div>
-<br>
-<div>Resolve: U R Uz Lz U Rz Uz L</div>
-</div>
-</div>
-    </div>
-    </div> -->
+<slot></slot>
+
