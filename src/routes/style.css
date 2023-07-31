@@ -5,9 +5,9 @@ div {
     color: aqua;
 }
 
-html body {
+body {
     font-size: 22px;
-    background-color: #4E3524;
+    background-color:  #fffdd0 ; 
     color: aqua;
     padding-left: 3%;
     padding-right: 3%;
@@ -17,30 +17,49 @@ html body {
     margin-bottom: 20px;
     min-height: 100vh;
     border-radius: 17px;
-    
 }
 
 p {
-    color: aqua;
+    color: darkgreen;
+    font-size: 24px;
 }
 
 .columns {
     column-count: 2;
     display: flex;
 }
+	
+  button {
+    margin-left: 1%;
+    background-color: lightblue;
+    border-width: 2px;
+    border-color: #E8F7C1;
+    border-radius: 10px;
+    color: blue;
+    font-size: 20px;
+    box-shadow: 0px 0px 15px 0px rgb(255, 215, 0);
+    padding: 3px 10px 3px 10px; 
+  } 
 
-
+  button:hover {
+    color: blue;
+    background-color: gold;
+    border-color: #E8F7C1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px 0px rgb(255, 255, 0);
+  }
 
 p {
-    color: 'aqua';
+    color: darkblue;
 }                       
 
 pre {
-    color: #FF6548
+    color: maroon;
+    font-size: 24px;
 }
 
 div {
-    color: aqua;
+    color: darkgreen;
 }
 
 h1, h2 {
@@ -51,19 +70,21 @@ p span {
     text-transform: uppercase;
 }
 
-  .aqua {
-    background-color: aqua;
+a {
+    /*background-color: lightblue; */
+    border-color: #E8F7C1;
+    color: blue;
+    font-size: 22px;
+  } 
+
+  a:hover {
+    color: magenta; 
+    background-color: gold;
+    border-color: #E8F7C1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px 0px rgb(255, 255, 0);
   }
 
-  .brown {
-    background-color: #4E3524; 
-  }
-
-  a {
-      font-size: 22px;
-      margin: 17px;
-      color: #FF92CD
-    }
   
 
 

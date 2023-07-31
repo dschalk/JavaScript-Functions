@@ -1,8 +1,50 @@
-  /*
-  bb = [ ar2[0], ar2[1], ar2[2], ar2[3], ar2[4], ar2[5], ar2[6], ar2[7], ar2[8] ];
-  gg = [ ar2[9], ar2[10], ar2[11], ar2[12], ar2[13], ar2[14], ar2[15], ar2[16], ar2[17] ];
-  rr = [ ar2[18], ar2[19], ar2[20], ar2[21], ar2[22], ar2[23], ar2[24], ar2[25], ar2[26] ];
-  oo = [ ar2[27], ar2[28], ar2[29], ar2[30], ar2[31], ar2[32], ar2[33], ar2[34], ar2[35] ];
-  yy = [ ar2[36], ar2[37], ar2[38], ar2[39], ar2[40], ar2[41], ar2[42], ar2[43], ar2[44] ];
-  ww = [ ar2[45], ar2[46], ar2[47], ar2[48], ar2[49], ar2[50], ar2[51], ar2[52], ar2[53] ];
-  */
+<script>
+	// @ts-ignore
+
+  import array from '$lib/Screenshot_array.png';
+
+	import { merge_ssr_styles } from 'svelte/internal';
+	//	import { onMount } from "svelte";
+	import { fade } from 'svelte/transition';
+
+var log = console.log;
+function ret () {};
+
+function M (x) {
+  return function go (func) {
+      if (func === ret) return x
+      else x = func(x);
+      return go;
+  }
+}
+
+var m1 = M([2]);
+var mpow = y => x => {x.push((x.slice(-1)[0]**y)); return x}
+var msqrt = x => {x.push(Math.sqrt(x.slice(-1)[0])); return x}
+var mMult = y => x => {x.push(x.slice(-1)[0]*y); return x}
+var madd = y => x => {x.push(x.slice(-1)[0]+y); return x}
+m1(mpow(3))(mpow(3))(mMult(2))(msqrt)(madd(10))
+console.log("m1(dev) is", m1(ret));
+
+</script>
+<style>
+    img {
+        width:90%; 
+        height:90%;
+    }
+</style>
+<svelte:head>
+	<title>Recursive Closures Over Arrays</title>
+</svelte:head>
+<br />
+<div>**************************************************************************</div>
+<div style="font-family: Times New Roman; text-align:center; font-size: 32px;" transition:fade>
+	<br />
+
+  Recursive Closures Over Arrays
+</div>
+<br />
+
+<p>The result, as expected, is [ {m1(ret)} ].</p>
+<img alt="array" src={array}/>
+

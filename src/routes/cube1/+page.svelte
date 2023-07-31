@@ -1336,10 +1336,6 @@ h1 {
 
 }
 
-p {
-  color: aqua;
-}
-
 h3 {
   color: #FFCCFF;
 }
@@ -1385,13 +1381,13 @@ h3 {
 <button on:click={flip}>Flip</button>
 <br><br><br>
 
-<div style='font-size: 44px; color: orange'>{cu}</div>
+<div style='font-size: 44px; color: red'>{cu}</div>
 <br><br><br>
-<h3>Demonstration 1 - <italic>keep scrolling down if the cube covers the text </italic></h3>
-<p>Click <button style='all: revert' on:click={reverse_niklas}>Reverse Niklas '</button> (L' U R U' L U R) "Reverse Niklas" and observe that (1) the "fish" points toward the lower left and (2) the upward-facing lower-right sticker is yellow. Elementary tutorials say this configuration calls for the sune algorithm; and, indeed, sune sune makes the entire upper face yellow. Try it. <button style='all: revert' on:click={sune}>Sune</button> (R U R' U R U2 R'). The cube has a way to go before being solved. </p>
+<h3 style='color: darkgreen'>Demonstration 1 - keep scrolling down if the cube covers the text </h3>
+<p>Click <button style='all: revert' on:click={reverse_niklas}>Reverse Niklas '</button> (L' U R U' L U R) "Reverse Niklas" and observe that (1) the "fish" points toward the lower left and (2) the forward-facing lower-right sticker is yellow. Elementary tutorials say this configuration calls for the sune algorithm; and, indeed, sune sune makes the entire upper face yellow. Try it. <button style='all: revert' on:click={sune}>Sune</button> (R U R' U R U2 R'). The cube has a way to go before being solved. </p>
 
 
-<p> Now click <button style='all: revert' on:click={Start}>Start</button> and <button style='all: revert' on:click={reverse_niklas}>Reverse Niklas '</button> (L' U R U' L U R) again. Note that the upper corners have opposite colors, red and orange in this case (green and blue are also considered opposite).The lower-right side sticker and the top left uppward-facing sticker match (both are red). These observations indicate that the cube can be quickly solved. All you need to do is click <button style='all: revert' on:click={Uzfunc}>U'</button> and <button style='all:revert' on:click={orient_corners}>Revolve</button> (U R U' L' U R' U' L) or, click <button style='all:revert' on:click={niklas}>Niklas</button> (R U' L' U R' U' L).
+<p> Now click <button style='all: revert' on:click={Start}>Start</button> and <button style='all: revert' on:click={reverse_niklas}>Reverse Niklas '</button> (L' U R U' L U R) again. Note that the upper corners have opposite colors, red and orange in this case (green and blue are also considered opposite).The lower-right side sticker and the top left uppward-facing sticker match (both are red). These observations indicate that the cube can be quickly solved. All you need to do is click <button style='all: revert' on:click={Uzfunc}>U'</button> and <button style='all:revert' on:click={orient_corners}>Revolve</button> (U R U' L' U R' U' L), or click <button style='all:revert' on:click={niklas}>Niklas</button> (R U' L' U R' U' L).
 </p>
 <br><br><br>
 <br><br><br>
@@ -1410,8 +1406,8 @@ h3 {
 
 <div style='width: 49%'>
 <!-- Column 2 -->
-<div style = 'background-color: #4E3524; margin-left: 25px'>
-  <p style='color:#FFCCFF; font-size: 28px'> Cube orientation is indicated in the lower left. The U, D, R, L, F, and B controls correspond to cube orientation "cube1" with with the yellow center on top, the blue center to the right, and the orange center facing you, as shown when the page loads.</p>
+<div style = 'margin-left: 25px'>
+  <p style=' color: darkblue; font-size: 28px'> Cube orientation is indicated in the lower left. The U, D, R, L, F, and B controls correspond to cube orientation "cube1" with with the yellow center on top, the blue center to the right, and the orange center facing you, as shown when the page loads.</p>
 <br><br>
 
 <button on:click={sune}>Sune: R U R' U R U2 R'</button>

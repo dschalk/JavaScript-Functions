@@ -4,17 +4,17 @@
 import {writable} from "svelte/store";
 import {browser} from "$app/environment"
 
-/*export const userName = writable(
+const userName = writable(
     browser && (localStorage.getItem("userName" || "Fred"))
 );
 
-export const top = writable (
+const top = writable (
     browser && (localStorage.getItem("top" || "topAr"))
-); */
+); 
 
-// userName.subscribe((val) => browser && (localStorage.userName = val));
+userName.subscribe((val) => browser && (localStorage.userName = val));
 
-// top.subscribe((val) => browser && (localStorage.top = val));
+top.subscribe((val) => browser && (localStorage.top = val));
 
 
 
@@ -903,7 +903,28 @@ var start = `m2 = M(
 </script>
 
 <style>
-	pre {margin-left: 3%;}
+  pre {margin-left: 3%;}
+  
+  button {
+    margin-left: 1%;
+    background-color: lightblue;
+    border-width: 2px;
+    border-color: #E8F7C1;
+    border-radius: 10px;
+    color: blue;
+    font-size: 20px;
+    box-shadow: 0px 0px 15px 0px rgb(255, 215, 0);
+    padding: 3px 10px 3px 10px; 
+  } 
+
+  button:hover {
+    color: blue;
+    background-color: gold;
+    border-color: #E8F7C1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px 0px rgb(255, 255, 0);
+  }
+
 </style>
 
 <svelte:head>
@@ -914,7 +935,7 @@ var start = `m2 = M(
 <div style="font-family: Times New Roman; text-align:center; font-size: 32px;" transition:fade>
 	<br />
 
-	The State of Score Maintained in a Recursive Closure
+	The State of Score Maintained in a 	Closure
 </div>
 <br />
 <p> The game is held in the recursive closure returned initially by M(x) where M is: </p>

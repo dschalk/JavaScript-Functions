@@ -10,11 +10,11 @@ import Firefox_2 from '$lib/Firefox_test_2.png';
 var Mdisplay = `var M = function M (x) {
   return function go (func) {
     if (func === ret) return x;
-    else x = func(x);
+    else if (typeof func === 'function') x = func(x);
     return go;
   }
 }
-Where ret = () => {}; // This flag's being a function can simplify future type checking.`
+Where ret = () => {}; // This flag is a function so only functions are valid arguments`
 
 var ret = () => {};
 
@@ -26,8 +26,36 @@ var M = function M (x) {
   }
 };
 
+var test_1 = `var M = function M (x) {
+  return function go (func) {
+    if (func === ret) return x
+    else if (typeof func === 'function') x = func(x)
+    return go;
+  }
+}
+
+var m = M('peaches');
+log('m(ret) is', m(ret));
+
+m(x => x + ' and pears')
+log('m(ret) is', m(ret));
+
+m(()=>3);  // Equivalent to m = M(3) whenever m is mutable.
+log('m(ret) is', m(ret));
+
+var test_1 = var ret = () => {};
+
+var M = function M (x) {
+  return function go (func) {
+    if (func === ret) return x
+    else x = func(x)
+    return go;
+  }
+}
+
 var log = console.log;
-var test_0 = `var m = M('peaches');
+
+var m = M('peaches');
 log('m(ret) is', m(ret)); // peaches
 
 m(x => x + ' and pears')
@@ -38,11 +66,12 @@ log('m(ret) is', m(ret)); // 3
 
 log(m(v=>v**3)(v=>v+v)(v=>v-12)(ret)) // 42
 
-var Pyth = a => b => Math.sqrt(a*a + b*b); 
-log(M(Pyth(3)(4))(ret)); // This anonymous computation returns 5`
+M(6)(v=>v*7)(ret);
 
-var test_1 = `var arr = m = M([1,2,3]);
+var Pyth = a => b => Math.sqrt(a*a + b*b);
+log(M(Pyth(3)(4))(ret)); // 5`
 
+var arr = `var m = M([1,2,3]);
 var add = x => a => a.concat(x + a.slice(-1)[0]);
 var mult = x => a => a.concat(x * a[a.length-1]);
 m(add(4));
@@ -158,7 +187,7 @@ function sfunc () {
 
 <h1>The Basic JS-Monad</h1>
 
-<p>Basic JS-Monads, as defined and demonstrated in this website, are functions that operate on functions that operate on values held in closures. These operations can mutate the value in the closure or replace it, preserving the previous value while along-side its replacement. </p>
+<p>Basic JS-Monads, as defined and demonstrated in this website, are functions that operate on functions that operate on values held in closures. These operations can mutate the value in the closure or replace it, possibly while preserving the value along-side its replacement. </p>
 <p>Type safety, error handling, and other functionality can be added, but for now, we'll consider just the essence of JS-Monads by working with a stripped-down, bare-bones version. This version, returned by M(x) (shown below) where x can be any JavaScript value, works much like Haskell monads without types, encapsulating and sequestering the composition of functions. </p>
 <p>As the "Cube" and "Score" pages of this website (linked above) suggest, these simple closures can handle complex functionality in elaborate applications. There's no need to modify the JS-Monad factory function "M", or the copy of "go()" that it returns. The functions operated on by JS-monads can handle the Complexity. Here are some definitions:</p>
 
@@ -166,7 +195,7 @@ function sfunc () {
 
 <p>"m-M(x)" closures encapsulate the state of a <a href='./cube1'>Rubik's cube emulator</a>, and the state of attempts to win a simulated dice game in the <a href='./score'>Solitaire Game of Score</a>. But before figuring out how these work, lets explore some basic functionality. Here are examples of things mentioned above, including "automatically executing closures", "elegant function composition", "persistent named and anonymous state", and "encapsulation of state updates." </p>
 
-<pre>{test_0}</pre>
+<pre>{test_1}</pre>
 
 <p>I urge you to define a function returned by M(x) for some value x as I did for "m = M('peaches')" in some REPL and experiment. I tested the above code in Firefox Dev Tools as follows:</p>
 <img alt = "Firefox" src = {Firefox_1} 
@@ -177,7 +206,7 @@ height = auto;
 <h3>Immutable State</h3>
 <p>The value "x" in m = M(x) can be an anonymous array, named "x" only inside the closure. "m(func) can concatinate its return value to the array, preserving the previous value and making the updated value available as needed."</p>
 <p>Here's some example code, followed by a test in Firefox.</p>
-<pre>{test_1}</pre>
+<pre>{arr}</pre>
 <img alt='Firefox2' src = {Firefox_2} 
 width = 100%;
 height = auto;
