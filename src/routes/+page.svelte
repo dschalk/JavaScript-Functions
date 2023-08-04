@@ -212,7 +212,27 @@ var m = M(cube);</pre>
 <p>More details are at <a href='./score'>Game of Score</a>. </p>
 <br><br><br>
 <br><br><br>
+<!--
+  var trCount = 0;
 
+  function transform () {
+    var ar = cube;
+    m( [ ar[2], ar[3], ar[1], ar[0], [ ar[4][6], ar[4][3], ar[4][0], ar[4][7], ar[4][4], ar[4][1],ar[4][8], ar[4][5], ar[4][2] ], [ ar[5][2], ar[5][5], ar[5][8], ar[5][1], ar[5][4], ar[5][7],ar[5][0], ar[5][3], ar[5][6] ] ] );
+    cube = m();
+
+    trCount = (trCount + 1) % 4;
+    var Rtemp;
+    if (trCount === 1) {
+      Rtemp = B;
+      F = L;
+      L = B;
+      B = Rtemp;
+      R = F;
+    }
+    console.log("In transform. m() is", m());
+    return cube;
+  }
+-->
 
 <slot></slot>
 

@@ -1,9 +1,11 @@
 
 
 <script>
+// import Image from './Image.svelte'  
+var log = console.log;
+var ERROR = "";
 
-// log = console.log;
-
+import array from '$lib/OLL.png';
 import {fade , blur , fly , slide , scale , draw, crossfade} from 'svelte/transition'
 
 function M (x) {
@@ -36,9 +38,63 @@ var b = "blue", g ="green", r = "red", y = "yellow",
   var yy = [y0,y1,y2,y3,y4,y5,y6,y7,y8];
   var ww = [w0,w1,w2,w3,w4,w5,w6,w7,w8];
 
-  var cube = [bb,gg,rr,oo,yy,ww]
+  var cube = [bb,gg,rr,oo,yy,ww];
+  var cube2 = [rr,oo,gg,bb,yy,ww];
+
+  
+  var trCount = 0;
+/*
+  function flip (ar) {
+    m = M([ [ar[0][6], ar[0][3], ar[0][0], ar[0][7], ar[0][4], ar[0][1],ar[0][8], ar[0][5], ar[0][2]], [ar[1][2], ar[1][5], ar[1][8], ar[1][1], ar[1][4], ar[1][7],ar[1][0], ar[1][3], ar[1][6]],ar[4], ar[5], ar[3], ar[2] ] );
+    cube = m(); 
+  } */
+
+
+  function flip () {m = fli(m()); cube = m(); return cube; };
+  function fli (ar) {
+    var arr = [];
+    arr[0] = [ar[0][6], ar[0][3], ar[0][0], ar[0][7], ar[0][4], ar[0][1],ar[0][8], ar[0][5], ar[0][2]];
+    arr[1] = [ar[1][2], ar[1][5], ar[1][8], ar[1][1], ar[1][4], ar[1][7],ar[1][0], ar[1][3], ar[1][6]];
+    arr[2] = temp[4];
+    arr[3] = temp[5];
+    arr[4] = temp[3];
+    arr[5] = temp[2];
+    console.log("ar is", ar);
+    m = M(arr);
+    console.log("m() is", m());
+    cube = m(); 
+    console.log("cube is", cube);
+    return cube;
+    // dupCheck(cube);
+  }
+
   var m = M(cube);
-var cubeStart = [...[bb,gg,rr,oo,yy,ww]];
+  var cubeStart = [...[bb,gg,rr,oo,yy,ww]];
+    
+    
+  function Xrotate (ar) {
+    m = M([ [ar[0][6], ar[0][3], ar[0][0], ar[0][7], ar[0][4], ar[0][1],ar[0][8], ar[0][5], ar[0][2] ], 
+    [ ar[1][2], ar[1][5], ar[1][8], ar[1][1], ar[1][4], ar[1][7],ar[1][0], ar[1][3], ar[1][6] ], 
+    ar[4], ar[5], ar[3], ar[2] ]);
+    cube = m(); 
+    console.log("cow");
+    console.log("cube is", cube);
+    return cube 
+  };
+
+  function Yrotate (ar) {
+    m = M( [ ar[2], ar[3], ar[1], ar[0], [ ar[4][6], ar[4][3], ar[4][0], ar[4][7], ar[4][4], ar[4][1],ar[4][8], ar[4][5], ar[4][2] ], [ ar[5][2], ar[5][5], ar[5][8], ar[5][1], ar[5][4], ar[5][7],ar[5][0], ar[5][3], ar[5][6] ] ] );
+    cube = m(); 
+    return cube 
+  };
+
+  function Zrotate (ar) {
+    m = M( [ ar[4], ar[5], [ar[2][6], ar[2][3], ar[2][0], ar[2][7], ar[2][4], ar[2][1],ar[2][8], ar[2][5], ar[2][2] ], [ ar[3][2], ar[3][5], ar[3][8], ar[3][1], ar[3][4], ar[3][7],ar[3][0], ar[3][3], ar[3][6] ], ar[1], ar[0] ] ); 
+    cube = m(); 
+    console.log("cow");
+    console.log("cube is", cube);
+    return cube 
+  };
 
 /*
 var bb = ["b0","b1","b2","b3","b4","b5","b6","b7","b8"];
@@ -52,7 +108,6 @@ var cube = [bb,gg,rr,oo,yy,ww]
 var m = M(cube);
 var cubeStart = [...[bb,gg,rr,oo,yy,ww]];
 */
-
 console.log("m() is", m());
 
 function Cz (ar) {
@@ -594,13 +649,18 @@ var reverse_niklas = () => {
     cube = m(Lz)(U)(R)(Uz)(L)(U)(Rz)();
 }
 
-var sexy = () => {
-    cube = m(R)(U)(Rz)(Uz)();
+var Jb_Perm = () => {
+    cube = m(R)(U)(Rz)(Fz)(R)(U)(Rz)(Uz)(Rz)(F)(R)(R)(Uz)(Rz)(Uz)();
+}  
+
+var niklas = () => {
+    cube = m(R)(Uz)(Lz)(U)(Rz)(Uz)(L)();
 }
 
-var sexy = () => {
-    cube = m(R)(U)(Rz)(Uz)();
+var niklas = () => {
+    cube = m(R)(Uz)(Lz)(U)(Rz)(Uz)(L)();
 }
+
 
 var cu;
 cu = "cube1";
@@ -616,6 +676,7 @@ function rotate () {
     else if (cu == "cube7") cu = "cube8"
     else if (cu == "cube8") cu = "cube5"
     else return "cube1"
+    dupCheck(m());
 };
 
 function rotate2 () {
@@ -624,29 +685,34 @@ function rotate2 () {
     rotate();
 };
 
-function flip () {
-    if (cu == "cube1") cu = "cube5"
-    else if (cu == "cube2") cu = "cube7"
-    else if (cu == "cube3") cu = "cube8"
-    else if (cu == "cube4") cu = "cube6"
-    else if (cu == "cube5") cu = "cube1"
-    else if (cu == "cube6") cu = "cube4"
-    else if (cu == "cube7") cu = "cube2"
-    else if (cu == "cube8") cu = "cube3"
+function testRotate () {
+  cube = m(() => cube2)();
+  console.log("cube is", cube);
+  console.log("cube2 is", cube2);
 }
+
+/*function flip () {
+    if (cu == "cube1") {cu = "cube5"; m = M(cube)}
+    else if (cu == "cube2") {cu = "cube7"; m = M(cube)}
+    else if (cu == "cube3") {cu = "cube8"; m = M(cube)}
+    else if (cu == "cube4") {cu = "cube6"; m = M(cube)}
+    else if (cu == "cube5") {cu = "cube1"; m = M(cube)}
+    else if (cu == "cube6") {cu = "cube4"; m = M(cube)}
+    else if (cu == "cube7") {cu = "cube2"; m = M(cube)}
+    else if (cu == "cube8") {cu = "cube3"; m = M(cube)}
+} */
 
 function state () {
   console.log("*************************************");
   console.log("*************************************");
-  console.log(m());
+  console.log("m() is", m());
   console.log("*************************************");
-  console.log(cube);
+  console.log("cube is", cube);
   console.log("*************************************");
   console.log("*************************************");
 }
 
 var nums = [0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19]
-var a = [U,D,R,L,F,Cx,Cy,Cz,U,D,R,L,F,Cx,Cy,Cz,U,D,R,L,F,Cx,Cy,Cz   ];
 
 /*function shu() {
   var ar5 = nums.sort( ()=>Math.random()-0.5 );
@@ -655,13 +721,35 @@ var a = [U,D,R,L,F,Cx,Cy,Cz,U,D,R,L,F,Cx,Cy,Cz,U,D,R,L,F,Cx,Cy,Cz   ];
   cube = m(a[0])(a[1])(a[2])(a[3])(a[4])(a[5])(a[6])(a[7])(a[8])(a[9])(a[10])(a[11])(a[12])(a[13])(a[14])(a[15])(a[16])(a[17])(a[18])(a[19])(a[20])(a[21])(a[22])()
   
 }  */ 
-	
+
 function shu() {
-  //var a = [U,D,R,L,F,B,Dz,Lz,Fz,Bz,U,D,R,L,Dz, Lz,Fz,Bz,U,F,Cx,Cy,Cz];
-  a = a.sort( ()=>Math.random()-0.5 );
-  cube = m(a[0])(a[1])(a[2])(a[3])(a[4])(a[5])(a[6])(a[7])(a[8])(a[9])(a[10])(a[11])(a[12])(a[13])(a[14])(a[15])(a[16])(a[17])(a[18])(a[19])(a[20])(a[21])(a[22])(a[23])();
-  
+  Start();
+  let ar7 = [];
+  let moves = [U,D,R,L,F,Cx,Cy,Cz,U,D,R,L,F,Cx,Cy,Cz,U,D,R,L,F,Cx,Cy,Cz];
+  for (let n = 0; n <24; n+=1) {
+    m(moves[Math.floor(Math.random()*23)]);
+    console.log("m() is", m());
+  }
+  // a = a.sort( ()=>Math.random()-0.5 );
+  // cube = await (m(a[0])(a[1])(a[2])(a[3])(a[4])(a[5])(a[6])(a[7])(a[8])(a[9])(a[10])(a[11])(a[12])(a[13])(a[14])(a[15])(a[16])(a[17])(a[18])(a[19])(a[20])(a[21])(a[22])(a[23])())
+  //dupCheck(cube);
+cube = m();
+console.log("Scrambled cube is", cube);
+console.log("m() is", m());
+return cube;
 }  
+
+function dupCheck (ar) {
+  var flat = ar.flat(1);
+  const set = [...new Set(flat)];
+  if (flat.length !== set.length) {
+    //console.log(v, "is already in the array.");
+    ERROR = "STOP";
+  } 
+  else console.log(ar, "passed dupCheck")
+}
+
+// Xrotate(cube);
 
 </script>
 
@@ -814,6 +902,7 @@ function shu() {
 }
 
 .g0::before {
+  color: yellow;
   font-size: 40px;
   font-weight: bold;
   background-color: green;
@@ -821,6 +910,7 @@ function shu() {
 }
 
 .g1::before {
+  color: yellow;
   font-size: 40px;
   font-weight: bold;
   background-color: green;
@@ -828,6 +918,7 @@ function shu() {
 }
 
 .g2::before {
+  color: yellow;
   font-size: 40px;
   font-weight: bold;
   background-color: green;
@@ -835,6 +926,7 @@ function shu() {
 }
 
 .g3::before {
+  color: yellow;
   font-size: 40px;
   font-weight: bold;
   background-color: green;
@@ -842,6 +934,7 @@ function shu() {
 }
 
 .g4::before {
+  color: yellow;
   font-size: 40px;
   font-weight: bold;
   background-color: green;
@@ -849,6 +942,7 @@ function shu() {
 }
 
 .g5::before {
+  color: yellow;
   font-size: 40px;
   font-weight: bold;
   background-color: green;
@@ -856,6 +950,7 @@ function shu() {
 }
 
 .g6::before {
+  color: yellow;
   font-size: 40px;
   font-weight: bold;
   background-color: green;
@@ -863,6 +958,7 @@ function shu() {
 }
 
 .g7::before {
+  color: yellow;
   font-size: 40px;
   font-weight: bold;
   background-color: green;
@@ -870,10 +966,11 @@ function shu() {
 }
 
 .g8::before {
+    color: yellow;
   font-size: 40px;
   font-weight: bold;
   background-color: green;
-  content: "r8";
+  content: "g8";
 }
 
 .b0::before {
@@ -1094,13 +1191,13 @@ function shu() {
 .red {
     height: 60px;
     width: 60px;
-    background-color: red;
+    background-color: rgb(230, 113, 113);
     border-radius: 10px;
 }
 .blue {
     height: 60px;
     width: 60px;
-    background-color: blue;
+    background-color: lightblue;
     display: inline;
     border-radius: 10px;
 }
@@ -1113,7 +1210,7 @@ function shu() {
 .green {
     height: 60px;
     width: 60px;
-    background-color: green;
+    background-color: lightgreen;
     display: inline;
     border-radius: 10px;
 }
@@ -1333,11 +1430,15 @@ h1 {
   position: fixed;
   top: 52%;
   left:25%;
-
 }
 
 h3 {
   color: #FFCCFF;
+}
+
+img {
+  width:44%; 
+  height:44%;
 }
 
 </style>
@@ -1350,8 +1451,14 @@ h3 {
 <section class="columns">
 <div style='width: 50%'>
   <br>
+<!--  <button on:click={state}>State</button>  // Diagnostic functions
+  <button on:click={testRotate}>Test</button> --> 
+  <h1>{ERROR}</h1>
 <button on:click={Start}>Start</button>
 <button on:click={shu}>Scramble</button>
+<button on:click={() => Xrotate(cube)}>X axis rotate</button>
+<button on:click={() => Yrotate(cube)}>Y axis rotate</button>
+<button on:click={() => Zrotate(cube)}>Z axis rotate</button>
 
 <br><br>
 <button on:click={Ufunc}>U</button>
@@ -1374,14 +1481,11 @@ h3 {
 <button on:click={Cyrfunc}>My'</button>
 <button on:click={Czrfunc}>Mz'</button>
 <br><br>
-<button on:click={rotate}>Clockwise</button>
+<!--<button on:click={rotate}>Clockwise</button>
 <br><br>
-<button on:click={rotate2}>Counterclockwise</button>
-<br><br>
-<button on:click={flip}>Flip</button>
+<button on:click={rotate2}>Counterclockwise</button> -->
 <br><br><br>
 
-<div style='font-size: 44px; color: red'>{cu}</div>
 <br><br><br>
 <h3 style='color: darkgreen'>Demonstration 1 - keep scrolling down if the cube covers the text </h3>
 <p>Click <button style='all: revert' on:click={reverse_niklas}>Reverse Niklas '</button> (L' U R U' L U R) "Reverse Niklas" and observe that (1) the "fish" points toward the lower left and (2) the forward-facing lower-right sticker is yellow. Elementary tutorials say this configuration calls for the sune algorithm; and, indeed, sune sune makes the entire upper face yellow. Try it. <button style='all: revert' on:click={sune}>Sune</button> (R U R' U R U2 R'). The cube has a way to go before being solved. </p>
@@ -1398,16 +1502,11 @@ h3 {
 <br><br><br>
 </div>
 <br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
-<br><br><br>
+
 
 <div style='width: 49%'>
 <!-- Column 2 -->
 <div style = 'margin-left: 25px'>
-  <p style=' color: darkblue; font-size: 28px'> Cube orientation is indicated in the lower left. The U, D, R, L, F, and B controls correspond to cube orientation "cube1" with with the yellow center on top, the blue center to the right, and the orange center facing you, as shown when the page loads.</p>
 <br><br>
 
 <button on:click={sune}>Sune: R U R' U R U2 R'</button>
@@ -1427,7 +1526,12 @@ h3 {
 <button on:click={niklas}>Niklas: R U' L' U R' U' L</button>
 <br>
 <button on:click={reverse_niklas}>Reverse Niklas: L' U R U' L U R'</button>
+<br>
+<button on:click={Jb_Perm}>Jb_Perm: R U R' U' R' F R2 U' R' U' R U R' F' </button>
 <br><br>
+  
+<!--<img alt = "OLL" src = {array} />  -->
+
 <div>T Perm: R U R' U' R' F R2 U' R' U' R U R' F'</div>
 <div>H Perm: M2' U' M2' U2' M2' U' M2'</div>
 <div>Key: R U R' U' R' F R F'</div>
