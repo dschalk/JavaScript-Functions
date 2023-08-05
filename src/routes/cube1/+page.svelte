@@ -74,26 +74,18 @@ var b = "blue", g ="green", r = "red", y = "yellow",
     
   function Xrotate (ar) {
     m = M([ [ar[0][6], ar[0][3], ar[0][0], ar[0][7], ar[0][4], ar[0][1],ar[0][8], ar[0][5], ar[0][2] ], 
-    [ ar[1][2], ar[1][5], ar[1][8], ar[1][1], ar[1][4], ar[1][7],ar[1][0], ar[1][3], ar[1][6] ], 
-    ar[4], ar[5], ar[3], ar[2] ]);
+    [ ar[1][2], ar[1][5], ar[1][8], ar[1][1], ar[1][4], ar[1][7],ar[1][0], ar[1][3], ar[1][6] ], [ ar[4][8], ar[4][7], ar[4][6], ar[4][5], ar[4][4], ar[4][3], ar[4][2], ar[4][1], ar[4][0] ], ar[5], ar[3], ar[2] ]);
     cube = m(); 
-    console.log("cow");
-    console.log("cube is", cube);
-    return cube 
   };
 
   function Yrotate (ar) {
     m = M( [ ar[2], ar[3], ar[1], ar[0], [ ar[4][6], ar[4][3], ar[4][0], ar[4][7], ar[4][4], ar[4][1],ar[4][8], ar[4][5], ar[4][2] ], [ ar[5][2], ar[5][5], ar[5][8], ar[5][1], ar[5][4], ar[5][7],ar[5][0], ar[5][3], ar[5][6] ] ] );
     cube = m(); 
-    return cube 
   };
 
   function Zrotate (ar) {
-    m = M( [ ar[4], ar[5], [ar[2][6], ar[2][3], ar[2][0], ar[2][7], ar[2][4], ar[2][1],ar[2][8], ar[2][5], ar[2][2] ], [ ar[3][2], ar[3][5], ar[3][8], ar[3][1], ar[3][4], ar[3][7],ar[3][0], ar[3][3], ar[3][6] ], ar[1], ar[0] ] ); 
+    m = M( [ [ ar[4][6], ar[4][3], ar[4][0], ar[4][7], ar[4][4], ar[4][1],ar[4][8], ar[4][5], ar[4][2] ], [ ar[5][6], ar[5][3], ar[5][0], ar[5][7], ar[5][4], ar[5][1],ar[5][8], ar[5][5], ar[5][2] ], [ar[2][2], ar[2][5], ar[2][8], ar[2][1], ar[2][4], ar[2][7],ar[2][0], ar[2][3], ar[2][6] ], [ ar[3][6], ar[3][3], ar[3][0], ar[3][7], ar[3][4], ar[3][1],ar[3][8], ar[3][5], ar[3][2] ], [ ar[1][6], ar[1][3], ar[1][0], ar[1][7], ar[1][4], ar[1][1],ar[1][8], ar[1][5], ar[1][2] ], [ ar[0][6], ar[0][3], ar[0][0], ar[0][7], ar[0][4], ar[0][1],ar[0][8], ar[0][5], ar[0][2] ] ] ); 
     cube = m(); 
-    console.log("cow");
-    console.log("cube is", cube);
-    return cube 
   };
 
 /*
