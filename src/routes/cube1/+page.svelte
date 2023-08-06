@@ -1493,6 +1493,8 @@ img {
 <div>Key: R U R' U' R' F R F'</div>
 <div>Bottlecap: f (R U R' U') (R U R' U') f'</div>
 <div>Checkerboard: M2 E2 S2  or  R2 L2 U2 D2 F2 B2</div>
+<br><br>
+<p>As mentioned on the splash page, rotation of the cube, its middle sections, and its faces is accomplished with JavaScript, not with the CSS transform property. The keyboard controls are not affected by rotations, making the cube much easier to solve than most (possibly all) other online Rubik's cube simulators. For example, clicking "R" always turns the right face clockwise. Other simulator keyboard controls follow the original cube orientation, so clicking "R" might turn the bottom, top, left, back, or front face. </p>
 <div style="margin-down:400px"></div>
 
 </div>
@@ -1587,7 +1589,6 @@ img {
 </div>
 </div>
 </div>    
-
 
 <slot></slot>
 

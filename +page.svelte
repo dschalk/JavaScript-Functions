@@ -236,9 +236,10 @@ var m = M(cube);</pre>
 <p>The <a href='./score'>Game of Score</a> is more complicated. The closure is defined this way:</p>
 <pre>{score}</pre>
 <p>Here are three of the application's functions:</p>
-
 <pre>{fuDem}</pre>
-<p>More details are at <a href='./score'>Game of Score</a>. </p>
+<p>Rotation of the cube, its middle sections, and its faces is accomplished with JavaScript, not with the CSS transform property. The keyboard controls are not affected by rotations, making the cube much easier to solve than most (possibly all) other online Rubik's cube simulators. For example, clicking "R" always turns the right face clockwise. Other simulator keyboard controls follow the original cube orientation, so clicking "R" might turn the bottom, top, left, back, or front face. </p>
+
+<p>All of the code is at <a href='./score'>Game of Score</a>. </p>
 <br><br><br>
 <br><br><br>
 

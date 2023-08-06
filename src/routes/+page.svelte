@@ -196,7 +196,10 @@ var ww = [w0,w1,w2,w3,w4,w5,w6,w7,w8];
 
 var cube = [bb,gg,rr,oo,yy,ww]
 var m = M(cube); // x is the solved Rubik's cube representation encapsulated in the m-M(x) closure.</pre>
-<p>Instead of rearranging 24 little cubies for each move, as many other Rubik's cube simulators do, this version rearranges the colors according to a lookup table of possible moves. For example, no matter what configuration the cube is in, clicking the "R" button executes:</p> 
+<p>Instead of rearranging 24 little cubies for each move, as many other Rubik's cube simulators do, this version rearranges the colors with JavaScript and a lookup table of possible moves. Rotation of the cube, its middle sections, and its faces is accomplished only with JavaScript, never with the CSS transform property.</p>
+<p> The keyboard controls are oblivious to the cube colors. They are not affected by rotations, making the cube much easier to solve than most (possibly all) other online Rubik's cube simulators. For example, clicking "R" always turns the right face clockwise. Other simulator keyboard controls follow the original cube orientation, so clicking "R" might turn the bottom, top, left, back, or front face, depending on previous cube rotations. </p>
+
+
   <pre>{Rf}</pre>
 <p> which turns the face currently on the right side of the cube clockwise, pursuant to this table of transformations: 
 
