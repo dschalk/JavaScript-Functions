@@ -1,5 +1,4 @@
 
-
 <script>
 // import Image from './Image.svelte'  
 var log = console.log;
@@ -29,8 +28,8 @@ o0 = o1 = o2 = o3 = o4 = o5 = o6 = o7 = o8 = "orange"
 y0 = y1 = y2 = y3 = y4 = y5 = y6 = y7 = y8 = "yellow"
 w0 = w1 = w2 = w3 = w4 = w5 = w6 = w7 = w8 = "white"
 
-var b = "blue", g ="green", r = "red", y = "yellow",
-    w = "white", o = "orange";
+//var b = "blue", g ="green", r = "red", y = "yellow", w = "white", o = "orange";
+  
   var bb = [b0,b1,b2,b3,b4,b5,b6,b7,b8];
   var gg = [g0,g1,g2,g3,g4,g5,g6,g7,g8];
   var rr = [r0,r1,r2,r3,r4,r5,r6,r7,r8];
@@ -41,40 +40,12 @@ var b = "blue", g ="green", r = "red", y = "yellow",
   var cube = [bb,gg,rr,oo,yy,ww];
   var cube2 = [rr,oo,gg,bb,yy,ww];
 
-  
-  var trCount = 0;
-/*
-  function flip (ar) {
-    m = M([ [ar[0][6], ar[0][3], ar[0][0], ar[0][7], ar[0][4], ar[0][1],ar[0][8], ar[0][5], ar[0][2]], [ar[1][2], ar[1][5], ar[1][8], ar[1][1], ar[1][4], ar[1][7],ar[1][0], ar[1][3], ar[1][6]],ar[4], ar[5], ar[3], ar[2] ] );
-    cube = m(); 
-  } */
-
-
-  function flip () {m = fli(m()); cube = m(); return cube; };
-  function fli (ar) {
-    var arr = [];
-    arr[0] = [ar[0][6], ar[0][3], ar[0][0], ar[0][7], ar[0][4], ar[0][1],ar[0][8], ar[0][5], ar[0][2]];
-    arr[1] = [ar[1][2], ar[1][5], ar[1][8], ar[1][1], ar[1][4], ar[1][7],ar[1][0], ar[1][3], ar[1][6]];
-    arr[2] = temp[4];
-    arr[3] = temp[5];
-    arr[4] = temp[3];
-    arr[5] = temp[2];
-    console.log("ar is", ar);
-    m = M(arr);
-    console.log("m() is", m());
-    cube = m(); 
-    console.log("cube is", cube);
-    return cube;
-    // dupCheck(cube);
-  }
-
   var m = M(cube);
   var cubeStart = [...[bb,gg,rr,oo,yy,ww]];
     
-    
   function Xrotate (ar) {
     m = M([ [ar[0][6], ar[0][3], ar[0][0], ar[0][7], ar[0][4], ar[0][1],ar[0][8], ar[0][5], ar[0][2] ], 
-    [ ar[1][2], ar[1][5], ar[1][8], ar[1][1], ar[1][4], ar[1][7],ar[1][0], ar[1][3], ar[1][6] ], [ ar[4][8], ar[4][7], ar[4][6], ar[4][5], ar[4][4], ar[4][3], ar[4][2], ar[4][1], ar[4][0] ], ar[5], ar[3], ar[2] ]);
+    [ ar[1][2], ar[1][5], ar[1][8], ar[1][1], ar[1][4], ar[1][7],ar[1][0], ar[1][3], ar[1][6] ], [ ar[4][8], ar[4][7], ar[4][6], ar[4][5], ar[4][4], ar[4][3], ar[4][2], ar[4][1], ar[4][0] ], ar[5], ar[3], [ ar[2][8], ar[2][7], ar[2][6],  ar[2][5], ar[2][4], ar[2][3],  ar[2][2], ar[2][1], ar[2][0], ] ] );
     cube = m(); 
   };
 
@@ -88,24 +59,19 @@ var b = "blue", g ="green", r = "red", y = "yellow",
     cube = m(); 
   };
 
-/*
+/*  Used for troubleshooting
 var bb = ["b0","b1","b2","b3","b4","b5","b6","b7","b8"];
 var gg = ["g0","g1","g2","g3","g4","g5","g6","g7","g8"];
 var rr = ["r0","r1","r2","r3","r4","r5","r6","r7","r8"];
 var oo = ["o0","o1","o2","o3","o4","o5","o6","o7","o8"];
 var yy = ["y0","y1","y2","y3","y4","y5","y6","y7","y8"];
 var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"];
-
 var cube = [bb,gg,rr,oo,yy,ww] 
-var m = M(cube);
-var cubeStart = [...[bb,gg,rr,oo,yy,ww]];
 */
 console.log("m() is", m());
 
 function Cz (ar) {
-
   let temp = []
-
 
   temp[0] = [ar[0][0], ar[4][3], ar[0][2],
             ar[0][3], ar[4][4], ar[0][5],
@@ -114,12 +80,10 @@ function Cz (ar) {
   temp[1] = [ar[1][0], ar[5][3], ar[1][2],
             ar[1][3], ar[5][4], ar[1][5],
             ar[1][6], ar[5][5], ar[1][8]];
-
             
   temp[2] = ar[2];
 
   temp[3] = ar[3];
-
 
   temp[4] = [ar[4][0], ar[4][1], ar[4][2],
             ar[1][7], ar[1][4], ar[1][1],
