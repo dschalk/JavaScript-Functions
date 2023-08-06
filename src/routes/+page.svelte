@@ -14,7 +14,7 @@ var Mdisplay = `var M = function M (x) {
     return go;
   }
 }
-Where ret = () => {}; // This flag's being a function can simplify future type checking.`
+Where ret = () => {}; // This flag is a function in order to simplify future type checking.`
 
 var ret = () => {};
 
@@ -28,15 +28,15 @@ var M = function M (x) {
 
 var log = console.log;
 var test_0 = `var m = M('peaches');
-log('m(ret) is', m(ret)); // peaches
+log('m(ret) is', m(ret)); // m(ret) is peaches
 
 m(x => x + ' and pears')
-log('m(ret) is', m(ret)); // peaches and pears
+log('m(ret) is', m(ret)); // m(ret) is peaches and pears
 
 m(()=>3);  // Equivalent to m = M(3) whenever m is mutable.
-log('m(ret) is', m(ret)); // 3
+log('m(ret) is', m(ret)); // m(ret) is 3
 
-log(m(v=>v**3)(v=>v+v)(v=>v-12)(ret)) // 42
+log(m(v=>v**3)(v=>v+v)(v=>v-12)(ret)) // m(ret) is 42
 
 var Pyth = a => b => Math.sqrt(a*a + b*b); 
 log(M(Pyth(3)(4))(ret)); // This anonymous computation returns 5`
@@ -45,12 +45,12 @@ var test_1 = `var arr = m = M([1,2,3]);
 
 var add = x => a => a.concat(x + a.slice(-1)[0]);
 var mult = x => a => a.concat(x * a[a.length-1]);
-m(add(4));
+m(add(4)); // 4 + 3 is concatenated to a.
 log("1. m(ret)", m(ret)); // [ 1, 2, 3, 7 ]
-m(mult(6));
+m(mult(6));  // 6 * 7 is concatenated to a.
 log("2. m(ret)", m(ret)); // [ 1, 2, 3, 7, 42 ]
 
-// Next, we append the three stages of 6 * Math.sqrt(7 + 42)  // 49, 7, 42 
+// Next, we append the three stages of Math.sqrt(7 + 42) * 6  // 49, 7, 42 
 log(m(x => x.concat(x[3] + x[4]))(x=>x.concat(Math.sqrt(x[x.length - 1])))(mult(6))(ret))
 // [ 1, 2, 3, 7, 42, 49, 7, 42 ]`
 
@@ -140,31 +140,25 @@ var update = () => { // The button displays will correspond to the values in m2.
   XX = m2(s)[1][1];
   YY = m2(s)[1][2];
   ZZ = m2(s)[1][3];
-}
-
-function sfunc () {
-    b0 = b1 = b2 = b3 = b4 = b5 = b6 = b7 = "none"; // All button displays controlled by b's disappear.
-    if (AA != (undefined && 0)) b0 = "inline"; // Next, selected buttons are diplayed.
-    if (BB != (undefined && 0)) b1 = "inline";
-    if (CC != (undefined && 0)) b2 = "inline";
-    if (DD != (undefined && 0)) b3 = "inline";
-    if (WW != (undefined && 0)) b4 = "inline";
-    if (XX != (undefined && 0)) b5 = "inline";
-    if (YY != (undefined && 0)) b6 = "inline";
-    if (ZZ != (undefined && 0)) b7 = "inline";
 }`;
+
+var Rf = `var Rfunc = () => {
+  cube = m(R)();
+};`;
+
 
 </script>
 
 <h1>The Basic JS-Monad</h1>
 
-<p>Basic JS-Monads, as defined and demonstrated in this website, are functions that operate on functions that operate on values held in closures. These operations can mutate the value in the closure or replace it, preserving the previous value while along-side its replacement. </p>
-<p>Type safety, error handling, and other functionality can be added, but for now, we'll consider just the essence of JS-Monads by working with a stripped-down, bare-bones version. This version, returned by M(x) (shown below) where x can be any JavaScript value, works much like Haskell monads without types, encapsulating and sequestering the composition of functions. </p>
-<p>As the "Cube" and "Score" pages of this website (linked above) suggest, these simple closures can handle complex functionality in elaborate applications. There's no need to modify the JS-Monad factory function "M", or the copy of "go()" that it returns. The functions operated on by JS-monads can handle the Complexity. Here are some definitions:</p>
+<p>Basic JS-Monads, as defined and demonstrated in this website, are functions that operate on functions that operate on values held in closures. These operations can mutate the value in the closure or replace it, preserving the previous value along-side its replacement. </p>
+<p>Type safety, error handling, and other functionality can be added; but for now, we'll consider just the essence of JS-Monads by working with a stripped-down, bare-bones version. This version, returned by M(x) (shown below) where x can be any JavaScript value, works much like Haskell monads without types, encapsulating and sequestering the composition of functions. </p>
+<p>As the "Cube" and "Score" pages of this website (linked above) suggest, these simple closures can handle complex functionality in elaborate applications. There's no need to modify the JS-Monad factory function "M", or the copy of "go" that it returns, and which subsequently returns itself each time it operates on a function. The functions operated on by JS-monads (m-M(x) closures) can handle any degree of complexity. Here are some definitions:</p>
 
 <pre>{Mdisplay}</pre>
+<p>NOTE: "var" is used in this development version where "const" would be used in production. The purpose is to facilitate error-free revisions on the fly.</p>
 
-<p>"m-M(x)" closures encapsulate the state of a <a href='./cube1'>Rubik's cube emulator</a>, and the state of attempts to win a simulated dice game in the <a href='./score'>Solitaire Game of Score</a>. But before figuring out how these work, lets explore some basic functionality. Here are examples of things mentioned above, including "automatically executing closures", "elegant function composition", "persistent named and anonymous state", and "encapsulation of state updates." </p>
+<p>"m-M(x)" closures encapsulate the state of a <a href='./cube1'>Rubik's cube simulator</a>, and the state of attempts to win a simulated dice game in the <a href='./score'>Solitaire Game of Score</a>. But before elaborating on these, lets first explore some basic functionality of the m-M(x) closures. </p>
 
 <pre>{test_0}</pre>
 
@@ -201,15 +195,18 @@ var yy = [y0,y1,y2,y3,y4,y5,y6,y7,y8];
 var ww = [w0,w1,w2,w3,w4,w5,w6,w7,w8];
 
 var cube = [bb,gg,rr,oo,yy,ww]
-var m = M(cube);</pre>
-<p>Instead of rearranging 24 little cubies for each move, as many other Rubik's cube simulators do, this version rearranges the colors according to a lookup table of possible moves. For example, no matter what configuration the cube is in, clicking "R" to turn the right face clockwise performs this transformation: </p>
+var m = M(cube); // x is the solved Rubik's cube representation encapsulated in the m-M(x) closure.</pre>
+<p>Instead of rearranging 24 little cubies for each move, as many other Rubik's cube simulators do, this version rearranges the colors according to a lookup table of possible moves. For example, no matter what configuration the cube is in, clicking the "R" button executes:</p> 
+  <pre>{Rf}</pre>
+<p> which turns the face currently on the right side of the cube clockwise, pursuant to this table of transformations: 
+
 <pre>{table}</pre>
-<p>The <a href='./score'>Game of Score</a> is more complicated. The closure is defined this way:</p>
+<p>The <a href='./score'>Game of Score</a> closure is defined this way:</p>
 <pre>{score}</pre>
-<p>Here are three of the application's functions:</p>
+<p>Here are two functions used in the Game of Score:</p>
 
 <pre>{fuDem}</pre>
-<p>More details are at <a href='./score'>Game of Score</a>. </p>
+<p>More details are at <a href='https://github.com/dschalk/JavaScript-Functions'>Javascript-Functions</a>. </p>
 <br><br><br>
 <br><br><br>
 <!--
