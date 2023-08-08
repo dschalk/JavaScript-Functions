@@ -1,12 +1,17 @@
 <script>
   import "./style.css"
 </script>
+<style>
+  a {
+    margin-right: 12px;
+  }
+</style>
 <br><br>
 <nav>
 
         <a href="/">Home</a>
-    
-        <a href="/cube1">Cube</a>
+
+        <a href="/cube2">Cube</a>
 
         <a href="/score">Score</a>
 

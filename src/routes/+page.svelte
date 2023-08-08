@@ -146,6 +146,26 @@ var Rf = `var Rfunc = () => {
   cube = m(R)();
 };`;
 
+var Zdemo = `function Zrotate (ar) {
+      cube = m(Zro)();
+  }
+  
+  function Zro (ar) {
+    m(() => [ [ ar[4][6], ar[4][3], ar[4][0], ar[4][7], ar[4][4], ar[4][1],ar[4][8], ar[4][5], ar[4][2] ], [ ar[5][6],
+    ar[5][3], ar[5][0], ar[5][7], ar[5][4], ar[5][1],ar[5][8], ar[5][5], ar[5][2] ], [ar[2][2], ar[2][5], ar[2][8], 
+    ar[2][1], ar[2][4], ar[2][7],ar[2][0], ar[2][3], ar[2][6] ], [ ar[3][6], ar[3][3], ar[3][0], ar[3][7], ar[3][4], 
+    ar[3][1],ar[3][8], ar[3][5], ar[3][2] ], [ ar[1][6], ar[1][3], ar[1][0], ar[1][7], ar[1][4], ar[1][1],ar[1][8], 
+    ar[1][5], ar[1][2] ], [ ar[0][6], ar[0][3], ar[0][0], ar[0][7], ar[0][4], ar[0][1],ar[0][8], ar[0][5], ar[0][2] ] ] ); 
+    // cube = m(); 
+    return m();
+  };`
+
+var ZbackDemo = `function Zback (ar) {
+      cube = m(Zro)(Zro)(Zro)();
+  };`
+
+
+
 
 </script>
 
@@ -206,14 +226,24 @@ var m = M(cube); // x is the solved Rubik's cube representation encapsulated in 
 <pre>{table}</pre>
 <p>The <a href='./score'>Game of Score</a> closure is defined this way:</p>
 <pre>{score}</pre>
-<p>Here are two functions used in the Game of Score:</p>
+<p>Functions for m-M(x) closures can be elaborate. For example, here are two functions used in the Game of Score:</p>
 
 <pre>{fuDem}</pre>
 <p>More details are at <a href='https://github.com/dschalk/JavaScript-Functions'>Javascript-Functions</a>. </p>
-<br><br><br>
+<br><br>
+<h1>These JavaScript Monads Simplify Function Composition</h1>
+<p> In the neighboring <a href=./cube>Rubik's cube></a> page, the functions for rotating the entire cube are elaborate and intricate. Other simulators use libraries or CSS transforms to rotate cubes, but I've yet to see one controllable from the keyboard whose controls remain sensible after rotations. If the original right side happens to be on the bottom, pressing the key that used to rotate the right side rotates the bottom instead. </p>
+<p> Under the hood, the cube remains stationary while the stickers (colors) get rearranged. Pressing the "r" key always rotates the right face of the cube. </p>
+<p>Here are the functions that rotate the cube 90 degrees on the Z axis: </p>
+<pre>{Zdemo}</pre>
+<p>Writing the code for Zro was a meticulous and painstaking endeavor. Nine copies each of the strings "blue", "green", "red", "orange", "yellow", and "white" had to be rearranged precisely as they would be if a real Rubik's cube were rotated. </p>
+<p> Substituting a new arrangement of the strings for the previous one doesn't strain the browser engine so, rather than write another elaborate recipe for the reverse rearrangement, I simply ran the 90 degree rotation three times. It was sure to work perfectly from the start, so no bug-hunting was required. Here's the code for rotating 90 degrees counterclockwise on the Z axis</p>
+<pre>{ZbackDemo}</pre>
+
 <br><br><br>
 <!--
   var trCount = 0;
+
 
   function transform () {
     var ar = cube;
