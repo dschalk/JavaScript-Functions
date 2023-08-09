@@ -232,12 +232,12 @@ var m = M(cube); // x is the solved Rubik's cube representation encapsulated in 
 <p>More details are at <a href='https://github.com/dschalk/JavaScript-Functions'>Javascript-Functions</a>. </p>
 <br><br>
 <h1>These JavaScript Monads Simplify Function Composition</h1>
-<p> In the neighboring <a href=./cube>Rubik's cube></a> page, the functions for rotating the entire cube are elaborate and intricate. Other simulators use libraries or CSS transforms to rotate cubes, but I've yet to see one controllable from the keyboard whose controls remain sensible after rotations. If the original right side happens to be on the bottom, pressing the key that used to rotate the right side rotates the bottom instead. </p>
-<p> Under the hood, the cube remains stationary while the stickers (colors) get rearranged. Pressing the "r" key always rotates the right face of the cube. </p>
+<p> In the neighboring <a href=./cube>Rubik's cube></a> page, the functions for rotating the entire cube are elaborate and intricate. Other simulators use libraries or CSS transforms to rotate cubes, but I've yet to see one keyboard controllable Rubik's cube simulator that remains sensible after rotations. If the original right side happens to be on the bottom, pressing the key that used to rotate the right side rotates the bottom instead. </p>
+<p> Under the hood, the cube remains stationary while the stickers (colors) get rearranged to simulate rotations of the faces, centers, and entire cube. Pressing the "r" key, for example, always rotates the right face of the cube on this page, but nowhere else as far as I know. </p>
 <p>Here are the functions that rotate the cube 90 degrees on the Z axis: </p>
 <pre>{Zdemo}</pre>
-<p>Writing the code for Zro was a meticulous and painstaking endeavor. Nine copies each of the strings "blue", "green", "red", "orange", "yellow", and "white" had to be rearranged precisely as they would be if a real Rubik's cube were rotated. </p>
-<p> Substituting a new arrangement of the strings for the previous one doesn't strain the browser engine so, rather than write another elaborate recipe for the reverse rearrangement, I simply ran the 90 degree rotation three times. It was sure to work perfectly from the start, so no bug-hunting was required. Here's the code for rotating 90 degrees counterclockwise on the Z axis</p>
+<p>Writing the code for Zro was a meticulous and painstaking endeavor. Nine copies each of the strings "blue", "green", "red", "orange", "yellow", and "white" had to be rearranged precisely as they are when a real Rubik's cube is rotated. </p>
+<p> Substituting a new arrangement of the stickers (colors) for the previous one doesn't require much of the browser engine's memory or processing capability, and making the substitution requires very little time; so, rather than write another elaborate recipe for the reverse rearrangement, I simply ran the 90 degree rotation three times. It was sure to work as well as running it once, so no testing or bug-hunting was necessary. Here's the code for rotating 90 degrees counterclockwise on the Z axis</p>
 <pre>{ZbackDemo}</pre>
 
 <br><br><br>
