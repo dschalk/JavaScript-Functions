@@ -1,20 +1,18 @@
 
-
-
 <script>
-
 
 import Firefox_1 from '$lib/Firefox_test.png';
 import Firefox_2 from '$lib/Firefox_test_2.png';
+import Firefox_3 from '$lib/Composition.png';
 
 var Mdisplay = `var M = function M (x) {
   return function go (func) {
-    if (func === ret) return x;
+    if (func === Rf78d3s5) return x;
     else x = func(x);
     return go;
   }
 }
-Where ret = () => {}; // This flag is a function in order to simplify future type checking.`
+Where Rf78d3s5 = () => {}; // This flag is a function in order to simplify future type checking.`
 
 var ret = () => {};
 
@@ -164,25 +162,73 @@ var ZbackDemo = `function Zback (ar) {
       cube = m(Zro)(Zro)(Zro)();
   };`
 
+var mona = `
+var M = function M (x) {
+  return function go (func) {
+    if (func === Rf78d3s5) return x;
+    else x = func(x);
+    return go;
+  }
+}
+Where Rf78d3s5 = () => {}; // This flag is a function in order to simplify future type checking.
+`
+var orthoganal = `var demo1 = M(3);
+var demo2 = M(3);
+demo1(v=>v**3);
+demo2(v=>v - 1);
+console.log(demo1(Rf78d3s5)); // 27
+console.log(demo2(Rf78d3s5)); // 2`;
+
+var compose1 = `var m = M(3);
+log(M(3)(v=>v**3)(v=>v*3)(Math.sqrt)(Rf78d3s5)); // 9`;
+
+var compose2 = `m(()=>4);  // Sets x in the m-M(x) closure to 4.
+m(v=>v**4)(v=>v**(1/2))(v=>v-7)
+log(m(Rf78d3s5))                             // 42
+
+var add = a => b => a + b;
+var mult = a => b => a * b;
+var exp = a => b => b**a;
+
+m(()=>3)(add(4))(exp(4))(Math.sqrt)(add(-7));
+log(m(Rf78d3s5))                             // 42
+
+// NOTE: ()=>3 (above) resets the value in the m-M(x) closure to 3.
+
+log(M(2)(add(4))(mult(7))(Rf78d3s5))`
 
 
 
 </script>
 
-<h1>The Basic JS-Monad</h1>
+<h1>Basic JS-Monads</h1>
 
-<p>Basic JS-Monads, as defined and demonstrated in this website, are functions that operate on functions that operate on values held in closures. These operations can mutate the value in the closure or replace it, preserving the previous value along-side its replacement. </p>
+<p>Basic JS-Monads, as defined and demonstrated in this website, are closures with outer scope M, defined as follows:</p>
+<pre>{mona}</pre>
+<p> M can serve as the outer scope for multiple orthogonal (non-interacting) functions, with structures identical to M's "go()". For example:</p> 
+
+<pre>{orthoganal}</pre>
+ 
+<h3> "M" facilitates function composition.</h3>  
+<p>Gargage collectors should delete this.</p>
+<pre>{compose1}</pre>
+<p>The value "x" in the m-M(x) closure persists until m is redefined or deleted.</p>
+<pre>{compose2}</pre>
+<p>Here's a screenshot of the test in Firefox <a href = 'https://firefox-source-docs.mozilla.org/devtools-user/browser_console/index.html'>Firefox Developer Console</a>  </p>
+  
+<img alt='Firefox3' src = {Firefox_3} />
+  <p> functions that operate on functions that operate on values held in closures. These operations can mutate the value in the closure or replace it, preserving the previous value along-side its replacement. </p>
 <p>Type safety, error handling, and other functionality can be added; but for now, we'll consider just the essence of JS-Monads by working with a stripped-down, bare-bones version. This version, returned by M(x) (shown below) where x can be any JavaScript value, works much like Haskell monads without types, encapsulating and sequestering the composition of functions. </p>
 <p>As the "Cube" and "Score" pages of this website (linked above) suggest, these simple closures can handle complex functionality in elaborate applications. There's no need to modify the JS-Monad factory function "M", or the copy of "go" that it returns, and which subsequently returns itself each time it operates on a function. The functions operated on by JS-monads (m-M(x) closures) can handle any degree of complexity. Here are some definitions:</p>
 
 <pre>{Mdisplay}</pre>
 <p>NOTE: "var" is used in this development version where "const" would be used in production. The purpose is to facilitate error-free revisions on the fly.</p>
 
-<p>"m-M(x)" closures encapsulate the state of a <a href='./cube1'>Rubik's cube simulator</a>, and the state of attempts to win a simulated dice game in the <a href='./score'>Solitaire Game of Score</a>. But before elaborating on these, lets first explore some basic functionality of the m-M(x) closures. </p>
+<p>"m-M(x)" closures encapsulate the state of a <a href='./cube3'>Rubik's cube simulator</a>, and the state of attempts to win a simulated dice game in the <a href='./score'>Solitaire Game of Score</a>. But before elaborating on these, lets first explore some basic functionality of the m-M(x) closures. </p>
 
 <pre>{test_0}</pre>
 
-<p>I urge you to define a function returned by M(x) for some value x as I did for "m = M('peaches')" in some REPL and experiment. I tested the above code in Firefox Dev Tools as follows:</p>
+<h1> WORK IN PROGRESS:</h1>
 <img alt = "Firefox" src = {Firefox_1} 
 width = 100%;
 height = auto;
@@ -219,7 +265,6 @@ var m = M(cube); // x is the solved Rubik's cube representation encapsulated in 
 <p>Instead of rearranging 24 little cubies for each move, as many other Rubik's cube simulators do, this version rearranges the colors with JavaScript and a lookup table of possible moves. Rotation of the cube, its middle sections, and its faces is accomplished only with JavaScript, never with the CSS transform property.</p>
 <p> The keyboard controls are oblivious to the cube colors. They are not affected by rotations, making the cube much easier to solve than most (possibly all) other online Rubik's cube simulators. For example, clicking "R" always turns the right face clockwise. Other simulator keyboard controls follow the original cube orientation, so clicking "R" might turn the bottom, top, left, back, or front face, depending on previous cube rotations. </p>
 
-
   <pre>{Rf}</pre>
 <p> which turns the face currently on the right side of the cube clockwise, pursuant to this table of transformations: 
 
@@ -231,7 +276,7 @@ var m = M(cube); // x is the solved Rubik's cube representation encapsulated in 
 <pre>{fuDem}</pre>
 <p>More details are at <a href='https://github.com/dschalk/JavaScript-Functions'>Javascript-Functions</a>. </p>
 <br><br>
-<h1>These JavaScript Monads Simplify Function Composition</h1>
+<h1>Function Composition Simplified</h1>
 <p> In the neighboring <a href=./cube>Rubik's cube></a> page, the functions for rotating the entire cube are elaborate and intricate. Other simulators use libraries or CSS transforms to rotate cubes, but I've yet to see one keyboard controllable Rubik's cube simulator that remains sensible after rotations. If the original right side happens to be on the bottom, pressing the key that used to rotate the right side rotates the bottom instead. </p>
 <p> Under the hood, the cube remains stationary while the stickers (colors) get rearranged to simulate rotations of the faces, centers, and entire cube. Pressing the "r" key, for example, always rotates the right face of the cube on this page, but nowhere else as far as I know. </p>
 <p>Here are the functions that rotate the cube 90 degrees on the Z axis: </p>

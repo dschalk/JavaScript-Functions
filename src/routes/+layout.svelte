@@ -11,7 +11,7 @@
 
         <a href="/">Home</a>
 
-        <a href="/cube3">Cube</a>
+        <a href="/cube3">Cube 3</a>
 
         <a href="/score">Score</a>
 
