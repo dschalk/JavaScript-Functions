@@ -2261,7 +2261,7 @@ S 83 +page.svelte:728:12
     height: 198px;
     perspective: 1000px;
     /*background-color: black; */
-    float: right;
+    /*float: right;*/
     margin-right: 7%;
     color: aqua;
     /*float: right;
@@ -2450,7 +2450,7 @@ S 83 +page.svelte:728:12
   #steady {
     position: fixed;
     top: 30%;
-    left: 41%;
+    left: 45.5%;
   }
 
   h3 {
@@ -2511,12 +2511,10 @@ S 83 +page.svelte:728:12
 <button on:click={rotate2}>Counterclockwise</button> -->
     
     <h1>Demonstration 1</h1>
-    <p>The keyboard and button controls are not affected by rotations, making the cube much easier to solve than many other online Rubik's cube simulators. For example, clicking "R" or pressing the 'r' key always turns the right face clockwise. To see this, press the 'y' keyboard key and then press 'r'. Now press 'v' to arrange the colors in their starting positions.</p>
-    <p> Now let's repeat the experiment, only starting by clicking <button on:click={rotate}>Bad Clockwise</button>. Now press 'v' to arrange the colors in their starting positions.</p>
- <p>Oops! The sides are uniformly colored, but the basic starting position of the cube seems to have changed. Or maybe the player's perspective has changed. Someone looking at the cube from the left side would see the controls working just as expected. But from the front, pressing 'b' rotates the right face and pressing 'r' rotates the front. You have to press 'b' to rotate the right face. There's enough to think about while solving a Rubik's cube with having to remember changes in its basic configuration. </p>
-    <p> After rotating the entire cube 90 degrees, a button, key, or mouse move that previously rotated the right face rotates the front face instead. To see this in action, click</p> 
-<button on:click={rotate}>Bad Clockwise</button> <p>then press the "r" and "m" keys .
-<p>    
+    <p>The keyboard and button controls are not affected by rotations, making the cube much easier to solve than many other online Rubik's cube simulators. For example, clicking "R" or pressing the 'r' key always turns the right face clockwise. To see this, press the 'y' key and then press 'r' keys. As always, pressing 'r' turns the right face. </p>
+    
+    <p>Now press 'v' to return the colors in their starting positions and click <button on:click={rotate}>Bad Clockwise</button>. The cube rotated, just as it did when you pressed 'y'. Press 'r' and notice that the front face turned, not the right.  and then 'r'. The front rotates instead of the right side. Now press 'v' and notice that the blue face is still in the front.
+ <p>Pressing 'v' makes the sides uniformly colored, but the basic starting position of the cube seems to have changed. Someone looking at the cube from the left side would see the controls working just as expected. But from the front, pressing 'b' rotates the right face and pressing 'r' rotates the front. </p>
 
     <!-- <button type="button" on:click={document.reload()}> 
       Reload Page
@@ -2534,7 +2532,7 @@ S 83 +page.svelte:728:12
       (L' U R U' L U R) "Reverse Niklas" and observe that (1) the "fish" points
       toward the lower left and (2) the forward-facing lower-right sticker is
       yellow. Elementary tutorials say this configuration calls for the sune
-      algorithm; and, indeed, sune sune makes the entire upper face yellow. Try
+      algorithm; and, indeed, sune turns the entire upper face yellow. Try
       it. <button  on:click={sune}>Sune</button> (R U R' U R U2
       R'). The cube has a way to go before being solved.
     </p>
@@ -2545,8 +2543,8 @@ S 83 +page.svelte:728:12
         >Reverse Niklas '</button
       >
       (L' U R U' L U R) again. Note that the upper corners have opposite colors,
-      red and orange in this case (green and blue are also considered
-      opposite).The lower-right side sticker and the top left uppward-facing
+      red and orange in this case (green and blue, and white and yellow are also considered
+      opposite). The lower-right side sticker and the top left uppward-facing
       sticker match (both are red). These observations indicate that the cube
       can be quickly solved. All you need to do is click
       <button  on:click={Uzfunc}>U'</button>
@@ -2564,8 +2562,8 @@ S 83 +page.svelte:728:12
     <br /><br /><br />
   </div>
   <br /><br /><br />
-  <div style = "width: 20%">
-
+  <div style = "width: 30%">
+<h1>***You bet!***</h1>
 <br>
 
 <div id="steady">
@@ -2663,9 +2661,9 @@ S 83 +page.svelte:728:12
 
 
 
-  <div style="width: 45%; padding-left: 4%">
+  <div style="width: 35%;">
     <!-- Column 2 -->
-    <div style="margin-left: 10px">
+    <div style="margin-left: 1px">
       <br /><br />
       <h1 style="color: blue">Using the Keypad</h1>
       <p style="color: blue; font-weight: bold"> Pressing u, d, r, l, f, and b (FACES); m, e, and s (MIDDLE SECTIONS)
