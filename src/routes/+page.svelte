@@ -235,7 +235,7 @@ height = auto;
 />
 
 <h3>Immutable State</h3>
-<p>The value "x" in m = M(x) can be an anonymous array, named "x" only inside the closure. "m(func) can concatinate its return value to the array, preserving the previous value and making the updated value available as needed."</p>
+<p>The value "x" in m = M(x) can be an anonymous array, named "x" only inside the closure. "m(func) can concatenate its return value to the array, preserving the previous value and making the updated value available as needed."</p>
 <p>Here's some example code, followed by a test in Firefox.</p>
 <pre>{test_1}</pre>
 <img alt='Firefox2' src = {Firefox_2} 
