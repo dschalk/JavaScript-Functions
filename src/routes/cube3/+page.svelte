@@ -27,13 +27,13 @@
     };
   };
   
-  var Mcode = `  var M = function M(x) {
-    return function go(func) {
-      if (func === Rf78d3s5) return x;
-      else x = func(x);
-      return go;
-    };
-  } where Rf78d3s5 = () => {};`;
+var Mcode = `var M = function M(x) {
+  return function go(func) {
+    if (func === Rf78d3s5) return x;
+    else x = func(x);
+    return go;
+  };
+} where Rf78d3s5 = () => {};`;
 
   /*function M (x) {
   return function go (func) {
@@ -1204,13 +1204,8 @@ var Rcode = ` function R(ar) {
       ar[2][0],
     ];
 
-    m(() => temp);`
-    var Rcode2 = `M(temp) also works. Reactivity 
-    requires assignment, so merely updating
-    the value in the m-M(x) closure by 
-    calling "m(R)" does not trigger an 
-    immediate DOM update.</div>` 
-  var Rcode3 =`    return temp;
+    m(() => temp);
+    return temp;
   }`;
 
 
@@ -1730,15 +1725,16 @@ var Rcode = ` function R(ar) {
   const w7 = 'yellow';
   const w8 = "yellow";
 
-  var bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
-  var gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
-  var rr = [r0, r1, r2, r3, r4, r5, r6, r7, r8];
-  var oo = [o0, o1, o2, o3, o4, o5, o6, o7, o8];
-  var yy = [y0, y1, y2, y3, y4, y5, y6, y7, y8];
-  var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
+  var bb = [b0,b1,b2,b3,b4,b5,b6,b7,b8];
+  var gg = [g0,g1,g2,g3,g4,g5,g6,g7,g8];
+  var rr = [r0,r1,r2,r3,r4,r5,r6,r7,r8];
+  var oo = [o0,o1,o2,o3,o4,o5,o6,o7,o8];
+  var yy = [y0,y1,y2,y3,y4,y5,y6,y7,y8];
+  var ww = [w0,w1,w2,w3,w4,w5,w6,w7,w8];
 
-  var m = M([bb, gg, rr, oo, yy, ww]);
-  const cubeStart = [...[bb, gg, rr, oo, yy, ww]];`
+  var m = M( [ bb, gg, rr, oo, yy, ww ] );`
+  
+var const2 = `const cubeStart = [...[bb, gg, rr, oo, yy, ww]];`
 
 var front = `      <div class="face front">
         <div class="grid" id="a3">
@@ -1762,6 +1758,95 @@ var orange = `.orange {
     border-radius: 10px;
   }`;
 
+var dom = `<div id="steady">
+  <div class="container">
+    <div class={cu}>
+      <div class="face front">
+        <div class="grid" id="a3">
+          <div class={m(Rf78d3s5)[3][0]} />
+          <div class={m(Rf78d3s5)[3][1]} />
+          <div class={m(Rf78d3s5)[3][2]} />
+          <div class={m(Rf78d3s5)[3][3]} />
+          <div class={m(Rf78d3s5)[3][4]} />
+          <div class={m(Rf78d3s5)[3][5]} />
+          <div class={m(Rf78d3s5)[3][6]} />
+          <div class={m(Rf78d3s5)[3][7]} />
+          <div class={m(Rf78d3s5)[3][8]} />
+        </div>
+      </div>
+
+      <div class="face back">
+        <div class="grid" id="a2">
+          <div class={m(Rf78d3s5)[2][8]} />
+          <div class={m(Rf78d3s5)[2][7]} />
+          <div class={m(Rf78d3s5)[2][6]} />
+          <div class={m(Rf78d3s5)[2][5]} />
+          <div class={m(Rf78d3s5)[2][4]} />
+          <div class={m(Rf78d3s5)[2][3]} />
+          <div class={m(Rf78d3s5)[2][2]} />
+          <div class={m(Rf78d3s5)[2][1]} />
+          <div class={m(Rf78d3s5)[2][0]} />
+        </div>
+      </div>
+
+      <div class="face right">
+        <div class="grid" id="a0">
+          <div class={m(Rf78d3s5)[0][0]} />
+          <div class={m(Rf78d3s5)[0][1]} />
+          <div class={m(Rf78d3s5)[0][2]} />
+          <div class={m(Rf78d3s5)[0][3]} />
+          <div class={m(Rf78d3s5)[0][4]} />
+          <div class={m(Rf78d3s5)[0][5]} />
+          <div class={m(Rf78d3s5)[0][6]} />
+          <div class={m(Rf78d3s5)[0][7]} />
+          <div class={m(Rf78d3s5)[0][8]} />
+        </div>
+      </div>
+
+      <div class="face left">
+        <div class="grid" id="a1">
+          <div class={m(Rf78d3s5)[1][0]} />
+          <div class={m(Rf78d3s5)[1][1]} />
+          <div class={m(Rf78d3s5)[1][2]} />
+          <div class={m(Rf78d3s5)[1][3]} />
+          <div class={m(Rf78d3s5)[1][4]} />
+          <div class={m(Rf78d3s5)[1][5]} />
+          <div class={m(Rf78d3s5)[1][6]} />
+          <div class={m(Rf78d3s5)[1][7]} />
+          <div class={m(Rf78d3s5)[1][8]} />
+        </div>
+      </div>
+
+      <div class="face top">
+        <div class="grid" id="a4">
+          <div class={m(Rf78d3s5)[4][0]} />
+          <div class={m(Rf78d3s5)[4][1]} />
+          <div class={m(Rf78d3s5)[4][2]} />
+          <div class={m(Rf78d3s5)[4][3]} />
+          <div class={m(Rf78d3s5)[4][4]} />
+          <div class={m(Rf78d3s5)[4][5]} />
+          <div class={m(Rf78d3s5)[4][6]} />
+          <div class={m(Rf78d3s5)[4][7]} />
+          <div class={m(Rf78d3s5)[4][8]} />
+        </div>
+      </div>
+
+      <div class="face bottom">
+        <div class="grid" id="b5">
+          <div class={m(Rf78d3s5)[5][0]} />
+          <div class={m(Rf78d3s5)[5][1]} />
+          <div class={m(Rf78d3s5)[5][2]} />
+          <div class={m(Rf78d3s5)[5][3]} />
+          <div class={m(Rf78d3s5)[5][4]} />
+          <div class={m(Rf78d3s5)[5][5]} />
+          <div class={m(Rf78d3s5)[5][6]} />
+          <div class={m(Rf78d3s5)[5][7]} />
+          <div class={m(Rf78d3s5)[5][8]} />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`;
 
   /*
 x 120 5.b2a1d8d2.js:1:44132
@@ -2562,111 +2647,27 @@ S 83 +page.svelte:728:12
       <button  on:click={niklas}>Niklas</button> (R U' L' U R'
       U' L).
     </p>
-    <br /><br /><br />
-    <br /><br /><br />
-    <br /><br /><br />
-    <br /><br /><br />
-    <br /><br /><br />
-    <br /><br /><br />
-    <br /><br /><br />
+<h1>The m-M(x) Closure</h1>
+
+<pre>{`var M = function M(x) {
+  return function go(func) {
+    if (func === Rf78d3s5) return x;
+    else x = func(x);
+    return go;
+  };
+} where Rf78d3s5 = () => {};`}</pre>
+
+<p> The simulated Rubik's cube is represented by "x" in a m-M(x) closure, where m and x are defined as:</p><p style="text-align: center; color: darkred; font-weight:600; font-size: 22px"> {` var m = M( [ bb, gg, rr, oo, yy, ww ] )`} </p>
+<p>and</p>
+<pre>{constants}</pre>
+<p>This code runs in the DOM whenever the array of six nine-member arrays in the m-M(x) closure is updated:</p>
+<pre>{dom}</pre>  
+
+
   </div>
   <br /><br /><br />
   <div style = "width: 30%">
 <br><br>
-<!--
-<h1>Working Cube</h1>
-<div id="steady">
-  <div class="container">
-    <div class={cu}>
-      <div class="face front">
-        <div class="grid" id="a3">
-          <div class={m(Rf78d3s5)[3][0]} />
-          <div class={m(Rf78d3s5)[3][1]} />
-          <div class={m(Rf78d3s5)[3][2]} />
-          <div class={m(Rf78d3s5)[3][3]} />
-          <div class={m(Rf78d3s5)[3][4]} />
-          <div class={m(Rf78d3s5)[3][5]} />
-          <div class={m(Rf78d3s5)[3][6]} />
-          <div class={m(Rf78d3s5)[3][7]} />
-          <div class={m(Rf78d3s5)[3][8]} />
-        </div>
-      </div>
-
-      <div class="face back">
-        <div class="grid" id="a2">
-          <div class={m(Rf78d3s5)[2][8]} />
-          <div class={m(Rf78d3s5)[2][7]} />
-          <div class={m(Rf78d3s5)[2][6]} />
-          <div class={m(Rf78d3s5)[2][5]} />
-          <div class={m(Rf78d3s5)[2][4]} />
-          <div class={m(Rf78d3s5)[2][3]} />
-          <div class={m(Rf78d3s5)[2][2]} />
-          <div class={m(Rf78d3s5)[2][1]} />
-          <div class={m(Rf78d3s5)[2][0]} />
-        </div>
-      </div>
-
-      <div class="face right">
-        <div class="grid" id="a0">
-          <div class={m(Rf78d3s5)[0][0]} />
-          <div class={m(Rf78d3s5)[0][1]} />
-          <div class={m(Rf78d3s5)[0][2]} />
-          <div class={m(Rf78d3s5)[0][3]} />
-          <div class={m(Rf78d3s5)[0][4]} />
-          <div class={m(Rf78d3s5)[0][5]} />
-          <div class={m(Rf78d3s5)[0][6]} />
-          <div class={m(Rf78d3s5)[0][7]} />
-          <div class={m(Rf78d3s5)[0][8]} />
-        </div>
-      </div>
-
-      <div class="face left">
-        <div class="grid" id="a1">
-          <div class={m(Rf78d3s5)[1][0]} />
-          <div class={m(Rf78d3s5)[1][1]} />
-          <div class={m(Rf78d3s5)[1][2]} />
-          <div class={m(Rf78d3s5)[1][3]} />
-          <div class={m(Rf78d3s5)[1][4]} />
-          <div class={m(Rf78d3s5)[1][5]} />
-          <div class={m(Rf78d3s5)[1][6]} />
-          <div class={m(Rf78d3s5)[1][7]} />
-          <div class={m(Rf78d3s5)[1][8]} />
-        </div>
-      </div>
-
-      <div class="face top">
-        <div class="grid" id="a4">
-          <div class={m(Rf78d3s5)[4][0]} />
-          <div class={m(Rf78d3s5)[4][1]} />
-          <div class={m(Rf78d3s5)[4][2]} />
-          <div class={m(Rf78d3s5)[4][3]} />
-          <div class={m(Rf78d3s5)[4][4]} />
-          <div class={m(Rf78d3s5)[4][5]} />
-          <div class={m(Rf78d3s5)[4][6]} />
-          <div class={m(Rf78d3s5)[4][7]} />
-          <div class={m(Rf78d3s5)[4][8]} />
-        </div>
-      </div>
-
-      <div class="face bottom">
-        <div class="grid" id="b5">
-          <div class={m(Rf78d3s5)[5][0]} />
-          <div class={m(Rf78d3s5)[5][1]} />
-          <div class={m(Rf78d3s5)[5][2]} />
-          <div class={m(Rf78d3s5)[5][3]} />
-          <div class={m(Rf78d3s5)[5][4]} />
-          <div class={m(Rf78d3s5)[5][5]} />
-          <div class={m(Rf78d3s5)[5][6]} />
-          <div class={m(Rf78d3s5)[5][7]} />
-          <div class={m(Rf78d3s5)[5][8]} />
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
--->
-
-
 </div>
 
 
@@ -2678,7 +2679,7 @@ S 83 +page.svelte:728:12
       <br /><br />
       <h1 style="color: blue">Using the Keypad</h1>
       <p style="color: blue; font-weight: bold"> Pressing the u, d, r, l, f, b,  m, e, s, x, y, and z keys has the same effect as clicking the corresponding (capitalized) buttons. Holding down the "Shift" key (or activating "CapsLock") while pressing the keys causes the reverse effect. </p>
-      
+
       <button on:click={corners}>PLL Corners: R' F R' B2 R F' R' B2 R2</button>
       <br /><span style="font-size: 26px; color: blue;">Solid front:</span>
       <button on:click={triclock}>Triangle Clockwise: M2 U' M U2 M' U' M2</button>
@@ -2726,28 +2727,17 @@ S 83 +page.svelte:728:12
       
 <h1>Discussion</h1>
       <p> Rotation of the whole cube, its middle sections, and its faces is
-        accomplished by JavaScript functions that rearrange the elements of an array of 6 arrays, each containing nine elements. These 54 elements are variables referring to either "orange", "blue", "red", "green", "yellow", or "white". There are 9 variables assigned to each of these strings. These strings designate CSS classes which determine the background colors of 54 HTML div elements. Press the "v" key or click "Start" to see each face of the cube with 9 identically colored divs. Press the 'x', 'y', and 'z' keys to rotate the cube on each axis. The operative code will help clarify this:</p>
+        accomplished by JavaScript functions that rearrange the elements of an array of 6 arrays, each containing nine elements. These 54 elements are variables referring to either "orange", "blue", "red", "green", "yellow", or "white". There are 9 variables assigned to each of these strings. These strings designate CSS classes which determine the background colors of 54 HTML div elements. Press the "v" key or click "Start" to see each face of the cube with 9 identically colored divs. Press the 'x', 'y', and 'z' keys to rotate the cube on each axis. </p>
 
-<pre>{constants}</pre>
-
-<p> The configuration of the cube is represented by an array of six nine-member arrays, which is encapsulated in the m-M(x) closure. As discussed in <a href="../">Home</a>, M is defined as:</p>
-<pre>{Mcode}</pre>
   <p>
   Functions that update the cube's configuration are consumed by m. For example, clicking the "R" button or pressing "r" on the keyboard triggers m(R), where R is defined as follows:</p>
   
  <pre>{Rcode}</pre> 
- <span>{Rcode2}</span> 
- <pre>{Rcode3}</pre> 
-<p> Click "Start", press the "v" key, solve the cube, or reload the page and you will see that each of the six faces of the cube have all nine of one of the six colors. When you press "w" or click "Scrample", 62 sudo random moves are performed. After that, there are still nine of each of the six colors, but their locations are scattered around the cube.</p>
+<p> Click "<button on:click={Start}>Start</button>" or press the "v" key, and you will see that each of the six faces of the cube have all nine of one of the six colors. When you press "w" or click "<button on:click={shu}>Scramble</button>", 62 sudo random moves are performed. After that, there are still nine of each of the six colors, but their locations are scattered around the cube.</p>
 <p>Here's how the "orange" CSS class is defined: </p>
 <pre>{orange}</pre>
-<p> DOM updates after m(func) followed automatically by func([]) for some array-manipulating  function "func()"  
-  
-The keyboard and button controls are not affected by rotations, making
-        the cube much easier to solve than many other online
-        Rubik's cube simulators. For example, clicking "R" always turns the
-        right face clockwise. After rotating the entire cube 90 degrees, a button, key, or mouse move that previously rotated the right face rotates the front face instead. </p>
-To see this in action, click <button on:click={rotate}>Bad Clockwise</button> then press "r" and "m".
+<p> User actions cause m(func) to run for some array-manipulating function "func." m(func) causes func(x) to execute, updating the distribution of colors over the cube. The browser interface gets updated by the reactive code shown in the left column. </p>  
+
       <br /><br />
 
       <div style="color:black; font-weight:bold">
