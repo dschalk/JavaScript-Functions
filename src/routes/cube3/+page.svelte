@@ -1582,7 +1582,9 @@ var Rcode = ` function R(ar) {
   };
 
   var cu;
+  var cu9;
   cu = "cube1";
+  cu9 = "cube9"
   var moves = ["U","D","R","L","F","B","Dz","Lz","Fz","Bz","U","D","R","L","Dz","Lz","Fz","Bz","U","F","U","D","R","L","F","B","Dz","Lz","Fz","Bz","U","D","R","L","Dz","Lz","Fz","Bz","U","F" ];
 
   function rotate() {
@@ -2322,7 +2324,17 @@ S 83 +page.svelte:728:12
     position: relative;
     transform: rotateX(-30deg) rotateY(330deg);
     /*animation: spin 5s infinite linear;*/
-  }
+  }  
+
+  .cube9 {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: rotateX(30deg) rotateY(150deg);
+    /*animation: spin 5s infinite linear;*/
+  }  
+
 
   .cube5 {
     transform-style: preserve-3d;
@@ -2449,7 +2461,13 @@ S 83 +page.svelte:728:12
 
   #steady {
     position: fixed;
-    top: 30%;
+    top: 130px;
+    left: 45.5%;
+  }
+
+  #steady2 {
+    position: fixed;
+    top: 450px;
     left: 45.5%;
   }
 
@@ -2511,20 +2529,11 @@ S 83 +page.svelte:728:12
 <button on:click={rotate2}>Counterclockwise</button> -->
     
     <h1>Demonstration 1</h1>
-    <p>The keyboard and button controls are not affected by rotations, making the cube much easier to solve than many other online Rubik's cube simulators. For example, clicking "R" or pressing the 'r' key always turns the right face clockwise. To see this, press the 'y' key and then press 'r' keys. As always, pressing 'r' turns the right face. </p>
+    <p>The keyboard and button controls are not affected by rotations, making the cube much easier to solve than many other online Rubik's cube simulators. For example, clicking "R" or pressing the 'r' key always turns the right face clockwise. To see this, press the 'y' key and then the 'r' keys. As always, pressing 'r' turns the right face. </p>
     
-    <p>Now press 'v' to return the colors in their starting positions and click <button on:click={rotate}>Bad Clockwise</button>. The cube rotated, just as it did when you pressed 'y'. Press 'r' and notice that the front face turned, not the right.  and then 'r'. The front rotates instead of the right side. Now press 'v' and notice that the blue face is still in the front.
- <p>Pressing 'v' makes the sides uniformly colored, but the basic starting position of the cube seems to have changed. Someone looking at the cube from the left side would see the controls working just as expected. But from the front, pressing 'b' rotates the right face and pressing 'r' rotates the front. </p>
-
-    <!-- <button type="button" on:click={document.reload()}> 
-      Reload Page
-   </button>-->
-   
+    <p>Now press 'v' to return the colors to their starting places on the cube and click <button on:click={rotate}>Bad Clockwise</button>. The cube rotated, just as it did when you pressed 'y'. Press 'r' to see that the front face turn, rather than the right one. If you press 'v', you will see uniform colors on the sides, but the blue face will remain in front. </p> 
 
     <h1>Demonstration 2</h1>
-    <h3 style="color: darkgreen">
-      Keep scrolling down if the cube covers the text
-    </h3>
     <p>
       Click <button  on:click={reverse_niklas}
         >Reverse Niklas '</button
@@ -2544,7 +2553,7 @@ S 83 +page.svelte:728:12
       >
       (L' U R U' L U R) again. Note that the upper corners have opposite colors,
       red and orange in this case (green and blue, and white and yellow are also considered
-      opposite). The lower-right side sticker and the top left uppward-facing
+      opposite). The lower-right side sticker and the top left upward-facing
       sticker match (both are red). These observations indicate that the cube
       can be quickly solved. All you need to do is click
       <button  on:click={Uzfunc}>U'</button>
@@ -2563,9 +2572,9 @@ S 83 +page.svelte:728:12
   </div>
   <br /><br /><br />
   <div style = "width: 30%">
-<h1>***You bet!***</h1>
-<br>
-
+<br><br>
+<!--
+<h1>Working Cube</h1>
 <div id="steady">
   <div class="container">
     <div class={cu}>
@@ -2654,9 +2663,11 @@ S 83 +page.svelte:728:12
       </div>
     </div>
   </div>
+</div>
+-->
 
-  </div>
-  </div>
+
+</div>
 
 
 
@@ -2666,17 +2677,8 @@ S 83 +page.svelte:728:12
     <div style="margin-left: 1px">
       <br /><br />
       <h1 style="color: blue">Using the Keypad</h1>
-      <p style="color: blue; font-weight: bold"> Pressing u, d, r, l, f, and b (FACES); m, e, and s (MIDDLE SECTIONS)
-and x, y, and z (ENTIRE CUBE) rotates faces clockwise as you face them. This widely-used convention can be confusing since, for example, the left and right sides turn in opposite direction when both turn clockwise.
-      </p>
-
-      <p style="color: blue; font-weight: bold">
-        Holding shift while pressing u, d, r, l, f, b, m, e, s, x, y, and z
-        rotates faces, middle layers, and the whole cube counterclockwise.
-        Keeping capslock on reverses this behavior, as you would expect. With
-        capslock on, holding down shift causes clockwise rotation.
-      </p>
-
+      <p style="color: blue; font-weight: bold"> Pressing the u, d, r, l, f, b,  m, e, s, x, y, and z keys has the same effect as clicking the corresponding (capitalized) buttons. Holding down the "Shift" key (or activating "CapsLock") while pressing the keys causes the reverse effect. </p>
+      
       <button on:click={corners}>PLL Corners: R' F R' B2 R F' R' B2 R2</button>
       <br /><span style="font-size: 26px; color: blue;">Solid front:</span>
       <button on:click={triclock}>Triangle Clockwise: M2 U' M U2 M' U' M2</button>
@@ -2850,700 +2852,100 @@ To see this in action, click <button on:click={rotate}>Bad Clockwise</button> th
   </div>
 </div>
 
+
+<div id="steady2">
+  <div style = "text-align:center; margin-bottom:14px">Bottom and Back View</div>
+  <br><br>
+  <div class="container">
+    <div class={cu9}>
+      <div class="face front">
+        <div class="grid" id="a3">
+          <div class={m(Rf78d3s5)[3][0]} />
+          <div class={m(Rf78d3s5)[3][1]} />
+          <div class={m(Rf78d3s5)[3][2]} />
+          <div class={m(Rf78d3s5)[3][3]} />
+          <div class={m(Rf78d3s5)[3][4]} />
+          <div class={m(Rf78d3s5)[3][5]} />
+          <div class={m(Rf78d3s5)[3][6]} />
+          <div class={m(Rf78d3s5)[3][7]} />
+          <div class={m(Rf78d3s5)[3][8]} />
+        </div>
+      </div>
+
+      <div class="face back">
+        <div class="grid" id="a2">
+          <div class={m(Rf78d3s5)[2][8]} />
+          <div class={m(Rf78d3s5)[2][7]} />
+          <div class={m(Rf78d3s5)[2][6]} />
+          <div class={m(Rf78d3s5)[2][5]} />
+          <div class={m(Rf78d3s5)[2][4]} />
+          <div class={m(Rf78d3s5)[2][3]} />
+          <div class={m(Rf78d3s5)[2][2]} />
+          <div class={m(Rf78d3s5)[2][1]} />
+          <div class={m(Rf78d3s5)[2][0]} />
+        </div>
+      </div>
+
+      <div class="face right">
+        <div class="grid" id="a0">
+          <div class={m(Rf78d3s5)[0][0]} />
+          <div class={m(Rf78d3s5)[0][1]} />
+          <div class={m(Rf78d3s5)[0][2]} />
+          <div class={m(Rf78d3s5)[0][3]} />
+          <div class={m(Rf78d3s5)[0][4]} />
+          <div class={m(Rf78d3s5)[0][5]} />
+          <div class={m(Rf78d3s5)[0][6]} />
+          <div class={m(Rf78d3s5)[0][7]} />
+          <div class={m(Rf78d3s5)[0][8]} />
+        </div>
+      </div>
+
+      <div class="face left">
+        <div class="grid" id="a1">
+          <div class={m(Rf78d3s5)[1][0]} />
+          <div class={m(Rf78d3s5)[1][1]} />
+          <div class={m(Rf78d3s5)[1][2]} />
+          <div class={m(Rf78d3s5)[1][3]} />
+          <div class={m(Rf78d3s5)[1][4]} />
+          <div class={m(Rf78d3s5)[1][5]} />
+          <div class={m(Rf78d3s5)[1][6]} />
+          <div class={m(Rf78d3s5)[1][7]} />
+          <div class={m(Rf78d3s5)[1][8]} />
+        </div>
+      </div>
+
+      <div class="face top">
+        <div class="grid" id="a4">
+          <div class={m(Rf78d3s5)[4][0]} />
+          <div class={m(Rf78d3s5)[4][1]} />
+          <div class={m(Rf78d3s5)[4][2]} />
+          <div class={m(Rf78d3s5)[4][3]} />
+          <div class={m(Rf78d3s5)[4][4]} />
+          <div class={m(Rf78d3s5)[4][5]} />
+          <div class={m(Rf78d3s5)[4][6]} />
+          <div class={m(Rf78d3s5)[4][7]} />
+          <div class={m(Rf78d3s5)[4][8]} />
+        </div>
+      </div>
+
+      <div class="face bottom">
+        <div class="grid" id="b5">
+          <div class={m(Rf78d3s5)[5][0]} />
+          <div class={m(Rf78d3s5)[5][1]} />
+          <div class={m(Rf78d3s5)[5][2]} />
+          <div class={m(Rf78d3s5)[5][3]} />
+          <div class={m(Rf78d3s5)[5][4]} />
+          <div class={m(Rf78d3s5)[5][5]} />
+          <div class={m(Rf78d3s5)[5][6]} />
+          <div class={m(Rf78d3s5)[5][7]} />
+          <div class={m(Rf78d3s5)[5][8]} />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
 <slot /> 
 
 
-
-<!--
-<style>
-  /* *,  
-::before,
-::after {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}  */
-
-  .cell {
-    /* center the cell content */
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    font-family: Arial;
-    font-size: 3rem;
-    font-weight: bold;
-    background: white;
-  }
-
-  .o0::before {
-    width: 60px;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o0";
-  }
-
-  .o1::before {
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o1";
-  }
-
-  .o2::before {
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o2";
-  }
-
-  .o3::before {
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o3";
-  }
-
-  .o4::before {
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o4";
-  }
-
-  .o5::before {
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o5";
-  }
-
-  .o6::before {
-    font-size: 42px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o6";
-  }
-
-  .o7::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o7";
-  }
-
-  .o8::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: orange;
-    content: "o8";
-  }
-
-  .r0::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r0";
-  }
-
-  .r1::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r1";
-  }
-
-  .r2::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r2";
-  }
-
-  .r3::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r3";
-  }
-
-  .r4::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r4";
-  }
-
-  .r5::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r5";
-  }
-
-  .r6::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r6";
-  }
-
-  .r7::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r7";
-  }
-
-  .r8::before {
-    font-size: 40px;
-    font-weight: bold;
-    background-color: red;
-    content: "r8";
-  }
-
-  .g0::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g0";
-  }
-
-  .g1::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g1";
-  }
-
-  .g2::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g2";
-  }
-
-  .g3::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g3";
-  }
-
-  .g4::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g4";
-  }
-
-  .g5::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g5";
-  }
-
-  .g6::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g6";
-  }
-
-  .g7::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g7";
-  }
-
-  .g8::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: green;
-    content: "g8";
-  }
-
-  .b0::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b0";
-  }
-
-  .b1::before {
-    color: yellow;
-    font-size: 40px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b1";
-  }
-
-  .b2::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b2";
-  }
-
-  .b3::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b3";
-  }
-
-  .b4::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b4";
-  }
-
-  .b5::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b5";
-  }
-
-  .b6::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b6";
-  }
-
-  .b7::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b7";
-  }
-
-  .b8::before {
-    color: yellow;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: blue;
-    content: "b8";
-  }
-
-  .y0::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y0";
-  }
-
-  .y1::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y1";
-  }
-
-  .y2::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y2";
-  }
-
-  .y3::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y3";
-  }
-
-  .y4::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y4";
-  }
-
-  .y5::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y5";
-  }
-
-  .y6::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y6";
-  }
-
-  .y7::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y7";
-  }
-
-  .y8::before {
-    color: blue;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: yellow;
-    content: "y8";
-  }
-
-  .w0::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w0";
-  }
-  .w1::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w1";
-  }
-
-  .w2::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w2";
-  }
-
-  .w3::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w3";
-  }
-
-  .w4::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w4";
-  }
-
-  .w5::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w5";
-  }
-
-  .w6::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w6";
-  }
-
-  .w7::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w7";
-  }
-
-  .w8::before {
-    color: black;
-    font-size: 42px;
-    font-weight: bold;
-    background-color: white;
-    content: "w8";
-  }
-
-  .red {
-    height: 60px;
-    width: 60px;
-    background-color: rgb(230, 113, 113);
-    border-radius: 10px;
-  }
-  .blue {
-    height: 60px;
-    width: 60px;
-    background-color: lightblue;
-    display: inline;
-    border-radius: 10px;
-  }
-  .orange {
-    height: 60px;
-    width: 60px;
-    background-color: orange;
-    border-radius: 10px;
-  }
-
-  .green {
-    height: 60px;
-    width: 60px;
-    background-color: lightgreen;
-    display: inline;
-    border-radius: 10px;
-  }
-  .white {
-    height: 60px;
-    width: 60px;
-    background-color: white;
-    border-radius: 10px;
-  }
-  .yellow {
-    height: 60px;
-    width: 60px;
-    background-color: yellow;
-    display: inline;
-    border-radius: 10px;
-  }
-
-  /* body {
-  background: turquoise
-} */
-
-  .container {
-    width: 198px;
-    height: 198px;
-    perspective: 1000px;
-    /*background-color: black; */
-    float: right;
-    margin-right: 7%;
-    color: aqua;
-    /*float: right;
-  margin-right: 35%;
-  margin-top: 15%; */
-  }
-
-  .container2 {
-    float: right;
-  }
-
-  .grid {
-    display: grid;
-    grid-template-columns: repeat(3, 60px);
-    grid-template-rows: repeat(3, 60px);
-    grid-gap: 7px;
-    justify-content: center;
-  }
-
-  .grid2 {
-    display: grid;
-    grid-template-columns: repeat(3, 190px);
-    grid-template-rows: repeat(3, 190px);
-    grid-gap: 5px;
-    justify-content: center;
-  }
-  .cube4 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-30deg) rotateY(60deg);
-    /* animation: spin 5s infinite linear;*/
-  }
-
-  .cube2 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-30deg) rotateY(150deg);
-    /*animation: spin 5s infinite linear; */
-  }
-
-  .cube3 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-30deg) rotateY(240deg);
-    /animation: spin 5s infinite linear; */
-  }
-
-  .cube1 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-30deg) rotateY(330deg);
-    /*animation: spin 5s infinite linear;*/
-  }
-
-  .cube5 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-210deg) rotateY(30deg);
-    /*animation: spin 5s infinite linear;*/
-  }
-
-  .cube6 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-210deg) rotateY(120deg);
-    /*animation: spin 5s infinite linear;*/
-  }
-
-  .cube7 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-210deg) rotateY(210deg);
-    /*animation: spin 5s infinite linear; */
-  }
-
-  .cube8 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-210deg) rotateY(300deg);
-    /*animation: spin 5s infinite linear; */
-  }
-  .face {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: grey;
-  }
-  .top {
-    transform: rotateX(90deg) translateZ(100px);
-  }
-  .bottom {
-    transform: rotateX(-90deg) translateZ(100px);
-  }
-
-  .right {
-    transform: rotateY(90deg) translateZ(100px);
-  }
-  .left {
-    transform: rotateY(-90deg) translateZ(100px);
-  }
-
-  .front {
-    transform: rotateX(0deg) translateZ(100px);
-  }
-  .back {
-    transform: rotateX(-180deg) translateZ(100px);
-  }
-
-  @keyframes spin {
-    from {
-      transform: rotateX(0deg) rotateY(0deg);
-    }
-    to {
-      transform: rotateX(360deg) rotateY(360deg);
-    }
-  }
-
-  button {
-    margin-left: 1%;
-    background-color: lightblue;
-    border-width: 2px;
-    border-color: #e8f7c1;
-    border-radius: 10px;
-    color: blue;
-    font-size: 26px;
-    box-shadow: 0px 0px 15px 0px rgb(255, 215, 0);
-    padding: 3px 10px 3px 10px;
-  }
-
-  button:hover {
-    color: blue;
-    background-color: gold;
-    border-color: #e8f7c1;
-    border-radius: 10px;
-    box-shadow: 0px 0px 25px 0px rgb(255, 255, 0);
-  }
-
-  .rite {
-    float: right;
-    /* position: absolute;
-  right: 25%;
-  top: 12%; */
-  }
-
-  h1 {
-    text-align: center;
-    color: #bb00ff;
-  }
-
-  #col-1 {
-    position: fixed;
-    width: 50%;
-    left: 5;
-    height: 100%;
-  }
-
-  #col-2 {
-    position: fixed;
-    right: 30%;
-    top: 400px;
-  }
-
-  .col-3 {
-    position: fixed;
-    right: 12%;
-    top: 20%;
-    width: 35%;
-  }
-
-  #steady {
-    position: fixed;
-    top: 52%;
-    left: 25%;
-  }
-
-  h3 {
-    color: #ffccff;
-  }
-
-  img {
-    width: 44%;
-    height: 44%;
-  }
-  div {
-    color: blue;
-  }
-</style>
-
-<slot /> 
-
--->
