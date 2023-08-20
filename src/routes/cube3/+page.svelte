@@ -1737,7 +1737,7 @@ var Rcode = ` function R(ar) {
 var const2 = `const cubeStart = [...[bb, gg, rr, oo, yy, ww]];`
 
 var front = `      <div class="face front">
-        <div class="grid" id="a3">
+        <div class="grid">
           <div class={m(Rf78d3s5)[3][0]} />
           <div class={m(Rf78d3s5)[3][1]} />
           <div class={m(Rf78d3s5)[3][2]} />
@@ -1762,7 +1762,7 @@ var dom = `<div id="steady">
   <div class="container">
     <div class={cu}>
       <div class="face front">
-        <div class="grid" id="a3">
+        <div class="grid">
           <div class={m(Rf78d3s5)[3][0]} />
           <div class={m(Rf78d3s5)[3][1]} />
           <div class={m(Rf78d3s5)[3][2]} />
@@ -1776,7 +1776,7 @@ var dom = `<div id="steady">
       </div>
 
       <div class="face back">
-        <div class="grid" id="a2">
+        <div class="grid">
           <div class={m(Rf78d3s5)[2][8]} />
           <div class={m(Rf78d3s5)[2][7]} />
           <div class={m(Rf78d3s5)[2][6]} />
@@ -1790,7 +1790,7 @@ var dom = `<div id="steady">
       </div>
 
       <div class="face right">
-        <div class="grid" id="a0">
+        <div class="grid">
           <div class={m(Rf78d3s5)[0][0]} />
           <div class={m(Rf78d3s5)[0][1]} />
           <div class={m(Rf78d3s5)[0][2]} />
@@ -1804,7 +1804,7 @@ var dom = `<div id="steady">
       </div>
 
       <div class="face left">
-        <div class="grid" id="a1">
+        <div class="grid">
           <div class={m(Rf78d3s5)[1][0]} />
           <div class={m(Rf78d3s5)[1][1]} />
           <div class={m(Rf78d3s5)[1][2]} />
@@ -1818,7 +1818,7 @@ var dom = `<div id="steady">
       </div>
 
       <div class="face top">
-        <div class="grid" id="a4">
+        <div class="grid">
           <div class={m(Rf78d3s5)[4][0]} />
           <div class={m(Rf78d3s5)[4][1]} />
           <div class={m(Rf78d3s5)[4][2]} />
@@ -1832,7 +1832,7 @@ var dom = `<div id="steady">
       </div>
 
       <div class="face bottom">
-        <div class="grid" id="b5">
+        <div class="grid">
           <div class={m(Rf78d3s5)[5][0]} />
           <div class={m(Rf78d3s5)[5][1]} />
           <div class={m(Rf78d3s5)[5][2]} />
@@ -2356,10 +2356,6 @@ S 83 +page.svelte:728:12
   margin-top: 15%; */
   }
 
-  .container2 {
-    float: right;
-  }
-
   .grid {
     display: grid;
     grid-template-columns: repeat(3, 60px);
@@ -2670,13 +2666,9 @@ S 83 +page.svelte:728:12
 <br><br>
 </div>
 
-
-
-
   <div style="width: 35%;">
     <!-- Column 2 -->
     <div style="margin-left: 1px">
-      <br /><br />
       <h1 style="color: blue">Using the Keypad</h1>
       <p style="color: blue; font-weight: bold"> Pressing the u, d, r, l, f, b,  m, e, s, x, y, and z keys has the same effect as clicking the corresponding (capitalized) buttons. Holding down the "Shift" key (or activating "CapsLock") while pressing the keys causes the reverse effect. </p>
 
@@ -2740,14 +2732,6 @@ S 83 +page.svelte:728:12
 
       <br /><br />
 
-      <div style="color:black; font-weight:bold">
-        {m(Rf78d3s5)[0]}
-        {m(Rf78d3s5)[1]}
-        {m(Rf78d3s5)[2]}
-        {m(Rf78d3s5)[3]}
-        {m(Rf78d3s5)[4]}
-        {m(Rf78d3s5)[5]}
-      </div>
       <br /><br /><br />
     </div>
   </div>
@@ -2756,7 +2740,7 @@ S 83 +page.svelte:728:12
   <div class="container">
     <div class={cu}>
       <div class="face front">
-        <div class="grid" id="a3">
+        <div class="grid" >
           <div class={m(Rf78d3s5)[3][0]} />
           <div class={m(Rf78d3s5)[3][1]} />
           <div class={m(Rf78d3s5)[3][2]} />
@@ -2770,7 +2754,7 @@ S 83 +page.svelte:728:12
       </div>
 
       <div class="face back">
-        <div class="grid" id="a2">
+        <div class="grid">
           <div class={m(Rf78d3s5)[2][8]} />
           <div class={m(Rf78d3s5)[2][7]} />
           <div class={m(Rf78d3s5)[2][6]} />
@@ -2784,7 +2768,7 @@ S 83 +page.svelte:728:12
       </div>
 
       <div class="face right">
-        <div class="grid" id="a0">
+        <div class="grid">
           <div class={m(Rf78d3s5)[0][0]} />
           <div class={m(Rf78d3s5)[0][1]} />
           <div class={m(Rf78d3s5)[0][2]} />
@@ -2798,7 +2782,7 @@ S 83 +page.svelte:728:12
       </div>
 
       <div class="face left">
-        <div class="grid" id="a1">
+        <div class="grid">
           <div class={m(Rf78d3s5)[1][0]} />
           <div class={m(Rf78d3s5)[1][1]} />
           <div class={m(Rf78d3s5)[1][2]} />
@@ -2812,7 +2796,7 @@ S 83 +page.svelte:728:12
       </div>
 
       <div class="face top">
-        <div class="grid" id="a4">
+        <div class="grid">
           <div class={m(Rf78d3s5)[4][0]} />
           <div class={m(Rf78d3s5)[4][1]} />
           <div class={m(Rf78d3s5)[4][2]} />
@@ -2826,7 +2810,7 @@ S 83 +page.svelte:728:12
       </div>
 
       <div class="face bottom">
-        <div class="grid" id="b5">
+        <div class="grid">
           <div class={m(Rf78d3s5)[5][0]} />
           <div class={m(Rf78d3s5)[5][1]} />
           <div class={m(Rf78d3s5)[5][2]} />
@@ -2849,7 +2833,7 @@ S 83 +page.svelte:728:12
   <div class="container">
     <div class={cu9}>
       <div class="face front">
-        <div class="grid" id="a3">
+        <div class="grid">
           <div class={m(Rf78d3s5)[3][0]} />
           <div class={m(Rf78d3s5)[3][1]} />
           <div class={m(Rf78d3s5)[3][2]} />
@@ -2863,7 +2847,7 @@ S 83 +page.svelte:728:12
       </div>
 
       <div class="face back">
-        <div class="grid" id="a2">
+        <div class="grid">
           <div class={m(Rf78d3s5)[2][8]} />
           <div class={m(Rf78d3s5)[2][7]} />
           <div class={m(Rf78d3s5)[2][6]} />
@@ -2877,7 +2861,7 @@ S 83 +page.svelte:728:12
       </div>
 
       <div class="face right">
-        <div class="grid" id="a0">
+        <div class="grid">
           <div class={m(Rf78d3s5)[0][0]} />
           <div class={m(Rf78d3s5)[0][1]} />
           <div class={m(Rf78d3s5)[0][2]} />
@@ -2891,7 +2875,7 @@ S 83 +page.svelte:728:12
       </div>
 
       <div class="face left">
-        <div class="grid" id="a1">
+        <div class="grid">
           <div class={m(Rf78d3s5)[1][0]} />
           <div class={m(Rf78d3s5)[1][1]} />
           <div class={m(Rf78d3s5)[1][2]} />
@@ -2905,7 +2889,7 @@ S 83 +page.svelte:728:12
       </div>
 
       <div class="face top">
-        <div class="grid" id="a4">
+        <div class="grid">
           <div class={m(Rf78d3s5)[4][0]} />
           <div class={m(Rf78d3s5)[4][1]} />
           <div class={m(Rf78d3s5)[4][2]} />
@@ -2919,7 +2903,7 @@ S 83 +page.svelte:728:12
       </div>
 
       <div class="face bottom">
-        <div class="grid" id="b5">
+        <div class="grid">
           <div class={m(Rf78d3s5)[5][0]} />
           <div class={m(Rf78d3s5)[5][1]} />
           <div class={m(Rf78d3s5)[5][2]} />
