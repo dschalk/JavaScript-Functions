@@ -117,6 +117,16 @@ var Mcode = `var M = function M(x) {
   var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
 
   var m = M([bb, gg, rr, oo, yy, ww]);
+
+  var mCode = `var bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
+  var gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
+  var rr = [r0, r1, r2, r3, r4, r5, r6, r7, r8];
+  var oo = [o0, o1, o2, o3, o4, o5, o6, o7, o8];
+  var yy = [y0, y1, y2, y3, y4, y5, y6, y7, y8];
+  var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
+
+  var m = M([bb, gg, rr, oo, yy, ww]);`
+
   const cubeStart = JSON.parse(JSON.stringify([bb,gg,rr,oo,yy,ww]));
 
   function Xro(ar) {
@@ -357,7 +367,6 @@ var Mcode = `var M = function M(x) {
       ar[5][7],
       ar[5][8],
     ];
-    m = M(temp);
     return temp;
   }
 
@@ -469,12 +478,8 @@ var Mcode = `var M = function M(x) {
       ar[3][7],
       ar[3][8],
     ];
-
     temp[4] = ar[4];
-
     temp[5] = ar[5];
-
-    m = M(temp);
     return temp;
   }
 /*
@@ -529,7 +534,6 @@ var Mcode = `var M = function M(x) {
       ar[2][1],
       ar[5][8],
     ];
-    m = M(temp);
     return temp;
   }  */
   function B(ar) {
@@ -596,8 +600,6 @@ var Mcode = `var M = function M(x) {
       ar[1][3],
       ar[1][6],
     ];
-
-    m = M(temp);
     return temp;
   }
 
@@ -665,7 +667,6 @@ var Mcode = `var M = function M(x) {
       ar[0][5],
       ar[0][8],
     ];
-    m = M(temp);
     return temp;
   }
 
@@ -733,7 +734,6 @@ var Mcode = `var M = function M(x) {
       ar[5][5],
       ar[5][2],
     ];
-    m = M(temp);
     return temp;
   }
 
@@ -801,7 +801,6 @@ var Mcode = `var M = function M(x) {
       ar[5][3],
       ar[5][6],
     ];
-    m = M(temp);
     return temp;
   }
 
@@ -868,7 +867,6 @@ var Mcode = `var M = function M(x) {
       ar[5][7],
       ar[5][8],
     ];
-    m = M(temp);
     return temp;
   }
 
@@ -935,7 +933,6 @@ var Mcode = `var M = function M(x) {
       ar[5][7],
       ar[5][8],
     ];
-    m = M(temp);
     return temp;
   }
 
@@ -1002,7 +999,6 @@ var Mcode = `var M = function M(x) {
       ar[5][7],
       ar[5][8],
     ];
-    m = M(temp);
     return temp;
   }
 
@@ -1069,7 +1065,6 @@ var Mcode = `var M = function M(x) {
       ar[5][7],
       ar[5][8],
     ];
-    m = M(temp);
     return temp;
   }
 
@@ -1136,8 +1131,7 @@ var Mcode = `var M = function M(x) {
       ar[5][7],
       ar[2][0],
     ];
-    m = m(() => temp);
-    return m(Rf78d3s5);
+    return temp;
   }
 
 var Rcode = ` function R(ar) {
@@ -1203,8 +1197,6 @@ var Rcode = ` function R(ar) {
       ar[5][7],
       ar[2][0],
     ];
-
-    m(() => temp);
     return temp;
   }`;
 
@@ -1272,7 +1264,6 @@ var Rcode = ` function R(ar) {
       ar[5][7],
       ar[3][8],
     ];
-    m = M(temp);
     return temp;
   }
 
@@ -1340,10 +1331,76 @@ var Rcode = ` function R(ar) {
     ];
 
     temp[5] = ar[5];
-
-    m = M(temp);
     return temp;
   }
+
+var Ucode = ` function U(ar) {
+    let temp = [];
+
+    temp[0] = [
+      ar[2][0],
+      ar[2][1],
+      ar[2][2],
+      ar[0][3],
+      ar[0][4],
+      ar[0][5],
+      ar[0][6],
+      ar[0][7],
+      ar[0][8],
+    ];
+
+    temp[1] = [
+      ar[3][0],
+      ar[3][1],
+      ar[3][2],
+      ar[1][3],
+      ar[1][4],
+      ar[1][5],
+      ar[1][6],
+      ar[1][7],
+      ar[1][8],
+    ];
+
+    temp[2] = [
+      ar[1][0],
+      ar[1][1],
+      ar[1][2],
+      ar[2][3],
+      ar[2][4],
+      ar[2][5],
+      ar[2][6],
+      ar[2][7],
+      ar[2][8],
+    ];
+
+    temp[3] = [
+      ar[0][0],
+      ar[0][1],
+      ar[0][2],
+      ar[3][3],
+      ar[3][4],
+      ar[3][5],
+      ar[3][6],
+      ar[3][7],
+      ar[3][8],
+    ];
+
+    temp[4] = [
+      ar[4][6],
+      ar[4][3],
+      ar[4][0],
+      ar[4][7],
+      ar[4][4],
+      ar[4][1],
+      ar[4][8],
+      ar[4][5],
+      ar[4][2],
+    ];
+
+    temp[5] = ar[5];
+    return temp;
+  }`
+
 
   function Uz(ar) {
     let temp = [];
@@ -1409,114 +1466,142 @@ var Rcode = ` function R(ar) {
     ];
 
     temp[5] = ar[5];
-
-    m = M(temp);
     return temp;
   }
 
   var Ufunc = () => {
     m(U);
+    m = m;
   };
+
+  var UfuncCode = `var Ufunc = () => {
+    m(U);
+    m = m;  // This triggers the DOM update
+  };`
 
   var Dfunc = () => {
     m(D);
+    m = m;
   };
 
   var Rfunc = () => {
     m(R);
+    m = m;
   };
 
   var Lfunc = () => {
     m(L);
+    m = m;
   };
 
   var Ffunc = () => {
     m(F);
+    m = m;
   };
 
   var Bfunc = () => {
     m(B);
+    m = m;
   };
 
   var Cxfunc = () => {
     m(Cx);
+    m = m;
   };
 
   var Czfunc = () => {
     m(Cz);
+    m = m;
   };
 
   var Cyfunc = () => {
     m(Cy);
+    m = m;
   };
 
   var Uzfunc = () => {
     m(U)(U)(U);
+    m = m;
   };
 
   var Dzfunc = () => {
     m(D)(D)(D);
+    m = m;
   };
 
   var Rzfunc = () => {
     m(R)(R)(R);
+    m = m;
   };
 
   var Lzfunc = () => {
     m(L)(L)(L);
+    m = m;
   };
 
   var Fzfunc = () => {
     m(F)(F)(F);
+    m = m;
   };
 
   var Bzfunc = () => {
     m(B)(B)(B);
+    m = m;
   };
 
   var Cxrfunc = () => {
     m(Cx)(Cx)(Cx);
+    m = m;
   };
 
   var Cyrfunc = () => {
     m(Cy)(Cy)(Cy);
+    m = m;
   };
 
   var Czrfunc = () => {
     m(Cz)(Cz)(Cz);
+    m = m;
   };
 
   var Start = () => {
     m(() => cubeStart);
-    m=m(id);
+    m = m;
   };
 
   var corners = () => {
     m(Rz)(F)(Rz)(B)(B)(R)(Fz)(Rz)(B)(B)(R)(R);
+    m = m;
   };
 
   var triclock = () => {
     m(Cx)(Cx)(Uz)(Cx)(U)(U)(Cx)(Cx)(Cx)(Uz)(Cx)(Cx); 
+    m = m;
   };
 
   var tricounterclock = () => {
     m(Cx)(Cx)(U)(Cx)(U)(U)(Cx)(Cx)(Cx)(U)(Cx)(Cx);
+    m = m;
   };
 
   var edgesOpposite = () => {
     m(Cx)(Cx)(Uz)(Cx)(Cx)(U)(U)(Cx)(Cx)(Uz)(Cx)(Cx);
+    m = m;
   };
 
   var oppositeHeadlights1 = () => {
     m(R)(U)(Rz)(U)(R)(Uz)(Rz)(U)(R)(U)(U)(Rz);
+    m = m;
   };
 
   var oppositeHeadlights2 = () => {
     m(F)(R)(U)(Rz)(Uz)(R)(U)(Rz)(Uz)(R)(U)(Rz)(Uz)(Fz);
+    m = m;
   };
 
   var oppositeHeadlights3 = () => {
     m(R)(U)(U)(Rz)(Uz)(R)(U)(Rz)(Uz)(R)(U)(Rz)(Uz);
+    m = m;
   };
 
   /*<button on:click={oppositeHeadlights1}>oppositeHeadlights1: R U R' U R U' R' U R U U R'</button>
@@ -1527,61 +1612,106 @@ var Rcode = ` function R(ar) {
   var edgesAdjacent = () => {
     console.log("In edgesAdjacent");
     m(Cx)(Cx)(U)(Cx)(Cx)(U)(Cx)(U)(U)(Cx)(Cx)(U)(U)(Cx)(U)(U);
+    m = m;
   };
 
   var sune = () => {
     m(R)(U)(Rz)(U)(R)(U)(U)(Rz);
+    m = m;
   };
 
   var antisune = () => {
     m(R)(U)(U)(Rz)(Uz)(R)(Uz)(Rz);
+    m = m;
   };
 
   var sexy = () => {
     m(R)(U)(Rz)(Uz);
+    m = m;
   };
   var reverse_sexy = () => {
     m(U)(R)(Uz)(Rz);
+    m = m;
   };
 
   var orient_corners = () => {
     m(U)(R)(Uz)(Lz)(U)(Rz)(Uz)(L);
+    m = m;
   };
 
   var reverse_orient_corners = () => {
     m(Lz)(U)(R)(Uz)(L)(U)(Rz)(Uz);
+    m = m;
   };
 
   var sledgehammer = () => {
     m(Rz)(F)(R)(Fz);
+    m = m;
   };
 
   var niklas = () => {
     m(R)(Uz)(Lz)(U)(Rz)(Uz)(L);
+    m = m;
   };
 
   var reverse_niklas = () => {
     m(Lz)(U)(R)(Uz)(L)(U)(Rz);
+    m = m;
   };
 
   var Jb_Perm = () => {
     m(R)(U)(Rz)(Fz)(R)(U)(Rz)(Uz)(Rz)(F)(R)(R)(Uz)(Rz)(Uz);
+    m = m;
   };
 
   var niklas = () => {
     m(R)(Uz)(Lz)(U)(Rz)(Uz)(L);
+    m = m;
   };
 
   var niklas = () => {
     m(R)(Uz)(Lz)(U)(Rz)(Uz)(L);
+    m = m;
   };
 
   var cu;
   var cu9;
   cu = "cube1";
-  cu9 = "cube9"
+  cu9 = "cube93";
   var moves = ["U","D","R","L","F","B","Dz","Lz","Fz","Bz","U","D","R","L","Dz","Lz","Fz","Bz","U","F","U","D","R","L","F","B","Dz","Lz","Fz","Bz","U","D","R","L","Dz","Lz","Fz","Bz","U","F" ];
 
+  function rotate9() {
+    if (cu9 == "cube9") {console.log("You bet"); cu9 = "cube92"}
+    else if (cu9 == "cube95") cu9 = "cube9";
+    else if (cu9 == "cube96") cu9 = "cube92";
+    else if (cu9 == "cube97") cu9 = "cube93";
+    else if (cu9 == "cube98") cu9 = "cube94";
+    else if (cu9 == "cube92") cu9 = "cube93";
+    else if (cu9 == "cube93") cu9 = "cube94";
+    else if (cu9 == "cube94") cu9 = "cube9";
+    else if (cu9 == "cube95") cu9 = "cube96";
+    else if (cu9 == "cube96") cu9 = "cube97";
+    else if (cu9 == "cube97") cu9 = "cube98";
+    else if (cu9 == "cube98") cu9 = "cube9";
+    else return "cube9";
+  }
+      
+  function tilt9() {
+    if (cu9 == "cube9") {cu9 = "cube95"}
+    else if (cu9 == "cube92") {cu9 = "cube96"}
+    else if (cu9 == "cube93") {cu9 = "cube97"}
+    else if (cu9 == "cube94") {cu9 = "cube98"}
+    else if (cu9 == "cube98") cu9 = "cube95";
+    else if (cu9 == "cube92") cu9 = "cube93";
+    else if (cu9 == "cube93") cu9 = "cube94";
+    else if (cu9 == "cube94") cu9 = "cube95";
+    else if (cu9 == "cube95") cu9 = "cube96";
+    else if (cu9 == "cube96") cu9 = "cube97";
+    else if (cu9 == "cube97") cu9 = "cube98";
+    else if (cu9 == "cube98") cu9 = "cube95";
+    else return "cube9";
+  }
+      
   function rotate() {
     if (cu == "cube1") cu = "cube3";
     else if (cu == "cube2") cu = "cube4";
@@ -1592,7 +1722,6 @@ var Rcode = ` function R(ar) {
     else if (cu == "cube7") cu = "cube8";
     else if (cu == "cube8") cu = "cube5";
     else return "cube1";
-    // dupCheck(m(Rf78d3s5));
   }
 
   function rotate2() {
@@ -1661,9 +1790,41 @@ var Rcode = ` function R(ar) {
     else if (e.keyCode === 119) shu();
     else if (e.keyCode === 118) Start();
     // else if (e.keyCode === 116) rotate();
-
-    m = m(id);
+    m = m;
   }
+
+  var handleKeyCode = `function handleKey(e) {
+    console.log(e.key, e.keyCode);
+    if (e.keyCode === 38) console.log("cow");
+    else if (e.keyCode === 85) m(U)(U)(U);
+    else if (e.keyCode === 117) m(U);
+    else if (e.keyCode === 68) Dzfunc();
+    else if (e.keyCode === 100) Dfunc();
+    else if (e.keyCode === 82) m(R)(R)(R);
+    else if (e.keyCode === 114) m(R);
+    else if (e.keyCode === 76) Lzfunc();
+    else if (e.keyCode === 108) Lfunc();
+    else if (e.keyCode === 70) Fzfunc();
+    else if (e.keyCode === 102) Ffunc();
+    else if (e.keyCode === 66) Bzfunc();
+    else if (e.keyCode === 98) Bfunc();
+    else if (e.keyCode === 77) Cxrfunc();
+    else if (e.keyCode === 109) Cxfunc();
+    else if (e.keyCode === 69) Cyrfunc();
+    else if (e.keyCode === 101) Cyfunc();
+    else if (e.keyCode === 83) Czrfunc();
+    else if (e.keyCode === 115) Czfunc();
+    else if (e.keyCode === 120) Xrotate();
+    else if (e.keyCode === 88) Xback();
+    else if (e.keyCode === 121) Yrotate();
+    else if (e.keyCode === 89) Yback();
+    else if (e.keyCode === 122) Zrotate();
+    else if (e.keyCode === 90) Zback();
+    else if (e.keyCode === 119) shu();
+    else if (e.keyCode === 118) Start();
+    // else if (e.keyCode === 116) rotate();
+    m = m;
+  }`
 
   const constants = `  const b0 = 'blue';
   const b1 = 'blue';
@@ -1862,17 +2023,27 @@ s 115 +page.svelte:728:12
 M 77 +page.svelte:728:12
 E 69 +page.svelte:728:12
 S 83 +page.svelte:728:12
-
 */
+
+var a = 0;
+var b = 0;
+var classCode = `class={m(Rf78d3s5)[a][b]}`;
 </script>
+
+
+
 <style>
-  /* *,  
+
+html {
+    width: 95%;
+}
+
 ::before,
 ::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
-}  */
+}
 
   .cell {
     /* center the cell content */
@@ -2371,14 +2542,6 @@ S 83 +page.svelte:728:12
     grid-gap: 5px;
     justify-content: center;
   }
-  .cube4 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(-30deg) rotateY(60deg);
-    /* animation: spin 5s infinite linear;*/
-  }
 
   .cube2 {
     transform-style: preserve-3d;
@@ -2387,6 +2550,15 @@ S 83 +page.svelte:728:12
     position: relative;
     transform: rotateX(-30deg) rotateY(150deg);
     /*animation: spin 5s infinite linear; */
+  }
+
+  .cube4 {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: rotateX(-30deg) rotateY(60deg);
+    /* animation: spin 5s infinite linear;*/
   }
 
   .cube3 {
@@ -2403,19 +2575,9 @@ S 83 +page.svelte:728:12
     width: 100%;
     height: 100%;
     position: relative;
-    transform: rotateX(-30deg) rotateY(330deg);
+    transform: rotateX(-25deg) rotateY(335deg);
     /*animation: spin 5s infinite linear;*/
   }  
-
-  .cube9 {
-    transform-style: preserve-3d;
-    width: 100%;
-    height: 100%;
-    position: relative;
-    transform: rotateX(30deg) rotateY(150deg);
-    /*animation: spin 5s infinite linear;*/
-  }  
-
 
   .cube5 {
     transform-style: preserve-3d;
@@ -2450,6 +2612,91 @@ S 83 +page.svelte:728:12
     height: 100%;
     position: relative;
     transform: rotateX(-210deg) rotateY(300deg);
+    /*animation: spin 5s infinite linear; */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  #cube9 {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: rotateX(25deg) rotateY(155deg);
+    /*animation: spin 5s infinite linear;*/
+  }  
+
+  #cube92 {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: rotateX(25deg) rotateY(65deg);
+    /*animation: spin 5s infinite linear; */
+  }
+
+  #cube93 {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: rotateX(25deg) rotateY(-25deg);
+    /*animation: spin 5s infinite linear; */
+  }
+
+  #cube94 {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: rotateX(25deg) rotateY(-115deg);
+    /* animation: spin 5s infinite linear;*/
+  }
+
+  #cube95 {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: rotateX(-25deg) rotateY(-205deg);
+    /*animation: spin 5s infinite linear;*/
+  }
+
+  #cube96 {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: rotateX(-25deg) rotateY(-295deg);
+    /*animation: spin 5s infinite linear;*/
+  }
+
+  #cube97 {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: rotateX(-25deg) rotateY(335deg);
+    /*animation: spin 5s infinite linear; */
+  }
+
+  #cube98 {
+    transform-style: preserve-3d;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transform: rotateX(-25deg) rotateY(245deg);
     /*animation: spin 5s infinite linear; */
   }
   .face {
@@ -2560,11 +2807,24 @@ S 83 +page.svelte:728:12
     width: 44%;
     height: 44%;
   }
+  
   div {
     color: blue;
   }
+
+  a {
+    font-size: 24; color: purple;
+    font-weight: bold;
+  }
+
+  span {
+    color: black;
+    font-size: 22px;
+  }
+
 </style>
 
+  
 <svelte:window on:keypress={handleKey} />
 
 <section class="columns">
@@ -2573,7 +2833,6 @@ S 83 +page.svelte:728:12
     <!--  <button on:click={state}>State</button>  // Diagnostic functions
   <button on:click={testRotate}>Test</button> -->
     <h1>{ERROR}</h1>
-
     <button on:click={Start}>Start</button> 
     <button on:click={shu}>Scramble</button>
     <br />
@@ -2610,9 +2869,12 @@ S 83 +page.svelte:728:12
 <button on:click={rotate2}>Counterclockwise</button> -->
     
     <h1>Demonstration 1</h1>
-    <p>The keyboard and button controls are not affected by rotations, making the cube much easier to solve than many other online Rubik's cube simulators. For example, clicking "R" or pressing the 'r' key always turns the right face clockwise. To see this, press the 'y' key and then the 'r' keys. As always, pressing 'r' turns the right face. </p>
+    <p>The keyboard and button controls are not affected by rotations, making the cube much easier to solve than many other online Rubik's cube simulators. For example, clicking "R" or pressing the 'r' key to rotate the cube 90 degrees around the Y axis always turns the right face clockwise. To see this, press the 'y' key and then the 'r' keys. As always, pressing 'r' turns the right face. </p>
     
-    <p>Now press 'v' to return the colors to their starting places on the cube and click <button on:click={rotate}>Bad Clockwise</button>. The cube rotated, just as it did when you pressed 'y'. Press 'r' to see that the front face turn, rather than the right one. If you press 'v', you will see uniform colors on the sides, but the blue face will remain in front. </p> 
+    <p>Now press 'v' to return the colors to their starting places on the cube and click <button on:click={rotate}>Perspective Clockwise</button>. The cube rotated, just as it did when you pressed 'y'. Press 'r'. This is different! The front face turned.
+      
+    At this point, further moves will still be intuitively sensible if the cube is viewed from the left. Imagine you got up and moved one place clockwise around a square table. The controls correspond to a cube with yellow on top and blue on the right side. rather than the right one. If you press 'v', you will see uniform colors on the sides, but the blue face will remain in front. </p>
+    <span style="font-weight: 600">Takeaways: (1)</span> <span> Perspective changes, such as those shown in the "Perspective Clockwise" example (above), can be useful. The lower cube on the right has the same color configuration as the cube above it, seen from the bottom and back. This removes the need to remember or turn the cube in order to know its complete color configuration. <span style="font-weight: 600">(2)</span>  After learning to solve the Rubik's cube, precisely targeted algorithms can be learned one at a time. There's no rush, and no need to memorize all of them. </span>
 
     <h1>Demonstration 2</h1>
     <p>
@@ -2656,7 +2918,7 @@ S 83 +page.svelte:728:12
 <p> The simulated Rubik's cube is represented by "x" in a m-M(x) closure, where m and x are defined as:</p><p style="text-align: center; color: darkred; font-weight:600; font-size: 22px"> {` var m = M( [ bb, gg, rr, oo, yy, ww ] )`} </p>
 <p>and</p>
 <pre>{constants}</pre>
-<p>This code runs in the DOM whenever the array of six nine-member arrays in the m-M(x) closure is updated:</p>
+<p>The correspondence between the array containing the six nine-member arrays of divs held in the m-M(x) closure -- available as m(Rf78d3s5) -- and the images of a Rubik's cube displayed in the DOM, is apparent in the code below.</p>
 <pre>{dom}</pre>  
 
 
@@ -2669,23 +2931,17 @@ S 83 +page.svelte:728:12
   <div style="width: 35%;">
     <!-- Column 2 -->
     <div style="margin-left: 1px">
-      <h1 style="color: blue">Using the Keypad</h1>
-      <p style="color: blue; font-weight: bold"> Pressing the u, d, r, l, f, b,  m, e, s, x, y, and z keys has the same effect as clicking the corresponding (capitalized) buttons. Holding down the "Shift" key (or activating "CapsLock") while pressing the keys causes the reverse effect. </p>
-
+      <span style = "display: block; color:blue; font-weight:bold; text-align: center; font-size: 24px">Using the Keypad</span>
+      <span style="color: blue; font-weight: bold"> Pressing the u, d, r, l, f, b,  m, e, s, x, y, and z keys has the same effect as clicking the corresponding (capitalized) buttons. Holding down the "Shift" key (or activating "CapsLock") while pressing the keys causes the reverse effect. </span>
+<br>
+      <span style = "display: block; color:blue; font-weight:bold; text-align: center; font-size: 24px">Using the Alternate Cube Views</span>
+      <span style="color: blue; font-weight: bold">The lower cube image in the center of this page gives eight distinct views of the Rubik's cube image above it. Alternate clicking on "Rotate A" and "Rotate B" tilts the view back and forth. Each repeat click rotates the view 90 degrees.</span><br><br>
+      <span style = "display: block; color:blue; font-weight:bold; text-align: center; font-size: 26px">Some Algorithm Shortcuts</span><p></p>
       <button on:click={corners}>PLL Corners: R' F R' B2 R F' R' B2 R2</button>
-      <br /><span style="font-size: 26px; color: blue;">Solid front:</span>
       <button on:click={triclock}>Triangle Clockwise: M2 U' M U2 M' U' M2</button>
-      <br /><span style="font-size: 26px; color: blue;">Solid front:</span>
-      <button on:click={tricounterclock}>Triangle CounterClockwise: M2 U M U2 M' U M2</button
-      >
-      <br />
-      <button on:click={edgesOpposite}
-        >Edges Opposite: M M Uz M M U U M M Uz M M</button
-      >
-      <br />
-      <button on:click={edgesAdjacent}
-        >Edges Adjacent: M M U M M U M U U M M U U M U U</button
-      >
+      <button on:click={tricounterclock}>Triangle CounterClockwise: M2 U M U2 M' U M2</button>
+      <button on:click={edgesOpposite}>Edges Opposite: M M Uz M M U U M M Uz M M</button>
+      <button on:click={edgesAdjacent}>Edges Adjacent: M M U M M U M U U M M U U M U U</button>
       <br />
       <button on:click={sune}>Sune: R U R' U R U2 R'</button>
       <br />
@@ -2719,19 +2975,29 @@ S 83 +page.svelte:728:12
       
 <h1>Discussion</h1>
       <p> Rotation of the whole cube, its middle sections, and its faces is
-        accomplished by JavaScript functions that rearrange the elements of an array of 6 arrays, each containing nine elements. These 54 elements are variables referring to either "orange", "blue", "red", "green", "yellow", or "white". There are 9 variables assigned to each of these strings. These strings designate CSS classes which determine the background colors of 54 HTML div elements. Press the "v" key or click "Start" to see each face of the cube with 9 identically colored divs. Press the 'x', 'y', and 'z' keys to rotate the cube on each axis. </p>
+        accomplished by JavaScript functions that rearrange the classes -- more specifically, the css background-colors -- which are assigned in various configurations to each of 54 divs in the DOM. The array of six nine-element arrays maintained in the m-M(x) closure, are references to the strings "orange", "blue", "red", "green", "yellow", or "white". There are 9 divs with each of these background colors. These strings designate CSS classes which determine the background colors of 54 HTML div elements. Press the "v" key or click "Start" to see each face of the cube with 9 identically colored divs. Press the 'x', 'y', and 'z' keys to rotate the cube on each axis. </p>
 
   <p>
-  Functions that update the cube's configuration are consumed by m. For example, clicking the "R" button or pressing "r" on the keyboard triggers m(R), where R is defined as follows:</p>
+  Functions that update the cube's configuration are consumed by m code runs. For example, clicking the "R" button or pressing "r" on the keyboard triggers m(R), where R is defined as follows:</p>
   
  <pre>{Rcode}</pre> 
-<p> Click "<button on:click={Start}>Start</button>" or press the "v" key, and you will see that each of the six faces of the cube have all nine of one of the six colors. When you press "w" or click "<button on:click={shu}>Scramble</button>", 62 sudo random moves are performed. After that, there are still nine of each of the six colors, but their locations are scattered around the cube.</p>
+<p> Click "<button on:click={Start}>Start</button>" or press the "v" key, and you will see that each of the six faces of the cube oppositeHeadlights3 all nine of one of the six colors. When you press "w" or click "<button on:click={shu}>Scramble</button>", 62 sudo random moves are performed. After that, there are still nine of each of the six colors, but their locations are scattered around the cube.</p>
 <p>Here's how the "orange" CSS class is defined: </p>
 <pre>{orange}</pre>
-<p> User actions cause m(func) to run for some array-manipulating function "func." m(func) causes func(x) to execute, updating the distribution of colors over the cube. The browser interface gets updated by the reactive code shown in the left column. </p>  
+<p> User actions cause m(func) to run for some array-manipulating function "func." m(func) causes func(x) to execute, updating the array in the m-M(x) closure and redistributing the colors over the displayed cube representation. </p>  
+<h1>Encapsulation From User Action To Cube Update In the Browser</h1>
+<p>Clicking on <button on:click={Ufunc}>U</button> calls Ufunc, which then call m(U).</p>
+<pre>{UfuncCode}</pre>
+<p>Pressing "u" calls HandleKey(e) where "e" is the keypress event. HandleKey(e) then calls m(U). </p>
+<pre>{handleKeyCode}</pre>
+<p> "117" is the keycode for "u", so handleKey(e) calls m(U). Ufunc (above) also calls m(U) when <button on:click={Ufunc}>U</button> is clicked. Pressing "u" three times after Clicking <button on:click={Ufunc}>U</button> returns the cube to its starting configuration. You can also restore the cube to its solved configuration by pressing "v" or clicking <button on:click={Start}>Start</button></p> 
+<p> Finally, to see how user clicks and key presses change the browser display, look at the left column. Each of the six colors is the name of a class in the "style" section of this <a href="https://kit.svelte.dev/">SvelteKit</a> webpage.</p> 
+<h1>The Round Trip Was Encapsulated</h1> 
+<span> In the DOM, clicking on "U" calls "Ufunc()" which calls m(U). Pressing the "u" key calls "HandleKey(e)" where e.keyCode === 117 likewise results in a call to m(U). m(U) triggers the re-configuration of the simulated Rubik's cube code in the m-M(x) closure. This re-configuration automatically updates the DOM (see the "class=" code in the left column) resulting in a change in the images of the simulated Rubik's cube in the browser. </span>
+<br><br>
+<span> The browser update described above is the result of reassigning the six classes, red, orange, green, blue, yellow, and white, to the 54 stationary divs whose background colors are seen in browsers, and rearranged by user clicks and key presses. The state of the array of six nine-member arrays remains in the m-M(x) closure in the "script" or "style" sections of this <a href="https://kit.svelte.dev">SvelteKit</a> page's code. It is only in the DOM code, the <span style = "color: purple">{classCode}</span> statements (left column), that the contents of the m-M(x) closure are used, updating the browser images of the simulated Rubik's cube.</span>  
 
       <br /><br />
-
       <br /><br /><br />
     </div>
   </div>
@@ -2826,12 +3092,13 @@ S 83 +page.svelte:728:12
   </div>
 </div>
 
-
 <div id="steady2">
-  <div style = "text-align:center; margin-bottom:14px">Bottom and Back View</div>
+  <div style = "text-align:center; margin-bottom:14px">
+    <button style="font-size: 17px" on:click={rotate9}>Rotate A</button>
+    <button style="font-size: 17px" on:click={tilt9}>Rotate B</button></div>
   <br><br>
   <div class="container">
-    <div class={cu9}>
+    <div id={cu9}>
       <div class="face front">
         <div class="grid">
           <div class={m(Rf78d3s5)[3][0]} />
@@ -2919,7 +3186,5 @@ S 83 +page.svelte:728:12
   </div>
 </div>
 
-
 <slot /> 
-
 
