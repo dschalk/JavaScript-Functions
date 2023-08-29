@@ -17,37 +17,24 @@
     crossfade,
   } from "svelte/transition";
 
+  var index = 1;
+  function setIndex () {index = 1};
+  var Amos;
   var Rf78d3s5 = () => {};
+  var Rf7ar3s5 = () => {};
 
   var M = function M(x) {
+    let ar = [];
     return function go(func) {
       if (func === Rf78d3s5) return x;
+      if (func === Rf7ar3s5) return ar;
       else x = func(x);
+      if (typeof func == "function") ar.push(func);
       return go;
     };
   };
   
-var Mcode = `var M = function M(x) {
-  return function go(func) {
-    if (func === Rf78d3s5) return x;
-    else x = func(x);
-    return go;
-  };
-} where Rf78d3s5 = () => {};`;
-
-  /*function M (x) {
-  return function go (func) {
-    if (func) {x = func(x); return go}
-    else return x;
-  }
-}*/
-
-  // var b0, b1, b2, b3, b4, b5, b6, b7, b8;
-  // var g0, g1, g2, g3, g4, g5, g6, g7, g8;
-  // var r0, r1, r2, r3, r4, r5, r6, r7, r8;
-  // var o0, o1, o2, o3, o4, o5, o6, o7, o8;
-  // var y0, y1, y2, y3, y4, y5, y6, y7, y8;
-  // var w0, w1, w2, w3, w4, w5, w6, w7, w8;
+  
 
   const b0 = 'blue';
   const b1 = 'blue';
@@ -118,6 +105,44 @@ var Mcode = `var M = function M(x) {
 
   var m = M([bb, gg, rr, oo, yy, ww]);
 
+  const cubeStart = JSON.parse(JSON.stringify([bb,gg,rr,oo,yy,ww]));
+
+  var Start = () => {
+    index = 1;
+    m = M(cubeStart);
+  };
+
+  $: Amos = index;
+$: Sally = m(Rf7ar3s5).length;
+
+
+var testCode = `function test () {  // this works
+    let len = m(Rf7ar3s5).length;
+    for (let k = 0; k < len; k+=1) {
+      m(m(Rf7ar3s5)[k]);
+      m = m;
+    }
+}`
+
+
+function test () {  // this works
+    let k = m(Rf7ar3s5).length;
+    let fu = m(Rf7ar3s5)[k-index];
+    let foo = x => fu(fu(fu(x)));
+    m(foo);
+    index += 2;
+    console.log("index is", index);
+    m = m;
+}
+
+var Mcode = `var M = function M(x) {
+  return function go(func) {
+    if (func === Rf78d3s5) return x;
+    else x = func(x);
+    return go;
+  };
+} where Rf78d3s5 = () => {};`;
+
   var mCode = `const b0 = 'blue';
   const b1 = 'blue';
   const b2 = 'blue';
@@ -176,7 +201,7 @@ var Mcode = `var M = function M(x) {
   const w5 = 'white';
   const w6 = 'white';
   const w7 = 'white';
-  const w8 = "white";
+  const w8 = 'white';
 
   var bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
   var gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
@@ -187,8 +212,6 @@ var Mcode = `var M = function M(x) {
 
   var m = M([bb, gg, rr, oo, yy, ww]);`;
   
-  
-  const cubeStart = JSON.parse(JSON.stringify([bb,gg,rr,oo,yy,ww]));
 
   function Xro(ar) {
     let temp = [];
@@ -349,7 +372,7 @@ var Mcode = `var M = function M(x) {
 
   const Zror = x => Zro(Zro(Zro(x)));
 
-  $: m = m(() => m(Rf78d3s5));
+ //  $: m = m(() => m(Rf78d3s5));
 
   function Xrotate(ar) {
     m(Xro);
@@ -1649,11 +1672,6 @@ var Ucode = ` function U(ar) {
     m = m;
   };
 
-  var Start = () => {
-    m(() => cubeStart);
-    m = m;
-  };
-
   var corners = () => {
     m(Rz)(F)(Rz)(B)(B)(R)(Fz)(Rz)(B)(B)(R)(R);
     m = m;
@@ -1824,6 +1842,7 @@ var Ucode = ` function U(ar) {
   
   function shu() {
     // Scrambles the cube
+    index = 1;
     console.log("1 m(Rf78d3s5) is", m(Rf78d3s5));
     let moves = [Cx,Cy,Cz,U,D,R,L,F,B,Cx,Cy,Cz,U,D,B,R,L,F,Cx,D,Cy,Cz,B,U,D,R,L,F,Cx,Cy,Cz,
       Cx,Cy,Cz,U,D,R,L,F,B,Cx,Cy,Cz,U,D,B,R,L,F,Cx,D,Cy,Cz,B,U,D,R,L,F,Cx,Cy,Cz];
@@ -2113,6 +2132,7 @@ S 83 +page.svelte:728:12
 var a = 0;
 var b = 0;
 var classCode = `class={m(Rf78d3s5)[a][b]}`;
+
 </script>
 
 
@@ -2897,21 +2917,28 @@ html {
 </style>
 
   
+
+
 <svelte:window on:keypress={handleKey} />
 
 <section class="columns">
   <div style="width: 40%">
     <br />
-    <!--  <button on:click={state}>State</button>  // Diagnostic functions
-  <button on:click={testRotate}>Test</button> -->
-    <h1>{ERROR}</h1>
-    <button on:click={() => console.log("m(Rf78d3s5) is", m(Rf78d3s5))}>m(Rf78d3s5)</button> 
     <button on:click={Start}>Start</button> 
     <button on:click={shu}>Scramble</button>
+    <button on:click={test}>Reverse</button> 
+    <button on:click={setIndex}>index -> 1</button> 
+    <br>
+    <!--<button on:click={() => console.log("m(Rf7ar3s5) is", m(Rf7ar3s5))}>m(Rf7ar3s5)</button> 
+    <button on:click={() => console.log("m(Rf78d3s5) is", m(Rf78d3s5))}>m(Rf78d3s5)</button> -->
+    <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;index: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span> 
+    
+    <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp; m(Rf78ar3s5).length:: </span> <span style="color:purple; font-weight:bold; font-size:30px">{Sally}</span> 
     <br />
     <button on:click={Xrotate}>X rotate</button>
     <button on:click={Yrotate}>Y rotate</button>
     <button on:click={Zrotate}>Z rotate</button>
+    <br>
     <button on:click={Xback}>X back</button>
     <button on:click={Yback}>Y back</button>
     <button on:click={Zback}>Z back</button>
@@ -2944,7 +2971,7 @@ html {
     <h1>Demonstration 1</h1>
     <p>The keyboard and button controls are not affected by rotations, making the cube much easier to solve than many other online Rubik's cube simulators. For example, clicking <button on:click={Rfunc}>R</button> or pressing the 'r' key always turns the right face clockwise, even after the cube has rotated. To see this, rotate the cube by pressing the 'y' key or clicking <button on:click={Yrotate}>Y rotate</button>, then press the 'r' key or click <button on:click={Rfunc}>R</button>. As before, pressing 'r' or clicking <button on:click={Rfunc}>R</button> still turns the right face. </p>
     
-    <p>Now press 'v' or click on the <button on:click={Start}>Start</button> button to return the colors to their starting places on the cube and re-orient the cube by clicking <button on:click={rotate}>Perspective Clockwise</button>. The cube apears to rotate just as it did when "y" was pressed. Under the hood it changed not by rearranging six CSS classes (red, orange, green, blue, yellow, and white), but by rearranging the six nine-div faces of the cube, leaving the classes in place.</p>
+    <p>Now press 'v' or click on the <button on:click={Start}>Start</button> button to return the colors to their starting places on the cube and re-orient the cube by clicking <button on:click={rotate}>Perspective Clockwise</button>. The cube apears to rotate just as it did when y was pressed. Under the hood it changed not by rearranging six CSS classes (red, orange, green, blue, yellow, and white), but by rearranging the six nine-div faces of the cube, leaving the classes in place.</p>
     
     <p> Pressing 'r' still rotates the side that was on the right, but now it is in the front of the cube, so it's the front that rotates every time "r" is pressed or <button on:click={Rfunc}>R</button> is clicked. This is how the reference cube in the lower middle column functions. clicking <button on:click={Start}>Start</button> button or pressing 'v' re-establishes uniform colors on the sides, but leaves the lower cube orientated relative to the upper cube just as it was.</p> 
     <p> To return the lower cube to its starting configuration, you need to rotate it back to where it was, or reload the page.</p>
@@ -2979,6 +3006,7 @@ html {
       U' L).
     </p>
 <h1>The m-M(x) Closure (JS-Monad)</h1>
+<p style="font-style: italic"> In the British tradition, commas and periods will go outside of quotation marks</p>
 
 <pre>{`var M = function M(x) {
   return function go(func) {
@@ -2990,7 +3018,7 @@ html {
     unless a domain for M is specified
     x can be any JavaScript value.`}</pre>
 
-<p>This isn't a typical so-called "JavaScript monad"; i.e., ones that explicitly tries to mimick the appearance and functionality of monads defined in Category Theory. On this webpage, the m-M(x) closures facilitate, elegantly and efficiently, the composition of functions operating on encapsulated arrays of six nine-member arrays. There are no side effects. The functions are pure, accessing only their arguments (arrays of six nine-member arrays) and doing nothing but return arrays of six nine-member arrays. As is apparent, the domain of M is arrays of six nine-member arrays. The only functions used in this presentation are functions that transform the array in the m-M(x) closure in ways corresponding to moves on Rubik's cubes. Functionality to lift types into other types can be added to JS-Monads as needed -- and omitted where, as here, it isn't needed.</p>
+<p> This webpage features the closure that results from the assignment "m = M(x)", where x is an array of six nine-member arrays. "x" in the m-M(x) closures will always be a six-member array of nine-member arrays. Only pure functions that take arrays of six nine-member arrays and return arrays of six nine-member arrays will be used. As is apparent from the definition of "M", "m" is a copy of "go". efficiently, the composition of functions arrays of six nine-member arrays. There are no side effects. The functions are pure, accessing only their arguments (arrays of six nine-member arrays) and doing nothing but return arrays of six nine-member arrays. As is apparent, the domain of M is arrays of six nine-member arrays. The only functions used in this presentation are functions that transform the array in the m-M(x) closure in ways corresponding to moves on Rubik's cubes. Functionality to lift types into other types can be added to JS-Monads as needed -- and omitted where, as here, it isn't needed.</p>
 
 <p> The simulated Rubik's cube is represented by "x" in a m-M(x) closure, where m and x are defined by the following code:</p>
 <pre>{constants}</pre>
