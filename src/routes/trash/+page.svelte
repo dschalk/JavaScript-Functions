@@ -116,7 +116,7 @@ $: Amos = index;
 $: Sally = m(Rf7ar3s5).length;
 
 
-var testCode1 = `function test () {  // this works
+var testCode = `function test () {  // this works
     let len = m(Rf7ar3s5).length;
     for (let k = 0; k < len; k+=1) {
       m(m(Rf7ar3s5)[k]);
@@ -127,31 +127,17 @@ var cow = 0;
 
 
 function test () {  // this works
-    let arr = m(Rf7ar3s5);
-    // if (arr[arr.length - 1].name !== "foo") index = 1;
-    let k = arr.length;
-    let fu = arr[k-index];
+    let k = m(Rf7ar3s5).length;
+    let fu = m(Rf7ar3s5)[k-index];
     let foo = x => fu(fu(fu(x)));
     m(foo);
     index += 2;
     console.log("index is", index);
     m = m;
-    console.log("m(Rf7ar3s5 is", m(Rf7ar3s5));
-    arr = m(Rf7ar3s5);
-    if (arr.slice(-1)[0].name !== arr.slice(-2,-1)[0].name) index = 3;
     if (index > m(Rf7ar3s5).length) Start();
 };
 
-function fnames (x) {
-    var ar;
-    ar = x.map((v) => v.name);
-    return ar;
-}
-
-var fNames;
-$: fNames = fnames(m(Rf7ar3s5));
-
-var testCode2 = `function test () {  // this works
+testCode = `function test () {  // this works
     let k = m(Rf7ar3s5).length;
     let fu = m(Rf7ar3s5)[k-index];
     let foo = x => fu(fu(fu(x)));
@@ -1920,7 +1906,6 @@ var Ucode = ` function U(ar) {
     else if (e.keyCode === 90) Zback();
     else if (e.keyCode === 119) shu();
     else if (e.keyCode === 118) Start();
-    else if (e.keyCode === 113) test();
     // else if (e.keyCode === 116) rotate();
     m = m;
   }
@@ -2955,10 +2940,10 @@ html {
     <button on:click={Start}>Start</button> 
     <button on:click={shu}>Scramble</button>
     <button on:click={test}>Reverse</button> 
-    <!-- <button on:click={() => console.log("m(Rf7ar3s5) is", m(Rf7ar3s5))}>m(Rf7ar3s5)</button> 
+    <br>
+    <button on:click={() => console.log("m(Rf7ar3s5) is", m(Rf7ar3s5))}>m(Rf7ar3s5)</button> 
     <button on:click={() => console.log("m(Rf78d3s5) is", m(Rf78d3s5))}>m(Rf78d3s5)</button>
     <button on:click={setIndex}>index -> 1</button> 
-    <br> -->
     <br>
     <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span> 
     
@@ -2993,13 +2978,13 @@ html {
     <button on:click={Cxrfunc}>M'</button>
     <button on:click={Cyrfunc}>E'</button>
     <button on:click={Czrfunc}>S'</button>
-    <br>
     
     <!--<button on:click={rotate}>Clockwise</button>
 <br><br>
 <button on:click={rotate2}>Counterclockwise</button> -->
-   <p>This is, essentially, the cube3 application, but with a way to undo a series of moves without remembering exactly what they were. Its only idiosycracy is that it begins reversing in earnest only after the first two times you click the "Reverse" button or press the "q" key. Then it efficiently plows through your previous moves, all the way to the beginning if you want. </p>
-
+   <p>This is, essentially, the cube3 application, but with a way to undo a series of moves without remembering exactly what they were. </p>
+   <p>Reversals normally start at position "1" (the top of the list of rotations). If, after reversing one or more rotations, you want to reverse subsequent rotations, SET THE POINTER TO "1" BY PRESSING <button on:click={setIndex}>index -> 1.</button> Otherwise, reversals begin somewhere down the list of previous rotations, proceeding toward the first rotation. At that point,the list of rotations is wiped clean and the main puzzle reverts to its original configuration (solid colors on all six sides). The reference cube (lower middle column) retains its orientation relative to the main cube with, as always, colors matching those of its counterpart.</p>
+   
     <h1>Demonstration 1</h1>
     <p>The keyboard and button controls are not affected by rotations, making the cube much easier to solve than many other online Rubik's cube simulators. For example, clicking <button on:click={Rfunc}>R</button> or pressing the 'r' key always turns the right face clockwise, even after the cube has rotated. To see this, rotate the cube by pressing the 'y' key or clicking <button on:click={Yrotate}>Y rotate</button>, then press the 'r' key or click <button on:click={Rfunc}>R</button>. As before, pressing 'r' or clicking <button on:click={Rfunc}>R</button> still turns the right face. </p>
     
