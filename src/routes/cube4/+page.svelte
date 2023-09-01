@@ -138,7 +138,11 @@ function test () {  // this works
     m = m;
     console.log("m(Rf7ar3s5 is", m(Rf7ar3s5));
     arr = m(Rf7ar3s5);
-    if (arr.slice(-1)[0].name !== arr.slice(-2,-1)[0].name) index = 3;
+    if (arr.slice(-1)[0].name !== arr.slice(-2,-1)[0].name) {
+      index = 1;
+      arr.pop();
+      arr.pop();
+    }
     if (index > m(Rf7ar3s5).length) Start();
 };
 
@@ -2955,12 +2959,13 @@ html {
     <button on:click={Start}>Start</button> 
     <button on:click={shu}>Scramble</button>
     <button on:click={test}>Reverse</button> 
-    <!-- <button on:click={() => console.log("m(Rf7ar3s5) is", m(Rf7ar3s5))}>m(Rf7ar3s5)</button> 
+    <br>
+    <!--<button on:click={() => console.log("m(Rf7ar3s5) is", m(Rf7ar3s5))}>m(Rf7ar3s5)</button> 
     <button on:click={() => console.log("m(Rf78d3s5) is", m(Rf78d3s5))}>m(Rf78d3s5)</button>
     <button on:click={setIndex}>index -> 1</button> 
     <br> -->
-    <br>
-    <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span> 
+    
+    <!-- <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span> -->
     
     <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp; Move list length: </span> <span style="color:purple; font-weight:bold; font-size:30px">{Sally}</span>
 
@@ -2998,7 +3003,7 @@ html {
     <!--<button on:click={rotate}>Clockwise</button>
 <br><br>
 <button on:click={rotate2}>Counterclockwise</button> -->
-   <p>This is, essentially, the cube3 application, but with a way to undo a series of moves without remembering exactly what they were. Its only idiosycracy is that it begins reversing in earnest only after the first two times you click the "Reverse" button or press the "q" key. Then it efficiently plows through your previous moves, all the way to the beginning if you want. </p>
+   <p>This is, essentially, the cube3 application, but with a way to undo a series of moves without remembering exactly what they were.</p>
 
     <h1>Demonstration 1</h1>
     <p>The keyboard and button controls are not affected by rotations, making the cube much easier to solve than many other online Rubik's cube simulators. For example, clicking <button on:click={Rfunc}>R</button> or pressing the 'r' key always turns the right face clockwise, even after the cube has rotated. To see this, rotate the cube by pressing the 'y' key or clicking <button on:click={Yrotate}>Y rotate</button>, then press the 'r' key or click <button on:click={Rfunc}>R</button>. As before, pressing 'r' or clicking <button on:click={Rfunc}>R</button> still turns the right face. </p>
