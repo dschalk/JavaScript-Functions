@@ -34,8 +34,6 @@
     };
   };
   
-  
-
   const b0 = 'blue';
   const b1 = 'blue';
   const b2 = 'blue';
@@ -127,23 +125,13 @@ var cow = 0;
 
 
 function test () {  // this works
-    let arr = m(Rf7ar3s5);
-    // if (arr[arr.length - 1].name !== "foo") index = 1;
-    let k = arr.length;
+    k = m(Rf7ar3s5).length;
     let fu = arr[k-index];
     let foo = x => fu(fu(fu(x)));
     m(foo);
-    index += 2;
-    console.log("index is", index);
     m = m;
-    console.log("m(Rf7ar3s5 is", m(Rf7ar3s5));
-    arr = m(Rf7ar3s5);
-    if (arr.slice(-1)[0].name !== arr.slice(-2,-1)[0].name) {
-      index = 1;
-      arr.pop();
-      arr.pop();
-    }
-    if (index > m(Rf7ar3s5).length) Start();
+    let arr = m(Rf7ar3s5);
+    if (arr.slice(-1)[0].name !== arr.slice(-2,-1)[0].name) arr.splice(-2,2);
 };
 
 function fnames (x) {
