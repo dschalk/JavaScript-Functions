@@ -23,7 +23,7 @@
   var Rf78d3s5 = () => {};
   var Rf7ar3s5 = () => {};
 
-  const M = function M(x) {
+  var M = function M(x) {
     let ar = [];
     return function go(func) {
       if (func === Rf78d3s5) return x;
@@ -34,8 +34,6 @@
     };
   };
   
-
-
   const b0 = 'blue';
   const b1 = 'blue';
   const b2 = 'blue';
@@ -96,13 +94,6 @@
   const w7 = 'white';
   const w8 = "white";
 
-/*var bb = ["b0","b1","b2","b3","b4","b5","b6","b7","b8"];  // For testing 
-var gg = ["g0","g1","g2","g3","g4","g5","g6","g7","g8"];
-var rr = ["r0","r1","r2","r3","r4","r5","r6","r7","r8"];
-var oo = ["o0","o1","o2","o3","o4","o5","o6","o7","o8"];
-var yy = ["y0","y1","y2","y3","y4","y5","y6","y7","y8"];
-var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
-
   var bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
   var gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
   var rr = [r0, r1, r2, r3, r4, r5, r6, r7, r8];
@@ -121,7 +112,7 @@ var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
 
 $: Sally = m(Rf7ar3s5).length;
 
-var reverseCode1 = `function reverse () {  // this works
+var testCode1 = `function test () {  // this works
     let len = m(Rf7ar3s5).length;
     for (let k = 0; k < len; k+=1) {
       m(m(Rf7ar3s5)[k]);
@@ -131,27 +122,15 @@ var reverseCode1 = `function reverse () {  // this works
 var cow = 0;
 
 
-function reverse () {  // this works
+function test () {  // this works
     var k = m(Rf7ar3s5).length;
     let fu = m(Rf7ar3s5)[k-1];
     let foo = x => fu(fu(fu(x)));
     m(foo);
     m = m;
     let arr = m(Rf7ar3s5);
-    if (m(Rf7ar3s5).slice(-1)[0].name !== m(Rf7ar3s5)
-       .slice(-2,-1)[0].name) m(Rf7ar3s5).splice(-2,2);
+    if (m(Rf7ar3s5).slice(-1)[0].name !== m(Rf7ar3s5).slice(-2,-1)[0].name) m(Rf7ar3s5).splice(-2,2);
 };
-
-var reverseShow = `function reverse () {  // this works
-    var k = m(Rf7ar3s5).length;
-    let fu = m(Rf7ar3s5)[k-1];
-    let foo = x => fu(fu(fu(x)));
-    m(foo);
-    m = m;
-    let arr = m(Rf7ar3s5);
-    if (m(Rf7ar3s5).slice(-1)[0].name !== m(Rf7ar3s5)
-       .slice(-2,-1)[0].name) m(Rf7ar3s5).splice(-2,2);
-};`;
 
 function fnames (x) {
     var ar;
@@ -162,7 +141,7 @@ function fnames (x) {
 var fNames;
 $: fNames = fnames(m(Rf7ar3s5));
 
-var reverseCode2 = `function reverse () {  // this works
+var testCode2 = `function test () {  // this works
     let k = m(Rf7ar3s5).length;
     let fu = m(Rf7ar3s5)[k-index];
     let foo = x => fu(fu(fu(x)));
@@ -251,7 +230,7 @@ var Mcode = `var M = function M(x) {
   var m = M([bb, gg, rr, oo, yy, ww]);`;
   
 
-  const Xro = function Xro(ar) {
+  function Xro(ar) {
     let temp = [];
     temp[0] = [
         ar[0][6],
@@ -302,61 +281,9 @@ var Mcode = `var M = function M(x) {
     return temp;
   };
 
-  const Xror = function Xror(ar) {
-    let temp = [];
-    temp[0] = [
-        ar[0][2],
-        ar[0][5],
-        ar[0][8],
-        ar[0][1],
-        ar[0][4],
-        ar[0][7],
-        ar[0][0],
-        ar[0][3],
-        ar[0][6],
-      ];
-    temp[1] = [
-        ar[1][6],
-        ar[1][3],
-        ar[1][0],
-        ar[1][7],
-        ar[1][4],
-        ar[1][1],
-        ar[1][8],
-        ar[1][5],
-        ar[1][2],
-      ];
-    temp[2] = [
-        ar[5][8],
-        ar[5][7],
-        ar[5][6],
-        ar[5][5],
-        ar[5][4],
-        ar[5][3],
-        ar[5][2],
-        ar[5][1],
-        ar[5][0],
-      ];
-    temp[3] = ar[4];
-    temp[4] = [
-        ar[2][8],
-        ar[2][7],
-        ar[2][6],
-        ar[2][5],
-        ar[2][4],
-        ar[2][3],
-        ar[2][2],
-        ar[2][1],
-        ar[2][0],
-      ];
-    temp[5] = ar[3];
-      
-    return temp;
-  };
+  const Xror = x => Xro(Xro(Xro(x)));
 
-  // const Xror = x => Xro(Xro(Xro(x)));
-
-  const Yro = function Yro(ar) {
+  function Yro(ar) {
     let temp = [];
     temp[0] = ar[2];
     temp[1] = ar[3];
@@ -387,40 +314,9 @@ var Mcode = `var M = function M(x) {
     return temp;
   } 
 
-  const Yror = function Yror(ar) {
-    let temp = [];
-    temp[0] = ar[3];
-    temp[1] = ar[2];
-    temp[2] = ar[0];
-    temp[3] = ar[1];
-    temp[4] = [
-        ar[4][2],
-        ar[4][5],
-        ar[4][8],
-        ar[4][1],
-        ar[4][4],
-        ar[4][7],
-        ar[4][0],
-        ar[4][3],
-        ar[4][6],
-      ];
-      temp[5] = [
-        ar[5][6],
-        ar[5][3],
-        ar[5][0],
-        ar[5][7],
-        ar[5][4],
-        ar[5][1],
-        ar[5][8],
-        ar[5][5],
-        ar[5][2],
-      ];
-    return temp;
-  } 
-
-  //  const Yror = x => Yro(Yro(Yro(x)));
- 
-  const Zro = function Zro(ar) {
+  const Yror = x => Yro(Yro(Yro(x)));
+  
+  function Zro(ar) {
     let temp = [];
     temp[0] = [
         ar[4][6],
@@ -491,114 +387,43 @@ var Mcode = `var M = function M(x) {
     return temp;
   };
 
-  const Zror = function Zror(ar) {
-    let temp = [];
-    temp[0] = [
-        ar[5][2],
-        ar[5][5],
-        ar[5][8],
-        ar[5][1],
-        ar[5][4],
-        ar[5][7],
-        ar[5][0],
-        ar[5][3],
-        ar[5][6],
-      ];
-      temp[1] = [
-        ar[4][2],
-        ar[4][5],
-        ar[4][8],
-        ar[4][1],
-        ar[4][4],
-        ar[4][7],
-        ar[4][0],
-        ar[4][3],
-        ar[4][6],
-      ];
-      temp[2] = [
-        ar[2][6],
-        ar[2][3],
-        ar[2][0],
-        ar[2][7],
-        ar[2][4],
-        ar[2][1],
-        ar[2][8],
-        ar[2][5],
-        ar[2][2],
-      ];
-      temp[3] = [
-        ar[3][2],
-        ar[3][5],
-        ar[3][8],
-        ar[3][1],
-        ar[3][4],
-        ar[3][7],
-        ar[3][0],
-        ar[3][3],
-        ar[3][6],
-      ];
-      temp[4] = [
-        ar[0][2],
-        ar[0][5],
-        ar[0][8],
-        ar[0][1],
-        ar[0][4],
-        ar[0][7],
-        ar[0][0],
-        ar[0][3],
-        ar[0][6],
-      ];
-      temp[5] = [
-        ar[1][2],
-        ar[1][5],
-        ar[1][8],
-        ar[1][1],
-        ar[1][4],
-        ar[1][7],
-        ar[1][0],
-        ar[1][3],
-        ar[1][6],
-      ];
-    return temp;
-  };
-
-  // const Zror = x => Zro(Zro(Zro(x)));
+  const Zror = x => Zro(Zro(Zro(x)));
 
  //  $: m = m(() => m(Rf78d3s5));
 
-  const Xrotate = function Xrotate(ar) {
+  function Xrotate(ar) {
     m(Xro);
     m = m;
   }
 
-  const Xback = function Xback(ar) {
+  function Xback(ar) {
     m(Xror);
     m = m;
   }
 
-  const Yrotate = function Yrotate(ar) {
+  function Yrotate(ar) {
     m(Yro);
     m = m;
   }
 
-  const Yback = function Yback(ar) {
+  function Yback(ar) {
     m(Yror);
     m = m;
   }
 
-  const Zrotate = function Zrotate(ar) {
+  function Zrotate(ar) {
     m(Zro);
     m = m;
   }
 
-  const Zback = function Zback(ar) {
+  function Zback(ar) {
     m(Zror);
     m = m;
   }
 
   // console.log("m(Rf78d3s5) is", m(Rf78d3s5));
 
-  const Cz = function Cz(ar) {
+  function Cz(ar) {
     let temp = [];
 
     temp[0] = [
@@ -655,64 +480,7 @@ var Mcode = `var M = function M(x) {
     return temp;
   }
 
-  const Czr = function Czr(ar) {
-    let temp = [];
-
-    temp[0] = [
-      ar[0][0],
-      ar[5][5],
-      ar[0][2],
-      ar[0][3],
-      ar[5][4],
-      ar[0][5],
-      ar[0][6],
-      ar[5][3],
-      ar[0][8],
-    ];
-
-    temp[1] = [
-      ar[1][0],
-      ar[4][5],
-      ar[1][2],
-      ar[1][3],
-      ar[4][4],
-      ar[1][5],
-      ar[1][6],
-      ar[4][3],
-      ar[1][8],
-    ];
-
-    temp[2] = ar[2];
-
-    temp[3] = ar[3];
-
-    temp[4] = [
-      ar[4][0],
-      ar[4][1],
-      ar[4][2],
-      ar[0][1],
-      ar[0][4],
-      ar[0][7],
-      ar[4][6],
-      ar[4][7],
-      ar[4][8],
-    ];
-
-    temp[5] = [
-      ar[5][0],
-      ar[5][1],
-      ar[5][2],
-      ar[1][1],
-      ar[1][4],
-      ar[1][7],
-      ar[5][6],
-      ar[5][7],
-      ar[5][8],
-    ];
-    return temp;
-  }
-
-  const Cx = function Cx(ar) {
+  function Cx(ar) {
     let temp = [];
 
     temp[0] = ar[0];
@@ -770,7 +538,7 @@ var Mcode = `var M = function M(x) {
     return temp;
   }
 
-  const Cy = function Cy(ar) {
+  function Cy(ar) {
     let temp = [];
 
     temp[0] = [
@@ -825,86 +593,33 @@ var Mcode = `var M = function M(x) {
     return temp;
   }
 
-  const Cyr = function Cyr(ar) {
-    let temp = [];
 
-    temp[0] = [
-      ar[0][0],
-      ar[0][1],
-      ar[0][2],
-      ar[3][3],
-      ar[3][4],
-      ar[3][5],
-      ar[0][6],
-      ar[0][7],
-      ar[0][8],
-    ];
-
-    temp[1] = [
-      ar[1][0],
-      ar[1][1],
-      ar[1][2],
-      ar[2][3],
-      ar[2][4],
-      ar[2][5],
-      ar[1][6],
-      ar[1][7],
-      ar[1][8],
-    ];
-
-    temp[2] = [
-      ar[2][0],
-      ar[2][1],
-      ar[2][2],
-      ar[0][3],
-      ar[0][4],
-      ar[0][5],
-      ar[2][6],
-      ar[2][7],
-      ar[2][8],
-    ];
-
-    temp[3] = [
-      ar[3][0],
-      ar[3][1],
-      ar[3][2],
-      ar[1][3],
-      ar[1][4],
-      ar[1][5],
-      ar[3][6],
-      ar[3][7],
-      ar[3][8],
-    ];
-    temp[4] = ar[4];
-    temp[5] = ar[5];
-    return temp;
-  }
-
-  const Cxr = function Cxr(ar) {    // Verified
+/*
+  function Cxr(ar) {
     let temp = [];
     temp[0] = ar[0];
     temp[1] = ar[1];
     temp[2] = [
       ar[2][0],
-      ar[4][7],
+      ar[4][1],
       ar[2][2],
       ar[2][3],
       ar[4][4],
       ar[2][5],
       ar[2][6],
-      ar[4][1],
+      ar[4][7],
       ar[2][8],
     ];
 
     temp[3] = [
       ar[3][0],
-      ar[5][1],
+      ar[5][7],
       ar[3][2],
       ar[3][3],
       ar[5][4],
       ar[3][5],
       ar[3][6],
-      ar[5][7],
+      ar[5][1],
       ar[3][8],
     ];
 
@@ -932,9 +647,8 @@ var Mcode = `var M = function M(x) {
       ar[5][8],
     ];
     return temp;
-  } 
-
-  const B = function B(ar) {
+  }  */
+  function B(ar) {
     let temp = [];
 
     temp[0] = [
@@ -1000,9 +714,9 @@ var Mcode = `var M = function M(x) {
     ];
     return temp;
   }
-  // const Bz = x => B(B(B(x)))
+  const Bz = x => B(B(B(x)))
 
-  const Bz = function Bz(ar) {  // Verified
+  /*function Bz(ar) {
     let temp = [];
 
     temp[0] = [
@@ -1062,14 +776,14 @@ var Mcode = `var M = function M(x) {
       ar[5][3],
       ar[5][4],
       ar[5][5],
-      ar[0][8],
-      ar[0][5],
       ar[0][2],
+      ar[0][5],
+      ar[0][8],
     ];
     return temp;
-  }
+  } */
 
-  const D = function D(ar) {
+  function D(ar) {
     let temp = [];
 
     temp[0] = [
@@ -1136,9 +850,9 @@ var Mcode = `var M = function M(x) {
     return temp;
   }
 
-  // const Dz = x => D(D(D(x)))
+  const Dz = x => D(D(D(x)))
   
-  const Dz = function Dz(ar) {
+  /*function Dz(ar) {
     let temp = [];
 
     temp[0] = [
@@ -1203,9 +917,9 @@ var Mcode = `var M = function M(x) {
       ar[5][6],
     ];
     return temp;
-  } 
+  } */
 
-  const L = function L(ar) {
+  function L(ar) {
     let temp = [];
     temp[0] = ar[0];
 
@@ -1272,9 +986,9 @@ var Mcode = `var M = function M(x) {
   }
 
 
-  // const Lz = x => L(L(L(x)))
+  const Lz = x => L(L(L(x)))
   
-  const Lz = function Lz(ar) {
+  /*function Lz(ar) {
     let temp = [];
     temp[0] = ar[0];
 
@@ -1338,7 +1052,7 @@ var Mcode = `var M = function M(x) {
       ar[5][8],
     ];
     return temp;
-  } 
+  }  */
 
   function F(ar) {
     let temp = [];
@@ -1407,9 +1121,9 @@ var Mcode = `var M = function M(x) {
   }
 
 
-  // const Fz = x => F(F(F(x)))
+  const Fz = x => F(F(F(x)))
   
-  const Fz = function Fz(ar) {   // Verified
+  /*function Fz(ar) {
     let temp = [];
     temp[0] = [
       ar[5][2],
@@ -1473,9 +1187,9 @@ var Mcode = `var M = function M(x) {
       ar[5][8],
     ];
     return temp;
-  } 
-  
-  const R = function R(ar) {
+  }  */
+
+  function R(ar) {
     let temp = [];
     temp[0] = [
       ar[0][6],
@@ -1542,7 +1256,7 @@ var Mcode = `var M = function M(x) {
   }
 
 
- // const Rz = x => R(R(R(x)))
+  const Rz = x => R(R(R(x)))
   
 var Rcode = ` function R(ar) {
     let temp = [];
@@ -1611,7 +1325,7 @@ var Rcode = ` function R(ar) {
   }`;
 
 
- const Rz = function Rz(ar) {    // Verified
+ /* function Rz(ar) {
     let temp = [];
     temp[0] = [
       ar[0][2],
@@ -1675,9 +1389,9 @@ var Rcode = ` function R(ar) {
       ar[3][8],
     ];
     return temp;
-  } 
+  }  */
 
-  const U = function U(ar) {
+  function U(ar) {
     let temp = [];
 
     temp[0] = [
@@ -1744,7 +1458,7 @@ var Rcode = ` function R(ar) {
     return temp;
   }
 
- //  const Uz = x => U(U(U(x)))
+  const Uz = x => U(U(U(x)))
   
 var Ucode = ` function U(ar) {
     let temp = [];
@@ -1813,7 +1527,7 @@ var Ucode = ` function U(ar) {
     return temp;
   }`
 
-  const Uz = function Uz(ar) {  // Verified
+/*  function Uz(ar) {
     let temp = [];
 
     temp[0] = [
@@ -1878,7 +1592,7 @@ var Ucode = ` function U(ar) {
 
     temp[5] = ar[5];
     return temp;
-  };
+  } */
 
   var UfuncCode = `var Ufunc = () => {
     m(U);
@@ -1961,17 +1675,17 @@ var Ucode = ` function U(ar) {
   };
 
   var Cxrfunc = () => {
-    m(Cxr);
+    m(Cx)(Cx)(Cx);
     m = m;
   };
 
   var Cyrfunc = () => {
-    m(Cyr);
+    m(Cy)(Cy)(Cy);
     m = m;
   };
 
   var Czrfunc = () => {
-    m(Czr);
+    m(Cz)(Cz)(Cz);
     m = m;
   };
 
@@ -2009,6 +1723,11 @@ var Ucode = ` function U(ar) {
     m(R)(U)(U)(Rz)(Uz)(R)(U)(Rz)(Uz)(R)(U)(Rz)(Uz);
     m = m;
   };
+
+  /*<button on:click={oppositeHeadlights1}>oppositeHeadlights1: R U R' U R U' R' U R U U R'</button>
+<button on:click={oppositeHeadlights2}>oppositeHeadlights2: R U U R' U' R U R' U' R U U' R'</button>
+<button on:click={oppositeHeadlights3}>oppositeHeadlights3: F R U R' U' R U R' U' R U R' U' F'</button>
+*/
 
   var edgesAdjacent = () => {
     console.log("In edgesAdjacent");
@@ -2150,6 +1869,18 @@ var Ucode = ` function U(ar) {
     m = m;
   }
 
+  function dupCheck(ar) {
+    var flat = ar.flat(1);
+    const set = [...new Set(flat)];
+    if (flat.length !== set.length) {
+      //console.log(v, "is already in the array.");
+      ERROR = "STOP";
+    } else console.log(ar, "passed dupCheck");
+  }
+
+  function logit(e) {
+    console.log(e);
+  }
   function handleKey(e) {
     console.log(e.key, e.keyCode);
     if (e.keyCode === 38) console.log("cow");
@@ -2179,7 +1910,7 @@ var Ucode = ` function U(ar) {
     else if (e.keyCode === 90) Zback();
     else if (e.keyCode === 119) shu();
     else if (e.keyCode === 118) Start();
-    else if (e.keyCode === 113) reverse();
+    else if (e.keyCode === 113) test();
     // else if (e.keyCode === 116) rotate();
     m = m;
   }
@@ -3213,11 +2944,12 @@ html {
     <br />
     <button on:click={Start}>Start</button> 
     <button on:click={shu}>Scramble</button>
-    <button on:click={reverse}>Reverse</button> 
-   <!-- <button on:click={() => console.log("m(Rf7ar3s5) is", m(Rf7ar3s5))}>m(Rf7ar3s5)</button> 
+    <button on:click={test}>Reverse</button> 
+    <br>
+    <!--<button on:click={() => console.log("m(Rf7ar3s5) is", m(Rf7ar3s5))}>m(Rf7ar3s5)</button> 
     <button on:click={() => console.log("m(Rf78d3s5) is", m(Rf78d3s5))}>m(Rf78d3s5)</button>
-    <button on:click={setIndex}>index -> 1</button> --> 
-    <br> 
+    <button on:click={setIndex}>index -> 1</button> 
+    <br> -->
     
     <!-- <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span> -->
     

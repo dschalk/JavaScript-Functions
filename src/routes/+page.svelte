@@ -162,16 +162,15 @@ var ZbackDemo = `function Zback (ar) {
       cube = m(Zro)(Zro)(Zro)();
   };`
 
-var mona = `
-var M = function M (x) {
+var mona = `const M = function M (x) {
   return function go (func) {
     if (func === Rf78d3s5) return x;
     else x = func(x);
     return go;
   }
 }
-Where Rf78d3s5 = () => {}; // This flag is a function in order to simplify future type checking.
-`
+Where Rf78d3s5 = () => {}; // This flag is a function in order to
+                              accommodate future type checking.`
 var orthoganal = `var demo1 = M(3);
 var demo2 = M(3);
 demo1(v=>v**3);
@@ -196,17 +195,73 @@ log(m(Rf78d3s5))                             // 42
 // NOTE: ()=>3 (above) resets the value in the m-M(x) closure to 3.
 
 log(M(2)(add(4))(mult(7))(Rf78d3s5))`
+var mean = `function meaning (ar) {return ar.reduce((a, 
+  currentValue) => a**3 + currentValue, 0) - 2*13};
+
+var m = M([1,3,4]);
+m(meaning);
+m(Rf78d3s5);     // 42`;
+
+  var M4 = `var M = function M(x) {
+    let ar = [];
+    return function go(func) {
+      if (func === Rf78d3s5) return x;
+      if (func === Rf7ar3s5) return ar;
+      else x = func(x);
+      if (typeof func == "function") ar.push(func);
+      return go;
+    };
+  };`;
+
+var reverseShow = `function reverse () {  // this works
+    var k = m(Rf7ar3s5).length;
+    let fu = m(Rf7ar3s5)[k-1];
+    let foo = x => fu(fu(fu(x)));
+    m(foo);
+    m = m;
+    let arr = m(Rf7ar3s5);
+    if (m(Rf7ar3s5).slice(-1)[0].name !== m(Rf7ar3s5)
+                                .slice(-2,-1)[0].name) m(Rf7ar3s5).splice(-2,2);
+};`;
 
 
 
+
+  
 </script>
 
-<h1>Basic JS-Monads</h1>
-
-<p>Basic JS-Monads, as defined and demonstrated in this website, are closures with outer scope M, defined as follows:</p>
+<h1>JavaScript Functions</h1>
+<h3> This little function:  </h3>
 <pre>{mona}</pre>
-<p> M can serve as the outer scope for multiple orthogonal (non-interacting) functions, with structures identical to M's "go()". For example:</p> 
+<h3> ... can anonymously compose functions,</h3>
+<pre>M(3)(v=>v**3)(v => v*4)(v => v - 8)(Math.sqrt)(Rf78d3s5);  // 10</pre>
+<h3> ... can serve as the outer scope for closures encapsulating everything that happens in applications, be they simple,</h3>
 
+<pre>var result = 2 * [4,5,12].reduce((a, b) => a + b);  // 42</pre>
+
+<h3> ... or complex,</h3>
+
+  <span style="color:maroon;">m = M( [ bb, gg, rr, oo, yy, ww ] )</span>
+  <span>at <a href="./cube3#cubeDef">Rubik's Cube Simulation</a>, in which the m-M(x) closure encapsulates an array of six nine-member arrays of references to strings. These strings signify div classes with background colors corresponding to the colors of the cube which is displayed in the browser. User key presses and button clicks invoke functions that work inside the m-M(x) closure, rearranging the classes of the 54 divs that constitute the cube. Here's another complex application encapsulated in an m-M(x) closure: <a href="./score">The Solitaire Game of Score</a>. It could use some cleaning and refactoring, but the browser interface works like a charm. </span>
+<p> I suspect that many readers are still getting used to m-M(x) closures, where functions "f" operate on x sequestered away from whatever else is happening in a module not by directly operating on x (i.e., an immediate call to f(x)), but by being provided to m as arguments. Regardless of how comfortable you are with these closures, this is a good time to be surprised by the tiny amount of memory, and the simplicity of the function, needed to reverse a series of simulated Rubik's cube moves. There's no need to save the prior configurations of the cube in order to revisit them in the browser, one by one. All that's needed is an array of references to the functions invoked in performing prior moves. The demo is here: <a href="./cube4">cube4</a>. 
+  A more detailed and thorough explanation of the Rubik's cube examples is directly below. Click here to skip to the section showing lots of <a href="#examples">examples and facts about m-M(x) closures</a> </p>
+
+<a id="cube"></a>
+<h1>Simulated Rubik's Cube</h1>
+
+
+<p> M is re-defined for <a href="./cube3">cube3</a> as follows:
+<pre style="margin-left:50px">{M4}</pre>
+<p>And here's the function that can reverse a series of moves::</p>
+<pre>{reverseShow}</pre>
+<p>This works because the inverse of any 90 degree rotation -- all basic cube moves are 90 degree rotations -- is three more 90 degree rotations. The reverse function is oblivious to precisely which functions were responsible for the transformations being reversed. Whatever the functions in the list happen to be, they just need to run three more times in the reverse order in which they were called. These three-move sequences and the move being reversed are then discarded, shortening the list each time "reverse" is called. </p>
+
+
+<a id="examples"></a>
+<h1>Elementary Facts and Examples</h1>
+
+
+<p> M can serve as the outer scope for multiple orthogonal (non-interacting) functions, with structures identical to M's "go()". For example:</p> 
 <pre>{orthoganal}</pre>
  
 <h3> "M" facilitates function composition.</h3>  
@@ -277,37 +332,25 @@ var m = M(cube); // x is the solved Rubik's cube representation encapsulated in 
 <p>More details are at <a href='https://github.com/dschalk/JavaScript-Functions'>Javascript-Functions</a>. </p>
 <br><br>
 <h1>Function Composition Simplified</h1>
+<pre>{ZbackDemo}</pre>
+
+<br><br><br>
+
+
 <p> In the neighboring <a href=./cube>Rubik's cube></a> page, the functions for rotating the entire cube are elaborate and intricate. Other simulators use libraries or CSS transforms to rotate cubes, but I've yet to see one keyboard controllable Rubik's cube simulator that remains sensible after rotations. If the original right side happens to be on the bottom, pressing the key that used to rotate the right side rotates the bottom instead. </p>
 <p> Under the hood, the cube remains stationary while the stickers (colors) get rearranged to simulate rotations of the faces, centers, and entire cube. Pressing the "r" key, for example, always rotates the right face of the cube on this page, but nowhere else as far as I know. </p>
 <p>Here are the functions that rotate the cube 90 degrees on the Z axis: </p>
 <pre>{Zdemo}</pre>
 <p>Writing the code for Zro was a meticulous and painstaking endeavor. Nine copies each of the strings "blue", "green", "red", "orange", "yellow", and "white" had to be rearranged precisely as they are when a real Rubik's cube is rotated. </p>
 <p> Substituting a new arrangement of the stickers (colors) for the previous one doesn't require much of the browser engine's memory or processing capability, and making the substitution requires very little time; so, rather than write another elaborate recipe for the reverse rearrangement, I simply ran the 90 degree rotation three times. It was sure to work as well as running it once, so no testing or bug-hunting was necessary. Here's the code for rotating 90 degrees counterclockwise on the Z axis</p>
-<pre>{ZbackDemo}</pre>
-
-<br><br><br>
-<!--
-  var trCount = 0;
 
 
-  function transform () {
-    var ar = cube;
-    m( [ ar[2], ar[3], ar[1], ar[0], [ ar[4][6], ar[4][3], ar[4][0], ar[4][7], ar[4][4], ar[4][1],ar[4][8], ar[4][5], ar[4][2] ], [ ar[5][2], ar[5][5], ar[5][8], ar[5][1], ar[5][4], ar[5][7],ar[5][0], ar[5][3], ar[5][6] ] ] );
-    cube = m();
 
-    trCount = (trCount + 1) % 4;
-    var Rtemp;
-    if (trCount === 1) {
-      Rtemp = B;
-      F = L;
-      L = B;
-      B = Rtemp;
-      R = F;
-    }
-    console.log("In transform. m() is", m());
-    return cube;
-  }
--->
+
+
+
+
+
 
 <slot></slot>
 

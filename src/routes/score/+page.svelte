@@ -505,7 +505,7 @@ top.subscribe((val) => browser && (localStorage.top = val));
 		tog = true;
 	}
 
-	var fuDem = `function fu (a) {                                    // fu
+	var fuDem = `function fu (a) {                  // fu
   a[5].push(clone(a));
   a[7].push(clone(a)); // All game states for use in "Back" and "Forward."
   a[6][0] += 1;
@@ -1032,6 +1032,7 @@ var start = `m2 = M(
 	to values of undefine and shows buttons that correspond to numbers in ar. This is done by
 	switching variables p in "style = 'display: p' back and forth between "none" and "inline".
 </p>
+    <a id = "scoreDef"></a>
 <pre>{fuDem}</pre>
 
 <p>Clicking "ROLL" calls runRoll() which, in turn, calls updateRoll() to re-set HTML variables.</p>

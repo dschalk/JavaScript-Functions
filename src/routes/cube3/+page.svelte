@@ -19,7 +19,7 @@
 
   var Rf78d3s5 = () => {};
 
-  var M = function M(x) {
+  const M = function M(x) {
     return function go(func) {
       if (func === Rf78d3s5) return x;
       else x = func(x);
@@ -27,7 +27,7 @@
     };
   };
   
-var Mcode = `var M = function M(x) {
+var Mcode = `const M = function M(x) {
   return function go(func) {
     if (func === Rf78d3s5) return x;
     else x = func(x);
@@ -178,12 +178,12 @@ var Mcode = `var M = function M(x) {
   const w7 = 'white';
   const w8 = "white";
 
-  var bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
-  var gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
-  var rr = [r0, r1, r2, r3, r4, r5, r6, r7, r8];
-  var oo = [o0, o1, o2, o3, o4, o5, o6, o7, o8];
-  var yy = [y0, y1, y2, y3, y4, y5, y6, y7, y8];
-  var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
+  const bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
+  const gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
+  const rr = [r0, r1, r2, r3, r4, r5, r6, r7, r8];
+  const oo = [o0, o1, o2, o3, o4, o5, o6, o7, o8];
+  const yy = [y0, y1, y2, y3, y4, y5, y6, y7, y8];
+  const ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
 
   var m = M([bb, gg, rr, oo, yy, ww]);`;
   
@@ -1969,9 +1969,9 @@ var Ucode = ` function U(ar) {
   const w5 = 'yellow';
   const w6 = 'yellow';
   const w7 = 'yellow';
-  const w8 = "yellow";
+  const w8 = "yellow";`;
 
-  var bb = [b0,b1,b2,b3,b4,b5,b6,b7,b8];
+  var constants2 = `var bb = [b0,b1,b2,b3,b4,b5,b6,b7,b8];
   var gg = [g0,g1,g2,g3,g4,g5,g6,g7,g8];
   var rr = [r0,r1,r2,r3,r4,r5,r6,r7,r8];
   var oo = [o0,o1,o2,o3,o4,o5,o6,o7,o8];
@@ -2980,7 +2980,7 @@ html {
     </p>
 <h1>The m-M(x) Closure (JS-Monad)</h1>
 
-<pre>{`var M = function M(x) {
+<pre>{`const M = function M(x) {
   return function go(func) {
     if (func === Rf78d3s5) return x;
     else x = func(x);
@@ -2994,6 +2994,9 @@ html {
 
 <p> The simulated Rubik's cube is represented by "x" in a m-M(x) closure, where m and x are defined by the following code:</p>
 <pre>{constants}</pre>
+
+<a id = "cubeDef"></a>
+<pre>{constants2}</pre>
 <p>The correspondence between the array containing the six nine-member arrays of divs held in the m-M(x) closure -- available as m(Rf78d3s5) -- and the images of a Rubik's cube displayed in the DOM, is apparent in the code below.</p>
 <pre>{dom}</pre>  
 

@@ -10,11 +10,10 @@
 <nav>
         <a href="/">Home</a>
 
-        <a href="/cube3">Cube 3</a>
+        <a href="/cube4">Simulated Rubik's Cube</a>
 
-        <a href="/cube4">Cube 4</a>
+        <a href="/score">The Solitaire Game of Score</a>
 
-        <a href="/score">Score</a>
   </nav>
 
   <div>"*********************************************"</div>
