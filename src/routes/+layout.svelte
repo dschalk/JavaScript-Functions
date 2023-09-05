@@ -3,18 +3,23 @@
 </script>
 <style>
   a {
-    margin-right: 12px;
+    margin-right: 40px;
+    font-size: 24px;
+    font-weight: bold;
+    color: purple;
   }
 </style>
 <br><br>
 <nav>
-        <a href="/">Home</a>
+        <a href="./">Home</a>
 
-        <a href="/cube4">Simulated Rubik's Cube</a>
+        <a href="./cube4">Rubik's Cube</a>
 
-        <a href="/score">The Solitaire Game of Score</a>
+        <a href="/score">Game of Score</a>
+
+        <a href="/cube5">cube5</a>
 
   </nav>
 
-  <div>"*********************************************"</div>
+  <div>"*****************************************************************"</div>
   <slot></slot>

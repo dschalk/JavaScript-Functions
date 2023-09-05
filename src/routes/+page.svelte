@@ -5,18 +5,18 @@ import Firefox_1 from '$lib/Firefox_test.png';
 import Firefox_2 from '$lib/Firefox_test_2.png';
 import Firefox_3 from '$lib/Composition.png';
 
-var Mdisplay = `var M = function M (x) {
+var Mdisplay = `function M (x) {
   return function go (func) {
-    if (func === Rf78d3s5) return x;
+    if (func === dF3s7) return x;
     else x = func(x);
     return go;
   }
 }
-Where Rf78d3s5 = () => {}; // This flag is a function in order to simplify future type checking.`
+Where dF3s7 = () => {}; // This flag is a function in order to simplify future type checking.`
 
 var ret = () => {};
 
-var M = function M (x) {
+function M (x) {
   return function go (func) {
     if (func === ret) return x;
     else x = func(x);
@@ -162,56 +162,57 @@ var ZbackDemo = `function Zback (ar) {
       cube = m(Zro)(Zro)(Zro)();
   };`
 
-var mona = `const M = function M (x) {
+var mona = `function M (x) {
   return function go (func) {
-    if (func === Rf78d3s5) return x;
+    if (func === dF3s7) return x;
     else x = func(x);
     return go;
   }
 }
-Where Rf78d3s5 = () => {}; // This flag is a function in order to
+Where dF3s7 = () => {}; // This flag is a function in order to
                               accommodate future type checking.`
 var orthoganal = `var demo1 = M(3);
 var demo2 = M(3);
 demo1(v=>v**3);
 demo2(v=>v - 1);
-console.log(demo1(Rf78d3s5)); // 27
-console.log(demo2(Rf78d3s5)); // 2`;
+console.log(demo1(dF3s7)); // 27
+console.log(demo2(dF3s7)); // 2`;
 
 var compose1 = `var m = M(3);
-log(M(3)(v=>v**3)(v=>v*3)(Math.sqrt)(Rf78d3s5)); // 9`;
+log(M(3)(v=>v**3)(v=>v*3)(Math.sqrt)(dF3s7)); // 9`;
 
 var compose2 = `m(()=>4);  // Sets x in the m-M(x) closure to 4.
 m(v=>v**4)(v=>v**(1/2))(v=>v-7)
-log(m(Rf78d3s5))                             // 42
+log(m(dF3s7))                             // 42
 
 var add = a => b => a + b;
 var mult = a => b => a * b;
 var exp = a => b => b**a;
 
 m(()=>3)(add(4))(exp(4))(Math.sqrt)(add(-7));
-log(m(Rf78d3s5))                             // 42
+log(m(dF3s7))                             // 42
 
 // NOTE: ()=>3 (above) resets the value in the m-M(x) closure to 3.
 
-log(M(2)(add(4))(mult(7))(Rf78d3s5))`
+log(M(2)(add(4))(mult(7))(dF3s7))`
 var mean = `function meaning (ar) {return ar.reduce((a, 
   currentValue) => a**3 + currentValue, 0) - 2*13};
 
 var m = M([1,3,4]);
 m(meaning);
-m(Rf78d3s5);     // 42`;
+m(dF3s7);     // 42`;
 
-  var M4 = `var M = function M(x) {
+  var M4 = `function M(x) {
     let ar = [];
     return function go(func) {
-      if (func === Rf78d3s5) return x;
+      if (func === dF3s7) return x;
       if (func === Rf7ar3s5) return ar;
       else x = func(x);
       if (typeof func == "function") ar.push(func);
       return go;
     };
   };`;
+
 
 var reverseShow = `function reverse () {  // this works
     var k = m(Rf7ar3s5).length;
@@ -221,25 +222,60 @@ var reverseShow = `function reverse () {  // this works
     m = m;
     let arr = m(Rf7ar3s5);
     if (m(Rf7ar3s5).slice(-1)[0].name !== m(Rf7ar3s5)
-                                .slice(-2,-1)[0].name) m(Rf7ar3s5).splice(-2,2);
+       .slice(-2,-1)[0].name) m(Rf7ar3s5).splice(-2,2);
 };`;
-
-
-
 
   
 </script>
 
+<style>
+body {
+width: 70%;
+margin: 0 auto;
+}
+
+h3 {
+  color: black;
+}
+
+span {
+  color: darkblue;
+  font-size: 22px;
+}
+
+p {
+  color: darkblue;
+  font-size: 22px;
+}
+pre {
+  color: #550033;
+}
+
+h1 {
+  color: #550033;
+}
+
+button {
+  font-size: 22px;
+}
+
+
+
+</style>
+
+
+<body>
 <h1>JavaScript Functions</h1>
-<h3> This little function:  </h3>
+<h3 style="font-size: 32px; font-weight: bold"> This little function . . .  </h3>
 <pre>{mona}</pre>
-<h3> ... can anonymously compose functions,</h3>
-<pre>M(3)(v=>v**3)(v => v*4)(v => v - 8)(Math.sqrt)(Rf78d3s5);  // 10</pre>
-<h3> ... can serve as the outer scope for closures encapsulating everything that happens in applications, be they simple,</h3>
+<h3> . . . can anonymously compose functions,</h3>
+<pre>M(3)(v=>v**3)(v => v*4)(v => v - 8)(Math.sqrt)(dF3s7);  // 10</pre>
+<h3>. . . can serve as the outer scope for closures encapsulating everything that happens in applications.</h3>
+<h3>&nbsp&nbsp;&nbsp;&nbsp;&nbsp;. . . be they simple,</h3>
 
-<pre>var result = 2 * [4,5,12].reduce((a, b) => a + b);  // 42</pre>
+<pre>var result = [3,4,5,6,7,8,9].reduce((a, b) => a + b); // 42</pre>
 
-<h3> ... or complex,</h3>
+<h3>&nbsp&nbsp;&nbsp;&nbsp;&nbsp;... or complex,</h3>
 
   <span style="color:maroon;">m = M( [ bb, gg, rr, oo, yy, ww ] )</span>
   <span>at <a href="./cube3#cubeDef">Rubik's Cube Simulation</a>, in which the m-M(x) closure encapsulates an array of six nine-member arrays of references to strings. These strings signify div classes with background colors corresponding to the colors of the cube which is displayed in the browser. User key presses and button clicks invoke functions that work inside the m-M(x) closure, rearranging the classes of the 54 divs that constitute the cube. Here's another complex application encapsulated in an m-M(x) closure: <a href="./score">The Solitaire Game of Score</a>. It could use some cleaning and refactoring, but the browser interface works like a charm. </span>
@@ -248,13 +284,12 @@ var reverseShow = `function reverse () {  // this works
 
 <a id="cube"></a>
 <h1>Simulated Rubik's Cube</h1>
-
-
 <p> M is re-defined for <a href="./cube3">cube3</a> as follows:
 <pre style="margin-left:50px">{M4}</pre>
 <p>And here's the function that can reverse a series of moves::</p>
 <pre>{reverseShow}</pre>
-<p>This works because the inverse of any 90 degree rotation -- all basic cube moves are 90 degree rotations -- is three more 90 degree rotations. The reverse function is oblivious to precisely which functions were responsible for the transformations being reversed. Whatever the functions in the list happen to be, they just need to run three more times in the reverse order in which they were called. These three-move sequences and the move being reversed are then discarded, shortening the list each time "reverse" is called. </p>
+<p>foo reverses fu because the inverse of any cube rotation is three more rotations. All of the basic button clicks and key presses cause 90 degree rotations. The algorithms in the right column are compositions of basic moves. Letters followed by "2" indicate two basic moves. Clicking <button on:click={sune}>Sune: R U R' U R U2 R'</button> increases the functions list, m(Rf7ar3s5), by 8, as shown in <a href="./cube4">Rubik's Cube</a></p>
+<p>The reverse function is oblivious to precisely which functions were responsible for the transformations being reversed. Whatever the function at the top of the list happens to be, it run three more times. After foo executes, it and the function that was reversed are discarded, making the list one item shorter than it was before the "u" key was pressed (or <button on:click={Start}>Start</button> was clicked). </p>
 
 
 <a id="examples"></a>
@@ -271,7 +306,10 @@ var reverseShow = `function reverse () {  // this works
 <pre>{compose2}</pre>
 <p>Here's a screenshot of the test in Firefox <a href = 'https://firefox-source-docs.mozilla.org/devtools-user/browser_console/index.html'>Firefox Developer Console</a>  </p>
   
-<img alt='Firefox3' src = {Firefox_3} />
+<img alt = "Firefox3" src = {Firefox_1} 
+width = 120%;
+height = auto;
+/>
   <p> functions that operate on functions that operate on values held in closures. These operations can mutate the value in the closure or replace it, preserving the previous value along-side its replacement. </p>
 <p>Type safety, error handling, and other functionality can be added; but for now, we'll consider just the essence of JS-Monads by working with a stripped-down, bare-bones version. This version, returned by M(x) (shown below) where x can be any JavaScript value, works much like Haskell monads without types, encapsulating and sequestering the composition of functions. </p>
 <p>As the "Cube" and "Score" pages of this website (linked above) suggest, these simple closures can handle complex functionality in elaborate applications. There's no need to modify the JS-Monad factory function "M", or the copy of "go" that it returns, and which subsequently returns itself each time it operates on a function. The functions operated on by JS-monads (m-M(x) closures) can handle any degree of complexity. Here are some definitions:</p>
@@ -285,7 +323,7 @@ var reverseShow = `function reverse () {  // this works
 
 <h1> WORK IN PROGRESS:</h1>
 <img alt = "Firefox" src = {Firefox_1} 
-width = 100%;
+width = 120%;
 height = auto;
 />
 
@@ -294,7 +332,7 @@ height = auto;
 <p>Here's some example code, followed by a test in Firefox.</p>
 <pre>{test_1}</pre>
 <img alt='Firefox2' src = {Firefox_2} 
-width = 100%;
+width = 120%;
 height = auto;
 />
 <br><br>
@@ -345,13 +383,6 @@ var m = M(cube); // x is the solved Rubik's cube representation encapsulated in 
 <p> Substituting a new arrangement of the stickers (colors) for the previous one doesn't require much of the browser engine's memory or processing capability, and making the substitution requires very little time; so, rather than write another elaborate recipe for the reverse rearrangement, I simply ran the 90 degree rotation three times. It was sure to work as well as running it once, so no testing or bug-hunting was necessary. Here's the code for rotating 90 degrees counterclockwise on the Z axis</p>
 
 
-
-
-
-
-
-
-
 <slot></slot>
 
-
+</body>
