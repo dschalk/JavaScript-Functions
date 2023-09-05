@@ -3198,7 +3198,7 @@ html {
 
   
 
-
+location.reload()
 <svelte:window on:keypress={handleKey} />
 
 <section class="columns">
@@ -3269,8 +3269,7 @@ html {
       toward the lower left and (2) the forward-facing lower-right sticker is
       yellow. Elementary tutorials say this configuration calls for the sune
       algorithm; and, indeed, sune turns the entire upper face yellow. Try
-      it. <button  on:click={sune}>Sune</button> (R U R' U R U2
-      R'). The cube has a way to go before being solved.
+      it. <button  on:click={sune}>Sune</button>. The cube has a way to go before being solved.
     </p>
 
     <p>

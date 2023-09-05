@@ -11,12 +11,11 @@
 </style>
 <br><br>
 <nav>
-        <a href="https://schalk2.com/">Home</a>
+        <a href="./Home">Home</a>
 
-        <a href="https://schalk2.com/cube4/">Rubik's Cube</a>
+        <a href="./cube4">Rubik's Cube</a>
 
-        <a href="https://schalk2.com/score/">Game of Score</a>
-
+        <a href="./score">Game of Score</a>
 
   </nav>
 
