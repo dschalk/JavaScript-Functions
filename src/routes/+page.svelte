@@ -288,7 +288,7 @@ button {
 <pre style="margin-left:50px">{M4}</pre>
 <p>And here's the function that can reverse a series of moves::</p>
 <pre>{reverseShow}</pre>
-<p>foo reverses fu because the inverse of any cube rotation is three more rotations. All of the basic button clicks and key presses cause 90 degree rotations. The algorithms in the right column are compositions of basic moves. Letters followed by "2" indicate two basic moves. Clicking <button on:click={sune}>Sune: R U R' U R U2 R'</button> increases the functions list, m(Rf7ar3s5), by 8, as shown in <a href="./cube4">Rubik's Cube</a></p>
+<p>foo reverses fu because the inverse of any cube rotation is three more rotations. All of the basic button clicks and key presses cause 90 degree rotations. The algorithms in the right column are compositions of basic moves. Letters followed by "2" indicate two basic moves. Clicking <button on:click={sune}>Sune: R U R' U R U2 R'</button> increases the functions list, m(Rf7ar3s5), by 8, as shown in <a href="https://schalk2.com/cube4">Rubik's Cube</a></p>
 <p>The reverse function is oblivious to precisely which functions were responsible for the transformations being reversed. Whatever the function at the top of the list happens to be, it run three more times. After foo executes, it and the function that was reversed are discarded, making the list one item shorter than it was before the "u" key was pressed (or <button on:click={Start}>Start</button> was clicked). </p>
 
 
