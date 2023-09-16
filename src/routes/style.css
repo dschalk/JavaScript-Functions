@@ -1,5 +1,5 @@
 
-html {background-color: #222222;}
+html {background-color:#331f12;}
 
 div {
     color: blue;
@@ -7,8 +7,8 @@ div {
 
 body {
     font-size: 22px;
-    background-color:  #aaccbb; 
-    color: aqua;
+    background-color: #E5DEC8; 
+    color: darkblue;
     padding-left: 3%;
     padding-right: 3%;
     margin-left: 5%;
@@ -32,7 +32,7 @@ p {
 	
   button {
     margin-left: 1%;
-    background-color: lightblue;
+    background-color: pink;
     border-width: 2px;
     border-color: #E8F7C1;
     border-radius: 10px;

@@ -1,6 +1,6 @@
 
-<script>
 
+<script>
 import Firefox_1 from '$lib/Firefox_test.png';
 import Firefox_2 from '$lib/Firefox_test_2.png';
 import Firefox_3 from '$lib/Composition.png';
@@ -225,14 +225,10 @@ var reverseShow = `function reverse () {  // this works
        .slice(-2,-1)[0].name) m(Rf7ar3s5).splice(-2,2);
 };`;
 
-  
 </script>
 
 <style>
-body {
-width: 70%;
-margin: 0 auto;
-}
+
 
 h3 {
   color: black;
@@ -240,15 +236,16 @@ h3 {
 
 span {
   color: darkblue;
-  font-size: 22px;
+  font-size: 23px;
 }
 
 p {
   color: darkblue;
-  font-size: 22px;
+  font-size: 23px;
 }
 pre {
   color: #550033;
+  font-size: 23px;
 }
 
 h1 {
@@ -259,12 +256,10 @@ button {
   font-size: 22px;
 }
 
-
-
 </style>
 
+<div style = "margin-left:12%; margin-right: 12%;">
 
-<body>
 <h1>JavaScript Functions</h1>
 <h3 style="font-size: 32px; font-weight: bold"> This little function . . .  </h3>
 <pre>{mona}</pre>
@@ -277,8 +272,12 @@ button {
 
 <h3>&nbsp&nbsp;&nbsp;&nbsp;&nbsp;... or complex,</h3>
 
-  <span style="color:maroon;">m = M( [ bb, gg, rr, oo, yy, ww ] )</span>
-  <span>at <a href="./cube3#cubeDef">Rubik's Cube Simulation</a>, in which the m-M(x) closure encapsulates an array of six nine-member arrays of references to strings. These strings signify div classes with background colors corresponding to the colors of the cube which is displayed in the browser. User key presses and button clicks invoke functions that work inside the m-M(x) closure, rearranging the classes of the 54 divs that constitute the cube. Here's another complex application encapsulated in an m-M(x) closure: <a href="./score">The Solitaire Game of Score</a>. It could use some cleaning and refactoring, but the browser interface works like a charm. </span>
+  <p>For example, <span style="color:maroon;">m = M( [ bb, gg, rr, oo, yy, ww ] )</span>
+  <span>at <a href="./cube3#cubeDef">Rubik's Cube Simulation</a>, in which the m-M(x) closure encapsulates an array of six nine-member arrays of references to the strings "blue", "green", "orange", "red", "yellow", and "white." These are the names of CSS classes with corresponding background colors, the classes of the 54 divs that populate (nine each) the six sides of a simulated Rubik's cube.</span>  
+  
+  <p> This is the definition of "x" in the m-M(x) closure encapsulating the inner working of the <a href="./score#mDef">Game of Score</a>: 
+    
+  <p>  These strings signify div classes with background colors corresponding to the colors of the cube which is displayed in the browser. User key presses and button clicks invoke functions that work inside the m-M(x) closure, rearranging the classes of the 54 divs that constitute the cube. Here's another complex application encapsulated in an m-M(x) closure: <a href="./score">The Solitaire Game of Score</a>. It could use some cleaning and refactoring, but the browser interface works like a charm. </p>
 <p> I suspect that many readers are still getting used to m-M(x) closures, where functions "f" operate on x sequestered away from whatever else is happening in a module not by directly operating on x (i.e., an immediate call to f(x)), but by being provided to m as arguments. Regardless of how comfortable you are with these closures, this is a good time to be surprised by the tiny amount of memory, and the simplicity of the function, needed to reverse a series of simulated Rubik's cube moves. There's no need to save the prior configurations of the cube in order to revisit them in the browser, one by one. All that's needed is an array of references to the functions invoked in performing prior moves. The demo is here: <a href="./cube4">cube4</a>. 
   A more detailed and thorough explanation of the Rubik's cube examples is directly below. Click here to skip to the section showing lots of <a href="#examples">examples and facts about m-M(x) closures</a> </p>
 
@@ -288,8 +287,8 @@ button {
 <pre style="margin-left:50px">{M4}</pre>
 <p>And here's the function that can reverse a series of moves::</p>
 <pre>{reverseShow}</pre>
-<p>foo reverses fu because the inverse of any cube rotation is three more rotations. All of the basic button clicks and key presses cause 90 degree rotations. The algorithms in the right column are compositions of basic moves. Letters followed by "2" indicate two basic moves. Clicking <button on:click={sune}>Sune: R U R' U R U2 R'</button> increases the functions list, m(Rf7ar3s5), by 8, as shown in <a href="https://schalk2.com/cube4">Rubik's Cube</a></p>
-<p>The reverse function is oblivious to precisely which functions were responsible for the transformations being reversed. Whatever the function at the top of the list happens to be, it run three more times. After foo executes, it and the function that was reversed are discarded, making the list one item shorter than it was before the "u" key was pressed (or <button on:click={Start}>Start</button> was clicked). </p>
+<p>foo reverses fu because the inverse of any cube rotation is three more rotations. All of the basic button clicks and key presses cause 90 degree rotations. The algorithms in the right column are compositions of basic moves. Letters followed by "2" indicate two basic moves. Clicking the "Sune" button in the right column increases the functions list, m(Rf7ar3s5), by 8, as shown in <a href="./cube4">Rubik's Cube</a></p>
+<p>The reverse function is oblivious to precisely which functions were responsible for the transformations being reversed. Whatever the function at the top of the list happens to be, it run three more times. After foo executes, it and the function that was reversed are discarded, making the list one item shorter than it was before the "u" key was pressed the "Start" button. </p>
 
 
 <a id="examples"></a>
@@ -305,5 +304,5 @@ button {
 <p>The value "x" in the m-M(x) closure persists until m is redefined or deleted.</p>
 <pre>{compose2}</pre>
 <slot></slot>
+</div>
 
-</body>

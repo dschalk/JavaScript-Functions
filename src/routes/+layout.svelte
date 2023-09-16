@@ -11,11 +11,17 @@
 </style>
 <br><br>
 <nav>
-        <a href="./Home">Home</a>
+        <a href="./">Home</a>
 
         <a href="./cube4">Rubik's Cube</a>
 
         <a href="./score">Game of Score</a>
+
+        <a href="./arrays">Arrays</a>
+
+        <a href="./async">Async</a>
+
+        <a href="./functional">Functional</a>
 
   </nav>
 

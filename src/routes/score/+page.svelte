@@ -904,7 +904,11 @@ var start = `m2 = M(
 
 <style>
   pre {margin-left: 3%;}
-  
+ 
+  span {
+	color: darkred;
+  }
+
   button {
     margin-left: 1%;
     background-color: lightblue;
@@ -927,25 +931,28 @@ var start = `m2 = M(
 
 </style>
 
+
+
 <svelte:head>
 	<title>The Solitaire Game of Score</title>
 </svelte:head>
+<div style = "margin-left:12%; margin-right: 12%;">
 <br />
 <div>**************************************************************************</div>
 <div style="font-family: Times New Roman; text-align:center; font-size: 32px;" transition:fade>
 	<br />
 
-	The State of Score Maintained in a 	Closure
+	The State of Score Maintained in a Closure
 </div>
 <br />
 <p> The game is held in the recursive closure returned initially by M(x) where M is: </p>
 <pre>{monad}</pre>
 <p>and x is an array of eight arrays defined as:</p>
 <pre>{start}</pre>
-<p>It doesn't matter what, if anything, the function ret() would do if it were to be called because it doesn't get called. It's only purpose is to cause go(), the function returned by M, to return the current state of the value x held in the closure that was created by running var some-name = M(x). M can also be used anonymously to chain functions as in <span style="color: #55ffff">M(2)(v=>v+4)(v=>v*7)(ret) = 42</span>. </p>
+<p>It doesn't matter what, if anything, the function ret() would do if it were to be called because it doesn't get called. It's only purpose is to cause go(), the function returned by M, to return the current state of the value x held in the closure that was created by running var some-name = M(x). M can also be used anonymously to chain functions as in <span>M(2)(v=>v+4)(v=>v*7)(ret) = 42</span>. </p>
 
 
-<p>Here, ret() is defined as <span style="color: #55ffff">{retCode}</span>. Later versions of M dispense with ret(), returning the value held in the m-M(x) closure whenever the argument is null.
+<p>Here, ret() is defined as <span>{retCode}</span>. Later versions of M dispense with ret(), returning the value held in the m-M(x) closure whenever the argument is null.
 	<pre>{monadNew}</pre>
 	
 
@@ -978,9 +985,9 @@ var start = `m2 = M(
 <button on:click={() => m2(clic3)}>divide</button>
 <button on:click={() => m2(clic4)}>concat</button>
 
-<span style="margin-left: 20px; color:#bbbbff; font-size:28px">{Z}</span>
-<span style="margin-left: 20px; color:#bbbbff; font-size:38px">{ZWIN}</span>
-<span style="margin-left: 20px; color:#bbbbff; font-size:38px">{FIN}</span>
+<span style="margin-left: 20px; font-size:28px">{Z}</span>
+<span style="margin-left: 20px; font-size:38px">{ZWIN}</span>
+<span style="margin-left: 20px; font-size:38px">{FIN}</span>
 
 <br /><br />
 <button on:click={() => m2(runRoll(m2(s)[4][0]))}>ROLL</button>
@@ -1156,5 +1163,6 @@ Caution:
 
 
 </style> -->
+</div>
 
 <slot></slot>

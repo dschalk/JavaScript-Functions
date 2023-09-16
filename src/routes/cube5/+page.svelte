@@ -1,4 +1,3 @@
-
 <script>
   // import Image from './Image.svelte'
   var log = console.log;
@@ -20,20 +19,23 @@
   var index = 1;
   function setIndex () {index = 1};
   var Amos;
-  var Rf78d3s5 = () => {};
-  var Rf7ar3s5 = () => {};
+  var dF3x = () => {};
+  var dF3ar = () => {};
 
-  var M = function M(x) {
+  var dF3x = () => {};
+  var dF3ar = () => {};
+
+  function M(x) {
     let ar = [];
     return function go(func) {
-      if (func === Rf78d3s5) return x;
-      if (func === Rf7ar3s5) return ar;
+      if (func === dF3x) return x;
+      if (func === dF3ar) return ar;
       else x = func(x);
       if (typeof func == "function") ar.push(func);
       return go;
     };
   };
-  
+
   const b0 = 'blue';
   const b1 = 'blue';
   const b2 = 'blue';
@@ -94,6 +96,13 @@
   const w7 = 'white';
   const w8 = "white";
 
+/*var bb = ["b0","b1","b2","b3","b4","b5","b6","b7","b8"];  // For testing 
+var gg = ["g0","g1","g2","g3","g4","g5","g6","g7","g8"];
+var rr = ["r0","r1","r2","r3","r4","r5","r6","r7","r8"];
+var oo = ["o0","o1","o2","o3","o4","o5","o6","o7","o8"];
+var yy = ["y0","y1","y2","y3","y4","y5","y6","y7","y8"];
+var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
+
   var bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
   var gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
   var rr = [r0, r1, r2, r3, r4, r5, r6, r7, r8];
@@ -110,55 +119,52 @@
     m = M(cubeStart);
   };
 
-$: Sally = m(Rf7ar3s5).length;
+$: Sally = m(dF3ar).length;
 
-var testCode1 = `function test () {  // this works
-    let len = m(Rf7ar3s5).length;
+var reverseCode1 = `function reverse () {  // this works
+    let len = m(dF3ar).length;
     for (let k = 0; k < len; k+=1) {
-      m(m(Rf7ar3s5)[k]);
+      m(m(dF3ar)[k]);
       m = m;
     }
 }`
-var cow = 0;
 
+function reverse () { 
+    let fu = m(dF3ar).pop(); // discards the value being reversed.
+    let foo = x => fu(fu(fu(x)));
+    m(foo)(dF3ar).pop();     // uses foo, then pops it off the list.
+    m = m;
+};
 
-function test () {  // this works
-    var k = m(Rf7ar3s5).length;
-    let fu = m(Rf7ar3s5)[k-1];
+var reverseShow = `function reverse () {  // this works
+    var k = m(dF3ar).length;
+    let fu = m(dF3ar)[k-1];
     let foo = x => fu(fu(fu(x)));
     m(foo);
     m = m;
-    let arr = m(Rf7ar3s5);
-    if (m(Rf7ar3s5).slice(-1)[0].name !== m(Rf7ar3s5).slice(-2,-1)[0].name) m(Rf7ar3s5).splice(-2,2);
-};
+    let arr = m(dF3ar);
+    if (m(dF3ar).slice(-1)[0].name !== m(dF3ar)
+       .slice(-2,-1)[0].name) m(dF3ar).splice(-2,2);
+};`;
 
-function fnames (x) {
-    var ar;
-    ar = x.map((v) => v.name);
-    return ar;
-}
-
-var fNames;
-$: fNames = fnames(m(Rf7ar3s5));
-
-var testCode2 = `function test () {  // this works
-    let k = m(Rf7ar3s5).length;
-    let fu = m(Rf7ar3s5)[k-index];
+var reverseCode2 = `function reverse () {  // this works
+    let k = m(dF3ar).length;
+    let fu = m(dF3ar)[k-index];
     let foo = x => fu(fu(fu(x)));
     m(foo);
     index += 2;
     console.log("index is", index);
     m = m;
-    if (index > m(Rf7ar3s5).length) Start();
+    if (index > m(dF3ar).length) Start();
 }`;
 
 var Mcode = `var M = function M(x) {
   return function go(func) {
-    if (func === Rf78d3s5) return x;
+    if (func === dF3x) return x;
     else x = func(x);
     return go;
   };
-} where Rf78d3s5 = () => {};`;
+} where dF3x = () => {};`;
 
   var mCode = `const b0 = 'blue';
   const b1 = 'blue';
@@ -230,7 +236,7 @@ var Mcode = `var M = function M(x) {
   var m = M([bb, gg, rr, oo, yy, ww]);`;
   
 
-  function Xro(ar) {
+  const Xro = function Xro(ar) {
     let temp = [];
     temp[0] = [
         ar[0][6],
@@ -281,9 +287,61 @@ var Mcode = `var M = function M(x) {
     return temp;
   };
 
-  const Xror = x => Xro(Xro(Xro(x)));
+  const Xror = function Xror(ar) {
+    let temp = [];
+    temp[0] = [
+        ar[0][2],
+        ar[0][5],
+        ar[0][8],
+        ar[0][1],
+        ar[0][4],
+        ar[0][7],
+        ar[0][0],
+        ar[0][3],
+        ar[0][6],
+      ];
+    temp[1] = [
+        ar[1][6],
+        ar[1][3],
+        ar[1][0],
+        ar[1][7],
+        ar[1][4],
+        ar[1][1],
+        ar[1][8],
+        ar[1][5],
+        ar[1][2],
+      ];
+    temp[2] = [
+        ar[5][8],
+        ar[5][7],
+        ar[5][6],
+        ar[5][5],
+        ar[5][4],
+        ar[5][3],
+        ar[5][2],
+        ar[5][1],
+        ar[5][0],
+      ];
+    temp[3] = ar[4];
+    temp[4] = [
+        ar[2][8],
+        ar[2][7],
+        ar[2][6],
+        ar[2][5],
+        ar[2][4],
+        ar[2][3],
+        ar[2][2],
+        ar[2][1],
+        ar[2][0],
+      ];
+    temp[5] = ar[3];
+      
+    return temp;
+  };
 
-  function Yro(ar) {
+  // const Xror = x => Xro(Xro(Xro(x)));
+
+  const Yro = function Yro(ar) {
     let temp = [];
     temp[0] = ar[2];
     temp[1] = ar[3];
@@ -314,9 +372,40 @@ var Mcode = `var M = function M(x) {
     return temp;
   } 
 
-  const Yror = x => Yro(Yro(Yro(x)));
-  
-  function Zro(ar) {
+  const Yror = function Yror(ar) {
+    let temp = [];
+    temp[0] = ar[3];
+    temp[1] = ar[2];
+    temp[2] = ar[0];
+    temp[3] = ar[1];
+    temp[4] = [
+        ar[4][2],
+        ar[4][5],
+        ar[4][8],
+        ar[4][1],
+        ar[4][4],
+        ar[4][7],
+        ar[4][0],
+        ar[4][3],
+        ar[4][6],
+      ];
+      temp[5] = [
+        ar[5][6],
+        ar[5][3],
+        ar[5][0],
+        ar[5][7],
+        ar[5][4],
+        ar[5][1],
+        ar[5][8],
+        ar[5][5],
+        ar[5][2],
+      ];
+    return temp;
+  } 
+
+  //  const Yror = x => Yro(Yro(Yro(x)));
+ 
+  const Zro = function Zro(ar) {
     let temp = [];
     temp[0] = [
         ar[4][6],
@@ -387,43 +476,114 @@ var Mcode = `var M = function M(x) {
     return temp;
   };
 
-  const Zror = x => Zro(Zro(Zro(x)));
+  const Zror = function Zror(ar) {
+    let temp = [];
+    temp[0] = [
+        ar[5][2],
+        ar[5][5],
+        ar[5][8],
+        ar[5][1],
+        ar[5][4],
+        ar[5][7],
+        ar[5][0],
+        ar[5][3],
+        ar[5][6],
+      ];
+      temp[1] = [
+        ar[4][2],
+        ar[4][5],
+        ar[4][8],
+        ar[4][1],
+        ar[4][4],
+        ar[4][7],
+        ar[4][0],
+        ar[4][3],
+        ar[4][6],
+      ];
+      temp[2] = [
+        ar[2][6],
+        ar[2][3],
+        ar[2][0],
+        ar[2][7],
+        ar[2][4],
+        ar[2][1],
+        ar[2][8],
+        ar[2][5],
+        ar[2][2],
+      ];
+      temp[3] = [
+        ar[3][2],
+        ar[3][5],
+        ar[3][8],
+        ar[3][1],
+        ar[3][4],
+        ar[3][7],
+        ar[3][0],
+        ar[3][3],
+        ar[3][6],
+      ];
+      temp[4] = [
+        ar[0][2],
+        ar[0][5],
+        ar[0][8],
+        ar[0][1],
+        ar[0][4],
+        ar[0][7],
+        ar[0][0],
+        ar[0][3],
+        ar[0][6],
+      ];
+      temp[5] = [
+        ar[1][2],
+        ar[1][5],
+        ar[1][8],
+        ar[1][1],
+        ar[1][4],
+        ar[1][7],
+        ar[1][0],
+        ar[1][3],
+        ar[1][6],
+      ];
+    return temp;
+  };
 
- //  $: m = m(() => m(Rf78d3s5));
+  // const Zror = x => Zro(Zro(Zro(x)));
 
-  function Xrotate(ar) {
+ //  $: m = m(() => m(dF3x));
+
+  const Xrotate = function Xrotate(ar) {
     m(Xro);
     m = m;
   }
 
-  function Xback(ar) {
+  const Xback = function Xback(ar) {
     m(Xror);
     m = m;
   }
 
-  function Yrotate(ar) {
+  const Yrotate = function Yrotate(ar) {
     m(Yro);
     m = m;
   }
 
-  function Yback(ar) {
+  const Yback = function Yback(ar) {
     m(Yror);
     m = m;
   }
 
-  function Zrotate(ar) {
+  const Zrotate = function Zrotate(ar) {
     m(Zro);
     m = m;
   }
 
-  function Zback(ar) {
+  const Zback = function Zback(ar) {
     m(Zror);
     m = m;
   }
 
-  // console.log("m(Rf78d3s5) is", m(Rf78d3s5));
+  // console.log("m(dF3x) is", m(dF3x));
 
-  function Cz(ar) {
+  const Cz = function Cz(ar) {
     let temp = [];
 
     temp[0] = [
@@ -480,7 +640,64 @@ var Mcode = `var M = function M(x) {
     return temp;
   }
 
-  function Cx(ar) {
+  const Czr = function Czr(ar) {
+    let temp = [];
+
+    temp[0] = [
+      ar[0][0],
+      ar[5][5],
+      ar[0][2],
+      ar[0][3],
+      ar[5][4],
+      ar[0][5],
+      ar[0][6],
+      ar[5][3],
+      ar[0][8],
+    ];
+
+    temp[1] = [
+      ar[1][0],
+      ar[4][5],
+      ar[1][2],
+      ar[1][3],
+      ar[4][4],
+      ar[1][5],
+      ar[1][6],
+      ar[4][3],
+      ar[1][8],
+    ];
+
+    temp[2] = ar[2];
+
+    temp[3] = ar[3];
+
+    temp[4] = [
+      ar[4][0],
+      ar[4][1],
+      ar[4][2],
+      ar[0][1],
+      ar[0][4],
+      ar[0][7],
+      ar[4][6],
+      ar[4][7],
+      ar[4][8],
+    ];
+
+    temp[5] = [
+      ar[5][0],
+      ar[5][1],
+      ar[5][2],
+      ar[1][1],
+      ar[1][4],
+      ar[1][7],
+      ar[5][6],
+      ar[5][7],
+      ar[5][8],
+    ];
+    return temp;
+  }
+
+  const Cx = function Cx(ar) {
     let temp = [];
 
     temp[0] = ar[0];
@@ -538,7 +755,7 @@ var Mcode = `var M = function M(x) {
     return temp;
   }
 
-  function Cy(ar) {
+  const Cy = function Cy(ar) {
     let temp = [];
 
     temp[0] = [
@@ -593,33 +810,86 @@ var Mcode = `var M = function M(x) {
     return temp;
   }
 
+  const Cyr = function Cyr(ar) {
+    let temp = [];
 
-/*
-  function Cxr(ar) {
+    temp[0] = [
+      ar[0][0],
+      ar[0][1],
+      ar[0][2],
+      ar[3][3],
+      ar[3][4],
+      ar[3][5],
+      ar[0][6],
+      ar[0][7],
+      ar[0][8],
+    ];
+
+    temp[1] = [
+      ar[1][0],
+      ar[1][1],
+      ar[1][2],
+      ar[2][3],
+      ar[2][4],
+      ar[2][5],
+      ar[1][6],
+      ar[1][7],
+      ar[1][8],
+    ];
+
+    temp[2] = [
+      ar[2][0],
+      ar[2][1],
+      ar[2][2],
+      ar[0][3],
+      ar[0][4],
+      ar[0][5],
+      ar[2][6],
+      ar[2][7],
+      ar[2][8],
+    ];
+
+    temp[3] = [
+      ar[3][0],
+      ar[3][1],
+      ar[3][2],
+      ar[1][3],
+      ar[1][4],
+      ar[1][5],
+      ar[3][6],
+      ar[3][7],
+      ar[3][8],
+    ];
+    temp[4] = ar[4];
+    temp[5] = ar[5];
+    return temp;
+  }
+
+  const Cxr = function Cxr(ar) {    // Verified
     let temp = [];
     temp[0] = ar[0];
     temp[1] = ar[1];
     temp[2] = [
       ar[2][0],
-      ar[4][1],
+      ar[4][7],
       ar[2][2],
       ar[2][3],
       ar[4][4],
       ar[2][5],
       ar[2][6],
-      ar[4][7],
+      ar[4][1],
       ar[2][8],
     ];
 
     temp[3] = [
       ar[3][0],
-      ar[5][7],
+      ar[5][1],
       ar[3][2],
       ar[3][3],
       ar[5][4],
       ar[3][5],
       ar[3][6],
-      ar[5][1],
+      ar[5][7],
       ar[3][8],
     ];
 
@@ -647,8 +917,9 @@ var Mcode = `var M = function M(x) {
       ar[5][8],
     ];
     return temp;
-  }  */
-  function B(ar) {
+  } 
+
+  const B = function B(ar) {
     let temp = [];
 
     temp[0] = [
@@ -714,9 +985,9 @@ var Mcode = `var M = function M(x) {
     ];
     return temp;
   }
-  const Bz = x => B(B(B(x)))
+  // const Bz = x => B(B(B(x)))
 
-  /*function Bz(ar) {
+  const Bz = function Bz(ar) {  // Verified
     let temp = [];
 
     temp[0] = [
@@ -776,14 +1047,14 @@ var Mcode = `var M = function M(x) {
       ar[5][3],
       ar[5][4],
       ar[5][5],
-      ar[0][2],
-      ar[0][5],
       ar[0][8],
+      ar[0][5],
+      ar[0][2],
     ];
     return temp;
-  } */
+  }
 
-  function D(ar) {
+  const D = function D(ar) {
     let temp = [];
 
     temp[0] = [
@@ -850,9 +1121,9 @@ var Mcode = `var M = function M(x) {
     return temp;
   }
 
-  const Dz = x => D(D(D(x)))
+  // const Dz = x => D(D(D(x)))
   
-  /*function Dz(ar) {
+  const Dz = function Dz(ar) {
     let temp = [];
 
     temp[0] = [
@@ -917,9 +1188,9 @@ var Mcode = `var M = function M(x) {
       ar[5][6],
     ];
     return temp;
-  } */
+  } 
 
-  function L(ar) {
+  const L = function L(ar) {
     let temp = [];
     temp[0] = ar[0];
 
@@ -986,9 +1257,9 @@ var Mcode = `var M = function M(x) {
   }
 
 
-  const Lz = x => L(L(L(x)))
+  // const Lz = x => L(L(L(x)))
   
-  /*function Lz(ar) {
+  const Lz = function Lz(ar) {
     let temp = [];
     temp[0] = ar[0];
 
@@ -1052,7 +1323,7 @@ var Mcode = `var M = function M(x) {
       ar[5][8],
     ];
     return temp;
-  }  */
+  } 
 
   function F(ar) {
     let temp = [];
@@ -1121,9 +1392,9 @@ var Mcode = `var M = function M(x) {
   }
 
 
-  const Fz = x => F(F(F(x)))
+  // const Fz = x => F(F(F(x)))
   
-  /*function Fz(ar) {
+  const Fz = function Fz(ar) {   // Verified
     let temp = [];
     temp[0] = [
       ar[5][2],
@@ -1187,9 +1458,9 @@ var Mcode = `var M = function M(x) {
       ar[5][8],
     ];
     return temp;
-  }  */
-
-  function R(ar) {
+  } 
+  
+  const R = function R(ar) {
     let temp = [];
     temp[0] = [
       ar[0][6],
@@ -1256,7 +1527,7 @@ var Mcode = `var M = function M(x) {
   }
 
 
-  const Rz = x => R(R(R(x)))
+ // const Rz = x => R(R(R(x)))
   
 var Rcode = ` function R(ar) {
     let temp = [];
@@ -1325,7 +1596,7 @@ var Rcode = ` function R(ar) {
   }`;
 
 
- /* function Rz(ar) {
+ const Rz = function Rz(ar) {    // Verified
     let temp = [];
     temp[0] = [
       ar[0][2],
@@ -1389,9 +1660,9 @@ var Rcode = ` function R(ar) {
       ar[3][8],
     ];
     return temp;
-  }  */
+  } 
 
-  function U(ar) {
+  const U = function U(ar) {
     let temp = [];
 
     temp[0] = [
@@ -1458,7 +1729,7 @@ var Rcode = ` function R(ar) {
     return temp;
   }
 
-  const Uz = x => U(U(U(x)))
+ //  const Uz = x => U(U(U(x)))
   
 var Ucode = ` function U(ar) {
     let temp = [];
@@ -1527,7 +1798,7 @@ var Ucode = ` function U(ar) {
     return temp;
   }`
 
-/*  function Uz(ar) {
+  const Uz = function Uz(ar) {  // Verified
     let temp = [];
 
     temp[0] = [
@@ -1592,7 +1863,7 @@ var Ucode = ` function U(ar) {
 
     temp[5] = ar[5];
     return temp;
-  } */
+  };
 
   var UfuncCode = `var Ufunc = () => {
     m(U);
@@ -1675,17 +1946,17 @@ var Ucode = ` function U(ar) {
   };
 
   var Cxrfunc = () => {
-    m(Cx)(Cx)(Cx);
+    m(Cxr);
     m = m;
   };
 
   var Cyrfunc = () => {
-    m(Cy)(Cy)(Cy);
+    m(Cyr);
     m = m;
   };
 
   var Czrfunc = () => {
-    m(Cz)(Cz)(Cz);
+    m(Czr);
     m = m;
   };
 
@@ -1723,11 +1994,6 @@ var Ucode = ` function U(ar) {
     m(R)(U)(U)(Rz)(Uz)(R)(U)(Rz)(Uz)(R)(U)(Rz)(Uz);
     m = m;
   };
-
-  /*<button on:click={oppositeHeadlights1}>oppositeHeadlights1: R U R' U R U' R' U R U U R'</button>
-<button on:click={oppositeHeadlights2}>oppositeHeadlights2: R U U R' U' R U R' U' R U U' R'</button>
-<button on:click={oppositeHeadlights3}>oppositeHeadlights3: F R U R' U' R U R' U' R U R' U' F'</button>
-*/
 
   var edgesAdjacent = () => {
     console.log("In edgesAdjacent");
@@ -1798,7 +2064,7 @@ var Ucode = ` function U(ar) {
   var cu9;
   cu = "cube1";
   cu9 = "cube93";
-  var moves = ["U","D","R","L","F","B","Dz","Lz","Fz","Bz","U","D","R","L","Dz","Lz","Fz","Bz","U","F","U","D","R","L","F","B","Dz","Lz","Fz","Bz","U","D","R","L","Dz","Lz","Fz","Bz","U","F" ];
+  const moves = ["U","D","R","L","F","B","Dz","Lz","Fz","Bz","U","D","R","L","Dz","Lz","Fz","Bz","U","F","U","D","R","L","F","B","Dz","Lz","Fz","Bz","U","D","R","L","Dz","Lz","Fz","Bz","U","F" ];
 
   function rotate9() {
     if (cu9 == "cube9") {console.log("You bet"); cu9 = "cube92"}
@@ -1860,7 +2126,7 @@ var Ucode = ` function U(ar) {
   function shu() {
     // Scrambles the cube
     index = 1;
-    console.log("1 m(Rf78d3s5) is", m(Rf78d3s5));
+    console.log("1 m(dF3x) is", m(dF3x));
     let moves = [Cx,Cy,Cz,U,D,R,L,F,B,Cx,Cy,Cz,U,D,B,R,L,F,Cx,D,Cy,Cz,B,U,D,R,L,F,Cx,Cy,Cz,
       Cx,Cy,Cz,U,D,R,L,F,B,Cx,Cy,Cz,U,D,B,R,L,F,Cx,D,Cy,Cz,B,U,D,R,L,F,Cx,Cy,Cz];
     for (let n = 0; n < 62; n += 1) {
@@ -1869,83 +2135,67 @@ var Ucode = ` function U(ar) {
     m = m;
   }
 
-  function dupCheck(ar) {
-    var flat = ar.flat(1);
-    const set = [...new Set(flat)];
-    if (flat.length !== set.length) {
-      //console.log(v, "is already in the array.");
-      ERROR = "STOP";
-    } else console.log(ar, "passed dupCheck");
-  }
-
-  function logit(e) {
-    console.log(e);
-  }
   function handleKey(e) {
-    console.log(e.key, e.keyCode);
-    if (e.keyCode === 38) console.log("cow");
-    else if (e.keyCode === 85) m(U)(U)(U);
+         if (e.keyCode === 85)  m(Uz);
     else if (e.keyCode === 117) m(U);
-    else if (e.keyCode === 68) Dzfunc();
-    else if (e.keyCode === 100) Dfunc();
-    else if (e.keyCode === 82) m(R)(R)(R);
+    else if (e.keyCode === 68)  m(Dz);
+    else if (e.keyCode === 100) m(D);
+    else if (e.keyCode === 82)  m(Rz);
     else if (e.keyCode === 114) m(R);
-    else if (e.keyCode === 76) Lzfunc();
-    else if (e.keyCode === 108) Lfunc();
-    else if (e.keyCode === 70) Fzfunc();
-    else if (e.keyCode === 102) Ffunc();
-    else if (e.keyCode === 66) Bzfunc();
-    else if (e.keyCode === 98) Bfunc();
-    else if (e.keyCode === 77) Cxrfunc();
-    else if (e.keyCode === 109) Cxfunc();
-    else if (e.keyCode === 69) Cyrfunc();
-    else if (e.keyCode === 101) Cyfunc();
-    else if (e.keyCode === 83) Czrfunc();
-    else if (e.keyCode === 115) Czfunc();
-    else if (e.keyCode === 120) Xrotate();
-    else if (e.keyCode === 88) Xback();
-    else if (e.keyCode === 121) Yrotate();
-    else if (e.keyCode === 89) Yback();
-    else if (e.keyCode === 122) Zrotate();
-    else if (e.keyCode === 90) Zback();
+    else if (e.keyCode === 76)  m(Lz);
+    else if (e.keyCode === 108) m(L);
+    else if (e.keyCode === 70)  m(Fz);
+    else if (e.keyCode === 102) m(F);
+    else if (e.keyCode === 66)  m(Bz);
+    else if (e.keyCode === 98)  m(B);
+    else if (e.keyCode === 77)  m(Cxr);
+    else if (e.keyCode === 109) m(Cx);
+    else if (e.keyCode === 69)  m(Cyr);
+    else if (e.keyCode === 101) m(Cy);
+    else if (e.keyCode === 83)  m(Czr);
+    else if (e.keyCode === 115) m(Cz);
+    else if (e.keyCode === 120) m(Xro);
+    else if (e.keyCode === 88)  m(Xror);
+    else if (e.keyCode === 121) m(Yro);
+    else if (e.keyCode === 89)  m(Yror);
+    else if (e.keyCode === 122) m(Zro);
+    else if (e.keyCode === 90)  m(Zror);
     else if (e.keyCode === 119) shu();
     else if (e.keyCode === 118) Start();
-    else if (e.keyCode === 113) test();
+    else if (e.keyCode === 113) reverse();
     // else if (e.keyCode === 116) rotate();
     m = m;
   }
-
   var handleKeyCode = `function handleKey(e) {
-    console.log(e.key, e.keyCode);
-    if (e.keyCode === 38) console.log("cow");
-    else if (e.keyCode === 85) m(U)(U)(U);
+         if (e.keyCode === 85)  m(Uz);
     else if (e.keyCode === 117) m(U);
-    else if (e.keyCode === 68) Dzfunc();
-    else if (e.keyCode === 100) Dfunc();
-    else if (e.keyCode === 82) m(R)(R)(R);
+    else if (e.keyCode === 68)  m(Dz);
+    else if (e.keyCode === 100) m(D);
+    else if (e.keyCode === 82)  m(Rz);
     else if (e.keyCode === 114) m(R);
-    else if (e.keyCode === 76) Lzfunc();
-    else if (e.keyCode === 108) Lfunc();
-    else if (e.keyCode === 70) Fzfunc();
-    else if (e.keyCode === 102) Ffunc();
-    else if (e.keyCode === 66) Bzfunc();
-    else if (e.keyCode === 98) Bfunc();
-    else if (e.keyCode === 77) Cxrfunc();
-    else if (e.keyCode === 109) Cxfunc();
-    else if (e.keyCode === 69) Cyrfunc();
-    else if (e.keyCode === 101) Cyfunc();
-    else if (e.keyCode === 83) Czrfunc();
-    else if (e.keyCode === 115) Czfunc();
-    else if (e.keyCode === 120) Xrotate();
-    else if (e.keyCode === 88) Xback();
-    else if (e.keyCode === 121) Yrotate();
-    else if (e.keyCode === 89) Yback();
-    else if (e.keyCode === 122) Zrotate();
-    else if (e.keyCode === 90) Zback();
+    else if (e.keyCode === 76)  m(Lz);
+    else if (e.keyCode === 108) m(L);
+    else if (e.keyCode === 70)  m(Fz);
+    else if (e.keyCode === 102) m(F);
+    else if (e.keyCode === 66)  m(Bz);
+    else if (e.keyCode === 98)  m(B);
+    else if (e.keyCode === 77)  m(Cxr);
+    else if (e.keyCode === 109) m(Cx);
+    else if (e.keyCode === 69)  m(Cyr);
+    else if (e.keyCode === 101) m(Cy);
+    else if (e.keyCode === 83)  m(Czr);
+    else if (e.keyCode === 115) m(Cz);
+    else if (e.keyCode === 120) m(Xro);
+    else if (e.keyCode === 88)  m(Xror);
+    else if (e.keyCode === 121) m(Yro);
+    else if (e.keyCode === 89)  m(Yror);
+    else if (e.keyCode === 122) m(Zro);
+    else if (e.keyCode === 90)  m(Zror);
     else if (e.keyCode === 119) shu();
     else if (e.keyCode === 118) Start();
-    // else if (e.keyCode === 116) rotate();
-    m = m;
+    else if (e.keyCode === 113) reverse();
+    // else if (e.keyCode === 116) rotate(); 
+    m = m;  // In Svelte, this updates the DOM
   }`
 
   const constants = `  const b0 = 'blue';
@@ -2021,15 +2271,15 @@ var const2 = `const cubeStart = [...[bb, gg, rr, oo, yy, ww]];`
 
 var front = `      <div class="face front">
         <div class="grid">
-          <div class={m(Rf78d3s5)[3][0]} />
-          <div class={m(Rf78d3s5)[3][1]} />
-          <div class={m(Rf78d3s5)[3][2]} />
-          <div class={m(Rf78d3s5)[3][3]} />
-          <div class={m(Rf78d3s5)[3][4]} />
-          <div class={m(Rf78d3s5)[3][5]} />
-          <div class={m(Rf78d3s5)[3][6]} />
-          <div class={m(Rf78d3s5)[3][7]} />
-          <div class={m(Rf78d3s5)[3][8]} />
+          <div class={m(dF3x)[3][0]} />
+          <div class={m(dF3x)[3][1]} />
+          <div class={m(dF3x)[3][2]} />
+          <div class={m(dF3x)[3][3]} />
+          <div class={m(dF3x)[3][4]} />
+          <div class={m(dF3x)[3][5]} />
+          <div class={m(dF3x)[3][6]} />
+          <div class={m(dF3x)[3][7]} />
+          <div class={m(dF3x)[3][8]} />
         </div>
       </div>`
       
@@ -2046,85 +2296,85 @@ var dom = `<div id="steady">
     <div class={cu}>
       <div class="face front">
         <div class="grid">
-          <div class={m(Rf78d3s5)[3][0]} />
-          <div class={m(Rf78d3s5)[3][1]} />
-          <div class={m(Rf78d3s5)[3][2]} />
-          <div class={m(Rf78d3s5)[3][3]} />
-          <div class={m(Rf78d3s5)[3][4]} />
-          <div class={m(Rf78d3s5)[3][5]} />
-          <div class={m(Rf78d3s5)[3][6]} />
-          <div class={m(Rf78d3s5)[3][7]} />
-          <div class={m(Rf78d3s5)[3][8]} />
+          <div class={m(dF3x)[3][0]} />
+          <div class={m(dF3x)[3][1]} />
+          <div class={m(dF3x)[3][2]} />
+          <div class={m(dF3x)[3][3]} />
+          <div class={m(dF3x)[3][4]} />
+          <div class={m(dF3x)[3][5]} />
+          <div class={m(dF3x)[3][6]} />
+          <div class={m(dF3x)[3][7]} />
+          <div class={m(dF3x)[3][8]} />
         </div>
       </div>
 
       <div class="face back">
         <div class="grid">
-          <div class={m(Rf78d3s5)[2][8]} />
-          <div class={m(Rf78d3s5)[2][7]} />
-          <div class={m(Rf78d3s5)[2][6]} />
-          <div class={m(Rf78d3s5)[2][5]} />
-          <div class={m(Rf78d3s5)[2][4]} />
-          <div class={m(Rf78d3s5)[2][3]} />
-          <div class={m(Rf78d3s5)[2][2]} />
-          <div class={m(Rf78d3s5)[2][1]} />
-          <div class={m(Rf78d3s5)[2][0]} />
+          <div class={m(dF3x)[2][8]} />
+          <div class={m(dF3x)[2][7]} />
+          <div class={m(dF3x)[2][6]} />
+          <div class={m(dF3x)[2][5]} />
+          <div class={m(dF3x)[2][4]} />
+          <div class={m(dF3x)[2][3]} />
+          <div class={m(dF3x)[2][2]} />
+          <div class={m(dF3x)[2][1]} />
+          <div class={m(dF3x)[2][0]} />
         </div>
       </div>
 
       <div class="face right">
         <div class="grid">
-          <div class={m(Rf78d3s5)[0][0]} />
-          <div class={m(Rf78d3s5)[0][1]} />
-          <div class={m(Rf78d3s5)[0][2]} />
-          <div class={m(Rf78d3s5)[0][3]} />
-          <div class={m(Rf78d3s5)[0][4]} />
-          <div class={m(Rf78d3s5)[0][5]} />
-          <div class={m(Rf78d3s5)[0][6]} />
-          <div class={m(Rf78d3s5)[0][7]} />
-          <div class={m(Rf78d3s5)[0][8]} />
+          <div class={m(dF3x)[0][0]} />
+          <div class={m(dF3x)[0][1]} />
+          <div class={m(dF3x)[0][2]} />
+          <div class={m(dF3x)[0][3]} />
+          <div class={m(dF3x)[0][4]} />
+          <div class={m(dF3x)[0][5]} />
+          <div class={m(dF3x)[0][6]} />
+          <div class={m(dF3x)[0][7]} />
+          <div class={m(dF3x)[0][8]} />
         </div>
       </div>
 
       <div class="face left">
         <div class="grid">
-          <div class={m(Rf78d3s5)[1][0]} />
-          <div class={m(Rf78d3s5)[1][1]} />
-          <div class={m(Rf78d3s5)[1][2]} />
-          <div class={m(Rf78d3s5)[1][3]} />
-          <div class={m(Rf78d3s5)[1][4]} />
-          <div class={m(Rf78d3s5)[1][5]} />
-          <div class={m(Rf78d3s5)[1][6]} />
-          <div class={m(Rf78d3s5)[1][7]} />
-          <div class={m(Rf78d3s5)[1][8]} />
+          <div class={m(dF3x)[1][0]} />
+          <div class={m(dF3x)[1][1]} />
+          <div class={m(dF3x)[1][2]} />
+          <div class={m(dF3x)[1][3]} />
+          <div class={m(dF3x)[1][4]} />
+          <div class={m(dF3x)[1][5]} />
+          <div class={m(dF3x)[1][6]} />
+          <div class={m(dF3x)[1][7]} />
+          <div class={m(dF3x)[1][8]} />
         </div>
       </div>
 
       <div class="face top">
         <div class="grid">
-          <div class={m(Rf78d3s5)[4][0]} />
-          <div class={m(Rf78d3s5)[4][1]} />
-          <div class={m(Rf78d3s5)[4][2]} />
-          <div class={m(Rf78d3s5)[4][3]} />
-          <div class={m(Rf78d3s5)[4][4]} />
-          <div class={m(Rf78d3s5)[4][5]} />
-          <div class={m(Rf78d3s5)[4][6]} />
-          <div class={m(Rf78d3s5)[4][7]} />
-          <div class={m(Rf78d3s5)[4][8]} />
+          <div class={m(dF3x)[4][0]} />
+          <div class={m(dF3x)[4][1]} />
+          <div class={m(dF3x)[4][2]} />
+          <div class={m(dF3x)[4][3]} />
+          <div class={m(dF3x)[4][4]} />
+          <div class={m(dF3x)[4][5]} />
+          <div class={m(dF3x)[4][6]} />
+          <div class={m(dF3x)[4][7]} />
+          <div class={m(dF3x)[4][8]} />
         </div>
       </div>
 
       <div class="face bottom">
         <div class="grid">
-          <div class={m(Rf78d3s5)[5][0]} />
-          <div class={m(Rf78d3s5)[5][1]} />
-          <div class={m(Rf78d3s5)[5][2]} />
-          <div class={m(Rf78d3s5)[5][3]} />
-          <div class={m(Rf78d3s5)[5][4]} />
-          <div class={m(Rf78d3s5)[5][5]} />
-          <div class={m(Rf78d3s5)[5][6]} />
-          <div class={m(Rf78d3s5)[5][7]} />
-          <div class={m(Rf78d3s5)[5][8]} />
+          <div class={m(dF3x)[5][0]} />
+          <div class={m(dF3x)[5][1]} />
+          <div class={m(dF3x)[5][2]} />
+          <div class={m(dF3x)[5][3]} />
+          <div class={m(dF3x)[5][4]} />
+          <div class={m(dF3x)[5][5]} />
+          <div class={m(dF3x)[5][6]} />
+          <div class={m(dF3x)[5][7]} />
+          <div class={m(dF3x)[5][8]} />
         </div>
       </div>
     </div>
@@ -2149,7 +2399,8 @@ S 83 +page.svelte:728:12
 
 var a = 0;
 var b = 0;
-var classCode = `class={m(Rf78d3s5)[a][b]}`;
+var classCode = `class={m(dF3x)[a][b]}`;
+
 
 </script>
 
@@ -2874,7 +3125,7 @@ html {
 
   h1 {
     text-align: center;
-    color: #bb00ff;
+    color: #dd00ff;
   }
 
   #col-1 {
@@ -2933,23 +3184,16 @@ html {
   }
 
 </style>
-
-  
-
-
 <svelte:window on:keypress={handleKey} />
-
 <section class="columns">
   <div style="width: 40%">
-    <br />
     <button on:click={Start}>Start</button> 
     <button on:click={shu}>Scramble</button>
-    <button on:click={test}>Reverse</button> 
-    <br>
-    <!--<button on:click={() => console.log("m(Rf7ar3s5) is", m(Rf7ar3s5))}>m(Rf7ar3s5)</button> 
-    <button on:click={() => console.log("m(Rf78d3s5) is", m(Rf78d3s5))}>m(Rf78d3s5)</button>
-    <button on:click={setIndex}>index -> 1</button> 
-    <br> -->
+    <button on:click={reverse}>Reverse</button> 
+   <!-- <button on:click={() => console.log("m(dF3ar) is", m(dF3ar))}>m(dF3ar)</button> 
+    <button on:click={() => console.log("m(dF3x) is", m(dF3x))}>m(dF3x)</button>
+    <button on:click={setIndex}>index -> 1</button> --> 
+    <br> 
     
     <!-- <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span> -->
     
@@ -2992,7 +3236,8 @@ html {
    <p>This is, essentially, the cube3 application, but with a way to undo a series of moves without remembering exactly what they were.</p>
 
     <h1>Demonstration 1</h1>
-    <p> <a href = "./#cube">Home</a> The keyboard and button controls are not affected by rotations, making the cube much easier to solve than many other online Rubik's cube simulators. For example, clicking <button on:click={Rfunc}>R</button> or pressing the 'r' key always turns the right face clockwise, even after the cube has rotated. To see this, rotate the cube by pressing the 'y' key or clicking <button on:click={Yrotate}>Y rotate</button>, then press the 'r' key or click <button on:click={Rfunc}>R</button>. As before, pressing 'r' or clicking <button on:click={Rfunc}>R</button> still turns the right face. </p>
+
+    <p> <a href = "./#cube">Home</a> The keyboard and button controls are not affected by rotations, making the cube much easier to solve than many other online Rubik's cube simulators. For example, clicking <button on:click={Rfunc}>R</button> or pressing the 'r' key always turns the right face clockwise, even after the cube has rotated. To see this, rotate the cube by pressing the 'y' key or clicking <button on:click={Yrotate}>Y rotate</button>, then press the 'r' key or click <button on:click={Rfunc}>R</button>. As before, pressing 'r' or clicking <button on:click={Rfunc}>R</button> still turns the right face. Other online simulators, for example <a href = "http://cube.zxh.io/">http://cube.zxh.io/</a>, have this feature.</p>
     
     <p>Now press 'v' or click on the <button on:click={Start}>Start</button> button to return the colors to their starting places on the cube and re-orient the cube by clicking <button on:click={rotate}>Perspective Clockwise</button>. The cube apears to rotate just as it did when y was pressed. Under the hood it changed not by rearranging six CSS classes (red, orange, green, blue, yellow, and white), but by rearranging the six nine-div faces of the cube, leaving the classes in place.</p>
     
@@ -3008,8 +3253,7 @@ html {
       toward the lower left and (2) the forward-facing lower-right sticker is
       yellow. Elementary tutorials say this configuration calls for the sune
       algorithm; and, indeed, sune turns the entire upper face yellow. Try
-      it. <button  on:click={sune}>Sune</button> (R U R' U R U2
-      R'). The cube has a way to go before being solved.
+      it. <button  on:click={sune}>Sune</button>. The cube has a way to go before being solved.
     </p>
 
     <p>
@@ -3031,13 +3275,13 @@ html {
 <h1>The m-M(x) Closure (JS-Monad)</h1>
 <p style="font-style: italic"> In the British tradition, commas and periods will go outside of quotation marks</p>
 
-<pre>{`var M = function M(x) {
+<pre>{`const m = function M(x) {
   return function go(func) {
-    if (func === Rf78d3s5) return x;
+    if (func === dF3x) return x;
     else x = func(x);
     return go;
   };
-} where Rf78d3s5 = () => {}, and
+} where dF3x = () => {}, and
     unless a domain for M is specified
     x can be any JavaScript value.`}</pre>
 
@@ -3045,7 +3289,7 @@ html {
 
 <p> The simulated Rubik's cube is represented by "x" in a m-M(x) closure, where m and x are defined by the following code:</p>
 <pre>{constants}</pre>
-<p>The correspondence between the array containing the six nine-member arrays of divs held in the m-M(x) closure -- available as m(Rf78d3s5) -- and the images of a Rubik's cube displayed in the DOM, is apparent in the code below.</p>
+<p>The correspondence between the array containing the six nine-member arrays of divs held in the m-M(x) closure -- available as m(dF3x) -- and the images of a Rubik's cube displayed in the DOM, is apparent in the code below.</p>
 <pre>{dom}</pre>  
 
 
@@ -3115,11 +3359,13 @@ html {
 <p> Click "<button on:click={Start}>Start</button>" or press the "v" key, and you will see that each of the six faces of the cube oppositeHeadlights3 all nine of one of the six colors. When you press "w" or click "<button on:click={shu}>Scramble</button>", 62 sudo random moves are performed. After that, there are still nine of each of the six colors, but their locations are scattered around the cube. Click the "<button on:click={Start}>Start</button>" button or press the "v" key to put them back. </p>
 <p>Here's how the "orange" CSS class is defined: </p>
 <pre>{orange}</pre>
-<p> User actions cause m(func) to run for some array-manipulating function "func." m(func) causes func(x) to execute, updating the array in the m-M(x) closure. The code shown in the left column distributes the updated class names over the 54 divs corresponding to the cube representation displayed in the middle column . </p>  
+<p> User actions cause m(func) to run for some array-manipulating function "func." m(func) causes func(x) to execute, updating the array in the m-M(x) closure. The code shown in the left column distributes the updated class names over the 54 divs corresponding to the cube representation displayed at the top of the middle column . </p>  
 <h1>Encapsulation From User Action To Cube Update In the Browser</h1>
-<p>Clicking on <button on:click={Ufunc}>U</button> calls Ufunc, which then call m(U).</p>
+<p>Clicking on <button on:click={Ufunc}>U</button> calls Ufunc, which then calls m(U).</p>
 <pre>{UfuncCode}</pre>
-<p>Pressing "u" calls HandleKey(e) where "e" is the keypress event. HandleKey(e) then calls m(U). </p>
+<p>Pressing "u" calls HandleKey(e), where "e" is the keypress event. e.keyCode for "u" is 117, so HandleKey(e) calls m(U) directly, rather than going through Ufunc to get there. That is because "m = m" comes after the "if" statements in keyFunc, but "m = m" doesn't occur until Ufunc() is called after clicking <button on:click={Ufunc}>U</button>. The easy way to cause reactive DOM updates is to assign the code being updated, even if only to itselrf. This is the definition of U: </p>
+<pre>{Ucode}</pre>
+
 <pre>{handleKeyCode}</pre>
 <p> "117" is the keycode for "u", so handleKey(e) calls m(U). Ufunc (above) also calls m(U) when <button on:click={Ufunc}>U</button> is clicked. Pressing "u" three times after Clicking <button on:click={Ufunc}>U</button> returns the cube to its starting configuration. You can also restore the cube to its solved configuration by pressing "v" or clicking <button on:click={Start}>Start</button></p> 
 <p> Finally, to see how user clicks and key presses change the browser display, look at the left column. Each of the six colors is the name of a class in the "style" section of this <a href="https://kit.svelte.dev/">SvelteKit</a> webpage.</p> 
@@ -3138,85 +3384,85 @@ html {
     <div class={cu}>
       <div class="face front">
         <div class="grid" >
-          <div class={m(Rf78d3s5)[3][0]} />
-          <div class={m(Rf78d3s5)[3][1]} />
-          <div class={m(Rf78d3s5)[3][2]} />
-          <div class={m(Rf78d3s5)[3][3]} />
-          <div class={m(Rf78d3s5)[3][4]} />
-          <div class={m(Rf78d3s5)[3][5]} />
-          <div class={m(Rf78d3s5)[3][6]} />
-          <div class={m(Rf78d3s5)[3][7]} />
-          <div class={m(Rf78d3s5)[3][8]} />
+          <div class={m(dF3x)[3][0]} />
+          <div class={m(dF3x)[3][1]} />
+          <div class={m(dF3x)[3][2]} />
+          <div class={m(dF3x)[3][3]} />
+          <div class={m(dF3x)[3][4]} />
+          <div class={m(dF3x)[3][5]} />
+          <div class={m(dF3x)[3][6]} />
+          <div class={m(dF3x)[3][7]} />
+          <div class={m(dF3x)[3][8]} />
         </div>
       </div>
 
       <div class="face back">
         <div class="grid">
-          <div class={m(Rf78d3s5)[2][8]} />
-          <div class={m(Rf78d3s5)[2][7]} />
-          <div class={m(Rf78d3s5)[2][6]} />
-          <div class={m(Rf78d3s5)[2][5]} />
-          <div class={m(Rf78d3s5)[2][4]} />
-          <div class={m(Rf78d3s5)[2][3]} />
-          <div class={m(Rf78d3s5)[2][2]} />
-          <div class={m(Rf78d3s5)[2][1]} />
-          <div class={m(Rf78d3s5)[2][0]} />
+          <div class={m(dF3x)[2][8]} />
+          <div class={m(dF3x)[2][7]} />
+          <div class={m(dF3x)[2][6]} />
+          <div class={m(dF3x)[2][5]} />
+          <div class={m(dF3x)[2][4]} />
+          <div class={m(dF3x)[2][3]} />
+          <div class={m(dF3x)[2][2]} />
+          <div class={m(dF3x)[2][1]} />
+          <div class={m(dF3x)[2][0]} />
         </div>
       </div>
 
       <div class="face right">
         <div class="grid">
-          <div class={m(Rf78d3s5)[0][0]} />
-          <div class={m(Rf78d3s5)[0][1]} />
-          <div class={m(Rf78d3s5)[0][2]} />
-          <div class={m(Rf78d3s5)[0][3]} />
-          <div class={m(Rf78d3s5)[0][4]} />
-          <div class={m(Rf78d3s5)[0][5]} />
-          <div class={m(Rf78d3s5)[0][6]} />
-          <div class={m(Rf78d3s5)[0][7]} />
-          <div class={m(Rf78d3s5)[0][8]} />
+          <div class={m(dF3x)[0][0]} />
+          <div class={m(dF3x)[0][1]} />
+          <div class={m(dF3x)[0][2]} />
+          <div class={m(dF3x)[0][3]} />
+          <div class={m(dF3x)[0][4]} />
+          <div class={m(dF3x)[0][5]} />
+          <div class={m(dF3x)[0][6]} />
+          <div class={m(dF3x)[0][7]} />
+          <div class={m(dF3x)[0][8]} />
         </div>
       </div>
 
       <div class="face left">
         <div class="grid">
-          <div class={m(Rf78d3s5)[1][0]} />
-          <div class={m(Rf78d3s5)[1][1]} />
-          <div class={m(Rf78d3s5)[1][2]} />
-          <div class={m(Rf78d3s5)[1][3]} />
-          <div class={m(Rf78d3s5)[1][4]} />
-          <div class={m(Rf78d3s5)[1][5]} />
-          <div class={m(Rf78d3s5)[1][6]} />
-          <div class={m(Rf78d3s5)[1][7]} />
-          <div class={m(Rf78d3s5)[1][8]} />
+          <div class={m(dF3x)[1][0]} />
+          <div class={m(dF3x)[1][1]} />
+          <div class={m(dF3x)[1][2]} />
+          <div class={m(dF3x)[1][3]} />
+          <div class={m(dF3x)[1][4]} />
+          <div class={m(dF3x)[1][5]} />
+          <div class={m(dF3x)[1][6]} />
+          <div class={m(dF3x)[1][7]} />
+          <div class={m(dF3x)[1][8]} />
         </div>
       </div>
 
       <div class="face top">
         <div class="grid">
-          <div class={m(Rf78d3s5)[4][0]} />
-          <div class={m(Rf78d3s5)[4][1]} />
-          <div class={m(Rf78d3s5)[4][2]} />
-          <div class={m(Rf78d3s5)[4][3]} />
-          <div class={m(Rf78d3s5)[4][4]} />
-          <div class={m(Rf78d3s5)[4][5]} />
-          <div class={m(Rf78d3s5)[4][6]} />
-          <div class={m(Rf78d3s5)[4][7]} />
-          <div class={m(Rf78d3s5)[4][8]} />
+          <div class={m(dF3x)[4][0]} />
+          <div class={m(dF3x)[4][1]} />
+          <div class={m(dF3x)[4][2]} />
+          <div class={m(dF3x)[4][3]} />
+          <div class={m(dF3x)[4][4]} />
+          <div class={m(dF3x)[4][5]} />
+          <div class={m(dF3x)[4][6]} />
+          <div class={m(dF3x)[4][7]} />
+          <div class={m(dF3x)[4][8]} />
         </div>
       </div>
 
       <div class="face bottom">
         <div class="grid">
-          <div class={m(Rf78d3s5)[5][0]} />
-          <div class={m(Rf78d3s5)[5][1]} />
-          <div class={m(Rf78d3s5)[5][2]} />
-          <div class={m(Rf78d3s5)[5][3]} />
-          <div class={m(Rf78d3s5)[5][4]} />
-          <div class={m(Rf78d3s5)[5][5]} />
-          <div class={m(Rf78d3s5)[5][6]} />
-          <div class={m(Rf78d3s5)[5][7]} />
-          <div class={m(Rf78d3s5)[5][8]} />
+          <div class={m(dF3x)[5][0]} />
+          <div class={m(dF3x)[5][1]} />
+          <div class={m(dF3x)[5][2]} />
+          <div class={m(dF3x)[5][3]} />
+          <div class={m(dF3x)[5][4]} />
+          <div class={m(dF3x)[5][5]} />
+          <div class={m(dF3x)[5][6]} />
+          <div class={m(dF3x)[5][7]} />
+          <div class={m(dF3x)[5][8]} />
         </div>
       </div>
     </div>
@@ -3232,85 +3478,85 @@ html {
     <div id={cu9}>
       <div class="face front">
         <div class="grid">
-          <div class={m(Rf78d3s5)[3][0]} />
-          <div class={m(Rf78d3s5)[3][1]} />
-          <div class={m(Rf78d3s5)[3][2]} />
-          <div class={m(Rf78d3s5)[3][3]} />
-          <div class={m(Rf78d3s5)[3][4]} />
-          <div class={m(Rf78d3s5)[3][5]} />
-          <div class={m(Rf78d3s5)[3][6]} />
-          <div class={m(Rf78d3s5)[3][7]} />
-          <div class={m(Rf78d3s5)[3][8]} />
+          <div class={m(dF3x)[3][0]} />
+          <div class={m(dF3x)[3][1]} />
+          <div class={m(dF3x)[3][2]} />
+          <div class={m(dF3x)[3][3]} />
+          <div class={m(dF3x)[3][4]} />
+          <div class={m(dF3x)[3][5]} />
+          <div class={m(dF3x)[3][6]} />
+          <div class={m(dF3x)[3][7]} />
+          <div class={m(dF3x)[3][8]} />
         </div>
       </div>
 
       <div class="face back">
         <div class="grid">
-          <div class={m(Rf78d3s5)[2][8]} />
-          <div class={m(Rf78d3s5)[2][7]} />
-          <div class={m(Rf78d3s5)[2][6]} />
-          <div class={m(Rf78d3s5)[2][5]} />
-          <div class={m(Rf78d3s5)[2][4]} />
-          <div class={m(Rf78d3s5)[2][3]} />
-          <div class={m(Rf78d3s5)[2][2]} />
-          <div class={m(Rf78d3s5)[2][1]} />
-          <div class={m(Rf78d3s5)[2][0]} />
+          <div class={m(dF3x)[2][8]} />
+          <div class={m(dF3x)[2][7]} />
+          <div class={m(dF3x)[2][6]} />
+          <div class={m(dF3x)[2][5]} />
+          <div class={m(dF3x)[2][4]} />
+          <div class={m(dF3x)[2][3]} />
+          <div class={m(dF3x)[2][2]} />
+          <div class={m(dF3x)[2][1]} />
+          <div class={m(dF3x)[2][0]} />
         </div>
       </div>
 
       <div class="face right">
         <div class="grid">
-          <div class={m(Rf78d3s5)[0][0]} />
-          <div class={m(Rf78d3s5)[0][1]} />
-          <div class={m(Rf78d3s5)[0][2]} />
-          <div class={m(Rf78d3s5)[0][3]} />
-          <div class={m(Rf78d3s5)[0][4]} />
-          <div class={m(Rf78d3s5)[0][5]} />
-          <div class={m(Rf78d3s5)[0][6]} />
-          <div class={m(Rf78d3s5)[0][7]} />
-          <div class={m(Rf78d3s5)[0][8]} />
+          <div class={m(dF3x)[0][0]} />
+          <div class={m(dF3x)[0][1]} />
+          <div class={m(dF3x)[0][2]} />
+          <div class={m(dF3x)[0][3]} />
+          <div class={m(dF3x)[0][4]} />
+          <div class={m(dF3x)[0][5]} />
+          <div class={m(dF3x)[0][6]} />
+          <div class={m(dF3x)[0][7]} />
+          <div class={m(dF3x)[0][8]} />
         </div>
       </div>
 
       <div class="face left">
         <div class="grid">
-          <div class={m(Rf78d3s5)[1][0]} />
-          <div class={m(Rf78d3s5)[1][1]} />
-          <div class={m(Rf78d3s5)[1][2]} />
-          <div class={m(Rf78d3s5)[1][3]} />
-          <div class={m(Rf78d3s5)[1][4]} />
-          <div class={m(Rf78d3s5)[1][5]} />
-          <div class={m(Rf78d3s5)[1][6]} />
-          <div class={m(Rf78d3s5)[1][7]} />
-          <div class={m(Rf78d3s5)[1][8]} />
+          <div class={m(dF3x)[1][0]} />
+          <div class={m(dF3x)[1][1]} />
+          <div class={m(dF3x)[1][2]} />
+          <div class={m(dF3x)[1][3]} />
+          <div class={m(dF3x)[1][4]} />
+          <div class={m(dF3x)[1][5]} />
+          <div class={m(dF3x)[1][6]} />
+          <div class={m(dF3x)[1][7]} />
+          <div class={m(dF3x)[1][8]} />
         </div>
       </div>
 
       <div class="face top">
         <div class="grid">
-          <div class={m(Rf78d3s5)[4][0]} />
-          <div class={m(Rf78d3s5)[4][1]} />
-          <div class={m(Rf78d3s5)[4][2]} />
-          <div class={m(Rf78d3s5)[4][3]} />
-          <div class={m(Rf78d3s5)[4][4]} />
-          <div class={m(Rf78d3s5)[4][5]} />
-          <div class={m(Rf78d3s5)[4][6]} />
-          <div class={m(Rf78d3s5)[4][7]} />
-          <div class={m(Rf78d3s5)[4][8]} />
+          <div class={m(dF3x)[4][0]} />
+          <div class={m(dF3x)[4][1]} />
+          <div class={m(dF3x)[4][2]} />
+          <div class={m(dF3x)[4][3]} />
+          <div class={m(dF3x)[4][4]} />
+          <div class={m(dF3x)[4][5]} />
+          <div class={m(dF3x)[4][6]} />
+          <div class={m(dF3x)[4][7]} />
+          <div class={m(dF3x)[4][8]} />
         </div>
       </div>
 
       <div class="face bottom">
         <div class="grid">
-          <div class={m(Rf78d3s5)[5][0]} />
-          <div class={m(Rf78d3s5)[5][1]} />
-          <div class={m(Rf78d3s5)[5][2]} />
-          <div class={m(Rf78d3s5)[5][3]} />
-          <div class={m(Rf78d3s5)[5][4]} />
-          <div class={m(Rf78d3s5)[5][5]} />
-          <div class={m(Rf78d3s5)[5][6]} />
-          <div class={m(Rf78d3s5)[5][7]} />
-          <div class={m(Rf78d3s5)[5][8]} />
+          <div class={m(dF3x)[5][0]} />
+          <div class={m(dF3x)[5][1]} />
+          <div class={m(dF3x)[5][2]} />
+          <div class={m(dF3x)[5][3]} />
+          <div class={m(dF3x)[5][4]} />
+          <div class={m(dF3x)[5][5]} />
+          <div class={m(dF3x)[5][6]} />
+          <div class={m(dF3x)[5][7]} />
+          <div class={m(dF3x)[5][8]} />
         </div>
       </div>
     </div>
