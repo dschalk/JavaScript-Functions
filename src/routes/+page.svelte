@@ -240,7 +240,7 @@ span {
 }
 
 p {
-  color: darkblue;
+  color: #000000;
   font-size: 23px;
 }
 pre {
@@ -272,8 +272,7 @@ button {
 
 <h3>&nbsp&nbsp;&nbsp;&nbsp;&nbsp;... or complex,</h3>
 
-  <p>For example, <span style="color:maroon;">m = M( [ bb, gg, rr, oo, yy, ww ] )</span>
-  <span>at <a href="./cube3#cubeDef">Rubik's Cube Simulation</a>, in which the m-M(x) closure encapsulates an array of six nine-member arrays of references to the strings "blue", "green", "orange", "red", "yellow", and "white." These are the names of CSS classes with corresponding background colors, the classes of the 54 divs that populate (nine each) the six sides of a simulated Rubik's cube.</span>  
+  <p>For example, m = M( [ bb, gg, rr, oo, yy, ww ] ) at <a href="./cube4#cubeDef">Rubik's Cube Simulation</a>, in which the m-M(x) closure encapsulates an array of six nine-member arrays of references to the strings "blue", "green", "orange", "red", "yellow", and "white." These are the names of CSS classes with corresponding background colors, the classes of the 54 divs that populate (nine each) the six sides of a simulated Rubik's cube.</p>  
   
   <p> This is the definition of "x" in the m-M(x) closure encapsulating the inner working of the <a href="./score#mDef">Game of Score</a>: 
     

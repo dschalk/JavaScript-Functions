@@ -22,16 +22,22 @@
   var dF3x = () => {};
   var dF3ar = () => {};
 
-  function M(x) {
-    let ar = [];
+  function M(x, ar = []) {
     return function go(func) {
       if (func === dF3x) return x;
       if (func === dF3ar) return ar;
       else x = func(x);
-      if (typeof func == "function") ar.push(func);
+      ar.push(func);
       return go;
     };
   };
+
+/*var bb = ["b0","b1","b2","b3","b4","b5","b6","b7","b8"];  // For testing 
+var gg = ["g0","g1","g2","g3","g4","g5","g6","g7","g8"];
+var rr = ["r0","r1","r2","r3","r4","r5","r6","r7","r8"];
+var oo = ["o0","o1","o2","o3","o4","o5","o6","o7","o8"];
+var yy = ["y0","y1","y2","y3","y4","y5","y6","y7","y8"];
+var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
 
   const b0 = 'blue';
   const b1 = 'blue';
@@ -93,13 +99,6 @@
   const w7 = 'white';
   const w8 = "white";
 
-/*var bb = ["b0","b1","b2","b3","b4","b5","b6","b7","b8"];  // For testing 
-var gg = ["g0","g1","g2","g3","g4","g5","g6","g7","g8"];
-var rr = ["r0","r1","r2","r3","r4","r5","r6","r7","r8"];
-var oo = ["o0","o1","o2","o3","o4","o5","o6","o7","o8"];
-var yy = ["y0","y1","y2","y3","y4","y5","y6","y7","y8"];
-var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
-
   var bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
   var gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
   var rr = [r0, r1, r2, r3, r4, r5, r6, r7, r8];
@@ -108,8 +107,6 @@ var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
   var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
 
   var m = M([bb, gg, rr, oo, yy, ww]);
-
-
 
   const cubeStart = JSON.parse(JSON.stringify([bb,gg,rr,oo,yy,ww]));
 
@@ -120,38 +117,21 @@ var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
 
 $: Sally = m(dF3ar).length;
 
-var reverseCode1 = `function reverse () {  // this works
-    let len = m(dF3ar).length;
-    for (let k = 0; k < len; k+=1) {
-      m(m(dF3ar)[k]);
-      m = m;
-    }
-}`
-
 function reverse () { 
-    let fu = m(dF3ar).pop(); // discards the value being reversed.
-    let foo = x => fu(fu(fu(x)));
-    m(foo)(dF3ar).pop();     // uses foo, then pops it off the list.
+    let fu = m(dF3ar).pop(); // discards the function being reversed.
+    let foo = x => fu(fu(fu(x))); // Three more turns reverses the first one.
+    m(foo)(dF3ar).pop();     // uses foo, then discards it.
     m = m;
 };
 
-var reverseShow = `function reverse () { 
+var reverseCode = `function reverse () { 
     let fu = m(dF3ar).pop(); // discards the value being reversed.
-    let foo = x => fu(fu(fu(x)));
-    m(foo)(dF3ar).pop();     // uses foo, then pops it off the list.
-    m = m;
+    let foo = x => fu(fu(fu(x))); // Three more turns reverses the first.
+    m(foo)(dF3ar).pop();     // uses foo, then discards it.
+    m = m;  // Updates the DOM.
 };`
 
-
-var Mcode = `var M = function M(x) {
-  return function go(func) {
-    if (func === dF3x) return x;
-    else x = func(x);
-    return go;
-  };
-} where dF3x = () => {};`;
-
-  var mCode = `const b0 = 'blue';
+  var classCode2 = `const b0 = 'blue';
   const b1 = 'blue';
   const b2 = 'blue';
   const b3 = 'blue';
@@ -2122,10 +2102,12 @@ var Ucode = ` function U(ar) {
     for (let n = 0; n < 62; n += 1) {
       m(moves[Math.floor(Math.random() * 62)]);
     } 
+    console.log("1 m(dF3ar) is", m(dF3ar));
     m = m;
   }
 
-  function handleKey(e) {
+  function handleKey(e) { 
+    console.log(e.keyCode);
          if (e.keyCode === 85)  m(Uz);
     else if (e.keyCode === 117) m(U);
     else if (e.keyCode === 68)  m(Dz);
@@ -2188,75 +2170,6 @@ var Ucode = ` function U(ar) {
     m = m;  // In Svelte, this updates the DOM
   }`
 
-  const constants = `  const b0 = 'blue';
-  const b1 = 'blue';
-  const b2 = 'blue';
-  const b3 = 'blue';
-  const b4 = 'blue';
-  const b5 = 'blue';
-  const b6 = 'blue';
-  const b7 = 'blue';
-  const b8 = "blue";
-
-  const g0 = 'green';
-  const g1 = 'green';
-  const g2 = 'green';
-  const g3 = 'green';
-  const g4 = 'green';
-  const g5 = 'green';
-  const g6 = 'green';
-  const g7 = 'green';
-  const g8 = "green";
-
-  const r0 = 'red';
-  const r1 = 'red';
-  const r2 = 'red';
-  const r3 = 'red';
-  const r4 = 'red';
-  const r5 = 'red';
-  const r6 = 'red';
-  const r7 = 'red';
-  const r8 = "red";
-
-  const o0 = 'orange';
-  const o1 = 'orange';
-  const o2 = 'orange';
-  const o3 = 'orange';
-  const o4 = 'orange';
-  const o5 = 'orange';
-  const o6 = 'orange';
-  const o7 = 'orange';
-  const o8 = "orange";
-
-  const y0 = 'yellow';
-  const y1 = 'yellow';
-  const y2 = 'yellow';
-  const y3 = 'yellow';
-  const y4 = 'yellow';
-  const y5 = 'yellow';
-  const y6 = 'yellow';
-  const y7 = 'yellow';
-  const y8 = "yellow";
-
-  const w0 = 'yellow';
-  const w1 = 'yellow';
-  const w2 = 'yellow';
-  const w3 = 'yellow';
-  const w4 = 'yellow';
-  const w5 = 'yellow';
-  const w6 = 'yellow';
-  const w7 = 'yellow';
-  const w8 = "yellow";
-
-  var bb = [b0,b1,b2,b3,b4,b5,b6,b7,b8];
-  var gg = [g0,g1,g2,g3,g4,g5,g6,g7,g8];
-  var rr = [r0,r1,r2,r3,r4,r5,r6,r7,r8];
-  var oo = [o0,o1,o2,o3,o4,o5,o6,o7,o8];
-  var yy = [y0,y1,y2,y3,y4,y5,y6,y7,y8];
-  var ww = [w0,w1,w2,w3,w4,w5,w6,w7,w8];
-
-  var m = M( [ bb, gg, rr, oo, yy, ww ] );`
-  
 var const2 = `const cubeStart = [...[bb, gg, rr, oo, yy, ww]];`
 
 var front = `      <div class="face front">
@@ -2272,7 +2185,7 @@ var front = `      <div class="face front">
           <div class={m(dF3x)[3][8]} />
         </div>
       </div>`
-      
+     
       
 var orange = `.orange {
     height: 60px;
@@ -2374,7 +2287,37 @@ var dom = `<div id="steady">
 
 var a = 0;
 var b = 0;
-var classCode = `class={m(dF3x)[a][b]}`;
+var classCode = `classes={m(dF3x)[a][b]}`;
+
+const Mcode = `function M(x, ar = []) {
+    return function go(func) {
+      if (func === dF3x) return x;
+      if (func === dF3ar) return ar;
+      else x = func(x);
+      ar.push(func);
+      return go;
+    };
+  };
+    Where const dF3x = () => {}
+          const dF3ar = () => {};`;
+
+
+const orangeSide = `<div class="face front">
+        <div class="grid">
+          <div class={m(dF3x)[3][8]} />
+          <div class={m(dF3x)[3][7]} />
+          <div class={m(dF3x)[3][6]} />
+          <div class={m(dF3x)[3][5]} />
+          <div class={m(dF3x)[3][4]} />
+          <div class={m(dF3x)[3][3]} />
+          <div class={m(dF3x)[3][2]} />
+          <div class={m(dF3x)[3][1]} />
+          <div class={m(dF3x)[3][0]} />
+        </div>
+      </div>`;
+
+
+
 
 </script>
 
@@ -3116,13 +3059,13 @@ var classCode = `class={m(dF3x)[a][b]}`;
 
   #steady {
     position: fixed;
-    top: 130px;
+    top: 120px;
     left: 45.5%;
   }
 
   #steady2 {
     position: fixed;
-    top: 450px;
+    top: 420px;
     left: 45.5%;
   }
 
@@ -3150,31 +3093,86 @@ var classCode = `class={m(dF3x)[a][b]}`;
   }
 
 </style>
+
 <svelte:window on:keypress={handleKey} />
 <section class="columns">
   <div style="width: 40%">
-    <button on:click={Start}>Start</button> 
-    <button on:click={shu}>Scramble</button>
-    <button on:click={reverse}>Reverse</button> 
-       <br> 
+    <button on:click={() => handleKey({keyCode: 118})}>Start</button>
+    <button on:click={() => handleKey({keyCode: 119})}>Scramble</button>
+    <button on:click={() => handleKey({keyCode: 113})}>Reverse</button>
+           <br> 
     
     <!-- <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span> -->
     
     <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp; Move list length: </span> <span style="color:purple; font-weight:bold; font-size:30px">{Sally}</span>
 
     <br />
-    <button on:click={Xrotate}>X rotate</button>
-    <button on:click={Yrotate}>Y rotate</button>
-    <button on:click={Zrotate}>Z rotate</button>
+    <button on:click={() => handleKey({keyCode: 120})}>X rotate</button>
+    <button on:click={() => handleKey({keyCode: 121})}>Y rotate</button>
+    <button on:click={() => handleKey({keyCode: 122})}>Z rotate</button>
     <br>
-    <button on:click={Xback}>X back</button>
-    <button on:click={Yback}>Y back</button>
-    <button on:click={Zback}>Z back</button>
+    <button on:click={() => handleKey({keyCode: 88})}>X back</button>
+    <button on:click={() => handleKey({keyCode: 89})}>Y back</button>
+    <button on:click={() => handleKey({keyCode: 90})}>Z back</button>
+
+<br>
+    <button on:click={() => handleKey({keyCode: 117})}>U</button>
+    <button on:click={() => handleKey({keyCode: 100})}>D</button>
+    <button on:click={() => handleKey({keyCode: 114})}>R</button>
+    <button on:click={() => handleKey({keyCode: 108})}>L</button>
+    <button on:click={() => handleKey({keyCode: 102})}>F</button>
+    <button on:click={() => handleKey({keyCode: 98})}>B</button>
+    <button on:click={() => handleKey({keyCode: 109})}>M</button>
+    <button on:click={() => handleKey({keyCode: 101})}>E</button>
+    <button on:click={() => handleKey({keyCode: 115})}>S</button>
+    <br>
+    <button on:click={() => handleKey({keyCode: 85})}>U'</button>
+    <button on:click={() => handleKey({keyCode: 68})}>D'</button>
+    <button on:click={() => handleKey({keyCode: 82})}>R'</button>
+    <button on:click={() => handleKey({keyCode: 76})}>L'</button>
+    <button on:click={() => handleKey({keyCode: 70})}>F'</button>
+    <button on:click={() => handleKey({keyCode: 66})}>B'</button>
+    <button on:click={() => handleKey({keyCode: 77})}>M'</button>
+    <button on:click={() => handleKey({keyCode: 69})}>E'</button>
+    <button on:click={() => handleKey({keyCode: 83})}>S'</button>
+
+<!--
+  function handleKey(e) {
+         if (e.keyCode === 85)  m(Uz);
+    else if (e.keyCode === 117) m(U);
+    else if (e.keyCode === 68)  m(Dz);
+    else if (e.keyCode === 100) m(D);
+    else if (e.keyCode === 82)  m(Rz);
+    else if (e.keyCode === 114) m(R);
+    else if (e.keyCode === 76)  m(Lz);
+    else if (e.keyCode === 108) m(L);
+    else if (e.keyCode === 70)  m(Fz);
+    else if (e.keyCode === 102) m(F);
+    else if (e.keyCode === 66)  m(Bz);
+    else if (e.keyCode === 98)  m(B);
+    else if (e.keyCode === 77)  m(Cxr);
+    else if (e.keyCode === 109) m(Cx);
+    else if (e.keyCode === 69)  m(Cyr);
+    else if (e.keyCode === 101) m(Cy);
+    else if (e.keyCode === 83)  m(Czr);
+    else if (e.keyCode === 115) m(Cz);
+    else if (e.keyCode === 120) m(Xro);
+    else if (e.keyCode === 88)  m(Xror);
+    else if (e.keyCode === 121) m(Yro);
+    else if (e.keyCode === 89)  m(Yror);
+    else if (e.keyCode === 122) m(Zro);
+    else if (e.keyCode === 90)  m(Zror);
+    else if (e.keyCode === 119) shu();
+    else if (e.keyCode === 118) Start();
+    else if (e.keyCode === 113) reverse();
+    // else if (e.keyCode === 116) rotate();
+    m = m;
+  }
 
     <br />
     <button on:click={Ufunc}>U</button>
     <button on:click={Dfunc}>D</button>
-    <button on:click={Rfunc}>R</button>
+    <button on:click={() => handleKey({keyCode: 114})}>R</button>
     <button on:click={Lfunc}>L</button>
     <button on:click={Ffunc}>F</button>
     <button on:click={Bfunc}>B</button>
@@ -3193,21 +3191,26 @@ var classCode = `class={m(dF3x)[a][b]}`;
     <button on:click={Czrfunc}>S'</button>
     <br>
     
-    <!--<button on:click={rotate}>Clockwise</button>
+      <button on:click={rotate}>Clockwise</button>
 <br><br>
 <button on:click={rotate2}>Counterclockwise</button> -->
-   <p>This is, essentially, the cube3 application, but with a way to undo a series of moves without remembering exactly what they were.</p>
+<br>
 
-    <h1>Demonstration 1</h1>
+  <p> The simple m-M(x) closure showcased in <a href="./">Home</a> is sufficient to operate the cube, but without the "reverse" feature. For that, the empty array "ar" is added to the definition. </p>
+  
+  <pre>{Mcode}</pre>
+  
+  <p>Prior states of the cube are not preserved. The array in the m-M(x) closure holds only references to functions. The "reverse" function returns m()   </p>
 
-    <p> <a href = "./#cube">Home</a> The keyboard and button controls are not affected by rotations, making the cube much easier to solve than many other online Rubik's cube simulators. For example, clicking <button on:click={Rfunc}>R</button> or pressing the 'r' key always turns the right face clockwise, even after the cube has rotated. To see this, rotate the cube by pressing the 'y' key or clicking <button on:click={Yrotate}>Y rotate</button>, then press the 'r' key or click <button on:click={Rfunc}>R</button>. As before, pressing 'r' or clicking <button on:click={Rfunc}>R</button> still turns the right face. Other online simulators, for example <a href = "http://cube.zxh.io/">http://cube.zxh.io/</a>, have this feature.</p>
-    
-    <p>Now press 'v' or click on the <button on:click={Start}>Start</button> button to return the colors to their starting places on the cube and re-orient the cube by clicking <button on:click={rotate}>Perspective Clockwise</button>. The cube apears to rotate just as it did when y was pressed. Under the hood it changed not by rearranging six CSS classes (red, orange, green, blue, yellow, and white), but by rearranging the six nine-div faces of the cube, leaving the classes in place.</p>
-    
-    <p> Pressing 'r' still rotates the side that was on the right, but now it is in the front of the cube, so it's the front that rotates every time "r" is pressed or <button on:click={Rfunc}>R</button> is clicked. This is how the reference cube in the lower middle column functions. clicking <button on:click={Start}>Start</button> button or pressing 'v' re-establishes uniform colors on the sides, but leaves the lower cube orientated relative to the upper cube just as it was.</p> 
-    <p> To return the lower cube to its starting configuration, you need to rotate it back to where it was, or reload the page.</p>
+  <p>The main cube and its 54 constituent HTML divs never move. In the m-M(x) closure, "x" is an array of six nine-member arrays of references to the strings "red," "orange," "blue," "green,", "yellow," and "white." These strings specify div classes with corresponding background colors in the DOM. </p>
 
-    <h1>Demonstration 2</h1>
+  <pre>{orangeSide}</pre>
+
+<p>Where: {classCode} for a = 1,2,...5 and b = 1,2,...8 are defined as:
+<pre>{classCode2}</pre>
+    <p> The keyboard and button controls are, by default, oblivious to changes in the cube's orientation. Pressing the "R" key rotates whichever face happens to be on the right side of the cube 1/4 turn (90 degrees) clockwise. Simulated Rubik's cubes with controls that, for example, always turn the side with a blue center whenever the "R" key is pressed are much harder to solve.</p> 
+
+    <h1>Increasing Algorithm Repertoires</h1>
     <p>
       Click <button  on:click={reverse_niklas}
         >Reverse Niklas '</button
@@ -3250,8 +3253,8 @@ var classCode = `class={m(dF3x)[a][b]}`;
 
 <p> This webpage features the closure that results from the assignment "m = M(x)", where x is an array of six nine-member arrays. "x" in the m-M(x) closures will always be a six-member array of nine-member arrays. Only pure functions that take arrays of six nine-member arrays and return arrays of six nine-member arrays will be used. As is apparent from the definition of "M", "m" is a copy of "go". efficiently, the composition of functions arrays of six nine-member arrays. There are no side effects. The functions are pure, accessing only their arguments (arrays of six nine-member arrays) and doing nothing but return arrays of six nine-member arrays. As is apparent, the domain of M is arrays of six nine-member arrays. The only functions used in this presentation are functions that transform the array in the m-M(x) closure in ways corresponding to moves on Rubik's cubes. Functionality to lift types into other types can be added to JS-Monads as needed -- and omitted where, as here, it isn't needed.</p>
 
-<p> The simulated Rubik's cube is represented by "x" in a m-M(x) closure, where m and x are defined by the following code:</p>
-<pre>{constants}</pre>
+<p> As mentioned above, the simulated Rubik's cube is represented by "x" in a m-M(x) closure, where m and x are defined by the following code:</p>
+<pre>{classCode}</pre>
 <p>The correspondence between the array containing the six nine-member arrays of divs held in the m-M(x) closure -- available as m(dF3x) -- and the images of a Rubik's cube displayed in the DOM, is apparent in the code below.</p>
 <pre>{dom}</pre>  
 
@@ -3311,7 +3314,7 @@ var classCode = `class={m(dF3x)[a][b]}`;
       
 <h1>Discussion</h1>
   <p> This webpage is meant to do two things: (1) provide a user-friendly Rubik's cube simulation and (2) show that even a basic JS-Monad can be useful in developing complex, bug-resistant web applications. Very simple additions can add functionality, such as reverseable caches of prior configurations, queues of yet-to-be-resolved promises, and more. Here's a link to a more detailed discussion of m-M(x) closures (a/k/a JS-Monads). Here's the definition of its simplest manifestation: </p>
-    <pre>{Mcode}</pre>   
+    <pre>{classCode}</pre>   
     <p>We'll take a closer look at the JS-Monad soon. First, some information about the cube images shown in the middle column.</p> 
   <p> Rotation of the whole cube, its middle sections, and its faces is accomplished by JavaScript functions that rearrange the classes -- more specifically, the css background-colors -- which are assigned in various configurations to each of 54 divs in the DOM. The array of six nine-element arrays maintained in the m-M(x) closure, are references to the strings "orange", "blue", "red", "green", "yellow", or "white". There are 9 divs with each of these background colors.
   The six strings are the names of CSS classes and are also the colors of those class's "background-colors" attributes. </p>
@@ -3339,8 +3342,6 @@ var classCode = `class={m(dF3x)[a][b]}`;
 <br><br>
 <span> The browser update described above is the result of reassigning the six classes, red, orange, green, blue, yellow, and white, to the 54 stationary divs whose background colors are seen in browsers, and rearranged by user clicks and key presses. The state of the array of six nine-member arrays remains in the m-M(x) closure in the "script" or "style" sections of this <a href="https://kit.svelte.dev">SvelteKit</a> page's code. It is only in the DOM code, the <span style = "color: purple">{classCode}</span> statements (left column), that the contents of the m-M(x) closure are used, updating the browser images of the simulated Rubik's cube.</span>  
 
-      <br /><br />
-      <br /><br /><br />
     </div>
   </div>
 </section>
