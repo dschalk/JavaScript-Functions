@@ -7,12 +7,12 @@ import Firefox_3 from '$lib/Composition.png';
 
 var Mdisplay = `function M (x) {
   return function go (func) {
-    if (func === dF3s7) return x;
+    if (func === dF3x) return x;
     else x = func(x);
     return go;
   }
 }
-Where dF3s7 = () => {}; // This flag is a function in order to simplify future type checking.`
+Where dF3x = () => {}; // This flag is a function in order to simplify future type checking.`
 
 var ret = () => {};
 
@@ -25,6 +25,8 @@ function M (x) {
 };
 
 var log = console.log;
+
+
 var test_0 = `var m = M('peaches');
 log('m(ret) is', m(ret)); // m(ret) is peaches
 
@@ -102,7 +104,7 @@ var score = `m2 = M(
     a[1] = [];
     m2 = M(a);
   }
-
+   
   if (a[1].length === 3) {
     a[0].push(a[1].pop());
   }
@@ -258,6 +260,10 @@ button {
 
 </style>
 
+
+
+  
+
 <div style = "margin-left:12%; margin-right: 12%;">
 
 <h1>JavaScript Functions</h1>
@@ -267,6 +273,7 @@ button {
 <pre>M(3)(v=>v**3)(v => v*4)(v => v - 8)(Math.sqrt)(dF3s7);  // 10</pre>
 <h3>. . . can serve as the outer scope for closures encapsulating everything that happens in applications.</h3>
 <h3>&nbsp&nbsp;&nbsp;&nbsp;&nbsp;. . . be they simple,</h3>
+<p>Recommended Reading: <a href="https://www.youtube.com/playlist?list=PLillGF-Rfqbars4vKNtpcWVDUpVOVTlgB">Javascript Under the Hood</a></p>
 
 <pre>var result = [3,4,5,6,7,8,9].reduce((a, b) => a + b); // 42</pre>
 

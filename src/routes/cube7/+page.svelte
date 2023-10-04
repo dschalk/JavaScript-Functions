@@ -1,5 +1,4 @@
 <script>
-
   // import Image from './Image.svelte'
   var log = console.log;
   var ERROR = "";
@@ -20,18 +19,9 @@
   var index = 1;
   function setIndex () {index = 1};
   var Amos;
+  
   var dF3x = () => {};
   var dF3ar = () => {};
-
-  function M(x, ar = []) {
-    return function go(func) {
-      if (func === dF3x) return x;
-      if (func === dF3ar) return ar;
-      else x = func(x);
-      ar.push(func);
-      return go;
-    };
-  };
 
 /*var bb = ["b0","b1","b2","b3","b4","b5","b6","b7","b8"];  // For testing 
 var gg = ["g0","g1","g2","g3","g4","g5","g6","g7","g8"];
@@ -108,8 +98,23 @@ var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
   var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
 
   var m = M([bb, gg, rr, oo, yy, ww]);
+  var m2 = M([bb, gg, rr, oo, yy, ww]);
 
   const cubeStart = JSON.parse(JSON.stringify([bb,gg,rr,oo,yy,ww]));
+
+  function clone (ar) {
+    JSON.parse(JSON.stringify(ar));
+  }
+
+  function M(x, ar = []) {
+    return function go(func) {
+      if (func === dF3x) return x;
+      if (func === dF3ar) return ar;
+      else x = func(x);
+      ar.push(func);
+      return go;
+    };
+  };
 
   var Start = () => {
     index = 1;
@@ -1838,97 +1843,7 @@ var Ucode = ` function U(ar) {
     m(U);
     m = m;  // This triggers the DOM update
   };`
-/*
-  var Dfunc = () => {
-    m(D);
-    m = m;
-  };
 
-  var Rfunc = () => {
-    m(R);
-    m = m;
-  };
-
-  var Lfunc = () => {
-    m(L);
-    m = m;
-  };
-
-  var Ffunc = () => {
-    m(F);
-    m = m;
-  };
-
-  var Bfunc = () => {
-    m(B);
-    m = m;
-  };
-
-  var Cxfunc = () => {
-    m(Cx);
-    m = m;
-  };
-
-  var Czfunc = () => {
-    m(Cz);
-    m = m;
-  };
-
-  var Cyfunc = () => {
-    m(Cy);
-    m = m;
-  };
-
-  var Ufunc = () => {
-    m(U);
-    m = m;
-  };
-
-  var Uzfunc = () => {
-    m(Uz);
-    m = m;
- };
-
-  var Dzfunc = () => {
-    m(Dz);
-    m = m;
-  };
-
-  var Rzfunc = () => {
-    m(Rz);
-    m = m;
-  };
-
-  var Lzfunc = () => {
-    m(Lz);
-    m = m;
-  };
-
-  var Fzfunc = () => {
-    m(Fz);
-    m = m;
-  };
-
-  var Bzfunc = () => {
-    m(Bz);
-    m = m;
-  };
-
-  var Cxrfunc = () => {
-    m(Cxr);
-    m = m;
-  };
-
-  var Cyrfunc = () => {
-    m(Cyr);
-    m = m;
-  };
-
-  var Czrfunc = () => {
-    m(Czr);
-    m = m;
-  };
-*/
   var corners = () => {
     m(Rz)(F)(Rz)(B)(B)(R)(Fz)(Rz)(B)(B)(R)(R);
     m = m;
@@ -2038,7 +1953,6 @@ var Ucode = ` function U(ar) {
   var cu9;
   cu = "cube1";
   cu9 = "cube93";
-  const moves = ["U","D","R","L","F","B","Dz","Lz","Fz","Bz","U","D","R","L","Dz","Lz","Fz","Bz","U","F","U","D","R","L","F","B","Dz","Lz","Fz","Bz","U","D","R","L","Dz","Lz","Fz","Bz","U","F" ];
 
   function rotate9() {
     if (cu9 == "cube9") {console.log("You bet"); cu9 = "cube92"}
@@ -2055,7 +1969,7 @@ var Ucode = ` function U(ar) {
     else if (cu9 == "cube98") cu9 = "cube9";
     else return "cube9";
   }
-      
+    
   function tilt9() {
     if (cu9 == "cube9") {cu9 = "cube95"}
     else if (cu9 == "cube92") {cu9 = "cube96"}
@@ -2097,17 +2011,38 @@ var Ucode = ` function U(ar) {
     return x;
   }
   
+  var preserve;
+  var keep;
+      
+  var moves = [Cx,Cz,U,D,F,B,Cx,Cy,U,D,B,R,L,Cx,D,Cz,B,U,R,L,F,Cy,Cz,Cx,Cy,L,F,B,Cx,Cy,Cz,U,D,R,L,F,Cx,D,Cy,U];
+
   function shu() {
     // Scrambles the cube
+    Start();  
+    console.log("moves is", moves);
     index = 1;
     console.log("1 m(dF3x) is", m(dF3x));
-    let moves = [Cx,Cy,Cz,U,D,R,L,F,B,Cx,Cy,Cz,U,D,B,R,L,F,Cx,D,Cy,Cz,B,U,D,R,L,F,Cx,Cy,Cz,
-      Cx,Cy,Cz,U,D,R,L,F,B,Cx,Cy,Cz,U,D,B,R,L,F,Cx,D,Cy,Cz,B,U,D,R,L,F,Cx,Cy,Cz];
-    for (let n = 0; n < 62; n += 1) {
-      m(moves[Math.floor(Math.random() * 62)]);
+    for (let n = 0; n < 41; n += 1) {
+      m(moves[Math.floor(Math.random() * 40)]);
     } 
-    console.log("1 m(dF3ar) is", m(dF3ar));
-    m = m;
+    preserve = [...m(dF3ar)];
+    m = m;  
+  }
+
+  function previous () {
+      Start();
+      console.log("preserve is", preserve);   
+      preserve.forEach(v => m(v));
+      console.log("m(dF3ar is", m(dF3ar));
+  }
+
+  function freeze () {
+    keep = [...m(dF3ar)];
+  }
+
+  function getSaved () {
+      m(() => m2(dF3x));
+      m = m;
   }
 
   function handleKey(e) { 
@@ -2131,7 +2066,7 @@ var Ucode = ` function U(ar) {
     else if (e.keyCode === 83)  m(Czr);
     else if (e.keyCode === 115) m(Cz);
     else if (e.keyCode === 120) m(Xro);
-    else if (e.keyCode === 88)  m(Xror);
+    else if (e.keyCode === 88)  m(Xror);  
     else if (e.keyCode === 121) m(Yro);
     else if (e.keyCode === 89)  m(Yror);
     else if (e.keyCode === 122) m(Zro);
@@ -2139,6 +2074,9 @@ var Ucode = ` function U(ar) {
     else if (e.keyCode === 119) shu();
     else if (e.keyCode === 118) Start();
     else if (e.keyCode === 113) reverse();
+    else if (e.keyCode === 105) previous();
+    else if (e.keyCode === 73) getSaved();
+    else if (e.keyCode === 111) save();
     // else if (e.keyCode === 116) rotate();
     m = m;
   }
@@ -2320,15 +2258,12 @@ const orangeSide = `<div class="face front">
         </div>
       </div>`;
 
-
-
-
 </script>
 
 
 
-<style>
 
+<style>
 
 ::before,
 ::after {
@@ -3107,17 +3042,26 @@ const orangeSide = `<div class="face front">
 
 </style>
 
+
+
 <svelte:window on:keypress={handleKey} />
 <section class="columns">
   <div style="width: 40%">
+   
+    <!-- <button on:click={() => console.log("test of m(dF3x is", m(dF3x))}>test</button>
+    <button on:click={() => console.log("test2 of m2(dF3x is", m2(dF3x))}>test2</button> -->
+
     <button on:click={() => handleKey({keyCode: 118})}>Start</button>
     <button on:click={() => handleKey({keyCode: 119})}>Scramble</button>
     <button on:click={() => handleKey({keyCode: 113})}>Reverse</button>
-           <br> 
+    <button on:click={() => handleKey({keyCode: 105})}>Previous Scr</button>
     
-    <!-- <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span> -->
+    <button on:click = {() => m2(() => m(dF3x))}>Save</button>
+    <button on:click = {getSaved}>getSaved</button>
     
-    <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp; Move list length: </span> <span style="color:purple; font-weight:bold; font-size:30px">{Sally}</span>
+    <!--<span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span>
+    
+    <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp; Move list length: </span> <span style="color:purple; font-weight:bold; font-size:30px">{Sally}</span> -->
 
     <br />
     <button on:click={() => handleKey({keyCode: 120})}>X rotate</button>
