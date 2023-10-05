@@ -98,13 +98,21 @@ var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
   var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
 
   var m = M([bb, gg, rr, oo, yy, ww]);
-  var m2 = M([bb, gg, rr, oo, yy, ww]);
+  var m2 = M2([bb, gg, rr, oo, yy, ww]);  
 
   const cubeStart = JSON.parse(JSON.stringify([bb,gg,rr,oo,yy,ww]));
 
   function clone (ar) {
     JSON.parse(JSON.stringify(ar));
   }
+
+  function M2(x, ar = []) {
+    return function go(func) {
+      if (func === dF3x) return x;
+      else x = func(x);
+      return go;
+    };
+  };
 
   function M(x, ar = []) {
     return function go(func) {
@@ -3057,8 +3065,8 @@ const orangeSide = `<div class="face front">
     <button on:click={() => handleKey({keyCode: 105})}>Previous Scr</button>
     
     <button on:click = {() => m2(() => m(dF3x))}>Save</button>
-    <button on:click = {getSaved}>getSaved</button>
-    
+    <button on:click = {getSaved}>getSaved</button> 
+    <span style="color:darkred; font-weight:bold">m(dF3ar).length = {Sally}</span>
     <!--<span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span>
     
     <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp; Move list length: </span> <span style="color:purple; font-weight:bold; font-size:30px">{Sally}</span> -->

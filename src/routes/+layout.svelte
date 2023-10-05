@@ -22,6 +22,8 @@
 
         <a href="./functional">Functional</a>
 
+        <a href="./Bell-Inequality">Bell's Inequality</a>
+
   </nav>
 
   <div>"***********************************************************************************************"</div>
