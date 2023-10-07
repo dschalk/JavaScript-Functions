@@ -85,12 +85,7 @@ var m4 = M2([3]);`;
 </svelte:head>
 <br />
 <div>**************************************************************************</div>
-<div style="font-family: Times New Roman; text-align:center; font-size: 32px;" transition:fade>
-	<br />
-
-    Arrays in Monads
-</div>
-<br />
+<h3 class = h3b> Arrays in Monads </h3>
 
 <p>The simple monads used in this section are returned by M1(x) where x can be any valid JavaScript value, including primitive values, functions, promises, etc. It differs from M(x) in that the monads it spawns use the function ret() rather than the string "stop" to trigger the return of the values they hold. M1 monads don't test for types although arguments must be functions. It is up to users to use Typescript, catch errors, or just be careful.  </p>
 <pre>{code}</pre>

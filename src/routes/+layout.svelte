@@ -6,7 +6,7 @@
     margin-right: 40px;
     font-size: 24px;
     font-weight: bold;
-    color: purple;
+    color: rgb(135, 86, 135);
   }
 </style>
 <nav>

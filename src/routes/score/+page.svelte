@@ -905,29 +905,6 @@ var start = `m2 = M(
 <style>
   pre {margin-left: 3%;}
  
-  span {
-	color: darkred;
-  }
-
-  button {
-    margin-left: 1%;
-    background-color: lightblue;
-    border-width: 2px;
-    border-color: #E8F7C1;
-    border-radius: 10px;
-    color: blue;
-    font-size: 20px;
-    box-shadow: 0px 0px 15px 0px rgb(255, 215, 0);
-    padding: 3px 10px 3px 10px; 
-  } 
-
-  button:hover {
-    color: blue;
-    background-color: gold;
-    border-color: #E8F7C1;
-    border-radius: 10px;
-    box-shadow: 0px 0px 25px 0px rgb(255, 255, 0);
-  }
 
 </style>
 
@@ -939,17 +916,12 @@ var start = `m2 = M(
 <div style = "margin-left:12%; margin-right: 12%;">
 <br />
 <div>**************************************************************************</div>
-<div style="font-family: Times New Roman; text-align:center; font-size: 32px;" transition:fade>
-	<br />
-
-	The State of Score Maintained in a Closure
-</div>
-<br />
-<p> The game is held in the recursive closure returned initially by M(x) where M is: </p>
+<h1 style = "text-align: center">The Solitaire Game of Score</h1>
+<p> The game is held in the closure returned initially by M(x) where M is: </p>
 <pre>{monad}</pre>
 <p>and x is an array of eight arrays defined as:</p>
 <pre>{start}</pre>
-<p>It doesn't matter what, if anything, the function ret() would do if it were to be called because it doesn't get called. It's only purpose is to cause go(), the function returned by M, to return the current state of the value x held in the closure that was created by running var some-name = M(x). M can also be used anonymously to chain functions as in <span>M(2)(v=>v+4)(v=>v*7)(ret) = 42</span>. </p>
+<p>It doesn't matter what, if anything, the function ret() would do if it were to be called because it doesn't get called. It's only purpose is to cause go(), the function returned by M, to return the current state of the value x held in the closure that was created by running var some-name = M(x). M can also be used anonymously to chain functions as in <span>M(2)(v=>v+4)(v=>v*7)(ret) = 42</span>.</p> 
 
 
 <p>Here, ret() is defined as <span>{retCode}</span>. Later versions of M dispense with ret(), returning the value held in the m-M(x) closure whenever the argument is null.
@@ -1017,9 +989,7 @@ var start = `m2 = M(
 </p>
 <h2>About this Solitaire Version</h2>
 <p>
-	This demonstration doesn't rely on a remote server, nor does it feature any Haskell code. It's
-	just a little solitaire game providing an opportunity to consider the interesting possibilities of
-	recursive closures. You can traverse the history of game play for the current roll. If you make a
+	This demonstration doesn't rely on a remote server, nor does it feature any Haskell code. It's just a little solitaire game providing an opportunity to consider the interesting possibilities of closures. You can traverse the history of game play for the current roll. If you make a
 	mistake, you can take back your move and do something else. If you traverse back and forth very
 	far, subsequent computations will be very slow and the program might even crash. If you just take back a move, computations proceed normally.
 </p>

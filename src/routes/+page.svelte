@@ -207,94 +207,68 @@ m(dF3s7);     // 42`;
   var M4 = `function M(x) {
     let ar = [];
     return function go(func) {
-      if (func === dF3s7) return x;
-      if (func === Rf7ar3s5) return ar;
+      if (func === dF3x) return x;
+      if (func === dF3ar) return ar;
       else x = func(x);
-      if (typeof func == "function") ar.push(func);
+      ar.push(func);
       return go;
     };
   };`;
 
+var reverseShow = `function reverse () { 
+  let fu = m(dF3ar).pop(); 
+  // discards the function being reversed.
+    
+  let foo = x => fu(fu(fu(x))); 
+  // Three more turns reverses the first one.
+    
+  m(foo)(dF3ar).pop();     
+  // uses foo, then discards it, returning the cube to where it was.
+}; `;
 
-var reverseShow = `function reverse () {  // this works
-    var k = m(Rf7ar3s5).length;
-    let fu = m(Rf7ar3s5)[k-1];
-    let foo = x => fu(fu(fu(x)));
-    m(foo);
-    m = m;
-    let arr = m(Rf7ar3s5);
-    if (m(Rf7ar3s5).slice(-1)[0].name !== m(Rf7ar3s5)
-       .slice(-2,-1)[0].name) m(Rf7ar3s5).splice(-2,2);
-};`;
+var reduceCode = `const m = M([3,4,5,6,7,8,9])
+const rd = x => x.reduce((a, b) => a + b); // 42
+m(rd);
+log("m(dF3x is", m(dF3x)) // m(dF3x is 42`
 
 </script>
 
 <style>
-
-
-h3 {
-  color: black;
-}
-
-span {
-  color: darkblue;
-  font-size: 23px;
-}
-
-p {
-  color: #000000;
-  font-size: 23px;
-}
-pre {
-  color: #550033;
-  font-size: 23px;
-}
-
-h1 {
-  color: #550033;
-}
-
-button {
-  font-size: 22px;
-}
-
 </style>
-
-
-
   
 
 <div style = "margin-left:12%; margin-right: 12%;">
 
 <h1>JavaScript Functions</h1>
-<h3 style="font-size: 32px; font-weight: bold"> This little function . . .  </h3>
+<h3 class = "h3a">Introduction</h3>
+
+<p>The first five pages (menu, left to right) experiment with applications in which state is maintained in tiny closures, modified only by the function returned when the closure is created. This little function: . . .  </p  >
 <pre>{mona}</pre>
 <h3> . . . can anonymously compose functions,</h3>
 <pre>M(3)(v=>v**3)(v => v*4)(v => v - 8)(Math.sqrt)(dF3s7);  // 10</pre>
 <h3>. . . can serve as the outer scope for closures encapsulating everything that happens in applications.</h3>
 <h3>&nbsp&nbsp;&nbsp;&nbsp;&nbsp;. . . be they simple,</h3>
-<p>Recommended Reading: <a href="https://www.youtube.com/playlist?list=PLillGF-Rfqbars4vKNtpcWVDUpVOVTlgB">Javascript Under the Hood</a></p>
 
-<pre>var result = [3,4,5,6,7,8,9].reduce((a, b) => a + b); // 42</pre>
+<pre>{reduceCode}</pre>
 
 <h3>&nbsp&nbsp;&nbsp;&nbsp;&nbsp;... or complex,</h3>
 
-  <p>For example, m = M( [ bb, gg, rr, oo, yy, ww ] ) at <a href="./cube4#cubeDef">Rubik's Cube Simulation</a>, in which the m-M(x) closure encapsulates an array of six nine-member arrays of references to the strings "blue", "green", "orange", "red", "yellow", and "white." These are the names of CSS classes with corresponding background colors, the classes of the 54 divs that populate (nine each) the six sides of a simulated Rubik's cube.</p>  
-  
-  <p> This is the definition of "x" in the m-M(x) closure encapsulating the inner working of the <a href="./score#mDef">Game of Score</a>: 
-    
-  <p>  These strings signify div classes with background colors corresponding to the colors of the cube which is displayed in the browser. User key presses and button clicks invoke functions that work inside the m-M(x) closure, rearranging the classes of the 54 divs that constitute the cube. Here's another complex application encapsulated in an m-M(x) closure: <a href="./score">The Solitaire Game of Score</a>. It could use some cleaning and refactoring, but the browser interface works like a charm. </p>
-<p> I suspect that many readers are still getting used to m-M(x) closures, where functions "f" operate on x sequestered away from whatever else is happening in a module not by directly operating on x (i.e., an immediate call to f(x)), but by being provided to m as arguments. Regardless of how comfortable you are with these closures, this is a good time to be surprised by the tiny amount of memory, and the simplicity of the function, needed to reverse a series of simulated Rubik's cube moves. There's no need to save the prior configurations of the cube in order to revisit them in the browser, one by one. All that's needed is an array of references to the functions invoked in performing prior moves. The demo is here: <a href="./cube4">cube4</a>. 
-  A more detailed and thorough explanation of the Rubik's cube examples is directly below. Click here to skip to the section showing lots of <a href="#examples">examples and facts about m-M(x) closures</a> </p>
+  <p>For example, <span>m = M( [ bb, gg, rr, oo, yy, ww ] )</span> at <a href="./cube7#cubeDef">Rubik's Cube Simulation</a>, in which the m-M(x) closure encapsulates an array of six nine-member arrays of references to the strings "blue", "green", "orange", "red", "yellow", and "white." These are the names of CSS classes with corresponding background colors, the classes of the 54 div elements that populate the six sides of a simulated Rubik's cube.</p>  
 
-<a id="cube"></a>
+  <p>The <a href="./score#mDef">Game of Score</a> is a somewhat complex simulated dice game. The value "x" in the m-M(x) closure encapsulating the inner workings of the game is shown in the definition of m2:
+  <pre>m2 = M([ 
+    [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1,
+     Math.floor(Math.random() * 12) + 1, Math.floor(Math.random() * 20) + 1], 
+     [], ['+'], [], [0], [], [0], [] 
+]);</pre>
+    
 <h1>Simulated Rubik's Cube</h1>
-<p> M is re-defined for <a href="./cube3">cube3</a> as follows:
+<p>The closure constructor M is used only to hold the 41 moves that configured the most recent scramble. It is re-named "M2" in <a href="./cube7">cube7</a> because the name "M" is given to the closure constructor that holds the state of the simulated Rubik's cube.
 <pre style="margin-left:50px">{M4}</pre>
-<p>And here's the function that can reverse a series of moves::</p>
+<p>With moves stored in ar, setting the cube configuration back to where it was prior to the most recent move requires nothing more than the three short lines of code in the function "reverse":</p>
 <pre>{reverseShow}</pre>
-<p>foo reverses fu because the inverse of any cube rotation is three more rotations. All of the basic button clicks and key presses cause 90 degree rotations. The algorithms in the right column are compositions of basic moves. Letters followed by "2" indicate two basic moves. Clicking the "Sune" button in the right column increases the functions list, m(Rf7ar3s5), by 8, as shown in <a href="./cube4">Rubik's Cube</a></p>
-<p>The reverse function is oblivious to precisely which functions were responsible for the transformations being reversed. Whatever the function at the top of the list happens to be, it run three more times. After foo executes, it and the function that was reversed are discarded, making the list one item shorter than it was before the "u" key was pressed the "Start" button. </p>
+<p> m(dF3ar) is a reference to ar in the m-M(x) closure, so not only does "m(dF3ar)" expose ar outside the scope of the m-M(x) closure, it also shortens the length of ar inside the closure. Very little browser memory is needed to store the information necessary to reverse hundreds of moves. Making moves is not resource intensive either. A move doesn't rearrange the div elements of the cube, as is the case with many Rubik's cube simulators. All it does is rearrange the placement of the strings (names of colors) referring to some CSS classes. </p>
+<p>The reverse function is oblivious to precisely which functions were responsible for the transformations being reversed. Whatever the function at the top of the list happens to be, it run three more times. After foo executes, it and the function that was reversed are discarded, making the list one item shorter than it was. </p>
 
 
 <a id="examples"></a>
@@ -309,6 +283,7 @@ button {
 <pre>{compose1}</pre>
 <p>The value "x" in the m-M(x) closure persists until m is redefined or deleted.</p>
 <pre>{compose2}</pre>
+<p>Recommended Reading: <a href="https://www.youtube.com/playlist?list=PLillGF-Rfqbars4vKNtpcWVDUpVOVTlgB">Javascript Under the Hood</a></p>
 <slot></slot>
 </div>
 

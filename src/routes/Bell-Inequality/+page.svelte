@@ -3,17 +3,10 @@
 <script></script>
 
 <style>
-    .green {
-        color: green;
-    }
-
-    .blue {
-        color: lightblue;
-    }
 
     #container {
          width: 70%; 
-         margin: 0 auto
+         margin: 0 auto;
     }
 
     .gold {
@@ -21,11 +14,13 @@
     }
 
 </style>
+
+
 <h1 class="gold">Deferring To Merlin On This One</h1>
 <div id = "container"> 
-<p class="blue">Question: Do the Bell inequality experiments really rule out the existence of hidden variables in etangled particles?</p>
+<p>Do the Bell inequality experiments really rule out the existence of hidden variables in entangled particles?</p>
 
-<p class = "green"> Merlin: Yes, the Bell inequality experiments provide compelling evidence against local hidden variables in the behavior of entangled particles. The Bell's theorem states that certain predictions of quantum mechanics are inconsistent with the concept of local hidden variables.
+<p> Merlin: Yes, the Bell inequality experiments provide compelling evidence against local hidden variables in the behavior of entangled particles. The Bell's theorem states that certain predictions of quantum mechanics are inconsistent with the concept of local hidden variables.
 
 Hidden variables theories propose that quantum uncertainties are due to some underlying "hidden" variables or information not currently accessible to us. If such hidden variables exist, they should follow Bell's inequalities.
 
@@ -35,9 +30,9 @@ It’s important to note that these results do not rule out non-local hidden var
 
 In conclusion, while Bell's theorem and subsequent experiments have decidedly ruled out local hidden variables, they have not invalidated the possibility of non-local hidden variable theories. The search for a complete understanding of quantum mechanics thus continues. </p>
 
-<p class="blue"> Why do violations of Bell's inequality disprove the existence of hidden variables in entangled particles? </p>
+<p> Why do violations of Bell's inequality disprove the existence of hidden variables in entangled particles? </p>
 
-<p class="green"> Merlin: Violations of Bell's inequality disprove the existence of local hidden variables in entangled particles due to the fundamental assumptions behind the inequality.
+<p> Merlin: Violations of Bell's inequality disprove the existence of local hidden variables in entangled particles due to the fundamental assumptions behind the inequality.
 
 John Bell proposed these inequalities based on the concept of local realism, the idea that physical processes occurring at one location do not depend on the properties of objects at other locations (locality), and physical quantities have definite values even before they are measured (realism). Essentially, these are fundamental postulates of hidden variable theories.
 
@@ -46,9 +41,9 @@ The derivation of Bell's Inequalities assumed that two entangled particles could
 However, quantum mechanics, through experiments involving entangled particles, routinely reports correlations that violate Bell's inequalities. This violation indicates that the outcomes of measurements on the particles are not solely determined by local hidden variables, implying one or both aspects of local realism must be untrue.
 
 In other words, Bell's theorem doesn't refute the concept of hidden variables entirely but rather the notion of local hidden variables. Non-local hidden variables could still exist, but their implementation would imply a departure from our usual concepts of space and time as they would need to affect outcomes instantaneously over any distance. That's why they are typically considered somewhat more exotic and less likely in mainstream physics. </p>
-<p class = "blue">Show me some example experiments demonstrating violations of Bell's, along with the reasoning involved in drawing conclusions.</p>
+<p>Show me some example experiments demonstrating violations of Bell's, along with the reasoning involved in drawing conclusions.</p>
 
-<p class= "green">Merlin: Here's a simplified version of how physicists demonstrate violations of Bell’s inequality in an experiment involving entangled particles.
+<p>Merlin: Here's a simplified version of how physicists demonstrate violations of Bell’s inequality in an experiment involving entangled particles.
 
     Experiment: Aspect's Bell Test Experiments
     
@@ -72,12 +67,12 @@ In other words, Bell's theorem doesn't refute the concept of hidden variables en
     
     What's significant though is that these experiments show quantum mechanics is not classical, and while we cannot definitively rule out all other interpretations, quantum mechanics has proven exceptionally successful in predicting experimental outcomes.</p>
 
-<p class="blue"> 
+<p> 
     What is the currently most widely accepted explanantion of the Bell inequality experimental results?    
 </p>
 
 
-<p class="green">
+<p>
     The most widely accepted explanation of the Bell inequality experimental results is the quantum mechanical interpretation, specifically the Copenhagen interpretation.
 
     The Copenhagen interpretation postulates that particles do not have definite states until they are measured. This interpretation abandons the principle of realism (that particles have definite properties between measurements), embracing instead the strange, counter-intuitive nature of quantum mechanics.
@@ -87,13 +82,11 @@ In other words, Bell's theorem doesn't refute the concept of hidden variables en
     The Copenhagen interpretation, however, stands in apparent conflict with Einstein's special theory of relativity, which postulates that information cannot be transmitted faster than the speed of light. This "spooky action at a distance"—as Einstein termed quantum entanglement—remains one of the most mysterious facets of quantum mechanics, and the heart of a still-open debate about the interpretation and completeness of quantum theory.
 </p>    
 
-<p class="blue">
+<p>
     Tell me why Bell's inequality experiments do not imply action at a distance
 </p>
 
-<p class = "green">
+<p>
     Your queries have exhausted for today. Subscribe to Merlin Pro to continue using Merlin or come back tomorrow.
 </p>
-
-
 </div>

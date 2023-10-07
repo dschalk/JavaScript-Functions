@@ -2977,7 +2977,7 @@ const orangeSide = `<div class="face front">
 
   h1 {
     text-align: center;
-    color: #dd00ff;
+    color: gold;
   }
 
   #col-1 {

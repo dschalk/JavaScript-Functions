@@ -132,21 +132,24 @@ var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
 $: Sally = m(dF3ar).length;
 
 function reverse () { 
-    let fu = m(dF3ar).pop(); // discards the function being reversed.
-    let foo = x => fu(fu(fu(x))); // Three more turns reverses the first one.
-    m(foo)(dF3ar).pop();     // uses foo, then discards it.
-    m = m;
+    let fu = m(dF3ar).pop(); 
+    // discards the function being reversed.
+    let foo = x => fu(fu(fu(x))); 
+    // Three more turns reverses the first one.
+    m(foo)(dF3ar).pop();     
+    // uses foo, then discards it.
 };
 
 var reverseCode = `function reverse () { 
-    \let fu = m(dF3ar).pop(); 
-        // discards the value being reversed.
-    \let foo = x => fu(fu(fu(x))); 
-        // Reverses the first run.
-    m(foo)(dF3ar).pop();     
-        // uses foo, then discards it.
-    m = m;  // Updates the DOM.
-};`
+  let fu = m(dF3ar).pop(); 
+  // discards the function being reversed.
+    
+  let foo = x => fu(fu(fu(x))); 
+  // Three more turns reverses the first one.
+    
+  m(foo)(dF3ar).pop();     
+  // uses foo, then discards it.
+}; `;
 
   var classCode2 = `const b0 = 'blue';
   const b1 = 'blue';
@@ -2707,7 +2710,7 @@ const orangeSide = `<div class="face front">
   .red {
     height: 60px;
     width: 60px;
-    background-color: rgb(230, 113, 113);
+    background-color: rgb(252, 97, 97);
     border-radius: 10px;
   }
   .blue {
@@ -2952,26 +2955,6 @@ const orangeSide = `<div class="face front">
     }
   }
 
-  button {
-    margin-left: 1%;
-    background-color: #ddcccc;
-    border-width: 2px;
-    border-color: #e8f7c1;
-    border-radius: 10px;
-    color: blue;
-    font-size: 26px;
-    box-shadow: 0px 0px 15px 0px rgb(255, 215, 0);
-    padding: 3px 10px 3px 10px;
-  }
-
-  button:hover {
-    color: blue;
-    background-color: yellow;
-    border-color: #e8f7c1;
-    border-radius: 10px;
-    box-shadow: 0px 0px 25px 0px rgb(255, 255, 0);
-  }
-
   .rite {
     float: right;
     /* position: absolute;
@@ -3029,24 +3012,12 @@ const orangeSide = `<div class="face front">
     color: blue;
   }
 
-  a {
+  /* a {
     font-size: 26; color: #0000ff;
     font-weight: bold;
     font-style: underline; 
-  }
-
-  a:hover {
-    font-size: 26; color: #ff00ff;
-    font-weight: bold;
-    font-style: underline; 
-  }
-
-
-
-  span {
-    color: black;
-    font-size: 22px;
-  }
+    color: rgb(239, 126, 209);
+  } */
 
 </style>
 
@@ -3062,14 +3033,14 @@ const orangeSide = `<div class="face front">
     <button on:click={() => handleKey({keyCode: 118})}>Start</button>
     <button on:click={() => handleKey({keyCode: 119})}>Scramble</button>
     <button on:click={() => handleKey({keyCode: 113})}>Reverse</button>
-    <button on:click={() => handleKey({keyCode: 105})}>Previous Scr</button>
+    <button on:click={() => handleKey({keyCode: 105})}>Back To Scr</button>
     
     <button on:click = {() => m2(() => m(dF3x))}>Save</button>
     <button on:click = {getSaved}>getSaved</button> 
-    <span style="color:darkred; font-weight:bold">m(dF3ar).length = {Sally}</span>
-    <!--<span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span>
+    <!--<span style="color:darkred; font-weight:bold">m(dF3ar).length = {Sally}</span> -->
+    <!--<span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span> -->
     
-    <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp; Move list length: </span> <span style="color:purple; font-weight:bold; font-size:30px">{Sally}</span> -->
+    <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp; Move list length: </span> <span style="font-weight:bold; font-size:30px">{Sally}</span>
 
     <br />
     <button on:click={() => handleKey({keyCode: 120})}>X rotate</button>
@@ -3161,13 +3132,13 @@ const orangeSide = `<div class="face front">
 <button on:click={rotate2}>Counterclockwise</button> -->
 <br>
 
-  <p> The simple m-M(x) closure showcased in <a href="./">Home</a> is sufficient to operate the cube, but without the "reverse" feature. For that, an array and a way to fetch it is added to the definition. </p>
+  <p> The simple m-M(x) closure used above and discussed in <a href="./">Home</a> is sufficient to operate the cube, but without the "reverse" feature. For that, an array and a way to fetch it is added to the definition. </p>
   
   <pre>{Mcode}</pre>
   
   <p>Prior states of the cube don't need to be preserved. The array in the m-M(x) closure, which is central to reversing prior rotations, holds only references to the functions responsible for the cube's current state. The "reverse" function discards the most-recently called function, runs that function three more times to return the cube to its previous configuration, and then removes itself from the array. The length of the array is then one element shorter than it was before reverse() was called. Here's the definition:  </p>
 
-<pre>{reverse}</pre>;
+<pre>{reverseCode}</pre>;
   <p>The main cube and its 54 constituent HTML divs never move. In the m-M(x) closure, "x" is an array of six nine-member arrays of references to the strings "red," "orange," "blue," "green,", "yellow," and "white." These strings specify div classes with corresponding background colors in the DOM. </p>
 
   <pre>{orangeSide}</pre>
@@ -3233,12 +3204,13 @@ const orangeSide = `<div class="face front">
   <div style="width: 35%;">
     <!-- Column 2 -->
     <div style="margin-left: 1px">
-      <span style = "display: block; color:blue; font-weight:bold; text-align: center; font-size: 24px">Using the Keypad</span>
-      <span style="color: blue; font-weight: bold"> Pressing the u, d, r, l, f, b,  m, e, s, x, y, and z keys has the same effect as clicking the corresponding (capitalized) buttons. Holding down the "Shift" key (or activating "CapsLock") while pressing the keys causes the reverse effect. Pressing v, w, and q is equivalent to clicking on Start, Scramble, and Reverse, respectively. </span>
+      <span>Using the Keypad</span>
+      <span> Pressing the u, d, r, l, f, b,  m, e, s, x, y, and z keys has the same effect as clicking the corresponding (capitalized) buttons. Holding down the "Shift" key (or activating "CapsLock") while pressing the keys causes the reverse effect. Pressing v, w, and q is equivalent to clicking on Start, Scramble, and Reverse, respectively. </span>
 <br><br>
-      <span style = "display: block; color:blue; font-weight:bold; text-align: center; font-size: 24px">Using the Alternate View Cube</span>
-      <span style="color: blue; font-weight: bold">The lower cube image in the center of this page gives eight distinct views of the Rubik's cube image above it. Alternate clicking on "Rotate A" and "Rotate B" tilts the view back and forth. Each repeat click rotates the view 90 degrees.</span><br><br>
-      <span style = "display: block; color:blue; font-weight:bold; text-align: center; font-size: 26px">Some Algorithm Shortcuts</span><p></p>
+      <span>Using the Alternate View Cube</span>
+      <span >The lower cube image in the center of this page gives eight distinct views of the Rubik's cube image above it. Alternate clicking on "Rotate A" and "Rotate B" tilts the view back and forth. Each repeat click rotates the view 90 degrees.</span>
+      <br><br>
+      <h2 style = "text-align: center;">Some Algorithm Shortcuts</h2><p></p>
       <button on:click={corners}>PLL Corners: R' F R' B2 R F' R' B2 R2</button>
       <button on:click={triclock}>Triangle Clockwise: M2 U' M U2 M' U' M2</button>
       <button on:click={tricounterclock}>Triangle CounterClockwise: M2 U M U2 M' U M2</button>

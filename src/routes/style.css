@@ -1,5 +1,5 @@
 
-html {background-color:#331f12;}
+html {background-color:#0c0c0c;}
 
 div {
     color: blue;
@@ -7,7 +7,6 @@ div {
 
 body {
     font-size: 22px;
-    background-color: #E5DEC8; 
     color: darkblue;
     padding-left: 3%;
     padding-right: 3%;
@@ -20,7 +19,8 @@ body {
 }
 
 p {
-    color: #000000;
+    color: rgb(140, 216, 248);
+    /*color: rgb(214, 247, 214);*/
     font-size: 24px;
     text-indent: 3%;
 }
@@ -32,13 +32,13 @@ p {
 	
   button {
     margin-left: 1%;
-    background-color: pink;
+    background-color: rgb(66, 121, 241);
     border-width: 2px;
     border-color: #E8F7C1;
     border-radius: 10px;
-    color: blue;
+    color: gold;
     font-size: 22 px;
-    box-shadow: 0px 0px 15px 0px rgb(255, 215, 0);
+    box-shadow: 0px 0px 5px 0px rgb(255, 215, 0);
     padding: 3px 10px 3px 10px; 
   } 
 
@@ -48,10 +48,11 @@ p {
     border-color: #E8F7C1;
     border-radius: 10px;
     box-shadow: 0px 0px 25px 0px rgb(255, 255, 0);
+    font-size: 23px;
   }
 
 pre {
-    color: maroon;
+    color: rgb(241, 206, 206);
     font-size: 24px;
 }
 
@@ -60,21 +61,26 @@ div {
 }
 
 h3 {
-    color: #000000
+    color: rgb(140, 216, 248);
 }
 
 h1, h2 {
-    color: blue;
+    color: gold;
+}
+
+span {
+    color: rgb(214, 247, 214);
 }
 
 p span {
-    text-transform: uppercase;
+    /*text-transform: uppercase; */
+    color: rgb(214, 247, 214);
 }
 
 a {
     /*background-color: lightblue; */
     border-color: #E8F7C1;
-    color: blue;
+    color: rgb(232, 217, 241);
     font-size: 22px;
   } 
 
@@ -86,7 +92,17 @@ a {
     box-shadow: 0px 0px 25px 0px rgb(255, 255, 0);
   }
 
-  
+   .h3a {
+    font-size: 32px; 
+    font-weight: bold;
+  }
+
+   .h3b {
+    font-size: 32px; 
+    font-weight: bold;
+    text-align: center;
+  }
+
 
 
 

@@ -78,13 +78,9 @@ console.log("m2(ret) is", m2(ret))
 </svelte:head>
 <br />
 <div>**************************************************************************</div>
-<div style="font-family: Times New Roman; text-align:center; font-size: 32px;" transition:fade>
-	<br />
-
-    Asynchronous State Transformations in Monads
-</div>
-<br />
-<h3>GOAL: Handle both Synchronous and Asynchronous Functions in a Simple Recursive Closure</h3>
+<h1 style = "text-align: center">Asynchronous State Transformations in Monads</h1>
+  
+  <h3>GOAL: Handle both Synchronous and Asynchronous Functions in a Simple Closure</h3>
 <p>We've been creating the recursive closures called monads with: </p>
 <pre>{monad}</pre>
 <p>Here it is again with a small tweak enabling it to handle functions that operate on and/or return promises: </p>
