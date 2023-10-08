@@ -24,6 +24,8 @@
 
         <a href="./Bell-Inequality">Bell's Inequality</a>
 
+        <a href="./Pilot-Wave">Pilot-Wave Theory</a>
+
   </nav>
 
   <div>"***********************************************************************************************"</div>

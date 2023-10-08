@@ -19,10 +19,13 @@ body {
 }
 
 p {
-    color: rgb(140, 216, 248);
-    /*color: rgb(214, 247, 214);*/
+    color: rgb(219, 253, 244);
     font-size: 24px;
     text-indent: 3%;
+}
+
+.p2 {
+    color: rgb(195, 219, 255);
 }
 
 .columns {
