@@ -15,7 +15,7 @@
 </style>
 
 
-<h1 class="gold">Another Chat With Merlin On This One</h1>
+<h1 class="gold">Another Chat With Merlin</h1>
 <div id = "container"> 
 <p class="p2">Do the Bell inequality experiments really rule out the existence of hidden variables in entangled particles?</p>
 

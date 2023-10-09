@@ -166,43 +166,43 @@ var ZbackDemo = `function Zback (ar) {
 
 var mona = `function M (x) {
   return function go (func) {
-    if (func === dF3s7) return x;
+    if (func === dF3x) return x;
     else x = func(x);
     return go;
   }
 }
-Where dF3s7 = () => {}; // This flag is a function in order to
+Where dF3x = () => {}; // This flag is a function in order to
                               accommodate future type checking.`
 var orthoganal = `var demo1 = M(3);
 var demo2 = M(3);
 demo1(v=>v**3);
 demo2(v=>v - 1);
-console.log(demo1(dF3s7)); // 27
-console.log(demo2(dF3s7)); // 2`;
+console.log(demo1(dF3x)); // 27
+console.log(demo2(dF3x)); // 2`;
 
 var compose1 = `var m = M(3);
-log(M(3)(v=>v**3)(v=>v*3)(Math.sqrt)(dF3s7)); // 9`;
+log(M(3)(v=>v**3)(v=>v*3)(Math.sqrt)(dF3x)); // 9`;
 
 var compose2 = `m(()=>4);  // Sets x in the m-M(x) closure to 4.
 m(v=>v**4)(v=>v**(1/2))(v=>v-7)
-log(m(dF3s7))                             // 42
+log(m(dF3x))                             // 42
 
 var add = a => b => a + b;
 var mult = a => b => a * b;
 var exp = a => b => b**a;
 
 m(()=>3)(add(4))(exp(4))(Math.sqrt)(add(-7));
-log(m(dF3s7))                             // 42
+log(m(dF3x))                             // 42
 
 // NOTE: ()=>3 (above) resets the value in the m-M(x) closure to 3.
 
-log(M(2)(add(4))(mult(7))(dF3s7))`
+log(M(2)(add(4))(mult(7))(dF3x))`
 var mean = `function meaning (ar) {return ar.reduce((a, 
   currentValue) => a**3 + currentValue, 0) - 2*13};
 
 var m = M([1,3,4]);
 m(meaning);
-m(dF3s7);     // 42`;
+m(dF3x);     // 42`;
 
   var M4 = `function M(x) {
     let ar = [];
@@ -214,7 +214,73 @@ m(dF3s7);     // 42`;
       return go;
     };
   };`;
+var Rcode = `  const R = function R(ar) {
+    let temp = [];
+    temp[0] = [
+      ar[0][6],
+      ar[0][3],
+      ar[0][0],
+      ar[0][7],
+      ar[0][4],
+      ar[0][1],
+      ar[0][8],
+      ar[0][5],
+      ar[0][2],
+    ];
 
+    temp[1] = ar[1];
+
+    temp[2] = [
+      ar[4][8],
+      ar[2][1],
+      ar[2][2],
+      ar[4][5],
+      ar[2][4],
+      ar[2][5],
+      ar[4][2],
+      ar[2][7],
+      ar[2][8],
+    ];
+
+    temp[3] = [
+      ar[3][0],
+      ar[3][1],
+      ar[5][2],
+      ar[3][3],
+      ar[3][4],
+      ar[5][5],
+      ar[3][6],
+      ar[3][7],
+      ar[5][8],
+    ];
+
+    temp[4] = [
+      ar[4][0],
+      ar[4][1],
+      ar[3][2],
+      ar[4][3],
+      ar[4][4],
+      ar[3][5],
+      ar[4][6],
+      ar[4][7],
+      ar[3][8],
+    ];
+
+    temp[5] = [
+      ar[5][0],
+      ar[5][1],
+      ar[2][6],
+      ar[5][3],
+      ar[5][4],
+      ar[2][3],
+      ar[5][6],
+      ar[5][7],
+      ar[2][0],
+    ];
+    return temp;
+  }
+
+`
 var reverseShow = `function reverse () { 
   let fu = m(dF3ar).pop(); 
   // discards the function being reversed.
@@ -245,7 +311,7 @@ log("m(dF3x is", m(dF3x)) // m(dF3x is 42`
 <p>The first five pages (menu, left to right) experiment with applications in which state is maintained in tiny closures, modified only by the function returned when the closure is created. This little function: . . .  </p  >
 <pre>{mona}</pre>
 <h3> . . . can anonymously compose functions,</h3>
-<pre>M(3)(v=>v**3)(v => v*4)(v => v - 8)(Math.sqrt)(dF3s7);  // 10</pre>
+<pre>M(3)(v=>v**3)(v => v*4)(v => v - 8)(Math.sqrt)(dF3x);  // 10</pre>
 <h3>. . . can serve as the outer scope for closures encapsulating everything that happens in applications.</h3>
 <h3>&nbsp&nbsp;&nbsp;&nbsp;&nbsp;. . . be they simple,</h3>
 
@@ -261,7 +327,9 @@ log("m(dF3x is", m(dF3x)) // m(dF3x is 42`
      Math.floor(Math.random() * 12) + 1, Math.floor(Math.random() * 20) + 1], 
      [], ['+'], [], [0], [], [0], [] 
 ]);</pre>
-    
+<p> The functions for rotating the cube and its sides are in a lookup table specifying what colors the squares will acquire during the move. Here's the function "R" for rotating the right side a quarter turn in the clockwise direction: </p>
+<pre>{Rcode}</pre>
+<p>ar[1] is on the side opposite from ar[0], so it does not change. Rearranging the 54 strings of ar this way requires very little browser engine effort or memory. This is far from being a rigorous benchmark, but for what it's worth, the fraction of a second needed to execute the 41 moves of "Scramble" doesn't perceptively lengthen during rapid sequences of clicks when the simulated Rubik's cube is running on my desktop computer. </p>
 <h1>Simulated Rubik's Cube</h1>
 <p>The closure constructor M is used only to hold the 41 moves that configured the most recent scramble. It is re-named "M2" in <a href="./cube7">cube7</a> because the name "M" is given to the closure constructor that holds the state of the simulated Rubik's cube.
 <pre style="margin-left:50px">{M4}</pre>

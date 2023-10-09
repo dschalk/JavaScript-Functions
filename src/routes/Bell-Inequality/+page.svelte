@@ -51,7 +51,7 @@ However, quantum mechanics, through experiments involving entangled particles, r
 </p><p>
     
 In other words, Bell's theorem doesn't refute the concept of hidden variables entirely but rather the notion of local hidden variables. Non-local hidden variables could still exist, but their implementation would imply a departure from our usual concepts of space and time as they would need to affect outcomes instantaneously over any distance. That's why they are typically considered somewhat more exotic and less likely in mainstream physics. </p>
-<p>Show me some example experiments demonstrating violations of Bell's, along with the reasoning involved in drawing conclusions.</p>
+<p style="p2">Show me some example experiments demonstrating violations of Bell's, along with the reasoning involved in drawing conclusions.</p>
 
 <p>Merlin: Here's a simplified version of how physicists demonstrate violations of Bell’s inequality in an experiment involving entangled particles.
 
@@ -114,14 +114,7 @@ In other words, Bell's theorem doesn't refute the concept of hidden variables en
     The Copenhagen interpretation, however, stands in apparent conflict with Einstein's special theory of relativity, which postulates that information cannot be transmitted faster than the speed of light. This "spooky action at a distance"—as Einstein termed quantum entanglement—remains one of the most mysterious facets of quantum mechanics, and the heart of a still-open debate about the interpretation and completeness of quantum theory.
 </p>    
 
-<p state="p2">
-    Tell me why Bell's inequality experiments do not imply action at a distance
-</p>
-
-<p>
-    Your queries have exhausted for today. Subscribe to Merlin Pro to continue using Merlin or come back tomorrow.
-</p>
-
+<br><br><br>
 
 
 </div>

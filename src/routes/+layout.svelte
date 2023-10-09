@@ -16,8 +16,6 @@
 
         <a href="./score">Game of Score</a>
 
-        <a href="./arrays">Arrays</a>
-
         <a href="./async">Async</a>
 
         <a href="./functional">Functional</a>

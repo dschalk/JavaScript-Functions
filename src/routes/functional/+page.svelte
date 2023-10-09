@@ -1,16 +1,4 @@
-<h3>Home sweet home</h3>
-
-<p>
-	The following is copied from the "Functional Cargo Cult" section of <a
-		href="https://legacy-monads.schalk2.com/">Legacy-Monads</a
-	> These links are cited at the bottom:
-</p>
-
-<a href="https://www.youtube.com/watch?v=nm22duia0jU">Cargo Cult Programming video presentation</a>
-
-<a href="https://www.youtube.com/watch?v=yvfAtIJbatg"
-	>Cargo Cult Science -- Richard Feynman's 1974 Caltech lecture</a
->
+<h1>Functional Programming</h1>
 
 <h3>FUNCTIONAL PROGRAMMING</h3>
 <p>
@@ -26,6 +14,10 @@
 	appearance of material wealth, particularly highly desirable Western goods (i.e., "cargo"), via
 	Western airplanes."
 </p>
+
+<a href="https://www.youtube.com/watch?v=yvfAtIJbatg"
+	>Cargo Cult Science -- Richard Feynman's 1974 Caltech lecture</a
+>
 
 <h4>Cargo Cult</h4>
 <p>
@@ -61,12 +53,7 @@
 </p>
 
 <p>
-	Code where functions might collide over mutable global variables leads programmers to religeously
-	avoid mutable global variables. I'm using the Svelte framework for this project, and my numerous
-	modules are quite small. Mutable global variables can't cause problems because I have no modules
-	or heirarchies of nested modules in which clashes might occur. Were I to constrain my creativity
-	by following "best practices" regarding global variables, I would be engaging in another form of
-	cargo cult coding, mindlessly micking forms that have no value.
+	Code where functions might collide over mutable global variables leads programmers to religeously avoid mutable global variables. I'm using the Svelte framework for this project, and I try to keep my modules small. Mutable global variables can't cause problems because I have no modules or hierarchies of nested modules in which clashes might occur. I don't hesitate to mutate variables withing the scope of functions, or within the scope of my reasonably sized svelte modules.
 </p>
 
 <h4>References</h4>
