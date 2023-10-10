@@ -2269,6 +2269,10 @@ const orangeSide = `<div class="face front">
         </div>
       </div>`;
 
+
+
+
+
 </script>
 
 

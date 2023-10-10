@@ -292,10 +292,178 @@ var reverseShow = `function reverse () {
   // uses foo, then discards it, returning the cube to where it was.
 }; `;
 
-var reduceCode = `const m = M([3,4,5,6,7,8,9])
-const rd = x => x.reduce((a, b) => a + b); // 42
-m(rd);
-log("m(dF3x is", m(dF3x)) // m(dF3x is 42`
+var reduceCode = `const m = M([3,4,5,6,7,8,9]);
+const rd = x => x.reduce((a, b) => a + b);
+m(rd)(dF3x);   // 42 `;
+
+const Mcode = `function M(x, ar = []) {
+    return function go(func) {
+      if (func === dF3x) return x;
+      if (func === dF3ar) return ar;
+      else x = func(x);
+      ar.push(func);
+      return go;
+    };
+  };
+    Where const dF3x = () => {}
+          const dF3ar = () => {};`;
+
+  var classCode2 = `const b0 = 'blue';
+  const b1 = 'blue';
+  const b2 = 'blue';
+  const b3 = 'blue';
+  const b4 = 'blue';
+  const b5 = 'blue';
+  const b6 = 'blue';
+  const b7 = 'blue';
+  const b8 = "blue";
+
+  const g0 = 'green';
+  const g1 = 'green';
+  const g2 = 'green';
+  const g3 = 'green';
+  const g4 = 'green';
+  const g5 = 'green';
+  const g6 = 'green';
+  const g7 = 'green';
+  const g8 = "green";
+
+  const r0 = 'red';
+  const r1 = 'red';
+  const r2 = 'red';
+  const r3 = 'red';
+  const r4 = 'red';
+  const r5 = 'red';
+  const r6 = 'red';
+  const r7 = 'red';
+  const r8 = "red";
+
+  const o0 = 'orange';
+  const o1 = 'orange';
+  const o2 = 'orange';
+  const o3 = 'orange';
+  const o4 = 'orange';
+  const o5 = 'orange';
+  const o6 = 'orange';
+  const o7 = 'orange';
+  const o8 = "orange";
+
+  const y0 = 'yellow';
+  const y1 = 'yellow';
+  const y2 = 'yellow';
+  const y3 = 'yellow';
+  const y4 = 'yellow';
+  const y5 = 'yellow';
+  const y6 = 'yellow';
+  const y7 = 'yellow';
+  const y8 = "yellow";
+
+  const w0 = 'white';
+  const w1 = 'white';
+  const w2 = 'white';
+  const w3 = 'white';
+  const w4 = 'white';
+  const w5 = 'white';
+  const w6 = 'white';
+  const w7 = 'white';
+  const w8 = 'white';
+
+  var bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
+  var gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
+  var rr = [r0, r1, r2, r3, r4, r5, r6, r7, r8];
+  var oo = [o0, o1, o2, o3, o4, o5, o6, o7, o8];
+  var yy = [y0, y1, y2, y3, y4, y5, y6, y7, y8];
+  var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
+
+  var m = M([bb, gg, rr, oo, yy, ww]);`;
+  
+  
+    const DOMright = `<div class="face right">
+        <div class="grid">
+          <div class={m(dF3x)[0][0]} />
+          <div class={m(dF3x)[0][1]} />
+          <div class={m(dF3x)[0][2]} />
+          <div class={m(dF3x)[0][3]} />
+          <div class={m(dF3x)[0][4]} />
+          <div class={m(dF3x)[0][5]} />
+          <div class={m(dF3x)[0][6]} />
+          <div class={m(dF3x)[0][7]} />
+          <div class={m(dF3x)[0][8]} />
+        </div>
+      </div>`;
+
+
+  var classCode2 = `const b0 = 'blue';
+  const b1 = 'blue';
+  const b2 = 'blue';
+  const b3 = 'blue';
+  const b4 = 'blue';
+  const b5 = 'blue';
+  const b6 = 'blue';
+  const b7 = 'blue';
+  const b8 = "blue";
+
+  const g0 = 'green';
+  const g1 = 'green';
+  const g2 = 'green';
+  const g3 = 'green';
+  const g4 = 'green';
+  const g5 = 'green';
+  const g6 = 'green';
+  const g7 = 'green';
+  const g8 = "green";
+
+  const r0 = 'red';
+  const r1 = 'red';
+  const r2 = 'red';
+  const r3 = 'red';
+  const r4 = 'red';
+  const r5 = 'red';
+  const r6 = 'red';
+  const r7 = 'red';
+  const r8 = "red";
+
+  const o0 = 'orange';
+  const o1 = 'orange';
+  const o2 = 'orange';
+  const o3 = 'orange';
+  const o4 = 'orange';
+  const o5 = 'orange';
+  const o6 = 'orange';
+  const o7 = 'orange';
+  const o8 = "orange";
+
+  const y0 = 'yellow';
+  const y1 = 'yellow';
+  const y2 = 'yellow';
+  const y3 = 'yellow';
+  const y4 = 'yellow';
+  const y5 = 'yellow';
+  const y6 = 'yellow';
+  const y7 = 'yellow';
+  const y8 = "yellow";
+
+  const w0 = 'white';
+  const w1 = 'white';
+  const w2 = 'white';
+  const w3 = 'white';
+  const w4 = 'white';
+  const w5 = 'white';
+  const w6 = 'white';
+  const w7 = 'white';
+  const w8 = 'white';
+
+  var bb = [b0, b1, b2, b3, b4, b5, b6, b7, b8];
+  var gg = [g0, g1, g2, g3, g4, g5, g6, g7, g8];
+  var rr = [r0, r1, r2, r3, r4, r5, r6, r7, r8];
+  var oo = [o0, o1, o2, o3, o4, o5, o6, o7, o8];
+  var yy = [y0, y1, y2, y3, y4, y5, y6, y7, y8];
+  var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
+
+  var m = M([bb, gg, rr, oo, yy, ww]);`;
+  
+
+
 
 </script>
 
@@ -308,7 +476,7 @@ log("m(dF3x is", m(dF3x)) // m(dF3x is 42`
 <h1>JavaScript Functions</h1>
 <h3 class = "h3a">Introduction</h3>
 
-<p>The first five pages (menu, left to right) experiment with applications in which state is maintained in tiny closures, modified only by the function returned when the closure is created. This little function: . . .  </p  >
+<p>The first four pages (menu, left to right) experiment with applications in which state is maintained in tiny closures, modified only by the function returned when the closure is created. This little function: . . .  </p  >
 <pre>{mona}</pre>
 <h3> . . . can anonymously compose functions,</h3>
 <pre>M(3)(v=>v**3)(v => v*4)(v => v - 8)(Math.sqrt)(dF3x);  // 10</pre>
@@ -319,24 +487,27 @@ log("m(dF3x is", m(dF3x)) // m(dF3x is 42`
 
 <h3>&nbsp&nbsp;&nbsp;&nbsp;&nbsp;... or complex,</h3>
 
-  <p>For example, <span>m = M( [ bb, gg, rr, oo, yy, ww ] )</span> at <a href="./cube7#cubeDef">Rubik's Cube Simulation</a>, in which the m-M(x) closure encapsulates an array of six nine-member arrays of references to the strings "blue", "green", "orange", "red", "yellow", and "white." These are the names of CSS classes with corresponding background colors, the classes of the 54 div elements that populate the six sides of a simulated Rubik's cube.</p>  
-
-  <p>The <a href="./score#mDef">Game of Score</a> is a somewhat complex simulated dice game. The value "x" in the m-M(x) closure encapsulating the inner workings of the game is shown in the definition of m2:
+  <p>For example, the <a href="./score#mDef">Solitaire Game of Score</a> involves making the number 20 in two or more moves using two six-sided, one twelve-sided, and one twenty-sided die using arithmetic and concatenation. The initial value of "x" in the m-M(x) closure is shown in the definition of m2:
   <pre>m2 = M([ 
     [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1,
      Math.floor(Math.random() * 12) + 1, Math.floor(Math.random() * 20) + 1], 
      [], ['+'], [], [0], [], [0], [] 
 ]);</pre>
-<p> The functions for rotating the cube and its sides are in a lookup table specifying what colors the squares will acquire during the move. Here's the function "R" for rotating the right side a quarter turn in the clockwise direction: </p>
+<h2>The Simulated Rubik's Cube</h2>
+<p> The <a href="./cube7">simulated Rubik's cube</a> is another example of a fairly complex application whose state is maintained in a tiny closure. The bare bones M shown above is can handle the transformations of the cube, from keystroke or button click to the result seen in the browser. But, in order to facilitate taking back a series of moves a play may not have committed to memory, an array of references to moves taken was added. The version without the array was renamed "M2". Clicking the "Save" button puts the current configuration in a m2-M2(x) closure. The m-M(x) closure in the Rubik's cube simulation is defined as follows: </p>
+<pre>{Mcode}</pre>
+  <pre>{classCode2}</pre>
+
+<p>Each of the six sides of the starting cube has a solid color. For example, the right side is </p>    
+<pre>{DOMright}</pre>
+
+
+<p> The functions for rotating the cube and its sides are in a lookup table specifying the locations of the squares the cube will acquire during the move. Here's the function "R" for rotating the right side a quarter turn in the clockwise direction: </p>
 <pre>{Rcode}</pre>
-<p>ar[1] is on the side opposite from ar[0], so it does not change. Rearranging the 54 strings of ar this way requires very little browser engine effort or memory. This is far from being a rigorous benchmark, but for what it's worth, the fraction of a second needed to execute the 41 moves of "Scramble" doesn't perceptively lengthen during rapid sequences of clicks when the simulated Rubik's cube is running on my desktop computer. </p>
-<h1>Simulated Rubik's Cube</h1>
-<p>The closure constructor M is used only to hold the 41 moves that configured the most recent scramble. It is re-named "M2" in <a href="./cube7">cube7</a> because the name "M" is given to the closure constructor that holds the state of the simulated Rubik's cube.
-<pre style="margin-left:50px">{M4}</pre>
 <p>With moves stored in ar, setting the cube configuration back to where it was prior to the most recent move requires nothing more than the three short lines of code in the function "reverse":</p>
 <pre>{reverseShow}</pre>
-<p> m(dF3ar) is a reference to ar in the m-M(x) closure, so not only does "m(dF3ar)" expose ar outside the scope of the m-M(x) closure, it also shortens the length of ar inside the closure. Very little browser memory is needed to store the information necessary to reverse hundreds of moves. Making moves is not resource intensive either. A move doesn't rearrange the div elements of the cube, as is the case with many Rubik's cube simulators. All it does is rearrange the placement of the strings (names of colors) referring to some CSS classes. </p>
-<p>The reverse function is oblivious to precisely which functions were responsible for the transformations being reversed. Whatever the function at the top of the list happens to be, it run three more times. After foo executes, it and the function that was reversed are discarded, making the list one item shorter than it was. </p>
+<p> m(dF3ar) is a reference to ar in the m-M(x) closure, so reverse() shortens the length of ar inside the closure. Very little browser memory is needed to store the information necessary to reverse hundreds of moves. Making moves is not resource intensive either. A move doesn't rearrange the div elements of the cube or rotate numerous little cubits, as is the case with many Rubik's cube simulators. All it does is rearrange the placement of the strings (names of colors) referring to some CSS classes. </p>
+<p>The reverse function is oblivious to precisely which functions were responsible for the transformations being reversed. Whatever the function at the top of the list happens to be, it run three more times. After foo executes, it and the function that was reversed are discarded, making the list one item shorter than it was.  </p>
 
 
 <a id="examples"></a>
