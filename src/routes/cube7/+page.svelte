@@ -2242,6 +2242,15 @@ var a = 0;
 var b = 0;
 var classCode = `classes={m(dF3x)[a][b]}`;
 
+var basic = `function M (x) {
+  return function go (func) {
+    if (func === dF3x) return x;
+    else x = func(x);
+    return go;
+  }`;
+
+var log = console.log;
+
 const Mcode = `function M(x, ar = []) {
     return function go(func) {
       if (func === dF3x) return x;
@@ -2253,7 +2262,6 @@ const Mcode = `function M(x, ar = []) {
   };
     Where const dF3x = () => {}
           const dF3ar = () => {};`;
-
 
 const orangeSide = `<div class="face front">
         <div class="grid">
@@ -3136,13 +3144,18 @@ const orangeSide = `<div class="face front">
 <button on:click={rotate2}>Counterclockwise</button> -->
 <br>
 
-  <p> The simple m-M(x) closure used above and discussed in <a href="./">Home</a> is sufficient to operate the cube, but without the "reverse" feature. For that, an array and a way to fetch it is added to the definition. </p>
+  <p> This simple m-M(x) closure discussed in <a href="./">Home</a> is sufficient to operate the cube in every way except taking back moves:
+   <pre>{basic}</pre> 
+ <p>   
+ To make the "Reverse" button (also keypress 'q') work, an array is added to hold a record of moves taken. Here's the revised definition:</p>
   
   <pre>{Mcode}</pre>
   
-  <p>Prior states of the cube don't need to be preserved. The array in the m-M(x) closure, which is central to reversing prior rotations, holds only references to the functions responsible for the cube's current state. The "reverse" function discards the most-recently called function, runs that function three more times to return the cube to its previous configuration, and then removes itself from the array. The length of the array is then one element shorter than it was before reverse() was called. Here's the definition:  </p>
+  <p> Repeatedly clicking the "Reverse" button or pressing the 'q' key returns the cube to all of its prior configurations from 
+    
+    Prior states of the cube don't need to be preserved. The array in the m-M(x) closure, which is central to reversing prior rotations, holds only references to the functions responsible for the cube's current state. The "reverse" function discards the most-recently called function, runs that function three more times to return the cube to its previous configuration, and then removes itself from the array. The length of the array is then one element shorter than it was before reverse() was called. Here's the definition:  </p>
 
-<pre>{reverseCode}</pre>;
+<pre>{reverseCode}</pre>
   <p>The main cube and its 54 constituent HTML divs never move. In the m-M(x) closure, "x" is an array of six nine-member arrays of references to the strings "red," "orange," "blue," "green,", "yellow," and "white." These strings specify div classes with corresponding background colors in the DOM. </p>
 
   <pre>{orangeSide}</pre>

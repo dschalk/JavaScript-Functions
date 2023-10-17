@@ -1,95 +1,52 @@
 <script>
-    import async from '$lib/Screenshot_async.png';
-    import asyncIdpng from '$lib/Screenshot_asyncId.png';
 	import { merge_ssr_styles } from 'svelte/internal';
 	import { fade } from 'svelte/transition';
 
+function dF3x () {};
 var log = console.log;
-function ret () {};
-
-function M1 (x) {
-  return function go (func) {
-      if (func === ret) return x;
-      x = asyncId(x).then(v => func(v));
-      return go;
-  }
-}
- 
-var M1Code = `function M1 (x) {
-  return function go (func) {
-      if (func === ret) return x;
-      x = asyncId(x).then(v => func(v));
-      return go;
-  }
-}
-
-WHERE async function asyncId (x) {return x};`
-
-var monad = `function M (x) {
-    return function go (func) {
-        if (func === ret) return x
-        x = func(x);
-        return go;
-  }
-}`
-
-var asyncIdCode = `async function asyncId (x) {return x};
-
-var m2 = M1(3);
-
-log("m2(ret) is", m2(ret));  // 3
-
-asyncId(m2(ret)).then(v=>log("asyncId(m2(ret)).then(v =>",v));  //3
-
-asyncId(asyncId(asyncId(m2(ret))))
-.then(v=>log("asyncId(asyncId(asyncId(m2(ret))))).then(v =>",v));  //3`;
-
 async function asyncId (x) {return x};
-async function wait (t) {setTimeout(function () {}),t*1000};
-var m1 = M1(2);
-var m2 = M1(new Promise((resolve, reject) => {
-  setTimeout(() => {
-    resolve(2);
-  }, 1500)}));
 
-var mpow = y => async x => asyncId(x).then(v => x = v**y)
-var msqrt = x => asyncId(x).then(v => x = Math.sqrt(v));
-var mMult = y => x => asyncId(x).then(v => x = v*y);
-var madd = y => async x => {await wait(2); return x+y}; 
+function M (x) {
+  return function go (func) {
+      if (func === dF3x) return x;
+      else x = asyncId(x).then(v => func(v));
+      return go;
+  }
+}
 
-m1(mpow(10))(Math.sqrt)(madd(52))(mMult(2))(a => a*2)(async x => {await wait(2); return x/8});
+var closure = `function dF3x () {};
+var log = console.log;
+async function asyncId (x) {return x};
 
-m2(mpow(10))(Math.sqrt)(madd(52))(mMult(2))(a => a*2)(async x => {await wait(2); return x/8});
+function M (x) {
+  return function go (func) {
+      if (func === dF3x) return x;
+      else x = asyncId(x).then(v => func(v));
+      return go;
+  }
+}`;
 
-console.log("m1(ret) is", m1(ret))
-console.log("m2(ret) is", m2(ret))
+var test = `var m = M(3);
+m(v=>v**3)(v=>3*v)(v=>v+19)(Math.sqrt)(dF3x).then(v => log(v)); // 10 `
+
+
 </script>
     
 <style>
-    img {
-        width:100%; 
-        height:100%;
-    }
-    h3 {color:turquoise }
+    h3 {color:rgb(187, 248, 204) }
 </style>
 
-<svelte:head>
-	<title>Asynchronous values in monads</title>
-</svelte:head>
-<br />
-<div>**************************************************************************</div>
-<h1 style = "text-align: center">Asynchronous State Transformations in Monads</h1>
+<h1 style = "text-align: center">Asynchronous Transformations</h1>
   
   <h3>GOAL: Handle both Synchronous and Asynchronous Functions in a Simple Closure</h3>
-<p>We've been creating the recursive closures called monads with: </p>
-<pre>{monad}</pre>
-<p>Here it is again with a small tweak enabling it to handle functions that operate on and/or return promises: </p>
-<pre>{M1Code}</pre>
-<p>AsyncId makes promises out of non-promises and has no effect on promises as shown below. </p>
-<pre>{asyncIdCode}</pre>
-<p>Part A (above) shows that m2(ret) == 3. Calling asyncId on m2(ret) in Part B returned a promise whose fulfullment value is 3. The Part B Promise is both the argument and the return value of asyncId in PartC   .</p>
-<p>The next screenshot demonstrates M1-created monads taking as arguments a series of synchronous mixed with asynchronous functions. The value held in m1 is initially the number 2. The value in m2 is a promise that resolves to the number 2.  </p>
-<p>After m1 and m2 operate on pow(5), both hold promises with fulfillment values of 32. Had they operated on mpow(5) instead, the result would be the same.</p> 
+<pre>{closure}</pre>
+<p>If some value x is not a Promise, asyncId(x) creates a promise that resolves to x. asyncId(x) has no effect on x if x is a Promise. Using the basic definition of M, the following computation would return the number 10. Here, it returns a promise that resolves to 10</p> 
+<pre>{test}</pre>
 
-<img src={async}/>
-<img src={asyncIdpng}/>
+
+
+
+
+
+
+

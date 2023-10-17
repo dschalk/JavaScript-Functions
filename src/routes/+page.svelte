@@ -4,6 +4,8 @@
 import Firefox_1 from '$lib/Firefox_test.png';
 import Firefox_2 from '$lib/Firefox_test_2.png';
 import Firefox_3 from '$lib/Composition.png';
+import passBy from '$lib/passBy.png';
+import object from '$lib/object.png';
 
 var Mdisplay = `function M (x) {
   return function go (func) {
@@ -464,50 +466,74 @@ const Mcode = `function M(x, ar = []) {
   
 
 
-
 </script>
 
 <style>
+    /*img {
+        width:120%; 
+        height:120%;
+    }*/
+    h3 {color:turquoise }
+
+    img {
+      display: block;
+      margin: 0 auto;
+      width: 100%;
+}
+
+ 
 </style>
-  
 
 <div style = "margin-left:12%; margin-right: 12%;">
 
 <h1>JavaScript Functions</h1>
 <h3 class = "h3a">Introduction</h3>
 
-<p>The first four pages (menu, left to right) experiment with applications in which state is maintained in tiny closures, modified only by the function returned when the closure is created. This little function: . . .  </p  >
-<pre>{mona}</pre>
-<h3> . . . can anonymously compose functions,</h3>
-<pre>M(3)(v=>v**3)(v => v*4)(v => v - 8)(Math.sqrt)(dF3x);  // 10</pre>
-<h3>. . . can serve as the outer scope for closures encapsulating everything that happens in applications.</h3>
-<h3>&nbsp&nbsp;&nbsp;&nbsp;&nbsp;. . . be they simple,</h3>
+<p>The first four pages of this website (menu, left to right) present applications in which variables are maintained in tiny closures created by calling a function named "M". The first example (below) shows an anonymous closure facilitating function composition. The simulated Rubik's cube example follows the convention of creating an application's main closure by calling "m = M(x)", where x can be any value, and referring to the result as "the m-M(x) closure." "x" is encapsulated, sequestered from everything else in the global scope, but it can be modified by calling m(func) for some function "func". In the simplest version of "M", calling m(func) mutates "x," changing it from x to func(x). And, as you will see below, m(dF3x) is a reference to "x." Here's the definition:   </p  >
 
+<pre>{mona}</pre>
+<h3> Anonymous Function Composition</h3>
+<pre>var res = M(3)(v=>v**3)(v => v*4)(v => v - 8)(Math.sqrt)(dF3x);  // 10</pre>
+<p> The result is preserved in the variable res, but the browser engine has reason to keep the anonymous function returned by M(3).   </p>
+<h3>Encapsulating the Result of a Computation</h3>
 <pre>{reduceCode}</pre>
 
-<h3>&nbsp&nbsp;&nbsp;&nbsp;&nbsp;... or complex,</h3>
+<h3>The Solitaire Game of Score</h3>
 
-  <p>For example, the <a href="./score#mDef">Solitaire Game of Score</a> involves making the number 20 in two or more moves using two six-sided, one twelve-sided, and one twenty-sided die using arithmetic and concatenation. The initial value of "x" in the m-M(x) closure is shown in the definition of m2:
+  <p>This game was made years before I For example, the <a href="./score#mDef">Solitaire Game of Score</a> involves using two six-sided, one twelve-sided, and one twenty-sided die along with arithmetic and concatenation to arrive at the number 20 in two or more moves. The initial value of "x" in the m-M(x) closure is shown in the definition of m2:
   <pre>m2 = M([ 
     [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1,
      Math.floor(Math.random() * 12) + 1, Math.floor(Math.random() * 20) + 1], 
      [], ['+'], [], [0], [], [0], [] 
 ]);</pre>
 <h2>The Simulated Rubik's Cube</h2>
-<p> The <a href="./cube7">simulated Rubik's cube</a> is another example of a fairly complex application whose state is maintained in a tiny closure. The bare bones M shown above is can handle the transformations of the cube, from keystroke or button click to the result seen in the browser. But, in order to facilitate taking back a series of moves a play may not have committed to memory, an array of references to moves taken was added. The version without the array was renamed "M2". Clicking the "Save" button puts the current configuration in a m2-M2(x) closure. The m-M(x) closure in the Rubik's cube simulation is defined as follows: </p>
+<p> The <a href="./cube7">simulated Rubik's cube</a> is another example of a fairly complex application whose state is maintained in a tiny closure. The bare bones M shown above can handle the transformations of the cube, from keystroke or button click to the result seen in the browser. But, in order to facilitate taking back a series of moves, an array of references to every argument provided to m was added. Those arguments are functions that operate on x in the m-M(x) closure; i.e., that operate on <span style="color: orange">[ bb, gg, rr, oo, yy, ww ]</span>, the array that determines the background colors of the 54 divs in the DOM, thereby controling the configuration of the cube displayed in the browser. When an array was added to the definition of M, the original M was renamed M2. Here's the complete definition of m in the m-M(x) closure, beginning with the revised definition of M: </p>
 <pre>{Mcode}</pre>
   <pre>{classCode2}</pre>
 
-<p>Each of the six sides of the starting cube has a solid color. For example, the right side is </p>    
-<pre>{DOMright}</pre>
+<p> As the line "else x = func(x);" in the definition of M indicates, m(func) causes func(x) to replace x in the m-M(x) closure unless func is dF3x or dF3ar. Pressing the "r" key or clicking on the "R" rotates the right side of the cube clockwise a quarter turn. See how it uses the elements of the current configuration (named "ar") of <span style="color: orange">[ bb, gg, rr, oo, yy, ww ]</span> as a source of building blocks to assemble the updated configuration, named "temp." </p>
 
-
-<p> The functions for rotating the cube and its sides are in a lookup table specifying the locations of the squares the cube will acquire during the move. Here's the function "R" for rotating the right side a quarter turn in the clockwise direction: </p>
 <pre>{Rcode}</pre>
+<p> The functions that manipulate the cube have numerous lines of code, but they are as simple as they could possibly be. They don't rely on procedures to determine what goes where during the construction of "temp", they are just instructions specifying the new locations of the elements of the array held in the m-M(x) closure. While not organized in tabular form, they are essentially items in a lookup table.</p>
+
 <p>With moves stored in ar, setting the cube configuration back to where it was prior to the most recent move requires nothing more than the three short lines of code in the function "reverse":</p>
 <pre>{reverseShow}</pre>
 <p> m(dF3ar) is a reference to ar in the m-M(x) closure, so reverse() shortens the length of ar inside the closure. Very little browser memory is needed to store the information necessary to reverse hundreds of moves. Making moves is not resource intensive either. A move doesn't rearrange the div elements of the cube or rotate numerous little cubits, as is the case with many Rubik's cube simulators. All it does is rearrange the placement of the strings (names of colors) referring to some CSS classes. </p>
-<p>The reverse function is oblivious to precisely which functions were responsible for the transformations being reversed. Whatever the function at the top of the list happens to be, it run three more times. After foo executes, it and the function that was reversed are discarded, making the list one item shorter than it was.  </p>
+<p>The reverse function is oblivious to precisely which functions were responsible for the transformations being reversed. Whatever the function at the top of the list happens to be, it runs three more times. After foo executes, it and the function that was reversed are discarded, making the list one item shorter than it was.  </p>
+</div>
+<div style = "margin-left:2%; margin-right: 2%;">
+ <img class = 'display_image' src = {passBy} /> 
+</div>
+<div style = "margin-left:12%; margin-right: 12%;">
+
+<p> Distinguishing between passing by value (primitives) and passing by reference (objects) is a stumbling block for people new to JavaScript. It's important to know that string, number, bigint, boolean, undefined, symbol, and null are the primitive values. All other values are down the prototype chain from Object and are, therefore, objects. Here's verification that a simple function is an object:</p>
+</div>
+<div style = "margin-left:2%; margin-right: 2%;">
+ <img class = 'display_image' src = {object} /> 
+</div>
+<div style = "margin-left:12%; margin-right: 12%;">
+<p> See "prototype: Object" at the bottom of the right side. </p>
+
 
 
 <a id="examples"></a>
