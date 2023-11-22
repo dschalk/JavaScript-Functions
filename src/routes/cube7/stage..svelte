@@ -3390,7 +3390,7 @@ const orangeSide = `<div class="face front">
           <div><button class={m(dF3x)[4][5]} on:click = {() => {m = m(Cz)}} /> </div> 
           <div><button class={m(dF3x)[4][6]} on:click = {() => {m = m(Uz)}} /> </div> 
           <div><button class={m(dF3x)[4][7]} on:click = {() => {m = m(Cxr)}} /> </div> 
-          <div><button class={m(dF3x)[4][6]} on:click = {() => {m = m(U)}} /> </div> 
+          <div><button class={m(dF3x)[4][8]} on:click = {() => {m = m(U)}} /> </div> 
 
 
         </div>

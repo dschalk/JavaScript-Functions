@@ -3360,15 +3360,15 @@ const orangeSide = `<div class="face front">
 
       <div class="face top">
         <div class="grid">
-          <div class={m(dF3x)[4][0]} />
-          <div class={m(dF3x)[4][1]} />
-          <div class={m(dF3x)[4][2]} />
-          <div class={m(dF3x)[4][3]} />
+          <div><button class={m(dF3x)[4][0]} on:click = {() => {m = m(Uz)}} /> </div> 
+          <div><button class={m(dF3x)[4][1]} on:click = {() => {m = m(Cx)}} /> </div> 
+          <div><button class={m(dF3x)[4][2]} on:click = {() => {m = m(U)}} /> </div> 
+          <div><button class={m(dF3x)[4][3]} on:click = {() => {m = m(Cz)}} /> </div> 
           <div class={m(dF3x)[4][4]} />
-          <div class={m(dF3x)[4][5]} />
-          <div class={m(dF3x)[4][6]} />
-          <div class={m(dF3x)[4][7]} />
-          <div class={m(dF3x)[4][8]} />
+          <div><button class={m(dF3x)[4][5]} on:click = {() => {m = m(Czr)}} /> </div> 
+          <div><button class={m(dF3x)[4][6]} on:click = {() => {m = m(Uz)}} /> </div> 
+          <div><button class={m(dF3x)[4][7]} on:click = {() => {m = m(Cxr)}} /> </div> 
+          <div><button class={m(dF3x)[4][8]} on:click = {() => {m = m(U)}} /> </div> 
         </div>
       </div>
 
