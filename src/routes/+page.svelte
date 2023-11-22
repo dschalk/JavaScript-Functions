@@ -1,35 +1,32 @@
-
-
 <script>
-import Firefox_1 from '$lib/Firefox_test.png';
-import Firefox_2 from '$lib/Firefox_test_2.png';
-import Firefox_3 from '$lib/Composition.png';
-import passBy from '$lib/passBy.png';
-import object from '$lib/object.png';
+  import Firefox_1 from "$lib/Firefox_test.png";
+  import Firefox_2 from "$lib/Firefox_test_2.png";
+  import Firefox_3 from "$lib/Composition.png";
+  import passBy from "$lib/passBy.png";
+  import object from "$lib/object.png";
 
-var Mdisplay = `function M (x) {
+  var Mdisplay = `function M (x) {
   return function go (func) {
     if (func === dF3x) return x;
     else x = func(x);
     return go;
   }
 }
-Where dF3x = () => {}; // This flag is a function in order to simplify future type checking.`
+Where dF3x = () => {}; // This flag is a function in order to simplify future type checking.`;
 
-var ret = () => {};
+  var ret = () => {};
 
-function M (x) {
-  return function go (func) {
-    if (func === ret) return x;
-    else x = func(x);
-    return go;
+  function M(x) {
+    return function go(func) {
+      if (func === ret) return x;
+      else x = func(x);
+      return go;
+    };
   }
-};
 
-var log = console.log;
+  var log = console.log;
 
-
-var test_0 = `var m = M('peaches');
+  var test_0 = `var m = M('peaches');
 log('m(ret) is', m(ret)); // m(ret) is peaches
 
 m(x => x + ' and pears')
@@ -41,9 +38,9 @@ log('m(ret) is', m(ret)); // m(ret) is 3
 log(m(v=>v**3)(v=>v+v)(v=>v-12)(ret)) // m(ret) is 42
 
 var Pyth = a => b => Math.sqrt(a*a + b*b); 
-log(M(Pyth(3)(4))(ret)); // This anonymous computation returns 5`
+log(M(Pyth(3)(4))(ret)); // This anonymous computation returns 5`;
 
-var test_1 = `var arr = m = M([1,2,3]);
+  var test_1 = `var arr = m = M([1,2,3]);
 
 var add = x => a => a.concat(x + a.slice(-1)[0]);
 var mult = x => a => a.concat(x * a[a.length-1]);
@@ -54,9 +51,9 @@ log("2. m(ret)", m(ret)); // [ 1, 2, 3, 7, 42 ]
 
 // Next, we append the three stages of Math.sqrt(7 + 42) * 6  // 49, 7, 42 
 log(m(x => x.concat(x[3] + x[4]))(x=>x.concat(Math.sqrt(x[x.length - 1])))(mult(6))(ret))
-// [ 1, 2, 3, 7, 42, 49, 7, 42 ]`
+// [ 1, 2, 3, 7, 42, 49, 7, 42 ]`;
 
-var table = `function R (ar) {
+  var table = `function R (ar) {
   let temp = []
   temp[0] = [ar[0][6], ar[0][3], ar[0][0],
             ar[0][7], ar[0][4], ar[0][1],
@@ -82,15 +79,14 @@ var table = `function R (ar) {
 return temp;
 }`;
 
-var score = `m2 = M(
+  var score = `m2 = M(
     [ 
       [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1,
       Math.floor(Math.random() * 12) + 1, Math.floor(Math.random() * 20) + 1], 
       [], ['+'], [], [0], [], [0], [] 
-    ]);`
+    ]);`;
 
-
-	var fuDem = `function fu (a) {                                    // fu
+  var fuDem = `function fu (a) {                                    // fu
   a[5].push(clone(a));
   a[7].push(clone(a)); // All game states for use in "Back" and "Forward."
   a[6][0] += 1;
@@ -144,11 +140,11 @@ var update = () => { // The button displays will correspond to the values in m2.
   ZZ = m2(s)[1][3];
 }`;
 
-var Rf = `var Rfunc = () => {
+  var Rf = `var Rfunc = () => {
   cube = m(R)();
 };`;
 
-var Zdemo = `function Zrotate (ar) {
+  var Zdemo = `function Zrotate (ar) {
       cube = m(Zro)();
   }
   
@@ -160,13 +156,13 @@ var Zdemo = `function Zrotate (ar) {
     ar[1][5], ar[1][2] ], [ ar[0][6], ar[0][3], ar[0][0], ar[0][7], ar[0][4], ar[0][1],ar[0][8], ar[0][5], ar[0][2] ] ] ); 
     // cube = m(); 
     return m();
-  };`
+  };`;
 
-var ZbackDemo = `function Zback (ar) {
+  var ZbackDemo = `function Zback (ar) {
       cube = m(Zro)(Zro)(Zro)();
-  };`
+  };`;
 
-var mona = `function M (x) {
+  var mona = `function M (x) {
   return function go (func) {
     if (func === dF3x) return x;
     else x = func(x);
@@ -174,18 +170,18 @@ var mona = `function M (x) {
   }
 }
 Where dF3x = () => {}; // This flag is a function in order to
-                              accommodate future type checking.`
-var orthoganal = `var demo1 = M(3);
+                              accommodate future type checking.`;
+  var orthoganal = `var demo1 = M(3);
 var demo2 = M(3);
 demo1(v=>v**3);
 demo2(v=>v - 1);
 console.log(demo1(dF3x)); // 27
 console.log(demo2(dF3x)); // 2`;
 
-var compose1 = `var m = M(3);
+  var compose1 = `var m = M(3);
 log(M(3)(v=>v**3)(v=>v*3)(Math.sqrt)(dF3x)); // 9`;
 
-var compose2 = `m(()=>4);  // Sets x in the m-M(x) closure to 4.
+  var compose2 = `m(()=>4);  // Sets x in the m-M(x) closure to 4.
 m(v=>v**4)(v=>v**(1/2))(v=>v-7)
 log(m(dF3x))                             // 42
 
@@ -198,8 +194,8 @@ log(m(dF3x))                             // 42
 
 // NOTE: ()=>3 (above) resets the value in the m-M(x) closure to 3.
 
-log(M(2)(add(4))(mult(7))(dF3x))`
-var mean = `function meaning (ar) {return ar.reduce((a, 
+log(M(2)(add(4))(mult(7))(dF3x))`;
+  var mean = `function meaning (ar) {return ar.reduce((a, 
   currentValue) => a**3 + currentValue, 0) - 2*13};
 
 var m = M([1,3,4]);
@@ -216,7 +212,7 @@ m(dF3x);     // 42`;
       return go;
     };
   };`;
-var Rcode = `  const R = function R(ar) {
+  var Rcode = `  const R = function R(ar) {
     let temp = [];
     temp[0] = [
       ar[0][6],
@@ -282,8 +278,8 @@ var Rcode = `  const R = function R(ar) {
     return temp;
   }
 
-`
-var reverseShow = `function reverse () { 
+`;
+  var reverseShow = `function reverse () { 
   let fu = m(dF3ar).pop(); 
   // discards the function being reversed.
     
@@ -294,11 +290,11 @@ var reverseShow = `function reverse () {
   // uses foo, then discards it, returning the cube to where it was.
 }; `;
 
-var reduceCode = `const m = M([3,4,5,6,7,8,9]);
+  var reduceCode = `const m = M([3,4,5,6,7,8,9]);
 const rd = x => x.reduce((a, b) => a + b);
 m(rd)(dF3x);   // 42 `;
 
-const Mcode = `function M(x, ar = []) {
+  const Mcode = `function M(x, ar = []) {
     return function go(func) {
       if (func === dF3x) return x;
       if (func === dF3ar) return ar;
@@ -378,9 +374,8 @@ const Mcode = `function M(x, ar = []) {
   var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
 
   var m = M([bb, gg, rr, oo, yy, ww]);`;
-  
-  
-    const DOMright = `<div class="face right">
+
+  const DOMright = `<div class="face right">
         <div class="grid">
           <div class={m(dF3x)[0][0]} />
           <div class={m(dF3x)[0][1]} />
@@ -393,7 +388,6 @@ const Mcode = `function M(x, ar = []) {
           <div class={m(dF3x)[0][8]} />
         </div>
       </div>`;
-
 
   var classCode2 = `const b0 = 'blue';
   const b1 = 'blue';
@@ -463,92 +457,206 @@ const Mcode = `function M(x, ar = []) {
   var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
 
   var m = M([bb, gg, rr, oo, yy, ww]);`;
-  
-
-
 </script>
 
-<style>
-    /*img {
-        width:120%; 
-        height:120%;
-    }*/
-    h3 {color:turquoise }
+<div style="margin-left:12%; margin-right: 12%;">
+  <h1>JavaScript Functions</h1>
+  <h3 class="h3a">Introduction</h3>
 
-    img {
-      display: block;
-      margin: 0 auto;
-      width: 100%;
-}
+  <p> he joy </p>
 
- 
-</style>
+  <p>The first example (below) shows an anonymous
+    closure facilitating function composition.
+  </p>
 
-<div style = "margin-left:12%; margin-right: 12%;">
+  <p>
+    The simulated Rubik's cube example follows the convention of creating an
+    application's main closure by calling "m = M(x)", where x can be any value,
+    and r-erring to the result as "the m-M(x) closure." "x" is encapsulated,
+    sequestered from everything outside the closure's scope. As is apparent from
+    the definition of M (below_), 'x' can be modified by calling m(func) for
+    some function "func". In the simplest version of "M", calling m(func)
+    mutates "x," changing it from x to func(x).
+  </p>
 
-<h1>JavaScript Functions</h1>
-<h3 class = "h3a">Introduction</h3>
+  <p>
+    <span style="color:yellow; font-weight:bold">CAUTION</span> as will be
+    extensively discussed on this page, m(dF3x) is a reference to 'x' in the
+    closure unless the line in M,
+    <span class="O"> if (func === dF3x) return x;</span>
+    is changed to <span class="O">if (func === dF3x) return clone(x)</span> for some
+    function "clone" that returns a perfect duplicate of 'x' with an address in memory
+    different from that of 'x'. More about that later. First, here's the definition
+    M and some examples of m-M(x) closures:
+  </p>
 
-<p>The first four pages of this website (menu, left to right) present applications in which variables are maintained in tiny closures created by calling a function named "M". The first example (below) shows an anonymous closure facilitating function composition. The simulated Rubik's cube example follows the convention of creating an application's main closure by calling "m = M(x)", where x can be any value, and referring to the result as "the m-M(x) closure." "x" is encapsulated, sequestered from everything else in the global scope, but it can be modified by calling m(func) for some function "func". In the simplest version of "M", calling m(func) mutates "x," changing it from x to func(x). And, as you will see below, m(dF3x) is a reference to "x." Here's the definition:   </p  >
+  <pre>{mona}</pre>
+  <h3>Anonymous Function Composition</h3>
+  <pre>var res = M(3)(v=>v**3)(v => v*4)(v => v - 8)(Math.sqrt)(dF3x);  // 10</pre>
+  <p>
+    The result is preserved in the variable res, but the browser engine has
+    reason to keep the anonymous function returned by M(3).
+  </p>
+  <h3>Encapsulating the Result of a Computation</h3>
+  <pre>{reduceCode}</pre>
 
-<pre>{mona}</pre>
-<h3> Anonymous Function Composition</h3>
-<pre>var res = M(3)(v=>v**3)(v => v*4)(v => v - 8)(Math.sqrt)(dF3x);  // 10</pre>
-<p> The result is preserved in the variable res, but the browser engine has reason to keep the anonymous function returned by M(3).   </p>
-<h3>Encapsulating the Result of a Computation</h3>
-<pre>{reduceCode}</pre>
+  <h3>The Solitaire Game of Score</h3>
 
-<h3>The Solitaire Game of Score</h3>
-
-  <p>This game was made years before I For example, the <a href="./score#mDef">Solitaire Game of Score</a> involves using two six-sided, one twelve-sided, and one twenty-sided die along with arithmetic and concatenation to arrive at the number 20 in two or more moves. The initial value of "x" in the m-M(x) closure is shown in the definition of m2:
+  <p>
+    The <a href="./score#mDef">Solitaire Game of Score</a> involves using two six-sided,
+    one twelve-sided, and one twenty-sided die along with arithmetic and concatenation
+    to arrive at the number 20 in two or more moves. The initial value of "x" in
+    the m-M(x) closure is shown in the definition of m2:
+  </p>
   <pre>m2 = M([ 
-    [Math.floor(Math.random() * 6) + 1, Math.floor(Math.random() * 6) + 1,
+    [Math.floor(Math.random() * 6)   + 1, Math.floor(Math.random() * 6) + 1,
      Math.floor(Math.random() * 12) + 1, Math.floor(Math.random() * 20) + 1], 
      [], ['+'], [], [0], [], [0], [] 
 ]);</pre>
-<h2>The Simulated Rubik's Cube</h2>
-<p> The <a href="./cube7">simulated Rubik's cube</a> is another example of a fairly complex application whose state is maintained in a tiny closure. The bare bones M shown above can handle the transformations of the cube, from keystroke or button click to the result seen in the browser. But, in order to facilitate taking back a series of moves, an array of references to every argument provided to m was added. Those arguments are functions that operate on x in the m-M(x) closure; i.e., that operate on <span style="color: orange">[ bb, gg, rr, oo, yy, ww ]</span>, the array that determines the background colors of the 54 divs in the DOM, thereby controling the configuration of the cube displayed in the browser. When an array was added to the definition of M, the original M was renamed M2. Here's the complete definition of m in the m-M(x) closure, beginning with the revised definition of M: </p>
-<pre>{Mcode}</pre>
+  <h2>The Simulated Rubik's Cube</h2>
+  <p>
+    The <a href="./cube7">simulated Rubik's cube</a> is another example of a fairly
+    complex application whose state is maintained in a tiny closure. The bare bones
+    M shown above can handle the transformations of the cube, from keystroke or button
+    click to the result seen in the browser. But, in order to facilitate taking back
+    a series of moves, an array of references to every argument provided to m was
+    added.
+  </p>
+  <h3>The Code Directly Responsible for the Browser Display</h3>
+
+  <p>
+    In the DOM, the simulated Rubik's cube consists of 6 groups of 9 Div
+    elements. User moves rearrange classes. Cubies change color when they are
+    assigned a class with a different background
+  </p>
+
+  <p>
+    Those arguments are functions that operate on x in the m-M(x) closure; i.e.,
+    that operate on <span style="color: orange">[ bb, gg, rr, oo, yy, ww ]</span
+    >, the array that determines the background colors of the 54 divs in the
+    DOM, thereby controling the configuration of the cube displayed in the
+    browser. When an array was added to the definition of M, the original M was
+    renamed M2. Here's the complete definition of m in the m-M(x) closure,
+    beginning with the revised definition of M:
+  </p>
+  <pre>{Mcode}</pre>
   <pre>{classCode2}</pre>
 
-<p> As the line "else x = func(x);" in the definition of M indicates, m(func) causes func(x) to replace x in the m-M(x) closure unless func is dF3x or dF3ar. Pressing the "r" key or clicking on the "R" rotates the right side of the cube clockwise a quarter turn. See how it uses the elements of the current configuration (named "ar") of <span style="color: orange">[ bb, gg, rr, oo, yy, ww ]</span> as a source of building blocks to assemble the updated configuration, named "temp." </p>
+  <p>
+    As the line "else x = func(x);" in the definition of M indicates, m(func)
+    causes func(x) to replace x in the m-M(x) closure unless func is dF3x or
+    dF3ar. Pressing the "r" key or clicking on the "R" rotates the right side of
+    the cube clockwise a quarter turn. See how it uses the elements of the
+    current configuration (named "ar") of <span style="color: orange"
+      >[ bb, gg, rr, oo, yy, ww ]</span
+    > as a source of building blocks to assemble the updated configuration, named
+    "temp."
+  </p>
 
-<pre>{Rcode}</pre>
-<p> The functions that manipulate the cube have numerous lines of code, but they are as simple as they could possibly be. They don't rely on procedures to determine what goes where during the construction of "temp", they are just instructions specifying the new locations of the elements of the array held in the m-M(x) closure. While not organized in tabular form, they are essentially items in a lookup table.</p>
-
-<p>With moves stored in ar, setting the cube configuration back to where it was prior to the most recent move requires nothing more than the three short lines of code in the function "reverse":</p>
-<pre>{reverseShow}</pre>
-<p> m(dF3ar) is a reference to ar in the m-M(x) closure, so reverse() shortens the length of ar inside the closure. Very little browser memory is needed to store the information necessary to reverse hundreds of moves. Making moves is not resource intensive either. A move doesn't rearrange the div elements of the cube or rotate numerous little cubits, as is the case with many Rubik's cube simulators. All it does is rearrange the placement of the strings (names of colors) referring to some CSS classes. </p>
-<p>The reverse function is oblivious to precisely which functions were responsible for the transformations being reversed. Whatever the function at the top of the list happens to be, it runs three more times. After foo executes, it and the function that was reversed are discarded, making the list one item shorter than it was.  </p>
+  <pre>{Rcode}</pre>
+  <p>
+    The functions that manipulate the cube have numerous lines of code, but they
+    are as simple as they could possibly be. They don't rely on procedures to
+    determine what goes where during the construction of "temp", they are just
+    instructions specifying the new locations of the elements of the array held
+    in the m-M(x) closure. While not organized in tabular form, they are
+    essentially items in a lookup table.
+  </p>
+  <p>
+    If the meanings of passing by value and passing by reference is clear, as
+    I'm sure it is for many of you, the rest of this section on the Rubik's cube
+    simulator might be tedious. For those who are still a little unsure, I hope
+    reading this will be the breakthrough that clarifies it once and for all.
+  </p>
+  <p>
+    With moves stored in ar, setting the cube configuration back to where it was
+    prior to the most recent move requires nothing more than the three short
+    lines of code in the function "reverse". When m(dF3ar) is modified in
+    reverse, 'x' is simultaneously modified in the m-M(x) closure. This is
+    because both 'x' and m(dF3ar) are references to the same address in memory.
+    Change what is stored at that address with either one, and that will be the
+    value of both 'x' and 'm(dF3ar) and any other variable that happens to point
+    to that location.
+  </p>
+  <pre>{reverseShow}</pre>
+  <p>
+    m(dF3ar) is a reference to ar in the m-M(x) closure, so reverse() shortens
+    the length of ar inside the closure. Very little browser memory is needed to
+    store the information necessary to reverse hundreds of moves. Making moves
+    is not resource intensive either. A move doesn't rearrange the div elements
+    of the cube or rotate numerous little cubits, as is the case with many
+    Rubik's cube simulators. All it does is rearrange the placement of the
+    strings (names of colors) referring to some CSS classes.
+  </p>
+  <p>
+    The reverse function is oblivious to precisely which functions were
+    responsible for the transformations being reversed. Whatever the function at
+    the top of the list happens to be, it runs three more times. After foo
+    executes, it and the function that was reversed are discarded, making the
+    list one item shorter than it was.
+  </p>
 </div>
-<div style = "margin-left:2%; margin-right: 2%;">
- <img class = 'display_image' src = {passBy} /> 
+<div style="margin-left:2%; margin-right: 2%;">
+  <img class="display_image" src={passBy} />
 </div>
-<div style = "margin-left:12%; margin-right: 12%;">
-
-<p> Distinguishing between passing by value (primitives) and passing by reference (objects) is a stumbling block for people new to JavaScript. It's important to know that string, number, bigint, boolean, undefined, symbol, and null are the primitive values. All other values are down the prototype chain from Object and are, therefore, objects. Here's verification that a simple function is an object:</p>
+<div style="margin-left:12%; margin-right: 12%;">
+  <p>
+    Distinguishing between passing by value (primitives) and passing by
+    reference (objects) is a stumbling block for people new to JavaScript. It's
+    important to know that string, number, bigint, boolean, undefined, symbol,
+    and null are the primitive values. All other values are down the prototype
+    chain from Object and are, therefore, objects. Here's verification that a
+    simple function is an object:
+  </p>
 </div>
-<div style = "margin-left:2%; margin-right: 2%;">
- <img class = 'display_image' src = {object} /> 
+<div style="margin-left:2%; margin-right: 2%;">
+  <img class="display_image" src={object} />
 </div>
-<div style = "margin-left:12%; margin-right: 12%;">
-<p> See "prototype: Object" at the bottom of the right side. </p>
+<div style="margin-left:12%; margin-right: 12%;">
+  <p>See "prototype: Object" at the bottom of the right side.</p>
 
+  <a id="examples" />
+  <h1>Elementary Facts and Examples</h1>
 
+  <p>
+    M can serve as the outer scope for multiple orthogonal (non-interacting)
+    functions, with structures identical to M's "go()". For example:
+  </p>
+  <pre>{orthoganal}</pre>
 
-<a id="examples"></a>
-<h1>Elementary Facts and Examples</h1>
-
-
-<p> M can serve as the outer scope for multiple orthogonal (non-interacting) functions, with structures identical to M's "go()". For example:</p> 
-<pre>{orthoganal}</pre>
- 
-<h3> "M" facilitates function composition.</h3>  
-<p>Gargage collectors should delete this.</p>
-<pre>{compose1}</pre>
-<p>The value "x" in the m-M(x) closure persists until m is redefined or deleted.</p>
-<pre>{compose2}</pre>
-<p>Recommended Reading: <a href="https://www.youtube.com/playlist?list=PLillGF-Rfqbars4vKNtpcWVDUpVOVTlgB">Javascript Under the Hood</a></p>
-<slot></slot>
+  <h3>"M" facilitates function composition.</h3>
+  <p>Gargage collectors should delete this.</p>
+  <pre>{compose1}</pre>
+  <p>
+    The value "x" in the m-M(x) closure persists until m is redefined or
+    deleted.
+  </p>
+  <pre>{compose2}</pre>
+  <p>
+    Recommended Reading: <a
+      href="https://www.youtube.com/playlist?list=PLillGF-Rfqbars4vKNtpcWVDUpVOVTlgB"
+      >Javascript Under the Hood</a
+    >
+  </p>
+  <slot />
 </div>
 
+<style>
+  /*img {
+        width:120%; 
+        height:120%;
+    }*/
+  h3 {
+    color: turquoise;
+  }
+
+  img {
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .O {
+    color: orange;
+  }
+</style>

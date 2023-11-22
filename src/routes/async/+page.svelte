@@ -20,7 +20,7 @@ async function asyncId (x) {return x};
 
 function M (x) {
   return function go (func) {
-      if (func === dF3x) return x;
+      if (func === dF3x) return clone(x);
       else x = asyncId(x).then(v => func(v));
       return go;
   }

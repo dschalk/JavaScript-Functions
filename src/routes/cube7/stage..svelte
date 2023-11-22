@@ -1980,7 +1980,7 @@ var Ucode = ` function U(ar) {
     else if (cu9 == "cube98") cu9 = "cube9";
     else return "cube9";
   }
-    
+ 
   function tilt9() {
     if (cu9 == "cube9") {cu9 = "cube95"}
     else if (cu9 == "cube92") {cu9 = "cube96"}
@@ -3031,6 +3031,28 @@ const orangeSide = `<div class="face front">
     color: rgb(239, 126, 209);
   } */
 
+	
+  button {
+    margin-left: 1%;
+    background-color: rgb(72, 7, 162);
+    border-width: 2px;
+    border-color: black;
+    border-radius: 3px;
+    color: gold;
+    font-size: 22 px;
+    box-shadow: 0px 0px 0px 0px rgb(255, 215, 0);
+    padding: 3px 10px 3px 10px; 
+  } 
+
+  button:hover {
+    color: blue;
+    background-color: gold;
+    border-color: #E8F7C1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px 0px rgb(255, 255, 0);
+    font-size: 23px;
+  }
+
 </style>
 
 
@@ -3324,9 +3346,9 @@ const orangeSide = `<div class="face front">
           <div class={m(dF3x)[2][5]} />
           <div class={m(dF3x)[2][4]} />
           <div class={m(dF3x)[2][3]} />
-          <div class={m(dF3x)[2][2]} />
+         <div><button class={m(dF3x)[2][2]} on:click = {() => {m = m(R)}} /> </div> 
           <div class={m(dF3x)[2][1]} />
-          <div class={m(dF3x)[2][0]} />
+         <div><button class={m(dF3x)[2][0]} on:click = {() => {m = m(Rz)}} /> </div> 
         </div>
       </div>
 
@@ -3348,7 +3370,7 @@ const orangeSide = `<div class="face front">
         <div class="grid">
           <div class={m(dF3x)[1][0]} />
           <div class={m(dF3x)[1][1]} />
-          <div class={m(dF3x)[1][2]} />
+          <div class={m(dF3x)[1][2]} />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
           <div class={m(dF3x)[1][3]} />
           <div class={m(dF3x)[1][4]} />
           <div class={m(dF3x)[1][5]} />
@@ -3360,15 +3382,17 @@ const orangeSide = `<div class="face front">
 
       <div class="face top">
         <div class="grid">
-          <div class={m(dF3x)[4][0]} />
-          <div class={m(dF3x)[4][1]} />
-          <div class={m(dF3x)[4][2]} />
-          <div class={m(dF3x)[4][3]} />
+         <div><button class={m(dF3x)[4][0]} on:click = {() => {m = m(Uz)}} /> </div> 
+         <div><button class={m(dF3x)[4][1]} on:click = {() => {m = m(Cx)}} /> </div> 
+         <div><button class={m(dF3x)[4][2]} on:click = {() => {m = m(U)}} /> </div>   
+         <div><button class={m(dF3x)[4][3]} on:click = {() => {m = m(Czr)}} /> </div> 
           <div class={m(dF3x)[4][4]} />
-          <div class={m(dF3x)[4][5]} />
-          <div class={m(dF3x)[4][6]} />
-          <div class={m(dF3x)[4][7]} />
-          <div class={m(dF3x)[4][8]} />
+          <div><button class={m(dF3x)[4][5]} on:click = {() => {m = m(Cz)}} /> </div> 
+          <div><button class={m(dF3x)[4][6]} on:click = {() => {m = m(Uz)}} /> </div> 
+          <div><button class={m(dF3x)[4][7]} on:click = {() => {m = m(Cxr)}} /> </div> 
+          <div><button class={m(dF3x)[4][6]} on:click = {() => {m = m(U)}} /> </div> 
+
+
         </div>
       </div>
 
