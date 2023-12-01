@@ -5,20 +5,44 @@
   import passBy from "$lib/passBy.png";
   import object from "$lib/object.png";
 
-  var Mdisplay = `function M (x) {
-  return function go (func) {
-    if (func === dF3x) return x;
-    else x = func(x);
-    return go;
-  }
-}
-Where dF3x = () => {}; // This flag is a function in order to simplify future type checking.`;
+  var Mdisplay = `    function M (x) {
+      return function</span> go (func) {
+        if (func === dF3x) return x;
+        else x = func(x);
+        return go;
+      }
+    }
+    Where dF3x = () => {}; `;
 
-  var ret = () => {};
+  var Mdis = `    function M (x) {
+      return function` 
+                             
+  var Mplay = `              go (func) {
+        if (func === dF3x) return x;
+        else x = func(x);
+        return go;
+      }`
+  var Mend =     
+    `    }
+    Where dF3x = () => {}; `; // Triggers return of x;
+
+
+  var MMdisplay = "    function M (x) { \
+      return function go (func) { \
+        if (func === dF3x) return x; \
+        else x = func(x); \
+        return go; \
+      } \
+    } \
+    Where dF3x = () => {}; "
+
+  var empty = `log("cow is", M()(()=>3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x)); // 10`;
+
+  var dF3x = () => {};
 
   function M(x) {
     return function go(func) {
-      if (func === ret) return x;
+      if (func === dF3x) return x;
       else x = func(x);
       return go;
     };
@@ -457,17 +481,57 @@ m(rd)(dF3x);   // 42 `;
   var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
 
   var m = M([bb, gg, rr, oo, yy, ww]);`;
+  var v1 = ` var  m = M(3)`;
+
+  var v2 = `M()(()=>3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x) // 10`;
+  var v3 = `M(3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x) // 10`;
+  var v4 = `m(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x)`;
 </script>
 
+<pre class = "dis">{Mdis}</pre>
+<pre class = "play">{Mplay}</pre>
+<pre class = "dis">{Mend}</pre>
+
+<dist class = "light">Anonymous Computation:</dist>
+<pre>{v3}</pre>
+<br>
+<dist class = "light" >Encapsulated State:</dist>
+<dist class = "light" >m = M(3);</dist>
+
+
+<h1 style=text-align:center; >Dynamic Closures</h1>
+
+<p>Background: Indiana University awarded me a bachelor's degree in chemistry, master's degree in mathematics, and a doctor of jurisprudence degree in law. Sun Microsysystems certified me as a Java Programmer and Java Website Developer, which qualified me for a job I took at Indiana University, working on a project as a Programmer/Systems Analyst. I had been told I needed the insurance to cover an expensive operation. I didn't know about Indiana's high risk insurance, which I could afford and which provided, essentially, universal health care for the middle class, and also people with benefactors to pay the premiums.</p>
+<p> I'll never again get involved in a Java project and I can't imagine ever again needing React. After developing an elaborate online multi-player game application in the Haskel programming language, using React for the user interface, I decided to stick with JavaScript and simple frameworks. This is a SvelteKit application.</p>
+<p> While it makes sense to develop web applications with a few elaborate functions in conjunction with reusable small ones, I decided to try the opposite approach. I'm truly amazed at how well that worked out.</p> 
+<p> From function composition, which couldn't be more concise and maintainable, to the <a href = "./cube7">Simulated Rubik's Cube</a>, maintained unexposed to anything in the script other than the functions provided to m (named "go" in its outer scope, M) in response to events initiated in the DOM. </p> 
+<p> Events initiated by user key presses and clicks cause eventHandler() to call m on functions that operate on arrays of six nine-member arrays.   </p> 
+
+<p> The following discussion centers around the function M (defined below), along with closures of the form m-M(x), where m = M(x) and x can be any JavaScript value. </p>
+
+
+<p> M can, of course, be modified to include try-catch blocks, objects, or anything else. NOTE: Modification of M in this presentation are small. The functions provided to m are responsible for dealing with x. Example:</p>
+
+
 <div style="margin-left:12%; margin-right: 12%;">
-  <h1>JavaScript Functions</h1>
-  <h3 class="h3a">Introduction</h3>
-
-  <p> he joy </p>
-
-  <p>The first example (below) shows an anonymous
-    closure facilitating function composition.
+  <p>
+    Let M be a function that returns a recursive function go(), defined as
+    follows:
   </p>
+  <pre>{Mdisplay}</pre>
+  <p>dF3x is never called. All it does is prompt the return of x.</p>
+  <br />
+  <span class="indent">
+    M will often be the outer function in a closure, such as</span>
+  <span style="color: rgb(241, 206, 206);">{v1}</span><span
+    >. However, if m has no further use, it will needlessly clutter memory until
+    it is manually destroyed. Here's how M can be used anonymously to prevent
+    memory leaks:</span
+  >
+  <br />
+  <pre>{v2}</pre>
+  <p>Or, more concisely:</p>
+  <pre>{v3}</pre>
 
   <p>
     The simulated Rubik's cube example follows the convention of creating an
@@ -478,7 +542,7 @@ m(rd)(dF3x);   // 42 `;
     some function "func". In the simplest version of "M", calling m(func)
     mutates "x," changing it from x to func(x).
   </p>
-
+  m
   <p>
     <span style="color:yellow; font-weight:bold">CAUTION</span> as will be
     extensively discussed on this page, m(dF3x) is a reference to 'x' in the
@@ -659,4 +723,21 @@ m(rd)(dF3x);   // 42 `;
   .O {
     color: orange;
   }
+
+.dis {
+  color: #fe0374;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.play {
+  color: yellow;
+  font-weight: bold;
+  font-size: 28px;
+}
+
+.light {
+  color: rgb(172, 231, 243)
+}
+
 </style>

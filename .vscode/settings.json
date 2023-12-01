@@ -1,3 +1,6 @@
 {
-    "typescript.suggest.enabled": false
+    "typescript.suggest.enabled": false,
+    "cSpell.words": [
+        "Microsysystems"
+    ]
 }
