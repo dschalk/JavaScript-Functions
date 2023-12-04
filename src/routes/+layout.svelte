@@ -6,7 +6,7 @@
     margin-right: 40px;
     font-size: 24px;
     font-weight: bold;
-    color: rgb(135, 86, 135);
+    color: #875687;
   }
 </style>
 <nav>

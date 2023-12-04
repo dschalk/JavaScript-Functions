@@ -1980,7 +1980,7 @@ var Ucode = ` function U(ar) {
     else if (cu9 == "cube98") cu9 = "cube9";
     else return "cube9";
   }
-    
+ 
   function tilt9() {
     if (cu9 == "cube9") {cu9 = "cube95"}
     else if (cu9 == "cube92") {cu9 = "cube96"}
@@ -2056,7 +2056,7 @@ var Ucode = ` function U(ar) {
       m = m;
   }
 
-  function handleEvent(e) { 
+  function handleKey(e) { 
     console.log(e.keyCode);
          if (e.keyCode === 85)  m(Uz);
     else if (e.keyCode === 117) m(U);
@@ -2091,7 +2091,7 @@ var Ucode = ` function U(ar) {
     // else if (e.keyCode === 116) rotate();
     m = m;
   }
-  var handleEventCode = `function handleEvent(e) {
+  var handleKeyCode = `function handleKey(e) {
          if (e.keyCode === 85)  m(Uz);
     else if (e.keyCode === 117) m(U);
     else if (e.keyCode === 68)  m(Dz);
@@ -2276,6 +2276,8 @@ const orangeSide = `<div class="face front">
           <div class={m(dF3x)[3][0]} />
         </div>
       </div>`;
+
+
 
 
 
@@ -2730,8 +2732,6 @@ const orangeSide = `<div class="face front">
     display: inline;
     border-radius: 10px;
   }
-  
-
   .orange {
     height: 60px;
     width: 60px;
@@ -3031,21 +3031,43 @@ const orangeSide = `<div class="face front">
     color: rgb(239, 126, 209);
   } */
 
+	
+  button {
+    margin-left: 1%;
+    background-color: rgb(72, 7, 162);
+    border-width: 2px;
+    border-color: black;
+    border-radius: 3px;
+    color: gold;
+    font-size: 22 px;
+    box-shadow: 0px 0px 0px 0px rgb(255, 215, 0);
+    padding: 3px 10px 3px 10px; 
+  } 
+
+  button:hover {
+    color: blue;
+    background-color: gold;
+    border-color: #E8F7C1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px 0px rgb(255, 255, 0);
+    font-size: 23px;
+  }
+
 </style>
 
 
 
-<svelte:window on:keypress={handleEvent} />
+<svelte:window on:keypress={handleKey} />
 <section class="columns">
   <div style="width: 40%">
    
     <!-- <button on:click={() => console.log("test of m(dF3x is", m(dF3x))}>test</button>
     <button on:click={() => console.log("test2 of m2(dF3x is", m2(dF3x))}>test2</button> -->
 
-    <button on:click={() => handleEvent({keyCode: 118})}>Start</button>
-    <button on:click={() => handleEvent({keyCode: 119})}>Scramble</button>
-    <button on:click={() => handleEvent({keyCode: 113})}>Reverse</button>
-    <button on:click={() => handleEvent({keyCode: 105})}>Back To Scr</button>
+    <button on:click={() => handleKey({keyCode: 118})}>Start</button>
+    <button on:click={() => handleKey({keyCode: 119})}>Scramble</button>
+    <button on:click={() => handleKey({keyCode: 113})}>Reverse</button>
+    <button on:click={() => handleKey({keyCode: 105})}>Back To Scr</button>
     
     <button on:click = {() => m2(() => m(dF3x))}>Save</button>
     <button on:click = {getSaved}>getSaved</button> 
@@ -3055,37 +3077,37 @@ const orangeSide = `<div class="face front">
     <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp; Move list length: </span> <span style="font-weight:bold; font-size:30px">{Sally}</span>
 
     <br />
-    <button on:click={() => handleEvent({keyCode: 120})}>X rotate</button>
-    <button on:click={() => handleEvent({keyCode: 121})}>Y rotate</button>
-    <button on:click={() => handleEvent({keyCode: 122})}>Z rotate</button>
+    <button on:click={() => handleKey({keyCode: 120})}>X rotate</button>
+    <button on:click={() => handleKey({keyCode: 121})}>Y rotate</button>
+    <button on:click={() => handleKey({keyCode: 122})}>Z rotate</button>
     <br>
-    <button on:click={() => handleEvent({keyCode: 88})}>X back</button>
-    <button on:click={() => handleEvent({keyCode: 89})}>Y back</button>
-    <button on:click={() => handleEvent({keyCode: 90})}>Z back</button>
+    <button on:click={() => handleKey({keyCode: 88})}>X back</button>
+    <button on:click={() => handleKey({keyCode: 89})}>Y back</button>
+    <button on:click={() => handleKey({keyCode: 90})}>Z back</button>
 
 <br>
-    <button on:click={() => handleEvent({keyCode: 117})}>U</button>
-    <button on:click={() => handleEvent({keyCode: 100})}>D</button>
-    <button on:click={() => handleEvent({keyCode: 114})}>R</button>
-    <button on:click={() => handleEvent({keyCode: 108})}>L</button>
-    <button on:click={() => handleEvent({keyCode: 102})}>F</button>
-    <button on:click={() => handleEvent({keyCode: 98})}>B</button>
-    <button on:click={() => handleEvent({keyCode: 109})}>M</button>
-    <button on:click={() => handleEvent({keyCode: 101})}>E</button>
-    <button on:click={() => handleEvent({keyCode: 115})}>S</button>
+    <button on:click={() => handleKey({keyCode: 117})}>U</button>
+    <button on:click={() => handleKey({keyCode: 100})}>D</button>
+    <button on:click={() => handleKey({keyCode: 114})}>R</button>
+    <button on:click={() => handleKey({keyCode: 108})}>L</button>
+    <button on:click={() => handleKey({keyCode: 102})}>F</button>
+    <button on:click={() => handleKey({keyCode: 98})}>B</button>
+    <button on:click={() => handleKey({keyCode: 109})}>M</button>
+    <button on:click={() => handleKey({keyCode: 101})}>E</button>
+    <button on:click={() => handleKey({keyCode: 115})}>S</button>
     <br>
-    <button on:click={() => handleEvent({keyCode: 85})}>U'</button>
-    <button on:click={() => handleEvent({keyCode: 68})}>D'</button>
-    <button on:click={() => handleEvent({keyCode: 82})}>R'</button>
-    <button on:click={() => handleEvent({keyCode: 76})}>L'</button>
-    <button on:click={() => handleEvent({keyCode: 70})}>F'</button>
-    <button on:click={() => handleEvent({keyCode: 66})}>B'</button>
-    <button on:click={() => handleEvent({keyCode: 77})}>M'</button>
-    <button on:click={() => handleEvent({keyCode: 69})}>E'</button>
-    <button on:click={() => handleEvent({keyCode: 83})}>S'</button>
+    <button on:click={() => handleKey({keyCode: 85})}>U'</button>
+    <button on:click={() => handleKey({keyCode: 68})}>D'</button>
+    <button on:click={() => handleKey({keyCode: 82})}>R'</button>
+    <button on:click={() => handleKey({keyCode: 76})}>L'</button>
+    <button on:click={() => handleKey({keyCode: 70})}>F'</button>
+    <button on:click={() => handleKey({keyCode: 66})}>B'</button>
+    <button on:click={() => handleKey({keyCode: 77})}>M'</button>
+    <button on:click={() => handleKey({keyCode: 69})}>E'</button>
+    <button on:click={() => handleKey({keyCode: 83})}>S'</button>
 
 <!--
-  function handleEvent(e) {
+  function handleKey(e) {
          if (e.keyCode === 85)  m(Uz);
     else if (e.keyCode === 117) m(U);
     else if (e.keyCode === 68)  m(Dz);
@@ -3118,9 +3140,9 @@ const orangeSide = `<div class="face front">
   }
 
     <br />
-    <button on:click={() => handleEvent({keyCode: 117})}>U</button>
+    <button on:click={() => handleKey({keyCode: 117})}>U</button>
     <button on:click={Dfunc}>D</button>
-    <button on:click={() => handleEvent({keyCode: 114})}>R</button>
+    <button on:click={() => handleKey({keyCode: 114})}>R</button>
     <button on:click={Lfunc}>L</button>
     <button on:click={Ffunc}>F</button>
     <button on:click={Bfunc}>B</button>
@@ -3185,7 +3207,7 @@ const orangeSide = `<div class="face front">
       red and orange in this case (green and blue, and white and yellow are also considered
       opposite). The lower-right side sticker and the top left upward-facing
       sticker match (both are red). These observations indicate that the cube
-      can be quickly solved. All you need to do is click <button on:click={() => handleEvent({keyCode: 85})}>U'</button>
+      can be quickly solved. All you need to do is click <button on:click={() => handleKey({keyCode: 85})}>U'</button>
       and <button  on:click={orient_corners}>Revolve</button>
       (U R U' L' U R' U' L), or click
       <button  on:click={niklas}>Niklas</button> (R U' L' U R'
@@ -3208,15 +3230,11 @@ const orangeSide = `<div class="face front">
 
 <p> As mentioned above, the simulated Rubik's cube is represented by "x" in a m-M(x) closure, where m and x are defined by the following code:</p>
 <pre>{classCode}</pre>
-<p>The correspondence between the array containing the six nine-member arrays of strings held in the m-M(x) closure -- available as m(dF3x) -- and the images of a Rubik's cube displayed in the DOM, is apparent in the code below.</p>
+<p>The correspondence between the array containing the six nine-member arrays of divs held in the m-M(x) closure -- available as m(dF3x) -- and the images of a Rubik's cube displayed in the DOM, is apparent in the code below.</p>
 <pre>{dom}</pre>  
 
-<p> When you press "r", click the "R" button, or click the upper left corner of the right side of the cube representation, the function 'B' is called on the array of six arrays in the m-M(x) closure. The current configuration of x in the closure is of no concern to 'B'. It simply rearranges the strings based on their positions. Here's the definition:  </p>
 
-
-
-
-
+  </div>
   <br /><br /><br />
   <div style = "width: 30%">
 <br><br>
@@ -3280,23 +3298,23 @@ const orangeSide = `<div class="face front">
   <p>Press the "v" key or click <button on:click={Start}>Start</button> to see each face of the cube with 9 identically colored divs. Click on the <button on:click={Xrotate}>X rotate</button>, <button on:click={Yrotate}>Y rotate</button>, and <button on:click={Zrotate}>Z rotate</button> buttons to see the main cube from various angles, or click on the <button on:click={rotate9}>Rotate A</button> and <button on:click={tilt9}>Rotate B</button> buttons to turn the alternate-view cube. The alternate-view cube (center bottom) can be returned to its starting orientation only be rotations or re-loading this page. <button on:click={Start}>Start</button> will give the sides of the alternate-view cube uniform colors (like the main cube), but its orientation relateve to the main cube doesn't change. This is by design. Click
   <button on:click={rotate9}>Rotate A</button>, then <button on:click={shu}>Scramble</button>, and finally, <button on:click={Start}>Start</button>.</p>
     
-    <p>Functions that update the cube's configuration are provided to "m" as arguments. For example, clicking <button on:click={() => handleEvent({keyCode: 114})}>R</button>, or pressing "r" on the key pad triggers m(R), where R is defined as follows:</p>
+    <p>Functions that update the cube's configuration are provided to "m" as arguments. For example, clicking <button on:click={() => handleKey({keyCode: 114})}>R</button>, or pressing "r" on the key pad triggers m(R), where R is defined as follows:</p>
  <pre>{Rcode}</pre> 
 <p> Click "<button on:click={Start}>Start</button>" or press the "v" key, and you will see that each of the six faces of the cube oppositeHeadlights3 all nine of one of the six colors. When you press "w" or click "<button on:click={shu}>Scramble</button>", 62 sudo random moves are performed. After that, there are still nine of each of the six colors, but their locations are scattered around the cube. Click the "<button on:click={Start}>Start</button>" button or press the "v" key to put them back. </p>
 <p>Here's how the "orange" CSS class is defined: </p>
 <pre>{orange}</pre>
 <p> User actions cause m(func) to run for some array-manipulating function "func." m(func) causes func(x) to execute, updating the array in the m-M(x) closure. The code shown in the left column distributes the updated class names over the 54 divs corresponding to the cube representation displayed at the top of the middle column . </p>  
 <h1>Encapsulation From User Action To Cube Update In the Browser</h1>
-<p>Clicking on <button on:click={() => handleEvent({keyCode: 117})}>U</button>calls Ufunc, which then calls m(U).</p>
+<p>Clicking on <button on:click={() => handleKey({keyCode: 117})}>U</button>calls Ufunc, which then calls m(U).</p>
 <pre>{UfuncCode}</pre>
-<p>Pressing "u" calls handleEvent(e), where "e" is the keypress event. e.keyCode for "u" is 117, so handleEvent(e) calls m(U) directly, rather than going through Ufunc to get there. That is because "m = m" comes after the "if" statements in keyFunc, but "m = m" doesn't occur until Ufunc() is called after clicking <button on:click={() => handleEvent({keyCode: 117})}>U</button>. The easy way to cause reactive DOM updates is to assign the code being updated, even if only to itselrf. This is the definition of U: </p>
+<p>Pressing "u" calls HandleKey(e), where "e" is the keypress event. e.keyCode for "u" is 117, so HandleKey(e) calls m(U) directly, rather than going through Ufunc to get there. That is because "m = m" comes after the "if" statements in keyFunc, but "m = m" doesn't occur until Ufunc() is called after clicking <button on:click={() => handleKey({keyCode: 117})}>U</button>. The easy way to cause reactive DOM updates is to assign the code being updated, even if only to itselrf. This is the definition of U: </p>
 <pre>{Ucode}</pre>
 
-<pre>{handleEventCode}</pre>
-<p> Pressing "u" three times after Clicking <button on:click={() => handleEvent({keyCode: 117})}>U</button> returns the cube to its starting configuration. You can also restore the cube to its solved configuration by pressing "v" or clicking   <button on:click={Start}>Start</button></p> 
+<pre>{handleKeyCode}</pre>
+<p> Pressing "u" three times after Clicking <button on:click={() => handleKey({keyCode: 117})}>U</button> returns the cube to its starting configuration. You can also restore the cube to its solved configuration by pressing "v" or clicking   <button on:click={Start}>Start</button></p> 
 <p> Finally, to see how user clicks and key presses change the browser display, look at the left column. Each of the six colors is the name of a class in the "style" section of this <a href="https://kit.svelte.dev/">SvelteKit</a> webpage.</p> 
 <h1>The Round Trip Was Encapsulated</h1> 
-<span> In the DOM, clicking on "U" calls "Ufunc()" which calls m(U). Pressing the "u" key calls "handleEvent(e)" where e.keyCode === 117 likewise results in a call to m(U). m(U) triggers the re-configuration of the simulated Rubik's cube code in the m-M(x) closure. This re-configuration automatically updates the DOM (see the "class=" code in the left column) resulting in a change in the images of the simulated Rubik's cube in the browser. </span>
+<span> In the DOM, clicking on "U" calls "Ufunc()" which calls m(U). Pressing the "u" key calls "HandleKey(e)" where e.keyCode === 117 likewise results in a call to m(U). m(U) triggers the re-configuration of the simulated Rubik's cube code in the m-M(x) closure. This re-configuration automatically updates the DOM (see the "class=" code in the left column) resulting in a change in the images of the simulated Rubik's cube in the browser. </span>
 <br><br>
 <span> The browser update described above is the result of reassigning the six classes, red, orange, green, blue, yellow, and white, to the 54 stationary divs whose background colors are seen in browsers, and rearranged by user clicks and key presses. The state of the array of six nine-member arrays remains in the m-M(x) closure in the "script" or "style" sections of this <a href="https://kit.svelte.dev">SvelteKit</a> page's code. It is only in the DOM code, the <span style = "color: purple">{classCode}</span> statements (left column), that the contents of the m-M(x) closure are used, updating the browser images of the simulated Rubik's cube.</span>  
 
@@ -3328,9 +3346,9 @@ const orangeSide = `<div class="face front">
           <div class={m(dF3x)[2][5]} />
           <div class={m(dF3x)[2][4]} />
           <div class={m(dF3x)[2][3]} />
-          <div class={m(dF3x)[2][2]} />
+         <div><button class={m(dF3x)[2][2]} on:click = {() => {m = m(R)}} /> </div> 
           <div class={m(dF3x)[2][1]} />
-          <div class={m(dF3x)[2][0]} />
+         <div><button class={m(dF3x)[2][0]} on:click = {() => {m = m(Rz)}} /> </div> 
         </div>
       </div>
 
@@ -3352,7 +3370,7 @@ const orangeSide = `<div class="face front">
         <div class="grid">
           <div class={m(dF3x)[1][0]} />
           <div class={m(dF3x)[1][1]} />
-          <div class={m(dF3x)[1][2]} />
+          <div class={m(dF3x)[1][2]} />                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
           <div class={m(dF3x)[1][3]} />
           <div class={m(dF3x)[1][4]} />
           <div class={m(dF3x)[1][5]} />
@@ -3364,15 +3382,17 @@ const orangeSide = `<div class="face front">
 
       <div class="face top">
         <div class="grid">
-          <div><button class={m(dF3x)[4][0]} on:click = {() => {m = m(Uz)}} /> </div> 
-          <div><button class={m(dF3x)[4][1]} on:click = {() => {m = m(Cx)}} /> </div> 
-          <div><button class={m(dF3x)[4][2]} on:click = {() => {m = m(U)}} /> </div> 
-          <div><button class={m(dF3x)[4][3]} on:click = {() => {m = m(Cz)}} /> </div> 
+         <div><button class={m(dF3x)[4][0]} on:click = {() => {m = m(Uz)}} /> </div> 
+         <div><button class={m(dF3x)[4][1]} on:click = {() => {m = m(Cx)}} /> </div> 
+         <div><button class={m(dF3x)[4][2]} on:click = {() => {m = m(U)}} /> </div>   
+         <div><button class={m(dF3x)[4][3]} on:click = {() => {m = m(Czr)}} /> </div> 
           <div class={m(dF3x)[4][4]} />
-          <div><button class={m(dF3x)[4][5]} on:click = {() => {m = m(Czr)}} /> </div> 
+          <div><button class={m(dF3x)[4][5]} on:click = {() => {m = m(Cz)}} /> </div> 
           <div><button class={m(dF3x)[4][6]} on:click = {() => {m = m(Uz)}} /> </div> 
           <div><button class={m(dF3x)[4][7]} on:click = {() => {m = m(Cxr)}} /> </div> 
-          <div><button class={m(dF3x)[4][8]} on:click = {() => {m = m(U)}} /> </div> 
+          <div><button class={m(dF3x)[4][6]} on:click = {() => {m = m(U)}} /> </div> 
+
+
         </div>
       </div>
 

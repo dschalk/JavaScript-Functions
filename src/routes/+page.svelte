@@ -485,7 +485,179 @@ m(rd)(dF3x);   // 42 `;
 
   var v2 = `M()(()=>3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x) // 10`;
   var v3 = `M(3)(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x) // 10`;
-  var v4 = `m(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)(dF3x)`;
+  var v4 = `m = M(3)`;
+  var v5 = 'm(dF3x)  // 3'
+  var v6 = `m(v=>v**3)(v=>v*4)(v=>v-8)(Math.sqrt)`;
+  var v7 = `m(dF3x)  // 10`
+  var v8 = `m(v=>v+4)(v=>v*3)  // Now x in the m-M(x) closure is 42`
+  var v9 = `m(dF3x) // 42`
+    
+      var showBlue = `      .blue {
+          height: 60px;
+          width: 60px;
+          background-color: lightblue;
+          display: inline;
+          border-radius: 10px;
+      }`;
+
+var dom = `<div id="steady">
+  <div class="container">
+    <div class={cu}>
+      <div class="face front">
+        <div class="grid">
+          <div class={m(dF3x)[3][0]} />
+          <div class={m(dF3x)[3][1]} />
+          <div class={m(dF3x)[3][2]} />
+          <div class={m(dF3x)[3][3]} />
+          <div class={m(dF3x)[3][4]} />
+          <div class={m(dF3x)[3][5]} />
+          <div class={m(dF3x)[3][6]} />
+          <div class={m(dF3x)[3][7]} />
+          <div class={m(dF3x)[3][8]} />
+        </div>
+      </div>
+
+      <div class="face back">
+        <div class="grid">
+          <div class={m(dF3x)[2][8]} />
+          <div class={m(dF3x)[2][7]} />
+          <div class={m(dF3x)[2][6]} />
+          <div class={m(dF3x)[2][5]} />
+          <div class={m(dF3x)[2][4]} />
+          <div class={m(dF3x)[2][3]} />
+          <div class={m(dF3x)[2][2]} />
+          <div class={m(dF3x)[2][1]} />
+          <div class={m(dF3x)[2][0]} />
+        </div>
+      </div>
+
+      <div class="face right">
+        <div class="grid">
+          <div class={m(dF3x)[0][0]} />
+          <div class={m(dF3x)[0][1]} />
+          <div class={m(dF3x)[0][2]} />
+          <div class={m(dF3x)[0][3]} />
+          <div class={m(dF3x)[0][4]} />
+          <div class={m(dF3x)[0][5]} />
+          <div class={m(dF3x)[0][6]} />
+          <div class={m(dF3x)[0][7]} />
+          <div class={m(dF3x)[0][8]} />
+        </div>
+      </div>
+
+      <div class="face left">
+        <div class="grid">
+          <div class={m(dF3x)[1][0]} />
+          <div class={m(dF3x)[1][1]} />
+          <div class={m(dF3x)[1][2]} />
+          <div class={m(dF3x)[1][3]} />
+          <div class={m(dF3x)[1][4]} />
+          <div class={m(dF3x)[1][5]} />
+          <div class={m(dF3x)[1][6]} />
+          <div class={m(dF3x)[1][7]} />
+          <div class={m(dF3x)[1][8]} />
+        </div>
+      </div>
+
+      <div class="face top">
+        <div class="grid">
+          <div class={m(dF3x)[4][0]} />
+          <div class={m(dF3x)[4][1]} />
+          <div class={m(dF3x)[4][2]} />
+          <div class={m(dF3x)[4][3]} />
+          <div class={m(dF3x)[4][4]} />
+          <div class={m(dF3x)[4][5]} />
+          <div class={m(dF3x)[4][6]} />
+          <div class={m(dF3x)[4][7]} />
+          <div class={m(dF3x)[4][8]} />
+        </div>
+      </div>
+
+      <div class="face bottom">
+        <div class="grid">
+          <div class={m(dF3x)[5][0]} />
+          <div class={m(dF3x)[5][1]} />
+          <div class={m(dF3x)[5][2]} />
+          <div class={m(dF3x)[5][3]} />
+          <div class={m(dF3x)[5][4]} />
+          <div class={m(dF3x)[5][5]} />
+          <div class={m(dF3x)[5][6]} />
+          <div class={m(dF3x)[5][7]} />
+          <div class={m(dF3x)[5][8]} />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>`;
+
+  
+var Rcode = ` function R(ar) {
+    let temp = [];
+    temp[0] = [
+      ar[0][6],
+      ar[0][3],
+      ar[0][0],
+      ar[0][7],
+      ar[0][4],
+      ar[0][1],
+      ar[0][8],
+      ar[0][5],
+      ar[0][2],
+    ];
+
+    temp[1] = ar[1];
+
+    temp[2] = [
+      ar[4][8],
+      ar[2][1],
+      ar[2][2],
+      ar[4][5],
+      ar[2][4],
+      ar[2][5],
+      ar[4][2],
+      ar[2][7],
+      ar[2][8],
+    ];
+
+    temp[3] = [
+      ar[3][0],
+      ar[3][1],
+      ar[5][2],
+      ar[3][3],
+      ar[3][4],
+      ar[5][5],
+      ar[3][6],
+      ar[3][7],
+      ar[5][8],
+    ];
+
+    temp[4] = [
+      ar[4][0],
+      ar[4][1],
+      ar[3][2],
+      ar[4][3],
+      ar[4][4],
+      ar[3][5],
+      ar[4][6],
+      ar[4][7],
+      ar[3][8],
+    ];
+
+    temp[5] = [
+      ar[5][0],
+      ar[5][1],
+      ar[2][6],
+      ar[5][3],
+      ar[5][4],
+      ar[2][3],
+      ar[5][6],
+      ar[5][7],
+      ar[2][0],
+    ];
+    return temp;
+  }`;
+
+
 </script>
 
 <pre class = "dis">{Mdis}</pre>
@@ -495,43 +667,74 @@ m(rd)(dF3x);   // 42 `;
 <dist class = "light">Anonymous Computation:</dist>
 <pre>{v3}</pre>
 <br>
-<dist class = "light" >Encapsulated State:</dist>
-<dist class = "light" >m = M(3);</dist>
+<div class = "light">
+<span>Encapsulated State:</span>
+<pre>{v4}</pre>
+<pre>{v5}</pre>
+<span>Sometime later (the garbage collector ignores closures):</span>
+<pre>{v6}</pre>
+<pre>{v7}</pre>
+<pre>{v8}</pre>
+<pre>{v9}</pre>
+<p> An array is added  </p>
+</div> 
+
+<p>m-M(x) closures that listen for DOM events, and whose only side effects are modifications of the DOM, encapsulate state transformations in a manner reminiscent of the Haskel IO monad. &nbsp; <a href = "./cube7">Here</a> , &nbsp; x in the m-M(x) (M is slightly modified) is an array of six nine-member arrays.</p>
+
+<h1 style='text-align:center;' >Dynamic Closures</h1>
+<div class = "background">
+  <p style = "color: lightgreen; font-size: 28px; font-weight: bold ">Background:</p>
+<p style = "color: lightgreen;">Indiana University awarded me a bachelor of science degree in chemistry, a master's degree in mathematics, and a doctor of jurisprudence degree in law. Sun Microsysystems certified me as a Java Programmer and Java Website Developer, which qualified me for a job I took at Indiana University, working on a project as a Programmer/Systems Analyst. I had been told I needed the insurance I.U. provided to cover an expensive operation. I didn't know about Indiana's high risk insurance program, which I could afford and which provided, essentially, universal health care for the middle class and people with benefactors to pay the premiums.</p>
+<p  style = "color: lightgreen;"> I'll never again get involved in a Java project and I can't imagine ever again needing React. After developing an elaborate online multi-player game in the Haskel programming language, still using React for the user interface, I decided to stick with JavaScript and simple frameworks. This is a SvelteKit application.</p>
+<p style = "color: lightgreen;"> While it makes sense to develop web applications with a few elaborate functions in conjunction with reusable small ones, I decided to try the opposite approach. What I discovered is worth sharing, to say the least, so here it is.  </p>
+  
+ <p> The code samples at the top of this page shows that function composition using M can't be more transparent, concise, and maintainable. Going beyond numerical computations, M holds the ever-changing state of play in the<a href = "./score">Game of Score</a>, but that application relies too heavily on the functions that transform x in the m-M(x) closure. A modified version of M will make the code more efficient and understandable after I refactor the application.  </p> 
+
+  <p>
+  A few additional lines of code in M can facilitate nesting of mixed synchronous and asynchronous functions handled by m, and can help avoid mutations by providing an array, let's call it "ar", into which f(x) (which runds after m(f)) can be pushed, and having dF3x prompt the return of ar.slice(-1)[0] when f === dF3x. But enough of the small stuff, now it's time to show m-M(x) closures in all their glory, deftly making complex applications work while they do nothing but allow the function m to transform them by means of the functions m fetches. The <a href = "./cube7">Simulated Rubik's cube</a> is a case in point. </p>
+
+  <p> The array x in the m-M(x) Rubik's cube array is an array consisting of six nine-member arrays of references to the strings "blue, green, red, orange, yellow and white." Functions called in response to DOM key presses and mouse clicks rearrange these strings, which are the names of CSS classes whose "background-color" properties match the names of the selectors that contain them. For example, the CSS class "blue" contains the line, "background-color: "blue".  </p>
+
+  <p> To understand the interface between the m-M(x) representation of the cube with the 54 colored divs in the DOM, we first need to know how x in the closure is defined. Here it is: </p>
+  
+  <pre>{classCode2}</pre>
+
+<p> m(dF3x)[0][0] on the solved cube representation in the DOM is a div with class = "blue". Here's blue's definition:   </p>
+<pre>{showBlue}</pre>
+
+      <p> Below is the cube representation in the DOM. Notice how the colors corresponds with the image in the monitor -- orange in front m(dF3x)[3], blue on the side m(dF3x)[0], and yellow on top (m(dF3x)[4]). </p>
+
+<pre>{dom}</pre>
 
 
-<h1 style=text-align:center; >Dynamic Closures</h1>
+<p> When you press "r", click the "R" button, or click the upper left corner of the right side of the cube representation, the function 'R' is called on the array of six arrays of references to strings in the m-M(x) closure. The current configuration of x in the closure is of no concern to 'R'. It rearranges the strings based solely on their positions -- 54 positions, ranging from m(dF3x)[0][0] to m(dF3)[5][8].</p>
 
-<p>Background: Indiana University awarded me a bachelor's degree in chemistry, master's degree in mathematics, and a doctor of jurisprudence degree in law. Sun Microsysystems certified me as a Java Programmer and Java Website Developer, which qualified me for a job I took at Indiana University, working on a project as a Programmer/Systems Analyst. I had been told I needed the insurance to cover an expensive operation. I didn't know about Indiana's high risk insurance, which I could afford and which provided, essentially, universal health care for the middle class, and also people with benefactors to pay the premiums.</p>
-<p> I'll never again get involved in a Java project and I can't imagine ever again needing React. After developing an elaborate online multi-player game application in the Haskel programming language, using React for the user interface, I decided to stick with JavaScript and simple frameworks. This is a SvelteKit application.</p>
-<p> While it makes sense to develop web applications with a few elaborate functions in conjunction with reusable small ones, I decided to try the opposite approach. I'm truly amazed at how well that worked out.</p> 
-<p> From function composition, which couldn't be more concise and maintainable, to the <a href = "./cube7">Simulated Rubik's Cube</a>, maintained unexposed to anything in the script other than the functions provided to m (named "go" in its outer scope, M) in response to events initiated in the DOM. </p> 
+<p> R specifies that whatever string reference happens to be in position m(dF3x)[3][2] changes to whatever string reference happens to be in position m(dF3x)[5][2]. If the cube is in its starting configuration (solved, prior to scrambling), the upper right front corner will go from orange to white. Beyond that, we know nothing about the color of the front upper right corner before or after m(R) runs. The class will change to the whatever the class of the div in the front upper right corner (m(dF3x)(5)(2)) happens to be, but the background-color of that class might be whatever the background color of m(dF3x)(3)(2) happens to be. Here's the definition of R:  </p>
+
+<pre>{Rcode}</pre>
+
+<p> Running m(R) on a solved cube leaves the right side solid blue and the left side grid-template-columns-``. The front remains orange except for locations 2, 5, and 8 (the right column), which become white. </p>
+
+<h1>STOP</h1>
+<p> This is where the revision ends. </p>
+
+
+ <p> The <a href="./cube7">Simulated Rubik's cube</a> page has gone through improvements, including code refactoring, that render much of its text incorrect -- but the cube itself works like a charm. Here's an explanation of the code, beginning with the interface between the closure holding the array of six nine-member arrays of references to the strings "blue, green, red, orange, yellow, and white" and the div containing six nine-member arrays of divs. The strings in the representation are the names of CSS classes with background-color entries corresponding to their names.  </p> 
+  
+
+
+
+ <p> The code samples at the top of this page show that function composition using M can't be more transparent, concise, and maintainable. When I get around to it, I'll show how slight modification of M facilitate nesting of mixed synchronous and asynchronous handled by m, and how, when x is an array, pushing modifications onto it can avoid mutations. The code is tested and good to to, but it's time now to show m-M(x) closures handling larger applications. There's the <a href="./score">Game of Score</a> and my current project, <a href="./cube7">Simulated Rubik's cube</a>.</p>
+  
+ <p> Key press and mouse click events call eventHandler(e) where e is an object containing an integer named keyCode. If eventHandler contains an object with a keyCode number matching keyCode in e, m(f) is called where f is a function that rearranges   resides  response to events initiated in the DOM. </p> 
 <p> Events initiated by user key presses and clicks cause eventHandler() to call m on functions that operate on arrays of six nine-member arrays.   </p> 
+</div>
 
 <p> The following discussion centers around the function M (defined below), along with closures of the form m-M(x), where m = M(x) and x can be any JavaScript value. </p>
 
 
-<p> M can, of course, be modified to include try-catch blocks, objects, or anything else. NOTE: Modification of M in this presentation are small. The functions provided to m are responsible for dealing with x. Example:</p>
+<p> M can, of course, be modified to include try-catch blocks, objects, or anything else. Modification of M in this presentation are small. The functions provided to m are responsible for turning the six sides and three middle sections of the cube. </p>
 
-
-<div style="margin-left:12%; margin-right: 12%;">
-  <p>
-    Let M be a function that returns a recursive function go(), defined as
-    follows:
-  </p>
-  <pre>{Mdisplay}</pre>
-  <p>dF3x is never called. All it does is prompt the return of x.</p>
-  <br />
-  <span class="indent">
-    M will often be the outer function in a closure, such as</span>
-  <span style="color: rgb(241, 206, 206);">{v1}</span><span
-    >. However, if m has no further use, it will needlessly clutter memory until
-    it is manually destroyed. Here's how M can be used anonymously to prevent
-    memory leaks:</span
-  >
-  <br />
-  <pre>{v2}</pre>
-  <p>Or, more concisely:</p>
-  <pre>{v3}</pre>
 
   <p>
     The simulated Rubik's cube example follows the convention of creating an
@@ -542,7 +745,7 @@ m(rd)(dF3x);   // 42 `;
     some function "func". In the simplest version of "M", calling m(func)
     mutates "x," changing it from x to func(x).
   </p>
-  m
+  
   <p>
     <span style="color:yellow; font-weight:bold">CAUTION</span> as will be
     extensively discussed on this page, m(dF3x) is a reference to 'x' in the
@@ -553,18 +756,6 @@ m(rd)(dF3x);   // 42 `;
     different from that of 'x'. More about that later. First, here's the definition
     M and some examples of m-M(x) closures:
   </p>
-
-  <pre>{mona}</pre>
-  <h3>Anonymous Function Composition</h3>
-  <pre>var res = M(3)(v=>v**3)(v => v*4)(v => v - 8)(Math.sqrt)(dF3x);  // 10</pre>
-  <p>
-    The result is preserved in the variable res, but the browser engine has
-    reason to keep the anonymous function returned by M(3).
-  </p>
-  <h3>Encapsulating the Result of a Computation</h3>
-  <pre>{reduceCode}</pre>
-
-  <h3>The Solitaire Game of Score</h3>
 
   <p>
     The <a href="./score#mDef">Solitaire Game of Score</a> involves using two six-sided,
@@ -603,7 +794,7 @@ m(rd)(dF3x);   // 42 `;
     renamed M2. Here's the complete definition of m in the m-M(x) closure,
     beginning with the revised definition of M:
   </p>
-  <pre>{Mcode}</pre>
+  <pre>{Mcode}</pre>  
   <pre>{classCode2}</pre>
 
   <p>
@@ -628,8 +819,7 @@ m(rd)(dF3x);   // 42 `;
   </p>
   <p>
     If the meanings of passing by value and passing by reference is clear, as
-    I'm sure it is for many of you, the rest of this section on the Rubik's cube
-    simulator might be tedious. For those who are still a little unsure, I hope
+    I'm sure it is for many of you, reading the rest of this section on the Rubik's cube simulator might be tedious. For those who are still a little unsure, I hope
     reading this will be the breakthrough that clarifies it once and for all.
   </p>
   <p>
@@ -659,7 +849,6 @@ m(rd)(dF3x);   // 42 `;
     executes, it and the function that was reversed are discarded, making the
     list one item shorter than it was.
   </p>
-</div>
 <div style="margin-left:2%; margin-right: 2%;">
   <img class="display_image" src={passBy} />
 </div>
@@ -710,6 +899,10 @@ m(rd)(dF3x);   // 42 `;
         width:120%; 
         height:120%;
     }*/
+  .background {
+    color: lightgreen;
+  }
+
   h3 {
     color: turquoise;
   }

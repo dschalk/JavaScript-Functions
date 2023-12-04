@@ -1,3 +1,4 @@
+
 <script>
   // import Image from './Image.svelte'
   var log = console.log;
@@ -19,17 +20,20 @@
   var index = 1;
   function setIndex () {index = 1};
   var Amos;
+  var Rf78d3s5 = () => {};
+  var Rf7ar3s5 = () => {};
+
+  var M = function M(x) {
+    let ar = [];
+    return function go(func) {
+      if (func === Rf78d3s5) return x;
+      if (func === Rf7ar3s5) return ar;
+      else x = func(x);
+      if (typeof func == "function") ar.push(func);
+      return go;
+    };
+  };
   
-  var dF3x = () => {};
-  var dF3ar = () => {};
-
-/*var bb = ["b0","b1","b2","b3","b4","b5","b6","b7","b8"];  // For testing 
-var gg = ["g0","g1","g2","g3","g4","g5","g6","g7","g8"];
-var rr = ["r0","r1","r2","r3","r4","r5","r6","r7","r8"];
-var oo = ["o0","o1","o2","o3","o4","o5","o6","o7","o8"];
-var yy = ["y0","y1","y2","y3","y4","y5","y6","y7","y8"];
-var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
-
   const b0 = 'blue';
   const b1 = 'blue';
   const b2 = 'blue';
@@ -98,60 +102,65 @@ var ww = ["w0","w1","w2","w3","w4","w5","w6","w7","w8"]; */
   var ww = [w0, w1, w2, w3, w4, w5, w6, w7, w8];
 
   var m = M([bb, gg, rr, oo, yy, ww]);
-  var m2 = M2([bb, gg, rr, oo, yy, ww]);  
 
   const cubeStart = JSON.parse(JSON.stringify([bb,gg,rr,oo,yy,ww]));
-
-  function clone (ar) {
-    JSON.parse(JSON.stringify(ar));
-  }
-
-  function M2(x, ar = []) {
-    return function go(func) {
-      if (func === dF3x) return x;
-      else x = func(x);
-      return go;
-    };
-  };
-
-  function M(x, ar = []) {
-    return function go(func) {
-      if (func === dF3x) return x;
-      if (func === dF3ar) return ar;
-      else x = func(x);
-      ar.push(func);
-      return go;
-    };
-  };
 
   var Start = () => {
     index = 1;
     m = M(cubeStart);
   };
 
-$: Sally = m(dF3ar).length;
+$: Sally = m(Rf7ar3s5).length;
 
-function reverse () { 
-    let fu = m(dF3ar).pop(); 
-    // discards the function being reversed.
-    let foo = x => fu(fu(fu(x))); 
-    // Three more turns reverses the first one.
-    m(foo)(dF3ar).pop();     
-    // uses foo, then discards it.
+var testCode1 = `function test () {  // this works
+    let len = m(Rf7ar3s5).length;
+    for (let k = 0; k < len; k+=1) {
+      m(m(Rf7ar3s5)[k]);
+      m = m;
+    }
+}`
+var cow = 0;
+
+
+function test () {  // this works
+    var k = m(Rf7ar3s5).length;
+    let fu = m(Rf7ar3s5)[k-1];
+    let foo = x => fu(fu(fu(x)));
+    m(foo);
+    m = m;
+    let arr = m(Rf7ar3s5);
+    if (m(Rf7ar3s5).slice(-1)[0].name !== m(Rf7ar3s5).slice(-2,-1)[0].name) m(Rf7ar3s5).splice(-2,2);
 };
 
-var reverseCode = `function reverse () { 
-  let fu = m(dF3ar).pop(); 
-  // discards the function being reversed.
-    
-  let foo = x => fu(fu(fu(x))); 
-  // Three more turns reverses the first one.
-    
-  m(foo)(dF3ar).pop();     
-  // uses foo, then discards it.
-}; `;
+function fnames (x) {
+    var ar;
+    ar = x.map((v) => v.name);
+    return ar;
+}
 
-  var classCode2 = `const b0 = 'blue';
+var fNames;
+$: fNames = fnames(m(Rf7ar3s5));
+
+var testCode2 = `function test () {  // this works
+    let k = m(Rf7ar3s5).length;
+    let fu = m(Rf7ar3s5)[k-index];
+    let foo = x => fu(fu(fu(x)));
+    m(foo);
+    index += 2;
+    console.log("index is", index);
+    m = m;
+    if (index > m(Rf7ar3s5).length) Start();
+}`;
+
+var Mcode = `var M = function M(x) {
+  return function go(func) {
+    if (func === Rf78d3s5) return x;
+    else x = func(x);
+    return go;
+  };
+} where Rf78d3s5 = () => {};`;
+
+  var mCode = `const b0 = 'blue';
   const b1 = 'blue';
   const b2 = 'blue';
   const b3 = 'blue';
@@ -221,7 +230,7 @@ var reverseCode = `function reverse () {
   var m = M([bb, gg, rr, oo, yy, ww]);`;
   
 
-  const Xro = function Xro(ar) {
+  function Xro(ar) {
     let temp = [];
     temp[0] = [
         ar[0][6],
@@ -272,61 +281,9 @@ var reverseCode = `function reverse () {
     return temp;
   };
 
-  const Xror = function Xror(ar) {
-    let temp = [];
-    temp[0] = [
-        ar[0][2],
-        ar[0][5],
-        ar[0][8],
-        ar[0][1],
-        ar[0][4],
-        ar[0][7],
-        ar[0][0],
-        ar[0][3],
-        ar[0][6],
-      ];
-    temp[1] = [
-        ar[1][6],
-        ar[1][3],
-        ar[1][0],
-        ar[1][7],
-        ar[1][4],
-        ar[1][1],
-        ar[1][8],
-        ar[1][5],
-        ar[1][2],
-      ];
-    temp[2] = [
-        ar[5][8],
-        ar[5][7],
-        ar[5][6],
-        ar[5][5],
-        ar[5][4],
-        ar[5][3],
-        ar[5][2],
-        ar[5][1],
-        ar[5][0],
-      ];
-    temp[3] = ar[4];
-    temp[4] = [
-        ar[2][8],
-        ar[2][7],
-        ar[2][6],
-        ar[2][5],
-        ar[2][4],
-        ar[2][3],
-        ar[2][2],
-        ar[2][1],
-        ar[2][0],
-      ];
-    temp[5] = ar[3];
-      
-    return temp;
-  };
+  const Xror = x => Xro(Xro(Xro(x)));
 
-  // const Xror = x => Xro(Xro(Xro(x)));
-
-  const Yro = function Yro(ar) {
+  function Yro(ar) {
     let temp = [];
     temp[0] = ar[2];
     temp[1] = ar[3];
@@ -357,40 +314,9 @@ var reverseCode = `function reverse () {
     return temp;
   } 
 
-  const Yror = function Yror(ar) {
-    let temp = [];
-    temp[0] = ar[3];
-    temp[1] = ar[2];
-    temp[2] = ar[0];
-    temp[3] = ar[1];
-    temp[4] = [
-        ar[4][2],
-        ar[4][5],
-        ar[4][8],
-        ar[4][1],
-        ar[4][4],
-        ar[4][7],
-        ar[4][0],
-        ar[4][3],
-        ar[4][6],
-      ];
-      temp[5] = [
-        ar[5][6],
-        ar[5][3],
-        ar[5][0],
-        ar[5][7],
-        ar[5][4],
-        ar[5][1],
-        ar[5][8],
-        ar[5][5],
-        ar[5][2],
-      ];
-    return temp;
-  } 
-
-  //  const Yror = x => Yro(Yro(Yro(x)));
- 
-  const Zro = function Zro(ar) {
+  const Yror = x => Yro(Yro(Yro(x)));
+  
+  function Zro(ar) {
     let temp = [];
     temp[0] = [
         ar[4][6],
@@ -461,114 +387,43 @@ var reverseCode = `function reverse () {
     return temp;
   };
 
-  const Zror = function Zror(ar) {
-    let temp = [];
-    temp[0] = [
-        ar[5][2],
-        ar[5][5],
-        ar[5][8],
-        ar[5][1],
-        ar[5][4],
-        ar[5][7],
-        ar[5][0],
-        ar[5][3],
-        ar[5][6],
-      ];
-      temp[1] = [
-        ar[4][2],
-        ar[4][5],
-        ar[4][8],
-        ar[4][1],
-        ar[4][4],
-        ar[4][7],
-        ar[4][0],
-        ar[4][3],
-        ar[4][6],
-      ];
-      temp[2] = [
-        ar[2][6],
-        ar[2][3],
-        ar[2][0],
-        ar[2][7],
-        ar[2][4],
-        ar[2][1],
-        ar[2][8],
-        ar[2][5],
-        ar[2][2],
-      ];
-      temp[3] = [
-        ar[3][2],
-        ar[3][5],
-        ar[3][8],
-        ar[3][1],
-        ar[3][4],
-        ar[3][7],
-        ar[3][0],
-        ar[3][3],
-        ar[3][6],
-      ];
-      temp[4] = [
-        ar[0][2],
-        ar[0][5],
-        ar[0][8],
-        ar[0][1],
-        ar[0][4],
-        ar[0][7],
-        ar[0][0],
-        ar[0][3],
-        ar[0][6],
-      ];
-      temp[5] = [
-        ar[1][2],
-        ar[1][5],
-        ar[1][8],
-        ar[1][1],
-        ar[1][4],
-        ar[1][7],
-        ar[1][0],
-        ar[1][3],
-        ar[1][6],
-      ];
-    return temp;
-  };
+  const Zror = x => Zro(Zro(Zro(x)));
 
-  // const Zror = x => Zro(Zro(Zro(x)));
+ //  $: m = m(() => m(Rf78d3s5));
 
- //  $: m = m(() => m(dF3x));
-
-  const Xrotate = function Xrotate(ar) {
+  function Xrotate(ar) {
     m(Xro);
     m = m;
   }
 
-  const Xback = function Xback(ar) {
+  function Xback(ar) {
     m(Xror);
     m = m;
   }
 
-  const Yrotate = function Yrotate(ar) {
+  function Yrotate(ar) {
     m(Yro);
     m = m;
   }
 
-  const Yback = function Yback(ar) {
+  function Yback(ar) {
     m(Yror);
     m = m;
   }
 
-  const Zrotate = function Zrotate(ar) {
+  function Zrotate(ar) {
     m(Zro);
     m = m;
   }
 
-  const Zback = function Zback(ar) {
+  function Zback(ar) {
     m(Zror);
     m = m;
   }
 
-  // console.log("m(dF3x) is", m(dF3x));
+  // console.log("m(Rf78d3s5) is", m(Rf78d3s5));
 
-  const Cz = function Cz(ar) {
+  function Cz(ar) {
     let temp = [];
 
     temp[0] = [
@@ -625,64 +480,7 @@ var reverseCode = `function reverse () {
     return temp;
   }
 
-  const Czr = function Czr(ar) {
-    let temp = [];
-
-    temp[0] = [
-      ar[0][0],
-      ar[5][5],
-      ar[0][2],
-      ar[0][3],
-      ar[5][4],
-      ar[0][5],
-      ar[0][6],
-      ar[5][3],
-      ar[0][8],
-    ];
-
-    temp[1] = [
-      ar[1][0],
-      ar[4][5],
-      ar[1][2],
-      ar[1][3],
-      ar[4][4],
-      ar[1][5],
-      ar[1][6],
-      ar[4][3],
-      ar[1][8],
-    ];
-
-    temp[2] = ar[2];
-
-    temp[3] = ar[3];
-
-    temp[4] = [
-      ar[4][0],
-      ar[4][1],
-      ar[4][2],
-      ar[0][1],
-      ar[0][4],
-      ar[0][7],
-      ar[4][6],
-      ar[4][7],
-      ar[4][8],
-    ];
-
-    temp[5] = [
-      ar[5][0],
-      ar[5][1],
-      ar[5][2],
-      ar[1][1],
-      ar[1][4],
-      ar[1][7],
-      ar[5][6],
-      ar[5][7],
-      ar[5][8],
-    ];
-    return temp;
-  }
-
-  const Cx = function Cx(ar) {
+  function Cx(ar) {
     let temp = [];
 
     temp[0] = ar[0];
@@ -740,7 +538,7 @@ var reverseCode = `function reverse () {
     return temp;
   }
 
-  const Cy = function Cy(ar) {
+  function Cy(ar) {
     let temp = [];
 
     temp[0] = [
@@ -795,86 +593,33 @@ var reverseCode = `function reverse () {
     return temp;
   }
 
-  const Cyr = function Cyr(ar) {
-    let temp = [];
 
-    temp[0] = [
-      ar[0][0],
-      ar[0][1],
-      ar[0][2],
-      ar[3][3],
-      ar[3][4],
-      ar[3][5],
-      ar[0][6],
-      ar[0][7],
-      ar[0][8],
-    ];
-
-    temp[1] = [
-      ar[1][0],
-      ar[1][1],
-      ar[1][2],
-      ar[2][3],
-      ar[2][4],
-      ar[2][5],
-      ar[1][6],
-      ar[1][7],
-      ar[1][8],
-    ];
-
-    temp[2] = [
-      ar[2][0],
-      ar[2][1],
-      ar[2][2],
-      ar[0][3],
-      ar[0][4],
-      ar[0][5],
-      ar[2][6],
-      ar[2][7],
-      ar[2][8],
-    ];
-
-    temp[3] = [
-      ar[3][0],
-      ar[3][1],
-      ar[3][2],
-      ar[1][3],
-      ar[1][4],
-      ar[1][5],
-      ar[3][6],
-      ar[3][7],
-      ar[3][8],
-    ];
-    temp[4] = ar[4];
-    temp[5] = ar[5];
-    return temp;
-  }
-
-  const Cxr = function Cxr(ar) {    // Verified
+/*
+  function Cxr(ar) {
     let temp = [];
     temp[0] = ar[0];
     temp[1] = ar[1];
     temp[2] = [
       ar[2][0],
-      ar[4][7],
+      ar[4][1],
       ar[2][2],
       ar[2][3],
       ar[4][4],
       ar[2][5],
       ar[2][6],
-      ar[4][1],
+      ar[4][7],
       ar[2][8],
     ];
 
     temp[3] = [
       ar[3][0],
-      ar[5][1],
+      ar[5][7],
       ar[3][2],
       ar[3][3],
       ar[5][4],
       ar[3][5],
       ar[3][6],
-      ar[5][7],
+      ar[5][1],
       ar[3][8],
     ];
 
@@ -902,9 +647,8 @@ var reverseCode = `function reverse () {
       ar[5][8],
     ];
     return temp;
-  } 
-
-  const B = function B(ar) {
+  }  */
+  function B(ar) {
     let temp = [];
 
     temp[0] = [
@@ -970,9 +714,9 @@ var reverseCode = `function reverse () {
     ];
     return temp;
   }
-  // const Bz = x => B(B(B(x)))
+  const Bz = x => B(B(B(x)))
 
-  const Bz = function Bz(ar) {  // Verified
+  /*function Bz(ar) {
     let temp = [];
 
     temp[0] = [
@@ -1032,14 +776,14 @@ var reverseCode = `function reverse () {
       ar[5][3],
       ar[5][4],
       ar[5][5],
-      ar[0][8],
-      ar[0][5],
       ar[0][2],
+      ar[0][5],
+      ar[0][8],
     ];
     return temp;
-  }
+  } */
 
-  const D = function D(ar) {
+  function D(ar) {
     let temp = [];
 
     temp[0] = [
@@ -1106,9 +850,9 @@ var reverseCode = `function reverse () {
     return temp;
   }
 
-  // const Dz = x => D(D(D(x)))
+  const Dz = x => D(D(D(x)))
   
-  const Dz = function Dz(ar) {
+  /*function Dz(ar) {
     let temp = [];
 
     temp[0] = [
@@ -1173,9 +917,9 @@ var reverseCode = `function reverse () {
       ar[5][6],
     ];
     return temp;
-  } 
+  } */
 
-  const L = function L(ar) {
+  function L(ar) {
     let temp = [];
     temp[0] = ar[0];
 
@@ -1242,9 +986,9 @@ var reverseCode = `function reverse () {
   }
 
 
-  // const Lz = x => L(L(L(x)))
+  const Lz = x => L(L(L(x)))
   
-  const Lz = function Lz(ar) {
+  /*function Lz(ar) {
     let temp = [];
     temp[0] = ar[0];
 
@@ -1308,7 +1052,7 @@ var reverseCode = `function reverse () {
       ar[5][8],
     ];
     return temp;
-  } 
+  }  */
 
   function F(ar) {
     let temp = [];
@@ -1377,9 +1121,9 @@ var reverseCode = `function reverse () {
   }
 
 
-  // const Fz = x => F(F(F(x)))
+  const Fz = x => F(F(F(x)))
   
-  const Fz = function Fz(ar) {   // Verified
+  /*function Fz(ar) {
     let temp = [];
     temp[0] = [
       ar[5][2],
@@ -1443,9 +1187,9 @@ var reverseCode = `function reverse () {
       ar[5][8],
     ];
     return temp;
-  } 
-  
-  const R = function R(ar) {
+  }  */
+
+  function R(ar) {
     let temp = [];
     temp[0] = [
       ar[0][6],
@@ -1512,7 +1256,7 @@ var reverseCode = `function reverse () {
   }
 
 
- // const Rz = x => R(R(R(x)))
+  const Rz = x => R(R(R(x)))
   
 var Rcode = ` function R(ar) {
     let temp = [];
@@ -1581,7 +1325,7 @@ var Rcode = ` function R(ar) {
   }`;
 
 
- const Rz = function Rz(ar) {    // Verified
+ /* function Rz(ar) {
     let temp = [];
     temp[0] = [
       ar[0][2],
@@ -1645,9 +1389,9 @@ var Rcode = ` function R(ar) {
       ar[3][8],
     ];
     return temp;
-  } 
+  }  */
 
-  const U = function U(ar) {
+  function U(ar) {
     let temp = [];
 
     temp[0] = [
@@ -1714,7 +1458,7 @@ var Rcode = ` function R(ar) {
     return temp;
   }
 
- //  const Uz = x => U(U(U(x)))
+  const Uz = x => U(U(U(x)))
   
 var Ucode = ` function U(ar) {
     let temp = [];
@@ -1783,7 +1527,7 @@ var Ucode = ` function U(ar) {
     return temp;
   }`
 
-  const Uz = function Uz(ar) {  // Verified
+/*  function Uz(ar) {
     let temp = [];
 
     temp[0] = [
@@ -1848,12 +1592,102 @@ var Ucode = ` function U(ar) {
 
     temp[5] = ar[5];
     return temp;
-  };
+  } */
 
   var UfuncCode = `var Ufunc = () => {
     m(U);
     m = m;  // This triggers the DOM update
   };`
+
+  var Dfunc = () => {
+    m(D);
+    m = m;
+  };
+
+  var Rfunc = () => {
+    m(R);
+    m = m;
+  };
+
+  var Lfunc = () => {
+    m(L);
+    m = m;
+  };
+
+  var Ffunc = () => {
+    m(F);
+    m = m;
+  };
+
+  var Bfunc = () => {
+    m(B);
+    m = m;
+  };
+
+  var Cxfunc = () => {
+    m(Cx);
+    m = m;
+  };
+
+  var Czfunc = () => {
+    m(Cz);
+    m = m;
+  };
+
+  var Cyfunc = () => {
+    m(Cy);
+    m = m;
+  };
+
+  var Ufunc = () => {
+    m(U);
+    m = m;
+  };
+
+  var Uzfunc = () => {
+    m(Uz);
+    m = m;
+ };
+
+  var Dzfunc = () => {
+    m(Dz);
+    m = m;
+  };
+
+  var Rzfunc = () => {
+    m(Rz);
+    m = m;
+  };
+
+  var Lzfunc = () => {
+    m(Lz);
+    m = m;
+  };
+
+  var Fzfunc = () => {
+    m(Fz);
+    m = m;
+  };
+
+  var Bzfunc = () => {
+    m(Bz);
+    m = m;
+  };
+
+  var Cxrfunc = () => {
+    m(Cx)(Cx)(Cx);
+    m = m;
+  };
+
+  var Cyrfunc = () => {
+    m(Cy)(Cy)(Cy);
+    m = m;
+  };
+
+  var Czrfunc = () => {
+    m(Cz)(Cz)(Cz);
+    m = m;
+  };
 
   var corners = () => {
     m(Rz)(F)(Rz)(B)(B)(R)(Fz)(Rz)(B)(B)(R)(R);
@@ -1890,14 +1724,14 @@ var Ucode = ` function U(ar) {
     m = m;
   };
 
+  /*<button on:click={oppositeHeadlights1}>oppositeHeadlights1: R U R' U R U' R' U R U U R'</button>
+<button on:click={oppositeHeadlights2}>oppositeHeadlights2: R U U R' U' R U R' U' R U U' R'</button>
+<button on:click={oppositeHeadlights3}>oppositeHeadlights3: F R U R' U' R U R' U' R U R' U' F'</button>
+*/
+
   var edgesAdjacent = () => {
     console.log("In edgesAdjacent");
     m(Cx)(Cx)(U)(Cx)(Cx)(U)(Cx)(U)(U)(Cx)(Cx)(U)(U)(Cx)(U)(U);
-    m = m;
-  };
-
-  var doubleFish = () => {
-    m(Rz)(F)(R)(Bz)(Rz)(Fz)(R)(B);
     m = m;
   };
 
@@ -1964,6 +1798,7 @@ var Ucode = ` function U(ar) {
   var cu9;
   cu = "cube1";
   cu9 = "cube93";
+  var moves = ["U","D","R","L","F","B","Dz","Lz","Fz","Bz","U","D","R","L","Dz","Lz","Fz","Bz","U","F","U","D","R","L","F","B","Dz","Lz","Fz","Bz","U","D","R","L","Dz","Lz","Fz","Bz","U","F" ];
 
   function rotate9() {
     if (cu9 == "cube9") {console.log("You bet"); cu9 = "cube92"}
@@ -1980,7 +1815,7 @@ var Ucode = ` function U(ar) {
     else if (cu9 == "cube98") cu9 = "cube9";
     else return "cube9";
   }
-    
+      
   function tilt9() {
     if (cu9 == "cube9") {cu9 = "cube95"}
     else if (cu9 == "cube92") {cu9 = "cube96"}
@@ -2022,123 +1857,182 @@ var Ucode = ` function U(ar) {
     return x;
   }
   
-  var preserve;
-  var keep;
-      
-  var moves = [Cx,Cz,U,D,F,B,Cx,Cy,U,D,B,R,L,Cx,D,Cz,B,U,R,L,F,Cy,Cz,Cx,Cy,L,F,B,Cx,Cy,Cz,U,D,R,L,F,Cx,D,Cy,U];
-
   function shu() {
     // Scrambles the cube
-    Start();  
-    console.log("moves is", moves);
     index = 1;
-    console.log("1 m(dF3x) is", m(dF3x));
-    for (let n = 0; n < 41; n += 1) {
-      m(moves[Math.floor(Math.random() * 40)]);
+    console.log("1 m(Rf78d3s5) is", m(Rf78d3s5));
+    let moves = [Cx,Cy,Cz,U,D,R,L,F,B,Cx,Cy,Cz,U,D,B,R,L,F,Cx,D,Cy,Cz,B,U,D,R,L,F,Cx,Cy,Cz,
+      Cx,Cy,Cz,U,D,R,L,F,B,Cx,Cy,Cz,U,D,B,R,L,F,Cx,D,Cy,Cz,B,U,D,R,L,F,Cx,Cy,Cz];
+    for (let n = 0; n < 62; n += 1) {
+      m(moves[Math.floor(Math.random() * 62)]);
     } 
-    preserve = [...m(dF3ar)];
-    m = m;  
+    m = m;
   }
 
-  function previous () {
-      Start();
-      console.log("preserve is", preserve);   
-      preserve.forEach(v => m(v));
-      console.log("m(dF3ar is", m(dF3ar));
+  function dupCheck(ar) {
+    var flat = ar.flat(1);
+    const set = [...new Set(flat)];
+    if (flat.length !== set.length) {
+      //console.log(v, "is already in the array.");
+      ERROR = "STOP";
+    } else console.log(ar, "passed dupCheck");
   }
 
-  function freeze () {
-    keep = [...m(dF3ar)];
+  function logit(e) {
+    console.log(e);
   }
-
-  function getSaved () {
-      m(() => m2(dF3x));
-      m = m;
-  }
-
-  function handleEvent(e) { 
-    console.log(e.keyCode);
-         if (e.keyCode === 85)  m(Uz);
+  function handleKey(e) {
+    console.log(e.key, e.keyCode);
+    if (e.keyCode === 38) console.log("cow");
+    else if (e.keyCode === 85) m(U)(U)(U);
     else if (e.keyCode === 117) m(U);
-    else if (e.keyCode === 68)  m(Dz);
-    else if (e.keyCode === 100) m(D);
-    else if (e.keyCode === 82)  m(Rz);
+    else if (e.keyCode === 68) Dzfunc();
+    else if (e.keyCode === 100) Dfunc();
+    else if (e.keyCode === 82) m(R)(R)(R);
     else if (e.keyCode === 114) m(R);
-    else if (e.keyCode === 76)  m(Lz);
-    else if (e.keyCode === 108) m(L);
-    else if (e.keyCode === 70)  m(Fz);
-    else if (e.keyCode === 102) m(F);
-    else if (e.keyCode === 66)  m(Bz);
-    else if (e.keyCode === 98)  m(B);
-    else if (e.keyCode === 77)  m(Cxr);
-    else if (e.keyCode === 109) m(Cx);
-    else if (e.keyCode === 69)  m(Cyr);
-    else if (e.keyCode === 101) m(Cy);
-    else if (e.keyCode === 83)  m(Czr);
-    else if (e.keyCode === 115) m(Cz);
-    else if (e.keyCode === 120) m(Xro);
-    else if (e.keyCode === 88)  m(Xror);  
-    else if (e.keyCode === 121) m(Yro);
-    else if (e.keyCode === 89)  m(Yror);
-    else if (e.keyCode === 122) m(Zro);
-    else if (e.keyCode === 90)  m(Zror);
+    else if (e.keyCode === 76) Lzfunc();
+    else if (e.keyCode === 108) Lfunc();
+    else if (e.keyCode === 70) Fzfunc();
+    else if (e.keyCode === 102) Ffunc();
+    else if (e.keyCode === 66) Bzfunc();
+    else if (e.keyCode === 98) Bfunc();
+    else if (e.keyCode === 77) Cxrfunc();
+    else if (e.keyCode === 109) Cxfunc();
+    else if (e.keyCode === 69) Cyrfunc();
+    else if (e.keyCode === 101) Cyfunc();
+    else if (e.keyCode === 83) Czrfunc();
+    else if (e.keyCode === 115) Czfunc();
+    else if (e.keyCode === 120) Xrotate();
+    else if (e.keyCode === 88) Xback();
+    else if (e.keyCode === 121) Yrotate();
+    else if (e.keyCode === 89) Yback();
+    else if (e.keyCode === 122) Zrotate();
+    else if (e.keyCode === 90) Zback();
     else if (e.keyCode === 119) shu();
     else if (e.keyCode === 118) Start();
-    else if (e.keyCode === 113) reverse();
-    else if (e.keyCode === 105) previous();
-    else if (e.keyCode === 73) getSaved();
-    else if (e.keyCode === 111) save();
+    else if (e.keyCode === 113) test();
     // else if (e.keyCode === 116) rotate();
     m = m;
   }
-  var handleEventCode = `function handleEvent(e) {
-         if (e.keyCode === 85)  m(Uz);
+
+  var handleKeyCode = `function handleKey(e) {
+    console.log(e.key, e.keyCode);
+    if (e.keyCode === 38) console.log("cow");
+    else if (e.keyCode === 85) m(U)(U)(U);
     else if (e.keyCode === 117) m(U);
-    else if (e.keyCode === 68)  m(Dz);
-    else if (e.keyCode === 100) m(D);
-    else if (e.keyCode === 82)  m(Rz);
+    else if (e.keyCode === 68) Dzfunc();
+    else if (e.keyCode === 100) Dfunc();
+    else if (e.keyCode === 82) m(R)(R)(R);
     else if (e.keyCode === 114) m(R);
-    else if (e.keyCode === 76)  m(Lz);
-    else if (e.keyCode === 108) m(L);
-    else if (e.keyCode === 70)  m(Fz);
-    else if (e.keyCode === 102) m(F);
-    else if (e.keyCode === 66)  m(Bz);
-    else if (e.keyCode === 98)  m(B);
-    else if (e.keyCode === 77)  m(Cxr);
-    else if (e.keyCode === 109) m(Cx);
-    else if (e.keyCode === 69)  m(Cyr);
-    else if (e.keyCode === 101) m(Cy);
-    else if (e.keyCode === 83)  m(Czr);
-    else if (e.keyCode === 115) m(Cz);
-    else if (e.keyCode === 120) m(Xro);
-    else if (e.keyCode === 88)  m(Xror);
-    else if (e.keyCode === 121) m(Yro);
-    else if (e.keyCode === 89)  m(Yror);
-    else if (e.keyCode === 122) m(Zro);
-    else if (e.keyCode === 90)  m(Zror);
+    else if (e.keyCode === 76) Lzfunc();
+    else if (e.keyCode === 108) Lfunc();
+    else if (e.keyCode === 70) Fzfunc();
+    else if (e.keyCode === 102) Ffunc();
+    else if (e.keyCode === 66) Bzfunc();
+    else if (e.keyCode === 98) Bfunc();
+    else if (e.keyCode === 77) Cxrfunc();
+    else if (e.keyCode === 109) Cxfunc();
+    else if (e.keyCode === 69) Cyrfunc();
+    else if (e.keyCode === 101) Cyfunc();
+    else if (e.keyCode === 83) Czrfunc();
+    else if (e.keyCode === 115) Czfunc();
+    else if (e.keyCode === 120) Xrotate();
+    else if (e.keyCode === 88) Xback();
+    else if (e.keyCode === 121) Yrotate();
+    else if (e.keyCode === 89) Yback();
+    else if (e.keyCode === 122) Zrotate();
+    else if (e.keyCode === 90) Zback();
     else if (e.keyCode === 119) shu();
     else if (e.keyCode === 118) Start();
-    else if (e.keyCode === 113) reverse();
-    // else if (e.keyCode === 116) rotate(); 
-    m = m;  // In Svelte, this updates the DOM
+    // else if (e.keyCode === 116) rotate();
+    m = m;
   }`
 
+  const constants = `  const b0 = 'blue';
+  const b1 = 'blue';
+  const b2 = 'blue';
+  const b3 = 'blue';
+  const b4 = 'blue';
+  const b5 = 'blue';
+  const b6 = 'blue';
+  const b7 = 'blue';
+  const b8 = "blue";
+
+  const g0 = 'green';
+  const g1 = 'green';
+  const g2 = 'green';
+  const g3 = 'green';
+  const g4 = 'green';
+  const g5 = 'green';
+  const g6 = 'green';
+  const g7 = 'green';
+  const g8 = "green";
+
+  const r0 = 'red';
+  const r1 = 'red';
+  const r2 = 'red';
+  const r3 = 'red';
+  const r4 = 'red';
+  const r5 = 'red';
+  const r6 = 'red';
+  const r7 = 'red';
+  const r8 = "red";
+
+  const o0 = 'orange';
+  const o1 = 'orange';
+  const o2 = 'orange';
+  const o3 = 'orange';
+  const o4 = 'orange';
+  const o5 = 'orange';
+  const o6 = 'orange';
+  const o7 = 'orange';
+  const o8 = "orange";
+
+  const y0 = 'yellow';
+  const y1 = 'yellow';
+  const y2 = 'yellow';
+  const y3 = 'yellow';
+  const y4 = 'yellow';
+  const y5 = 'yellow';
+  const y6 = 'yellow';
+  const y7 = 'yellow';
+  const y8 = "yellow";
+
+  const w0 = 'yellow';
+  const w1 = 'yellow';
+  const w2 = 'yellow';
+  const w3 = 'yellow';
+  const w4 = 'yellow';
+  const w5 = 'yellow';
+  const w6 = 'yellow';
+  const w7 = 'yellow';
+  const w8 = "yellow";
+
+  var bb = [b0,b1,b2,b3,b4,b5,b6,b7,b8];
+  var gg = [g0,g1,g2,g3,g4,g5,g6,g7,g8];
+  var rr = [r0,r1,r2,r3,r4,r5,r6,r7,r8];
+  var oo = [o0,o1,o2,o3,o4,o5,o6,o7,o8];
+  var yy = [y0,y1,y2,y3,y4,y5,y6,y7,y8];
+  var ww = [w0,w1,w2,w3,w4,w5,w6,w7,w8];
+
+  var m = M( [ bb, gg, rr, oo, yy, ww ] );`
+  
 var const2 = `const cubeStart = [...[bb, gg, rr, oo, yy, ww]];`
 
 var front = `      <div class="face front">
         <div class="grid">
-          <div class={m(dF3x)[3][0]} />
-          <div class={m(dF3x)[3][1]} />
-          <div class={m(dF3x)[3][2]} />
-          <div class={m(dF3x)[3][3]} />
-          <div class={m(dF3x)[3][4]} />
-          <div class={m(dF3x)[3][5]} />
-          <div class={m(dF3x)[3][6]} />
-          <div class={m(dF3x)[3][7]} />
-          <div class={m(dF3x)[3][8]} />
+          <div class={m(Rf78d3s5)[3][0]} />
+          <div class={m(Rf78d3s5)[3][1]} />
+          <div class={m(Rf78d3s5)[3][2]} />
+          <div class={m(Rf78d3s5)[3][3]} />
+          <div class={m(Rf78d3s5)[3][4]} />
+          <div class={m(Rf78d3s5)[3][5]} />
+          <div class={m(Rf78d3s5)[3][6]} />
+          <div class={m(Rf78d3s5)[3][7]} />
+          <div class={m(Rf78d3s5)[3][8]} />
         </div>
       </div>`
-     
+      
       
 var orange = `.orange {
     height: 60px;
@@ -2152,139 +2046,120 @@ var dom = `<div id="steady">
     <div class={cu}>
       <div class="face front">
         <div class="grid">
-          <div class={m(dF3x)[3][0]} />
-          <div class={m(dF3x)[3][1]} />
-          <div class={m(dF3x)[3][2]} />
-          <div class={m(dF3x)[3][3]} />
-          <div class={m(dF3x)[3][4]} />
-          <div class={m(dF3x)[3][5]} />
-          <div class={m(dF3x)[3][6]} />
-          <div class={m(dF3x)[3][7]} />
-          <div class={m(dF3x)[3][8]} />
+          <div class={m(Rf78d3s5)[3][0]} />
+          <div class={m(Rf78d3s5)[3][1]} />
+          <div class={m(Rf78d3s5)[3][2]} />
+          <div class={m(Rf78d3s5)[3][3]} />
+          <div class={m(Rf78d3s5)[3][4]} />
+          <div class={m(Rf78d3s5)[3][5]} />
+          <div class={m(Rf78d3s5)[3][6]} />
+          <div class={m(Rf78d3s5)[3][7]} />
+          <div class={m(Rf78d3s5)[3][8]} />
         </div>
       </div>
 
       <div class="face back">
         <div class="grid">
-          <div class={m(dF3x)[2][8]} />
-          <div class={m(dF3x)[2][7]} />
-          <div class={m(dF3x)[2][6]} />
-          <div class={m(dF3x)[2][5]} />
-          <div class={m(dF3x)[2][4]} />
-          <div class={m(dF3x)[2][3]} />
-          <div class={m(dF3x)[2][2]} />
-          <div class={m(dF3x)[2][1]} />
-          <div class={m(dF3x)[2][0]} />
+          <div class={m(Rf78d3s5)[2][8]} />
+          <div class={m(Rf78d3s5)[2][7]} />
+          <div class={m(Rf78d3s5)[2][6]} />
+          <div class={m(Rf78d3s5)[2][5]} />
+          <div class={m(Rf78d3s5)[2][4]} />
+          <div class={m(Rf78d3s5)[2][3]} />
+          <div class={m(Rf78d3s5)[2][2]} />
+          <div class={m(Rf78d3s5)[2][1]} />
+          <div class={m(Rf78d3s5)[2][0]} />
         </div>
       </div>
 
       <div class="face right">
         <div class="grid">
-          <div class={m(dF3x)[0][0]} />
-          <div class={m(dF3x)[0][1]} />
-          <div class={m(dF3x)[0][2]} />
-          <div class={m(dF3x)[0][3]} />
-          <div class={m(dF3x)[0][4]} />
-          <div class={m(dF3x)[0][5]} />
-          <div class={m(dF3x)[0][6]} />
-          <div class={m(dF3x)[0][7]} />
-          <div class={m(dF3x)[0][8]} />
+          <div class={m(Rf78d3s5)[0][0]} />
+          <div class={m(Rf78d3s5)[0][1]} />
+          <div class={m(Rf78d3s5)[0][2]} />
+          <div class={m(Rf78d3s5)[0][3]} />
+          <div class={m(Rf78d3s5)[0][4]} />
+          <div class={m(Rf78d3s5)[0][5]} />
+          <div class={m(Rf78d3s5)[0][6]} />
+          <div class={m(Rf78d3s5)[0][7]} />
+          <div class={m(Rf78d3s5)[0][8]} />
         </div>
       </div>
 
       <div class="face left">
         <div class="grid">
-          <div class={m(dF3x)[1][0]} />
-          <div class={m(dF3x)[1][1]} />
-          <div class={m(dF3x)[1][2]} />
-          <div class={m(dF3x)[1][3]} />
-          <div class={m(dF3x)[1][4]} />
-          <div class={m(dF3x)[1][5]} />
-          <div class={m(dF3x)[1][6]} />
-          <div class={m(dF3x)[1][7]} />
-          <div class={m(dF3x)[1][8]} />
+          <div class={m(Rf78d3s5)[1][0]} />
+          <div class={m(Rf78d3s5)[1][1]} />
+          <div class={m(Rf78d3s5)[1][2]} />
+          <div class={m(Rf78d3s5)[1][3]} />
+          <div class={m(Rf78d3s5)[1][4]} />
+          <div class={m(Rf78d3s5)[1][5]} />
+          <div class={m(Rf78d3s5)[1][6]} />
+          <div class={m(Rf78d3s5)[1][7]} />
+          <div class={m(Rf78d3s5)[1][8]} />
         </div>
       </div>
 
       <div class="face top">
         <div class="grid">
-          <div class={m(dF3x)[4][0]} />
-          <div class={m(dF3x)[4][1]} />
-          <div class={m(dF3x)[4][2]} />
-          <div class={m(dF3x)[4][3]} />
-          <div class={m(dF3x)[4][4]} />
-          <div class={m(dF3x)[4][5]} />
-          <div class={m(dF3x)[4][6]} />
-          <div class={m(dF3x)[4][7]} />
-          <div class={m(dF3x)[4][8]} />
+          <div class={m(Rf78d3s5)[4][0]} />
+          <div class={m(Rf78d3s5)[4][1]} />
+          <div class={m(Rf78d3s5)[4][2]} />
+          <div class={m(Rf78d3s5)[4][3]} />
+          <div class={m(Rf78d3s5)[4][4]} />
+          <div class={m(Rf78d3s5)[4][5]} />
+          <div class={m(Rf78d3s5)[4][6]} />
+          <div class={m(Rf78d3s5)[4][7]} />
+          <div class={m(Rf78d3s5)[4][8]} />
         </div>
       </div>
 
       <div class="face bottom">
         <div class="grid">
-          <div class={m(dF3x)[5][0]} />
-          <div class={m(dF3x)[5][1]} />
-          <div class={m(dF3x)[5][2]} />
-          <div class={m(dF3x)[5][3]} />
-          <div class={m(dF3x)[5][4]} />
-          <div class={m(dF3x)[5][5]} />
-          <div class={m(dF3x)[5][6]} />
-          <div class={m(dF3x)[5][7]} />
-          <div class={m(dF3x)[5][8]} />
+          <div class={m(Rf78d3s5)[5][0]} />
+          <div class={m(Rf78d3s5)[5][1]} />
+          <div class={m(Rf78d3s5)[5][2]} />
+          <div class={m(Rf78d3s5)[5][3]} />
+          <div class={m(Rf78d3s5)[5][4]} />
+          <div class={m(Rf78d3s5)[5][5]} />
+          <div class={m(Rf78d3s5)[5][6]} />
+          <div class={m(Rf78d3s5)[5][7]} />
+          <div class={m(Rf78d3s5)[5][8]} />
         </div>
       </div>
     </div>
   </div>
 </div>`;
 
+  /*
+x 120 5.b2a1d8d2.js:1:44132
+y 121 5.b2a1d8d2.js:1:44132
+z 122 5.b2a1d8d2.js:1:44132
+X 88 5.b2a1d8d2.js:1:44132
+Y 89 5.b2a1d8d2.js:1:44132
+Z 90
+
+m 109 +page.svelte:728:12
+e 101 +page.svelte:728:12
+s 115 +page.svelte:728:12
+M 77 +page.svelte:728:12
+E 69 +page.svelte:728:12
+S 83 +page.svelte:728:12
+*/
 
 var a = 0;
 var b = 0;
-var classCode = `classes={m(dF3x)[a][b]}`;
-
-var basic = `function M (x) {
-  return function go (func) {
-    if (func === dF3x) return x;
-    else x = func(x);
-    return go;
-  }`;
-
-var log = console.log;
-
-const Mcode = `function M(x, ar = []) {
-    return function go(func) {
-      if (func === dF3x) return x;
-      if (func === dF3ar) return ar;
-      else x = func(x);
-      ar.push(func);
-      return go;
-    };
-  };
-    Where const dF3x = () => {}
-          const dF3ar = () => {};`;
-
-const orangeSide = `<div class="face front">
-        <div class="grid">
-          <div class={m(dF3x)[3][8]} />
-          <div class={m(dF3x)[3][7]} />
-          <div class={m(dF3x)[3][6]} />
-          <div class={m(dF3x)[3][5]} />
-          <div class={m(dF3x)[3][4]} />
-          <div class={m(dF3x)[3][3]} />
-          <div class={m(dF3x)[3][2]} />
-          <div class={m(dF3x)[3][1]} />
-          <div class={m(dF3x)[3][0]} />
-        </div>
-      </div>`;
-
-
+var classCode = `class={m(Rf78d3s5)[a][b]}`;
 
 </script>
 
 
 
-
 <style>
+
+html {
+    width: 95%;
+}
 
 ::before,
 ::after {
@@ -2294,6 +2169,7 @@ const orangeSide = `<div class="face front">
 }
 
   .cell {
+    /* center the cell content */
     justify-content: center;
     align-items: center;
     display: flex;
@@ -2720,7 +2596,7 @@ const orangeSide = `<div class="face front">
   .red {
     height: 60px;
     width: 60px;
-    background-color: rgb(252, 97, 97);
+    background-color: rgb(230, 113, 113);
     border-radius: 10px;
   }
   .blue {
@@ -2730,8 +2606,6 @@ const orangeSide = `<div class="face front">
     display: inline;
     border-radius: 10px;
   }
-  
-
   .orange {
     height: 60px;
     width: 60px;
@@ -2758,6 +2632,10 @@ const orangeSide = `<div class="face front">
     display: inline;
     border-radius: 10px;
   }
+
+  /* body {
+  background: turquoise
+} */
 
   .container {
     width: 198px;
@@ -2967,6 +2845,26 @@ const orangeSide = `<div class="face front">
     }
   }
 
+  button {
+    margin-left: 1%;
+    background-color: lightblue;
+    border-width: 2px;
+    border-color: #e8f7c1;
+    border-radius: 10px;
+    color: blue;
+    font-size: 26px;
+    box-shadow: 0px 0px 15px 0px rgb(255, 215, 0);
+    padding: 3px 10px 3px 10px;
+  }
+
+  button:hover {
+    color: blue;
+    background-color: gold;
+    border-color: #e8f7c1;
+    border-radius: 10px;
+    box-shadow: 0px 0px 25px 0px rgb(255, 255, 0);
+  }
+
   .rite {
     float: right;
     /* position: absolute;
@@ -2976,7 +2874,7 @@ const orangeSide = `<div class="face front">
 
   h1 {
     text-align: center;
-    color: #dd00ff;
+    color: #bb00ff;
   }
 
   #col-1 {
@@ -3001,13 +2899,13 @@ const orangeSide = `<div class="face front">
 
   #steady {
     position: fixed;
-    top: 120px;
+    top: 130px;
     left: 45.5%;
   }
 
   #steady2 {
     position: fixed;
-    top: 420px;
+    top: 450px;
     left: 45.5%;
   }
 
@@ -3024,103 +2922,52 @@ const orangeSide = `<div class="face front">
     color: blue;
   }
 
-  /* a {
-    font-size: 26; color: #0000ff;
+  a {
+    font-size: 24; color: purple;
     font-weight: bold;
-    font-style: underline; 
-    color: rgb(239, 126, 209);
-  } */
+  }
+
+  span {
+    color: black;
+    font-size: 22px;
+  }
 
 </style>
 
+  
 
 
-<svelte:window on:keypress={handleEvent} />
+<svelte:window on:keypress={handleKey} />
+
 <section class="columns">
   <div style="width: 40%">
-   
-    <!-- <button on:click={() => console.log("test of m(dF3x is", m(dF3x))}>test</button>
-    <button on:click={() => console.log("test2 of m2(dF3x is", m2(dF3x))}>test2</button> -->
-
-    <button on:click={() => handleEvent({keyCode: 118})}>Start</button>
-    <button on:click={() => handleEvent({keyCode: 119})}>Scramble</button>
-    <button on:click={() => handleEvent({keyCode: 113})}>Reverse</button>
-    <button on:click={() => handleEvent({keyCode: 105})}>Back To Scr</button>
+    <br />
+    <button on:click={Start}>Start</button> 
+    <button on:click={shu}>Scramble</button>
+    <button on:click={test}>Reverse</button> 
+    <br>
+    <!--<button on:click={() => console.log("m(Rf7ar3s5) is", m(Rf7ar3s5))}>m(Rf7ar3s5)</button> 
+    <button on:click={() => console.log("m(Rf78d3s5) is", m(Rf78d3s5))}>m(Rf78d3s5)</button>
+    <button on:click={setIndex}>index -> 1</button> 
+    <br> -->
     
-    <button on:click = {() => m2(() => m(dF3x))}>Save</button>
-    <button on:click = {getSaved}>getSaved</button> 
-    <!--<span style="color:darkred; font-weight:bold">m(dF3ar).length = {Sally}</span> -->
-    <!--<span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span> -->
+    <!-- <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp;Pointer: </span> <span style="color:purple  ; font-weight:bold; font-size:30px">{Amos}</span> -->
     
-    <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp; Move list length: </span> <span style="font-weight:bold; font-size:30px">{Sally}</span>
+    <span style = "font-size:25px"> &nbsp;&nbsp;&nbsp;&nbsp; Move list length: </span> <span style="color:purple; font-weight:bold; font-size:30px">{Sally}</span>
 
     <br />
-    <button on:click={() => handleEvent({keyCode: 120})}>X rotate</button>
-    <button on:click={() => handleEvent({keyCode: 121})}>Y rotate</button>
-    <button on:click={() => handleEvent({keyCode: 122})}>Z rotate</button>
+    <button on:click={Xrotate}>X rotate</button>
+    <button on:click={Yrotate}>Y rotate</button>
+    <button on:click={Zrotate}>Z rotate</button>
     <br>
-    <button on:click={() => handleEvent({keyCode: 88})}>X back</button>
-    <button on:click={() => handleEvent({keyCode: 89})}>Y back</button>
-    <button on:click={() => handleEvent({keyCode: 90})}>Z back</button>
-
-<br>
-    <button on:click={() => handleEvent({keyCode: 117})}>U</button>
-    <button on:click={() => handleEvent({keyCode: 100})}>D</button>
-    <button on:click={() => handleEvent({keyCode: 114})}>R</button>
-    <button on:click={() => handleEvent({keyCode: 108})}>L</button>
-    <button on:click={() => handleEvent({keyCode: 102})}>F</button>
-    <button on:click={() => handleEvent({keyCode: 98})}>B</button>
-    <button on:click={() => handleEvent({keyCode: 109})}>M</button>
-    <button on:click={() => handleEvent({keyCode: 101})}>E</button>
-    <button on:click={() => handleEvent({keyCode: 115})}>S</button>
-    <br>
-    <button on:click={() => handleEvent({keyCode: 85})}>U'</button>
-    <button on:click={() => handleEvent({keyCode: 68})}>D'</button>
-    <button on:click={() => handleEvent({keyCode: 82})}>R'</button>
-    <button on:click={() => handleEvent({keyCode: 76})}>L'</button>
-    <button on:click={() => handleEvent({keyCode: 70})}>F'</button>
-    <button on:click={() => handleEvent({keyCode: 66})}>B'</button>
-    <button on:click={() => handleEvent({keyCode: 77})}>M'</button>
-    <button on:click={() => handleEvent({keyCode: 69})}>E'</button>
-    <button on:click={() => handleEvent({keyCode: 83})}>S'</button>
-
-<!--
-  function handleEvent(e) {
-         if (e.keyCode === 85)  m(Uz);
-    else if (e.keyCode === 117) m(U);
-    else if (e.keyCode === 68)  m(Dz);
-    else if (e.keyCode === 100) m(D);
-    else if (e.keyCode === 82)  m(Rz);
-    else if (e.keyCode === 114) m(R);
-    else if (e.keyCode === 76)  m(Lz);
-    else if (e.keyCode === 108) m(L);
-    else if (e.keyCode === 70)  m(Fz);
-    else if (e.keyCode === 102) m(F);
-    else if (e.keyCode === 66)  m(Bz);
-    else if (e.keyCode === 98)  m(B);
-    else if (e.keyCode === 77)  m(Cxr);
-    else if (e.keyCode === 109) m(Cx);
-    else if (e.keyCode === 69)  m(Cyr);
-    else if (e.keyCode === 101) m(Cy);
-    else if (e.keyCode === 83)  m(Czr);
-    else if (e.keyCode === 115) m(Cz);
-    else if (e.keyCode === 120) m(Xro);
-    else if (e.keyCode === 88)  m(Xror);
-    else if (e.keyCode === 121) m(Yro);
-    else if (e.keyCode === 89)  m(Yror);
-    else if (e.keyCode === 122) m(Zro);
-    else if (e.keyCode === 90)  m(Zror);
-    else if (e.keyCode === 119) shu();
-    else if (e.keyCode === 118) Start();
-    else if (e.keyCode === 113) reverse();
-    // else if (e.keyCode === 116) rotate();
-    m = m;
-  }
+    <button on:click={Xback}>X back</button>
+    <button on:click={Yback}>Y back</button>
+    <button on:click={Zback}>Z back</button>
 
     <br />
-    <button on:click={() => handleEvent({keyCode: 117})}>U</button>
+    <button on:click={Ufunc}>U</button>
     <button on:click={Dfunc}>D</button>
-    <button on:click={() => handleEvent({keyCode: 114})}>R</button>
+    <button on:click={Rfunc}>R</button>
     <button on:click={Lfunc}>L</button>
     <button on:click={Ffunc}>F</button>
     <button on:click={Bfunc}>B</button>
@@ -3139,32 +2986,20 @@ const orangeSide = `<div class="face front">
     <button on:click={Czrfunc}>S'</button>
     <br>
     
-      <button on:click={rotate}>Clockwise</button>
+    <!--<button on:click={rotate}>Clockwise</button>
 <br><br>
 <button on:click={rotate2}>Counterclockwise</button> -->
-<br>
+   <p>This is, essentially, the cube3 application, but with a way to undo a series of moves without remembering exactly what they were.</p>
 
-  <p> This simple m-M(x) closure discussed in <a href="./">Home</a> is sufficient to operate the cube in every way except taking back moves:
-   <pre>{basic}</pre> 
- <p>   
- To make the "Reverse" button (also keypress 'q') work, an array is added to hold a record of moves taken. Here's the revised definition:</p>
-  
-  <pre>{Mcode}</pre>
-  
-  <p> Repeatedly clicking the "Reverse" button or pressing the 'q' key returns the cube to all of its prior configurations from 
+    <h1>Demonstration 1</h1>
+    <p> <a href = "./#cube">Home</a> The keyboard and button controls are not affected by rotations, making the cube much easier to solve than many other online Rubik's cube simulators. For example, clicking <button on:click={Rfunc}>R</button> or pressing the 'r' key always turns the right face clockwise, even after the cube has rotated. To see this, rotate the cube by pressing the 'y' key or clicking <button on:click={Yrotate}>Y rotate</button>, then press the 'r' key or click <button on:click={Rfunc}>R</button>. As before, pressing 'r' or clicking <button on:click={Rfunc}>R</button> still turns the right face. </p>
     
-    Prior states of the cube don't need to be preserved. The array in the m-M(x) closure, which is central to reversing prior rotations, holds only references to the functions responsible for the cube's current state. The "reverse" function discards the most-recently called function, runs that function three more times to return the cube to its previous configuration, and then removes itself from the array. The length of the array is then one element shorter than it was before reverse() was called. Here's the definition:  </p>
+    <p>Now press 'v' or click on the <button on:click={Start}>Start</button> button to return the colors to their starting places on the cube and re-orient the cube by clicking <button on:click={rotate}>Perspective Clockwise</button>. The cube apears to rotate just as it did when y was pressed. Under the hood it changed not by rearranging six CSS classes (red, orange, green, blue, yellow, and white), but by rearranging the six nine-div faces of the cube, leaving the classes in place.</p>
+    
+    <p> Pressing 'r' still rotates the side that was on the right, but now it is in the front of the cube, so it's the front that rotates every time "r" is pressed or <button on:click={Rfunc}>R</button> is clicked. This is how the reference cube in the lower middle column functions. clicking <button on:click={Start}>Start</button> button or pressing 'v' re-establishes uniform colors on the sides, but leaves the lower cube orientated relative to the upper cube just as it was.</p> 
+    <p> To return the lower cube to its starting configuration, you need to rotate it back to where it was, or reload the page.</p>
 
-<pre>{reverseCode}</pre>
-  <p>The main cube and its 54 constituent HTML divs never move. In the m-M(x) closure, "x" is an array of six nine-member arrays of references to the strings "red," "orange," "blue," "green,", "yellow," and "white." These strings specify div classes with corresponding background colors in the DOM. </p>
-
-  <pre>{orangeSide}</pre>
-
-<p>Where: {classCode} for a = 1,2,...5 and b = 1,2,...8 are defined as:
-<pre>{classCode2}</pre>
-    <p> The keyboard and button controls are, by default, oblivious to changes in the cube's orientation. Pressing the "R" key rotates whichever face happens to be on the right side of the cube 1/4 turn (90 degrees) clockwise. Simulated Rubik's cubes with controls that, for example, always turn the side with a blue center whenever the "R" key is pressed are much harder to solve.</p> 
-
-    <h1>Increasing Algorithm Repertoires</h1>
+    <h1>Demonstration 2</h1>
     <p>
       Click <button  on:click={reverse_niklas}
         >Reverse Niklas '</button
@@ -3173,7 +3008,8 @@ const orangeSide = `<div class="face front">
       toward the lower left and (2) the forward-facing lower-right sticker is
       yellow. Elementary tutorials say this configuration calls for the sune
       algorithm; and, indeed, sune turns the entire upper face yellow. Try
-      it. <button  on:click={sune}>Sune</button>. The cube has a way to go before being solved.
+      it. <button  on:click={sune}>Sune</button> (R U R' U R U2
+      R'). The cube has a way to go before being solved.
     </p>
 
     <p>
@@ -3185,7 +3021,8 @@ const orangeSide = `<div class="face front">
       red and orange in this case (green and blue, and white and yellow are also considered
       opposite). The lower-right side sticker and the top left upward-facing
       sticker match (both are red). These observations indicate that the cube
-      can be quickly solved. All you need to do is click <button on:click={() => handleEvent({keyCode: 85})}>U'</button>
+      can be quickly solved. All you need to do is click
+      <button  on:click={Uzfunc}>U'</button>
       and <button  on:click={orient_corners}>Revolve</button>
       (U R U' L' U R' U' L), or click
       <button  on:click={niklas}>Niklas</button> (R U' L' U R'
@@ -3194,29 +3031,25 @@ const orangeSide = `<div class="face front">
 <h1>The m-M(x) Closure (JS-Monad)</h1>
 <p style="font-style: italic"> In the British tradition, commas and periods will go outside of quotation marks</p>
 
-<pre>{`const m = function M(x) {
+<pre>{`var M = function M(x) {
   return function go(func) {
-    if (func === dF3x) return x;
+    if (func === Rf78d3s5) return x;
     else x = func(x);
     return go;
   };
-} where dF3x = () => {}, and
+} where Rf78d3s5 = () => {}, and
     unless a domain for M is specified
     x can be any JavaScript value.`}</pre>
 
 <p> This webpage features the closure that results from the assignment "m = M(x)", where x is an array of six nine-member arrays. "x" in the m-M(x) closures will always be a six-member array of nine-member arrays. Only pure functions that take arrays of six nine-member arrays and return arrays of six nine-member arrays will be used. As is apparent from the definition of "M", "m" is a copy of "go". efficiently, the composition of functions arrays of six nine-member arrays. There are no side effects. The functions are pure, accessing only their arguments (arrays of six nine-member arrays) and doing nothing but return arrays of six nine-member arrays. As is apparent, the domain of M is arrays of six nine-member arrays. The only functions used in this presentation are functions that transform the array in the m-M(x) closure in ways corresponding to moves on Rubik's cubes. Functionality to lift types into other types can be added to JS-Monads as needed -- and omitted where, as here, it isn't needed.</p>
 
-<p> As mentioned above, the simulated Rubik's cube is represented by "x" in a m-M(x) closure, where m and x are defined by the following code:</p>
-<pre>{classCode}</pre>
-<p>The correspondence between the array containing the six nine-member arrays of strings held in the m-M(x) closure -- available as m(dF3x) -- and the images of a Rubik's cube displayed in the DOM, is apparent in the code below.</p>
+<p> The simulated Rubik's cube is represented by "x" in a m-M(x) closure, where m and x are defined by the following code:</p>
+<pre>{constants}</pre>
+<p>The correspondence between the array containing the six nine-member arrays of divs held in the m-M(x) closure -- available as m(Rf78d3s5) -- and the images of a Rubik's cube displayed in the DOM, is apparent in the code below.</p>
 <pre>{dom}</pre>  
 
-<p> When you press "r", click the "R" button, or click the upper left corner of the right side of the cube representation, the function 'B' is called on the array of six arrays in the m-M(x) closure. The current configuration of x in the closure is of no concern to 'B'. It simply rearranges the strings based on their positions. Here's the definition:  </p>
 
-
-
-
-
+  </div>
   <br /><br /><br />
   <div style = "width: 30%">
 <br><br>
@@ -3225,21 +3058,18 @@ const orangeSide = `<div class="face front">
   <div style="width: 35%;">
     <!-- Column 2 -->
     <div style="margin-left: 1px">
-      <span>Using the Keypad</span>
-      <span> Pressing the u, d, r, l, f, b,  m, e, s, x, y, and z keys has the same effect as clicking the corresponding (capitalized) buttons. Holding down the "Shift" key (or activating "CapsLock") while pressing the keys causes the reverse effect. Pressing v, w, and q is equivalent to clicking on Start, Scramble, and Reverse, respectively. </span>
+      <span style = "display: block; color:blue; font-weight:bold; text-align: center; font-size: 24px">Using the Keypad</span>
+      <span style="color: blue; font-weight: bold"> Pressing the u, d, r, l, f, b,  m, e, s, x, y, and z keys has the same effect as clicking the corresponding (capitalized) buttons. Holding down the "Shift" key (or activating "CapsLock") while pressing the keys causes the reverse effect. Pressing v, w, and q is equivalent to clicking on Start, Scramble, and Reverse, respectively. </span>
 <br><br>
-      <span>Using the Alternate View Cube</span>
-      <span >The lower cube image in the center of this page gives eight distinct views of the Rubik's cube image above it. Alternate clicking on "Rotate A" and "Rotate B" tilts the view back and forth. Each repeat click rotates the view 90 degrees.</span>
-      <br><br>
-      <h2 style = "text-align: center;">Some Algorithm Shortcuts</h2><p></p>
+      <span style = "display: block; color:blue; font-weight:bold; text-align: center; font-size: 24px">Using the Alternate View Cube</span>
+      <span style="color: blue; font-weight: bold">The lower cube image in the center of this page gives eight distinct views of the Rubik's cube image above it. Alternate clicking on "Rotate A" and "Rotate B" tilts the view back and forth. Each repeat click rotates the view 90 degrees.</span><br><br>
+      <span style = "display: block; color:blue; font-weight:bold; text-align: center; font-size: 26px">Some Algorithm Shortcuts</span><p></p>
       <button on:click={corners}>PLL Corners: R' F R' B2 R F' R' B2 R2</button>
       <button on:click={triclock}>Triangle Clockwise: M2 U' M U2 M' U' M2</button>
       <button on:click={tricounterclock}>Triangle CounterClockwise: M2 U M U2 M' U M2</button>
       <button on:click={edgesOpposite}>Edges Opposite: M M Uz M M U U M M Uz M M</button>
       <button on:click={edgesAdjacent}>Edges Adjacent: M M U M M U M U U M M U U M U U</button>
       <br />
-      <button on:click={doubleFish}>doubleFish R' F R B' R' F' R B </button>
-      <br>
       <button on:click={sune}>Sune: R U R' U R U2 R'</button>
       <br />
       <button on:click={antisune}>Antisune: R U2 R' U' R U' R' </button>
@@ -3272,7 +3102,7 @@ const orangeSide = `<div class="face front">
       
 <h1>Discussion</h1>
   <p> This webpage is meant to do two things: (1) provide a user-friendly Rubik's cube simulation and (2) show that even a basic JS-Monad can be useful in developing complex, bug-resistant web applications. Very simple additions can add functionality, such as reverseable caches of prior configurations, queues of yet-to-be-resolved promises, and more. Here's a link to a more detailed discussion of m-M(x) closures (a/k/a JS-Monads). Here's the definition of its simplest manifestation: </p>
-    <pre>{classCode}</pre>   
+    <pre>{Mcode}</pre>   
     <p>We'll take a closer look at the JS-Monad soon. First, some information about the cube images shown in the middle column.</p> 
   <p> Rotation of the whole cube, its middle sections, and its faces is accomplished by JavaScript functions that rearrange the classes -- more specifically, the css background-colors -- which are assigned in various configurations to each of 54 divs in the DOM. The array of six nine-element arrays maintained in the m-M(x) closure, are references to the strings "orange", "blue", "red", "green", "yellow", or "white". There are 9 divs with each of these background colors.
   The six strings are the names of CSS classes and are also the colors of those class's "background-colors" attributes. </p>
@@ -3280,26 +3110,26 @@ const orangeSide = `<div class="face front">
   <p>Press the "v" key or click <button on:click={Start}>Start</button> to see each face of the cube with 9 identically colored divs. Click on the <button on:click={Xrotate}>X rotate</button>, <button on:click={Yrotate}>Y rotate</button>, and <button on:click={Zrotate}>Z rotate</button> buttons to see the main cube from various angles, or click on the <button on:click={rotate9}>Rotate A</button> and <button on:click={tilt9}>Rotate B</button> buttons to turn the alternate-view cube. The alternate-view cube (center bottom) can be returned to its starting orientation only be rotations or re-loading this page. <button on:click={Start}>Start</button> will give the sides of the alternate-view cube uniform colors (like the main cube), but its orientation relateve to the main cube doesn't change. This is by design. Click
   <button on:click={rotate9}>Rotate A</button>, then <button on:click={shu}>Scramble</button>, and finally, <button on:click={Start}>Start</button>.</p>
     
-    <p>Functions that update the cube's configuration are provided to "m" as arguments. For example, clicking <button on:click={() => handleEvent({keyCode: 114})}>R</button>, or pressing "r" on the key pad triggers m(R), where R is defined as follows:</p>
+    <p>Functions that update the cube's configuration are provided to "m" as arguments. For example, clicking <button on:click={Rfunc}>R</button> or pressing "r" on the key pad triggers m(R), where R is defined as follows:</p>
  <pre>{Rcode}</pre> 
 <p> Click "<button on:click={Start}>Start</button>" or press the "v" key, and you will see that each of the six faces of the cube oppositeHeadlights3 all nine of one of the six colors. When you press "w" or click "<button on:click={shu}>Scramble</button>", 62 sudo random moves are performed. After that, there are still nine of each of the six colors, but their locations are scattered around the cube. Click the "<button on:click={Start}>Start</button>" button or press the "v" key to put them back. </p>
 <p>Here's how the "orange" CSS class is defined: </p>
 <pre>{orange}</pre>
-<p> User actions cause m(func) to run for some array-manipulating function "func." m(func) causes func(x) to execute, updating the array in the m-M(x) closure. The code shown in the left column distributes the updated class names over the 54 divs corresponding to the cube representation displayed at the top of the middle column . </p>  
+<p> User actions cause m(func) to run for some array-manipulating function "func." m(func) causes func(x) to execute, updating the array in the m-M(x) closure. The code shown in the left column distributes the updated class names over the 54 divs corresponding to the cube representation displayed in the middle column . </p>  
 <h1>Encapsulation From User Action To Cube Update In the Browser</h1>
-<p>Clicking on <button on:click={() => handleEvent({keyCode: 117})}>U</button>calls Ufunc, which then calls m(U).</p>
+<p>Clicking on <button on:click={Ufunc}>U</button> calls Ufunc, which then call m(U).</p>
 <pre>{UfuncCode}</pre>
-<p>Pressing "u" calls handleEvent(e), where "e" is the keypress event. e.keyCode for "u" is 117, so handleEvent(e) calls m(U) directly, rather than going through Ufunc to get there. That is because "m = m" comes after the "if" statements in keyFunc, but "m = m" doesn't occur until Ufunc() is called after clicking <button on:click={() => handleEvent({keyCode: 117})}>U</button>. The easy way to cause reactive DOM updates is to assign the code being updated, even if only to itselrf. This is the definition of U: </p>
-<pre>{Ucode}</pre>
-
-<pre>{handleEventCode}</pre>
-<p> Pressing "u" three times after Clicking <button on:click={() => handleEvent({keyCode: 117})}>U</button> returns the cube to its starting configuration. You can also restore the cube to its solved configuration by pressing "v" or clicking   <button on:click={Start}>Start</button></p> 
+<p>Pressing "u" calls HandleKey(e) where "e" is the keypress event. HandleKey(e) then calls m(U). </p>
+<pre>{handleKeyCode}</pre>
+<p> "117" is the keycode for "u", so handleKey(e) calls m(U). Ufunc (above) also calls m(U) when <button on:click={Ufunc}>U</button> is clicked. Pressing "u" three times after Clicking <button on:click={Ufunc}>U</button> returns the cube to its starting configuration. You can also restore the cube to its solved configuration by pressing "v" or clicking <button on:click={Start}>Start</button></p> 
 <p> Finally, to see how user clicks and key presses change the browser display, look at the left column. Each of the six colors is the name of a class in the "style" section of this <a href="https://kit.svelte.dev/">SvelteKit</a> webpage.</p> 
 <h1>The Round Trip Was Encapsulated</h1> 
-<span> In the DOM, clicking on "U" calls "Ufunc()" which calls m(U). Pressing the "u" key calls "handleEvent(e)" where e.keyCode === 117 likewise results in a call to m(U). m(U) triggers the re-configuration of the simulated Rubik's cube code in the m-M(x) closure. This re-configuration automatically updates the DOM (see the "class=" code in the left column) resulting in a change in the images of the simulated Rubik's cube in the browser. </span>
+<span> In the DOM, clicking on "U" calls "Ufunc()" which calls m(U). Pressing the "u" key calls "HandleKey(e)" where e.keyCode === 117 likewise results in a call to m(U). m(U) triggers the re-configuration of the simulated Rubik's cube code in the m-M(x) closure. This re-configuration automatically updates the DOM (see the "class=" code in the left column) resulting in a change in the images of the simulated Rubik's cube in the browser. </span>
 <br><br>
 <span> The browser update described above is the result of reassigning the six classes, red, orange, green, blue, yellow, and white, to the 54 stationary divs whose background colors are seen in browsers, and rearranged by user clicks and key presses. The state of the array of six nine-member arrays remains in the m-M(x) closure in the "script" or "style" sections of this <a href="https://kit.svelte.dev">SvelteKit</a> page's code. It is only in the DOM code, the <span style = "color: purple">{classCode}</span> statements (left column), that the contents of the m-M(x) closure are used, updating the browser images of the simulated Rubik's cube.</span>  
 
+      <br /><br />
+      <br /><br /><br />
     </div>
   </div>
 </section>
@@ -3308,85 +3138,85 @@ const orangeSide = `<div class="face front">
     <div class={cu}>
       <div class="face front">
         <div class="grid" >
-          <div><button class={m(dF3x)[3][0]} on:click = {() => {m = m(Fz)}} /> </div> 
-          <div><button class={m(dF3x)[3][1]} on:click = {() => {m = m(Cx)}} /> </div> 
-          <div><button class={m(dF3x)[3][2]} on:click = {() => {m = m(F)}} /> </div> 
-          <div><button class={m(dF3x)[3][3]} on:click = {() => {m = m(Cy)}} /> </div> 
-          <div class={m(dF3x)[3][4]} />
-          <div><button class={m(dF3x)[3][5]} on:click = {() => {m = m(Cyr)}} /> </div> 
-          <div><button class={m(dF3x)[3][6]} on:click = {() => {m = m(Fz)}} /> </div> 
-          <div><button class={m(dF3x)[3][7]} on:click = {() => {m = m(Cxr)}} /> </div> 
-          <div><button class={m(dF3x)[3][8]} on:click = {() => {m = m(F)}} /> </div> 
+          <div class={m(Rf78d3s5)[3][0]} />
+          <div class={m(Rf78d3s5)[3][1]} />
+          <div class={m(Rf78d3s5)[3][2]} />
+          <div class={m(Rf78d3s5)[3][3]} />
+          <div class={m(Rf78d3s5)[3][4]} />
+          <div class={m(Rf78d3s5)[3][5]} />
+          <div class={m(Rf78d3s5)[3][6]} />
+          <div class={m(Rf78d3s5)[3][7]} />
+          <div class={m(Rf78d3s5)[3][8]} />
         </div>
       </div>
 
       <div class="face back">
         <div class="grid">
-          <div class={m(dF3x)[2][8]} />
-          <div class={m(dF3x)[2][7]} />
-          <div class={m(dF3x)[2][6]} />
-          <div class={m(dF3x)[2][5]} />
-          <div class={m(dF3x)[2][4]} />
-          <div class={m(dF3x)[2][3]} />
-          <div class={m(dF3x)[2][2]} />
-          <div class={m(dF3x)[2][1]} />
-          <div class={m(dF3x)[2][0]} />
+          <div class={m(Rf78d3s5)[2][8]} />
+          <div class={m(Rf78d3s5)[2][7]} />
+          <div class={m(Rf78d3s5)[2][6]} />
+          <div class={m(Rf78d3s5)[2][5]} />
+          <div class={m(Rf78d3s5)[2][4]} />
+          <div class={m(Rf78d3s5)[2][3]} />
+          <div class={m(Rf78d3s5)[2][2]} />
+          <div class={m(Rf78d3s5)[2][1]} />
+          <div class={m(Rf78d3s5)[2][0]} />
         </div>
       </div>
 
       <div class="face right">
         <div class="grid">
-         <div><button class={m(dF3x)[0][0]} on:click = {() => {m = m(Rz)}} /> </div> 
-          <div><button class={m(dF3x)[0][1]} on:click = {() => {m = m(Cz)}} /> </div> 
-         <div><button class={m(dF3x)[0][2]} on:click = {() => {m = m(R)}} /> </div> 
-          <div><button class={m(dF3x)[0][3]} on:click = {() => {m = m(Cy)}} /> </div> 
-          <div class={m(dF3x)[0][4]} />
-          <div><button class={m(dF3x)[0][5]} on:click = {() => {m = m(Cyr)}} /> </div> 
-          <div><button class={m(dF3x)[0][6]} on:click = {() => {m = m(Rz)}} /> </div> 
-          <div><button class={m(dF3x)[0][7]} on:click = {() => {m = m(Czr)}} /> </div> 
-          <div><button class={m(dF3x)[0][6]} on:click = {() => {m = m(R)}} /> </div> 
+          <div class={m(Rf78d3s5)[0][0]} />
+          <div class={m(Rf78d3s5)[0][1]} />
+          <div class={m(Rf78d3s5)[0][2]} />
+          <div class={m(Rf78d3s5)[0][3]} />
+          <div class={m(Rf78d3s5)[0][4]} />
+          <div class={m(Rf78d3s5)[0][5]} />
+          <div class={m(Rf78d3s5)[0][6]} />
+          <div class={m(Rf78d3s5)[0][7]} />
+          <div class={m(Rf78d3s5)[0][8]} />
         </div>
       </div>
 
       <div class="face left">
         <div class="grid">
-          <div class={m(dF3x)[1][0]} />
-          <div class={m(dF3x)[1][1]} />
-          <div class={m(dF3x)[1][2]} />
-          <div class={m(dF3x)[1][3]} />
-          <div class={m(dF3x)[1][4]} />
-          <div class={m(dF3x)[1][5]} />
-          <div class={m(dF3x)[1][6]} />
-          <div class={m(dF3x)[1][7]} />
-          <div class={m(dF3x)[1][8]} />
+          <div class={m(Rf78d3s5)[1][0]} />
+          <div class={m(Rf78d3s5)[1][1]} />
+          <div class={m(Rf78d3s5)[1][2]} />
+          <div class={m(Rf78d3s5)[1][3]} />
+          <div class={m(Rf78d3s5)[1][4]} />
+          <div class={m(Rf78d3s5)[1][5]} />
+          <div class={m(Rf78d3s5)[1][6]} />
+          <div class={m(Rf78d3s5)[1][7]} />
+          <div class={m(Rf78d3s5)[1][8]} />
         </div>
       </div>
 
       <div class="face top">
         <div class="grid">
-          <div><button class={m(dF3x)[4][0]} on:click = {() => {m = m(Uz)}} /> </div> 
-          <div><button class={m(dF3x)[4][1]} on:click = {() => {m = m(Cx)}} /> </div> 
-          <div><button class={m(dF3x)[4][2]} on:click = {() => {m = m(U)}} /> </div> 
-          <div><button class={m(dF3x)[4][3]} on:click = {() => {m = m(Cz)}} /> </div> 
-          <div class={m(dF3x)[4][4]} />
-          <div><button class={m(dF3x)[4][5]} on:click = {() => {m = m(Czr)}} /> </div> 
-          <div><button class={m(dF3x)[4][6]} on:click = {() => {m = m(Uz)}} /> </div> 
-          <div><button class={m(dF3x)[4][7]} on:click = {() => {m = m(Cxr)}} /> </div> 
-          <div><button class={m(dF3x)[4][8]} on:click = {() => {m = m(U)}} /> </div> 
+          <div class={m(Rf78d3s5)[4][0]} />
+          <div class={m(Rf78d3s5)[4][1]} />
+          <div class={m(Rf78d3s5)[4][2]} />
+          <div class={m(Rf78d3s5)[4][3]} />
+          <div class={m(Rf78d3s5)[4][4]} />
+          <div class={m(Rf78d3s5)[4][5]} />
+          <div class={m(Rf78d3s5)[4][6]} />
+          <div class={m(Rf78d3s5)[4][7]} />
+          <div class={m(Rf78d3s5)[4][8]} />
         </div>
       </div>
 
       <div class="face bottom">
         <div class="grid">
-          <div class={m(dF3x)[5][0]} />
-          <div class={m(dF3x)[5][1]} />
-          <div class={m(dF3x)[5][2]} />
-          <div class={m(dF3x)[5][3]} />
-          <div class={m(dF3x)[5][4]} />
-          <div class={m(dF3x)[5][5]} />
-          <div class={m(dF3x)[5][6]} />
-          <div class={m(dF3x)[5][7]} />
-          <div class={m(dF3x)[5][8]} />
+          <div class={m(Rf78d3s5)[5][0]} />
+          <div class={m(Rf78d3s5)[5][1]} />
+          <div class={m(Rf78d3s5)[5][2]} />
+          <div class={m(Rf78d3s5)[5][3]} />
+          <div class={m(Rf78d3s5)[5][4]} />
+          <div class={m(Rf78d3s5)[5][5]} />
+          <div class={m(Rf78d3s5)[5][6]} />
+          <div class={m(Rf78d3s5)[5][7]} />
+          <div class={m(Rf78d3s5)[5][8]} />
         </div>
       </div>
     </div>
@@ -3402,85 +3232,85 @@ const orangeSide = `<div class="face front">
     <div id={cu9}>
       <div class="face front">
         <div class="grid">
-          <div class={m(dF3x)[3][0]} />
-          <div class={m(dF3x)[3][1]} />
-          <div class={m(dF3x)[3][2]} />
-          <div class={m(dF3x)[3][3]} />
-          <div class={m(dF3x)[3][4]} />
-          <div class={m(dF3x)[3][5]} />
-          <div class={m(dF3x)[3][6]} />
-          <div class={m(dF3x)[3][7]} />
-          <div class={m(dF3x)[3][8]} />
+          <div class={m(Rf78d3s5)[3][0]} />
+          <div class={m(Rf78d3s5)[3][1]} />
+          <div class={m(Rf78d3s5)[3][2]} />
+          <div class={m(Rf78d3s5)[3][3]} />
+          <div class={m(Rf78d3s5)[3][4]} />
+          <div class={m(Rf78d3s5)[3][5]} />
+          <div class={m(Rf78d3s5)[3][6]} />
+          <div class={m(Rf78d3s5)[3][7]} />
+          <div class={m(Rf78d3s5)[3][8]} />
         </div>
       </div>
 
       <div class="face back">
         <div class="grid">
-          <div class={m(dF3x)[2][8]} />
-          <div class={m(dF3x)[2][7]} />
-          <div class={m(dF3x)[2][6]} />
-          <div class={m(dF3x)[2][5]} />
-          <div class={m(dF3x)[2][4]} />
-          <div class={m(dF3x)[2][3]} />
-          <div class={m(dF3x)[2][2]} />
-          <div class={m(dF3x)[2][1]} />
-          <div class={m(dF3x)[2][0]} />
+          <div class={m(Rf78d3s5)[2][8]} />
+          <div class={m(Rf78d3s5)[2][7]} />
+          <div class={m(Rf78d3s5)[2][6]} />
+          <div class={m(Rf78d3s5)[2][5]} />
+          <div class={m(Rf78d3s5)[2][4]} />
+          <div class={m(Rf78d3s5)[2][3]} />
+          <div class={m(Rf78d3s5)[2][2]} />
+          <div class={m(Rf78d3s5)[2][1]} />
+          <div class={m(Rf78d3s5)[2][0]} />
         </div>
       </div>
 
       <div class="face right">
         <div class="grid">
-          <div class={m(dF3x)[0][0]} />
-          <div class={m(dF3x)[0][1]} />
-          <div class={m(dF3x)[0][2]} />
-          <div class={m(dF3x)[0][3]} />
-          <div class={m(dF3x)[0][4]} />
-          <div class={m(dF3x)[0][5]} />
-          <div class={m(dF3x)[0][6]} />
-          <div class={m(dF3x)[0][7]} />
-          <div class={m(dF3x)[0][8]} />
+          <div class={m(Rf78d3s5)[0][0]} />
+          <div class={m(Rf78d3s5)[0][1]} />
+          <div class={m(Rf78d3s5)[0][2]} />
+          <div class={m(Rf78d3s5)[0][3]} />
+          <div class={m(Rf78d3s5)[0][4]} />
+          <div class={m(Rf78d3s5)[0][5]} />
+          <div class={m(Rf78d3s5)[0][6]} />
+          <div class={m(Rf78d3s5)[0][7]} />
+          <div class={m(Rf78d3s5)[0][8]} />
         </div>
       </div>
 
       <div class="face left">
         <div class="grid">
-          <div class={m(dF3x)[1][0]} />
-          <div class={m(dF3x)[1][1]} />
-          <div class={m(dF3x)[1][2]} />
-          <div class={m(dF3x)[1][3]} />
-          <div class={m(dF3x)[1][4]} />
-          <div class={m(dF3x)[1][5]} />
-          <div class={m(dF3x)[1][6]} />
-          <div class={m(dF3x)[1][7]} />
-          <div class={m(dF3x)[1][8]} />
+          <div class={m(Rf78d3s5)[1][0]} />
+          <div class={m(Rf78d3s5)[1][1]} />
+          <div class={m(Rf78d3s5)[1][2]} />
+          <div class={m(Rf78d3s5)[1][3]} />
+          <div class={m(Rf78d3s5)[1][4]} />
+          <div class={m(Rf78d3s5)[1][5]} />
+          <div class={m(Rf78d3s5)[1][6]} />
+          <div class={m(Rf78d3s5)[1][7]} />
+          <div class={m(Rf78d3s5)[1][8]} />
         </div>
       </div>
 
       <div class="face top">
         <div class="grid">
-          <div class={m(dF3x)[4][0]} />
-          <div class={m(dF3x)[4][1]} />
-          <div class={m(dF3x)[4][2]} />
-          <div class={m(dF3x)[4][3]} />
-          <div class={m(dF3x)[4][4]} />
-          <div class={m(dF3x)[4][5]} />
-          <div class={m(dF3x)[4][6]} />
-          <div class={m(dF3x)[4][7]} />
-          <div class={m(dF3x)[4][8]} />
+          <div class={m(Rf78d3s5)[4][0]} />
+          <div class={m(Rf78d3s5)[4][1]} />
+          <div class={m(Rf78d3s5)[4][2]} />
+          <div class={m(Rf78d3s5)[4][3]} />
+          <div class={m(Rf78d3s5)[4][4]} />
+          <div class={m(Rf78d3s5)[4][5]} />
+          <div class={m(Rf78d3s5)[4][6]} />
+          <div class={m(Rf78d3s5)[4][7]} />
+          <div class={m(Rf78d3s5)[4][8]} />
         </div>
       </div>
 
       <div class="face bottom">
         <div class="grid">
-          <div class={m(dF3x)[5][0]} />
-          <div class={m(dF3x)[5][1]} />
-          <div class={m(dF3x)[5][2]} />
-          <div class={m(dF3x)[5][3]} />
-          <div class={m(dF3x)[5][4]} />
-          <div class={m(dF3x)[5][5]} />
-          <div class={m(dF3x)[5][6]} />
-          <div class={m(dF3x)[5][7]} />
-          <div class={m(dF3x)[5][8]} />
+          <div class={m(Rf78d3s5)[5][0]} />
+          <div class={m(Rf78d3s5)[5][1]} />
+          <div class={m(Rf78d3s5)[5][2]} />
+          <div class={m(Rf78d3s5)[5][3]} />
+          <div class={m(Rf78d3s5)[5][4]} />
+          <div class={m(Rf78d3s5)[5][5]} />
+          <div class={m(Rf78d3s5)[5][6]} />
+          <div class={m(Rf78d3s5)[5][7]} />
+          <div class={m(Rf78d3s5)[5][8]} />
         </div>
       </div>
     </div>
